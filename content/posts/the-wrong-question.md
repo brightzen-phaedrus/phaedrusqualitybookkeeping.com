@@ -1,7 +1,8 @@
 ---
 title: "The Wrong Question"
-date: 2026-04-22
+date: 2026-04-22T23:59:59
 draft: false
+weight: 1
 tags: ["quality", "bookkeeping", "pirsig", "thesis"]
 summary: "The bookkeeping industry spent a decade asking 'how do we categorize faster?' They should have been asking 'how good are the books?'"
 ---
