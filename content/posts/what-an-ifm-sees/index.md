@@ -46,6 +46,9 @@ Every IFM has a boundary — a date where real data from QuickBooks stops and pr
 
 That means the model can't tell its own user where the facts end and the guesses start. For a CEO looking at the IFM, this is like reading a news article where the editor forgot to mark which paragraphs are reporting and which are opinion.
 
+![New client acquisition chart showing volatile actuals followed by a suspiciously flat forecast of exactly 3 new clients per month](optimistic-forecast.png)
+*New client acquisition in a real IFM. Notice where the actuals end and the forecast begins — reality is volatile; the projection is a flatline. That's not a plan. That's a wish.*
+
 ### 3. Does the Error Checker Pass?
 
 The Error Checker validates the model's math — does the accounting equation hold? Do the income statement and balance sheet tie back to the source data?
