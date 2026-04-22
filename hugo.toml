@@ -15,34 +15,40 @@ buildExpired = false
 [params]
   env = "production"
   title = "Phaedrus Quality Bookkeeping"
-  description = "AI-powered bookkeeping automation for QuickBooks Online."
+  description = "The bookkeeping industry invested billions in speed. We invested in Quality."
   author = "BrightZen, Inc."
   DateFormat = "January 2, 2006"
   defaultTheme = "auto"
-  ShowReadingTime = false
+  ShowReadingTime = true
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = false
   ShowWordCount = false
-  ShowRssButtonInSectionTermList = false
+  ShowRssButtonInSectionTermList = true
   UseHugoToc = true
   disableSpecial1stPost = false
   disableScrollToTop = false
-  hidemeta = true
+  hidemeta = false
   hideSummary = false
-  showtoc = false
+  showtoc = true
 
   [params.homeInfoParams]
-    Title = "Phaedrus Quality Bookkeeping"
+    Title = "Quality, not speed."
     Content = """
-Automated bookkeeping intelligence for QuickBooks Online.
+The bookkeeping industry invested billions in making the wrong work faster.
 
-Built by [BrightZen](https://brightzen.com) to bring clarity to the numbers that matter."""
+We built something different — an AI that pursues Quality in the books the way a craftsman pursues it in a motorcycle.
+
+Named for the philosopher who lost his mind chasing Quality. Built by the people who measure it for a living."""
 
   [[params.socialIcons]]
     name = "email"
     url = "mailto:phaedrus@brightzen.com"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
 
   [params.cover]
     hidden = false
@@ -52,23 +58,38 @@ Built by [BrightZen](https://brightzen.com) to bring clarity to the numbers that
   [params.editPost]
     disabled = true
 
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
 
 [[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about/"
-  weight = 10
+  weight = 20
 
 [[menu.main]]
   identifier = "privacy"
   name = "Privacy"
   url = "/privacy/"
-  weight = 20
+  weight = 30
 
 [[menu.main]]
   identifier = "terms"
   name = "Terms"
   url = "/terms/"
-  weight = 30
+  weight = 40
