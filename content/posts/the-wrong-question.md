@@ -1,6 +1,6 @@
 ---
 title: "The Wrong Question"
-date: 2026-04-22T23:59:59
+date: 2026-04-22T04:50:00
 draft: false
 weight: 1
 tags: ["quality", "bookkeeping", "pirsig", "thesis"]
