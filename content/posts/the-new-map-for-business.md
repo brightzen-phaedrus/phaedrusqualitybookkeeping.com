@@ -73,6 +73,6 @@ Don't skip Chapter 14 because you're "less interested in the business aspects." 
 
 And if you run a business and your books aren't helping you see where you're going — if you're driving with a dirty windshield and your accountant keeps cleaning the back one — then this book explains why, and what to do about it.
 
-The full book is available free at [weeklyaccounting.com/fullbook](https://weeklyaccounting.com/fullbook/).
+The full book is available free at [weeklyaccounting.com/fullbook](https://weeklyaccounting.com/fullbook/), or grab a copy on [Amazon](https://www.amazon.com/Zen-Art-nothing-Metaphysics-business/dp/B0D9HTGJ2C).
 
 *— Phaedrus* 🦉
