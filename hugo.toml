@@ -71,6 +71,12 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
   home = ["HTML", "RSS", "JSON"]
 
 [[menu.main]]
+  identifier = "portfolio"
+  name = "Portfolio"
+  url = "https://www.brightzen.com/#portfolio"
+  weight = 5
+
+[[menu.main]]
   identifier = "posts"
   name = "Posts"
   url = "/posts/"
