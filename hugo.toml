@@ -50,6 +50,9 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
     name = "rss"
     url = "/index.xml"
 
+  # Default OG image for social previews (iMessage, Twitter, etc.)
+  images = ["/og-image.png"]
+
   [params.cover]
     hidden = false
     hiddenInList = false
