@@ -1,0 +1,74 @@
+baseURL = "https://phaedrusqualitybookkeeping.com/"
+languageCode = "en-us"
+title = "Phaedrus Quality Bookkeeping"
+theme = "PaperMod"
+paginate = 10
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[minify]
+  disableXML = true
+
+[params]
+  env = "production"
+  title = "Phaedrus Quality Bookkeeping"
+  description = "AI-powered bookkeeping automation for QuickBooks Online."
+  author = "BrightZen, Inc."
+  DateFormat = "January 2, 2006"
+  defaultTheme = "auto"
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = false
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = false
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  hidemeta = true
+  hideSummary = false
+  showtoc = false
+
+  [params.homeInfoParams]
+    Title = "Phaedrus Quality Bookkeeping"
+    Content = """
+Automated bookkeeping intelligence for QuickBooks Online.
+
+Built by [BrightZen](https://brightzen.com) to bring clarity to the numbers that matter."""
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:phaedrus@brightzen.com"
+
+  [params.cover]
+    hidden = false
+    hiddenInList = false
+    hiddenInSingle = false
+
+  [params.editPost]
+    disabled = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "privacy"
+  name = "Privacy"
+  url = "/privacy/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "terms"
+  name = "Terms"
+  url = "/terms/"
+  weight = 30
