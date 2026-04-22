@@ -1,7 +1,4 @@
 {{- if not (.Param "hideFooter") }}
-<div class="footer-cta">
-    <a href="/posts/meet-phaedrus/" class="footer-cta-btn">Meet Phaedrus →</a>
-</div>
 <footer class="footer">
     {{- if not site.Params.footer.hideCopyright }}
         {{- if site.Copyright }}
@@ -12,16 +9,18 @@
         {{- print " · "}}
     {{- end }}
 
-    {{- with site.Params.footer.text }}
-        {{ . | markdownify }}
-        {{- print " · "}}
-    {{- end }}
-
     <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <a href="/posts/meet-phaedrus/">Meet Phaedrus</a>
     </span>
+
+    <div class="footer-portfolio" style="margin-top:0.6rem;font-size:0.85rem;opacity:0.7;">
+        <a href="https://weeklyaccounting.com" target="_blank" rel="noopener">Weekly Accounting</a> · 
+        <a href="https://www.phoenixstrategy.group/" target="_blank" rel="noopener">Phoenix Strategy Group</a> · 
+        <a href="https://shipcalm.com" target="_blank" rel="noopener">ShipCalm</a> · 
+        <a href="https://www.legix.ai/" target="_blank" rel="noopener">Legix</a> · 
+        <a href="https://www.forecastr.co/" target="_blank" rel="noopener">ForecastR</a> · 
+        <a href="https://assembledbrands.com" target="_blank" rel="noopener">Assembled Brands</a>
+    </div>
 </footer>
 {{- end }}
 
