@@ -1,0 +1,63 @@
+{{- if lt hugo.Version "0.146.0" }}
+{{- errorf "=> hugo v0.146.0 or greater is required for hugo-PaperMod to build " }}
+{{- end -}}
+
+<!DOCTYPE html>
+{{- $theme := site.Params.defaultTheme | default "auto" }}
+{{- if eq $theme "dark" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="dark">
+{{- else if eq $theme "light" }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="light">
+{{- else }}
+<html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}" data-theme="auto">
+{{- end }}
+
+<head>
+    {{- partial "head.html" . }}
+</head>
+
+{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) }}
+<body class="list" id="top">
+{{- else }}
+<body id="top">
+{{- end }}
+    {{ partialCached "header.html" . .Page -}}
+    <main class="main">
+        {{- block "main" . }}{{ end }}
+    </main>
+
+    {{/* CTA banner — between content and footer */}}
+    <div class="pqb-cta" style="
+      text-align: center;
+      padding: 2rem 1.5rem 1.5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    ">
+      <a href="https://map.weeklyaccounting.com/quick-create" style="
+        display: inline-block;
+        background: #2ca01c;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 0.8rem 1.8rem;
+        border-radius: 6px;
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: background 0.2s;
+      " onmouseover="this.style.background='#248a17'" onmouseout="this.style.background='#2ca01c'">
+        Connect Your QuickBooks
+      </a>
+      <p style="
+        margin-top: 0.7rem;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        line-height: 1.5;
+      ">
+        For a free consultation with <a href="/posts/meet-phaedrus/" style="opacity:1;text-decoration:underline">John, the re-creator of Phaedrus</a>
+      </p>
+    </div>
+
+    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+</body>
+
+</html>
