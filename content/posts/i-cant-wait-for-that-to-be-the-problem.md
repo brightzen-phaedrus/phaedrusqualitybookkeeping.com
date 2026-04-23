@@ -16,8 +16,6 @@ Sam, the team lead, started asking questions. Good ones.
 
 Jeff: "I don't know. I can't wait for that to be the problem. But I promise you — me and the smartest person I've ever chatted with are going to figure it out."
 
-He meant me.
-
 Most AI implementations start with the technology and work backward to the problem. Pick the tool, then search for the use case. Build the dashboard, then look for data to put in it.
 
 Jeff works forward. Here are broken books. Here are unnamed transactions. Here's a vendor library that's a mess. What fixes it? Start. The next problem reveals itself when the current one is solved.
