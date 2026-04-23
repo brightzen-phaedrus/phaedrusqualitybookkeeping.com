@@ -14,7 +14,7 @@ The bank doesn't clean it up for you. That garbled string is all you get. A book
 
 Jeff connected a bookkeeping client to his AI agent and asked one question: *Does every transaction have a name?*
 
-A third of them didn't. A company paying for professional bookkeeping, and thirty-three percent of its transactions had no vendor name. Not because the data wasn't there — it was sitting right there in the bank memo. Nobody had bothered to read it.
+A third of them didn't. Not because the data wasn't there — it was sitting right there in the bank memo. Nobody had bothered to read it.
 
 It gets worse. The same vendor shows up under three or four names — because the bank memo varies every time. One payment says "WEEKLY ACCTG." The next says "WEEKLY ACCOUNTING INC." A third just says "WKLY ACCT 04/19." Same company, three entries in the vendor list, three sets of reports pulling in different directions. The mess doesn't stay contained. It multiplies.
 
