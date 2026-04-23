@@ -24,7 +24,13 @@ Think about how little we care if we can't even categorize our own bill.
 
 The AI decoded the memo that Intuit's own AI couldn't. It matched vendors, flagged duplicates, and surfaced the mess — in minutes. Jeff reviewed it, approved the fixes, pushed the changes.
 
-The data was always there. It was sitting in the bank memo. The question was whether anyone cared enough to read it.
+But here's what changes everything: Amazon's bank memo looks the same in every QuickBooks. So does Stripe's. So does Bill.com's. Decode the memo once, teach the machine the mapping, and that mapping works across every company that uses the same vendor.
+
+A human bookkeeper decodes "AMZN MKTP US*2K7XY" into "Amazon" for one client, then does it again for the next, then again for the next. Five hundred companies, five hundred times the same work. The bottleneck was never the knowledge — it was the interface. One transaction at a time. One vendor match at a time. Click, scroll, click, save.
+
+The AI doesn't click through anything. It reads the memo, matches the vendor, and pushes the fix through the API. What a human does in twenty minutes per client takes seconds. And the vendor library compounds — every match it learns makes the next company faster.
+
+The data was always there. It was sitting in the bank memo. Now there's nothing standing between the signal and the books.
 
 ---
 
