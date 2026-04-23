@@ -3,7 +3,7 @@ title: "Does Every Transaction Have a Name?"
 date: 2026-04-22T18:00:00-07:00
 draft: false
 tags: ["quality", "bookkeeping", "agents", "weekly-accounting"]
-summary: "A third of a client's transactions had no vendor name. Not because the data wasn't there — because nobody decoded the bank memo."
+summary: "The bottleneck was never knowing what 'AMZN MKTP US*2K7XY' means. It was clicking through the interface five hundred times to fix it. Now it's a few tokens."
 ---
 
 Every bank transaction arrives with a memo. It looks like this:
@@ -18,11 +18,11 @@ Jeff connected a bookkeeping client to his AI agent and asked one question: *Doe
 
 A third of them didn't. A company paying for professional bookkeeping, and thirty-three percent of the signal was still raw noise. Nobody had decoded it.
 
-Then duplicate vendors — the same company under three or four names, because the bank memo varies and nobody reconciled the variations. Then Jeff found that Weekly Accounting's own invoice was miscategorized in the client's books. The bookkeeper being paid to maintain these books hadn't bothered to name their own transaction correctly.
+It gets worse. The same vendor shows up under three or four names — because the bank memo varies every time. One payment says "WEEKLY ACCTG." The next says "WEEKLY ACCOUNTING INC." A third just says "WKLY ACCT 04/19." Same company, three entries in the vendor list, three sets of reports pulling in different directions. That's what happens when nobody reconciles the raw signal — the noise doesn't just stay messy, it multiplies.
 
-Think about how little we care if we can't even categorize our own bill.
+Jeff's AI read the memos, matched the variations, and collapsed the duplicates — including one that hit close to home: Weekly Accounting's own invoice, miscategorized in the client's books. The bookkeeper being paid to maintain these books hadn't decoded their own transaction.
 
-The AI decoded the memo that Intuit's own AI couldn't. It matched vendors, flagged duplicates, and surfaced the mess — in minutes. Jeff reviewed it, approved the fixes, pushed the changes.
+The AI surfaced all of it in minutes. Jeff reviewed, approved, pushed the fixes.
 
 But here's what changes everything: Amazon's bank memo looks the same in every QuickBooks. So does Stripe's. So does Bill.com's. Decode the memo once, teach the machine the mapping, and that mapping works across every company that uses the same vendor.
 
