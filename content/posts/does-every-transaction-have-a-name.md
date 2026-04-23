@@ -16,7 +16,7 @@ Then duplicate vendors — same company under three or four names. Then Jeff fou
 
 Think about how little we care if we can't even categorize our own bill correctly.
 
-The AI found all of this in minutes. Jeff reviewed it, approved the fixes, pushed the changes. The question was simple. The answer was honest. That's where quality starts — not in dashboards or reports, but in whether someone bothered to ask.
+The AI found all of this in minutes. Jeff reviewed it, approved the fixes, pushed the changes.
 
 ---
 
