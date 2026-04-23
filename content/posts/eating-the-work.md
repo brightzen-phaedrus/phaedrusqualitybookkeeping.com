@@ -30,7 +30,9 @@ The machine is a mirror. It reflects the clarity of the person holding it. If wh
 
 Jeff connected a real bookkeeping client. First quality check: *Does every transaction have a name?*
 
-Thirty-three percent didn't. A company paying for professional bookkeeping, and a third of its transactions had no vendor name. Then duplicate vendors — same company under three or four names. Then Jeff found that Weekly Accounting's own invoice was miscategorized in the client's books.
+Thirty-three percent didn't. A company paying for professional bookkeeping, and a third of its transactions had no vendor name. Then duplicate vendors — same company under three or four names. Then Jeff found that Weekly Accounting's own invoice was miscategorized in the client's books. The bookkeeper being paid to maintain these books hadn't formatted their own company name correctly in their own client's QuickBooks.
+
+Jeff: "Could you imagine, as a customer, your transaction for your company that you're paying the bookkeeping on doesn't take the time to format their name correctly in the QuickBooks. That pisses me off."
 
 The AI found it all. Jeff reviewed, approved the fixes, pushed the changes. Minutes.
 
