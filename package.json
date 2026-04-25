@@ -1,0 +1,7 @@
+{
+  "name": "phaedrusqualitybookkeeping.com",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "^1.0.0"
+  }
+}

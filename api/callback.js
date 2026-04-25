@@ -2,6 +2,7 @@
 // Exchanges authorization code for access + refresh tokens
 
 const https = require('https');
+const { storeTokens } = require('../lib/tokens');
 
 const CLIENT_ID = process.env.QBO_CLIENT_ID;
 const CLIENT_SECRET = process.env.QBO_CLIENT_SECRET;
@@ -83,17 +84,15 @@ module.exports = async (req, res) => {
     // Exchange code for tokens
     const tokens = await exchangeCode(code);
 
-    // Log for now — in production, store securely
-    console.log('OAuth success:', {
+    // Store tokens in Vercel KV
+    await storeTokens(realmId, tokens);
+
+    console.log('OAuth success — tokens stored:', {
       realmId,
       access_token_length: tokens.access_token?.length,
       refresh_token_length: tokens.refresh_token?.length,
       expires_in: tokens.expires_in,
-      x_refresh_token_expires_in: tokens.x_refresh_token_expires_in,
     });
-
-    // TODO: Store tokens securely (encrypted file, KV store, etc.)
-    // For now, we log them server-side and redirect to success page
 
     // Clear the state cookie
     res.setHeader('Set-Cookie', 'qbo_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0');

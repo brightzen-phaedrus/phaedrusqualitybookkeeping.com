@@ -1,7 +1,9 @@
 // POST /api/refresh — Refresh an expired access token
-// Body: { "refresh_token": "..." }
+// Body: { "realm_id": "..." } (reads refresh token from KV)
+// Or legacy: { "refresh_token": "..." } (direct token)
 
 const https = require('https');
+const { getTokens, storeTokens } = require('../lib/tokens');
 
 const CLIENT_ID = process.env.QBO_CLIENT_ID;
 const CLIENT_SECRET = process.env.QBO_CLIENT_SECRET;
@@ -53,22 +55,41 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Parse body
     let body = '';
     for await (const chunk of req) {
       body += chunk;
     }
-    const { refresh_token } = JSON.parse(body);
+    const parsed = JSON.parse(body);
+
+    let refresh_token = parsed.refresh_token;
+    let realmId = parsed.realm_id;
+
+    // If realm_id provided, look up the stored refresh token
+    if (realmId && !refresh_token) {
+      const stored = await getTokens(realmId);
+      if (!stored) {
+        return res.status(404).json({ error: 'No tokens found for this realm' });
+      }
+      if (stored.refresh_is_expired) {
+        return res.status(401).json({ error: 'Refresh token expired — reconnect required' });
+      }
+      refresh_token = stored.refresh_token;
+    }
 
     if (!refresh_token) {
-      return res.status(400).json({ error: 'Missing refresh_token' });
+      return res.status(400).json({ error: 'Missing refresh_token or realm_id' });
     }
 
     const tokens = await refreshToken(refresh_token);
 
+    // If we know the realmId, persist the new tokens
+    if (realmId) {
+      await storeTokens(realmId, tokens);
+    }
+
     console.log('Token refresh success:', {
+      realmId,
       access_token_length: tokens.access_token?.length,
-      refresh_token_length: tokens.refresh_token?.length,
       expires_in: tokens.expires_in,
     });
 
