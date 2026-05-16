@@ -739,7 +739,7 @@
           <div class="q-result">
             <h3>Let's talk</h3>
             <p>We'll walk through your setup and find the best path to Forecastr-ready books.</p>
-            <a id="q-book-link" href="https://weeklyaccounting.com/book-a-meeting/" target="_blank" rel="noopener" class="btn-primary">Book a Meeting</a>
+            <a id="q-book-link" href="https://weeklyaccounting.com/book-a-meeting/?event_source=forecastr" target="_blank" rel="noopener" class="btn-primary">Book a Meeting</a>
           </div>
         </div>
 
@@ -748,7 +748,7 @@
           <div class="q-result">
             <h3>Let's see your books</h3>
             <p>Connect your QuickBooks and we'll generate your Forecastr Readiness Score — free, no commitment.</p>
-            <a id="q-connect-link" href="https://map.weeklyaccounting.com/quick-create" target="_blank" rel="noopener" class="btn-primary">Connect QuickBooks</a>
+            <a id="q-connect-link" href="https://map.weeklyaccounting.com/quick-create?event_source=forecastr" target="_blank" rel="noopener" class="btn-primary">Connect QuickBooks</a>
           </div>
         </div>
 
@@ -808,32 +808,13 @@
     }
 
     function qRoute(dest) {
-      // Build query params from answers
-      const params = new URLSearchParams();
-      if (answers.firm) params.set('firm', answers.firm);
-      if (answers.name) params.set('name', answers.name);
-      if (answers.email) params.set('email', answers.email);
-      if (answers.phone) params.set('phone', answers.phone);
-      if (answers.qbo) params.set('qbo', answers.qbo);
-      if (answers.alt) params.set('alt', answers.alt);
-      if (answers.prerev) params.set('prerev', answers.prerev);
-      params.set('src', 'forecastr');
-
-      const qs = params.toString();
+      document.querySelector('.q-step.active').classList.remove('active');
+      dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
 
       if (dest === 'book') {
-        const link = document.getElementById('q-book-link');
-        link.href = 'https://weeklyaccounting.com/book-a-meeting/?' + qs;
-        // Hide current step, show book result
-        document.querySelector('.q-step.active').classList.remove('active');
         document.querySelector('[data-step="book"]').classList.add('active');
-        dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
       } else {
-        const link = document.getElementById('q-connect-link');
-        link.href = 'https://map.weeklyaccounting.com/quick-create?' + qs;
-        document.querySelector('.q-step.active').classList.remove('active');
         document.querySelector('[data-step="connect"]').classList.add('active');
-        dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
       }
     }
   </script>
