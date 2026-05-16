@@ -747,10 +747,10 @@
         <div class="q-step" data-step="11">
           <h3>Have you set up something else?</h3>
           <div class="q-options">
-            <button class="q-option" onclick="qAnswer('alt','xero'); qRoute('book')">Xero</button>
-            <button class="q-option" onclick="qAnswer('alt','wave'); qRoute('book')">Wave</button>
+            <button class="q-option" onclick="qAnswer('alt','xero'); qNext(3)">Xero</button>
+            <button class="q-option" onclick="qAnswer('alt','wave'); qNext(3)">Wave</button>
             <button class="q-option" id="q-other-btn" onclick="showOtherInput()">Other</button>
-            <button class="q-option" onclick="qAnswer('alt','none'); qRoute('book')">No, nothing yet</button>
+            <button class="q-option" onclick="qAnswer('alt','none'); qNext(3)">No, nothing yet</button>
           </div>
           <div class="q-other-input" id="q-other-box">
             <input type="text" id="q-other-text" placeholder="What software do you use?">
@@ -838,7 +838,7 @@
         return;
       }
       qAnswer('alt', val);
-      qRoute('book');
+      qNext(3);
     }
 
     function qNext(step) {
