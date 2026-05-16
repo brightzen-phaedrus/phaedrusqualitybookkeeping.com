@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | Phaedrus Quality Bookkeeping</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+
+  {{/* OG tags */}}
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Params.summary | default .Description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+
+  {{/* Forecastr fonts */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lato:wght@400;700&family=Mulish:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #e2e8f0;
+      background: #1a2332;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Forecastr Color Tokens ── */
+    :root {
+      --navy:       #252F3F;
+      --navy-deep:  #1a2332;
+      --navy-light: #2d3a4d;
+      --green:      #00CD93;
+      --green-hover: #00b882;
+      --purple:     #7445E3;
+      --white:      #f7fafc;
+      --gray:       #94a3b8;
+      --gray-light: #cbd5e1;
+    }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { color: var(--green-hover); }
+
+    /* ── Utility ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Nav Bar ── */
+    .fc-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .fc-nav-logo {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .fc-nav-logo span { color: var(--green); }
+    .fc-nav-right a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--green);
+      border: 1.5px solid var(--green);
+      padding: 0.45rem 1.2rem;
+      border-radius: 999px;
+      transition: all 0.2s;
+    }
+    .fc-nav-right a:hover {
+      background: var(--green);
+      color: var(--navy);
+    }
+
+    /* ── Hero ── */
+    .fc-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      padding: 5rem 2rem 4.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .fc-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,205,147,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .fc-hero h1 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .fc-hero h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+    .fc-hero .subtitle {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.15rem;
+      color: var(--gray-light);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* ── CTA Buttons ── */
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      background: var(--green);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      background: var(--green-hover);
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0,205,147,0.3);
+    }
+    .btn-secondary {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--green);
+      border: 1.5px solid var(--green);
+      padding: 0.75rem 1.8rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover {
+      background: var(--green);
+      color: var(--navy);
+    }
+
+    /* ── Sections ── */
+    .fc-section {
+      padding: 4.5rem 2rem;
+    }
+    .fc-section--alt {
+      background: var(--navy);
+    }
+    .fc-section h2 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .fc-section .lead {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      line-height: 1.65;
+    }
+
+    /* ── Problem Cards ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .problem-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: border-color 0.2s;
+    }
+    .problem-card:hover {
+      border-color: rgba(0,205,147,0.3);
+    }
+    .problem-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .problem-card h3 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .problem-card p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    /* ── Readiness Score Preview ── */
+    .score-preview {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .score-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 6px solid rgba(255,255,255,0.08);
+      border-top-color: var(--green);
+      border-right-color: var(--green);
+      border-bottom-color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+    .score-ring .grade {
+      font-family: 'Mulish', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .score-label {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .score-desc {
+      font-size: 0.95rem;
+      color: var(--gray);
+      max-width: 420px;
+      margin: 0 auto 2rem;
+    }
+
+    .checklist {
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+      list-style: none;
+    }
+    .checklist li {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      padding: 0.4rem 0;
+      padding-left: 1.6rem;
+      position: relative;
+    }
+    .checklist li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+
+    /* ── Final CTA ── */
+    .fc-cta-section {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
+    }
+    .fc-cta-section h2 {
+      margin-bottom: 1rem;
+    }
+    .fc-cta-section p {
+      color: var(--gray-light);
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      font-size: 1.05rem;
+    }
+
+    /* ── Footer ── */
+    .fc-footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: var(--navy-deep);
+    }
+    .fc-footer p {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+    .fc-footer a {
+      color: var(--gray-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .fc-hero { padding: 3.5rem 1.5rem 3rem; }
+      .fc-section { padding: 3rem 1.5rem; }
+      .fc-nav { padding: 0.8rem 1.2rem; }
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  {{/* ── Navigation ── */}}
+  <nav class="fc-nav">
+    <div class="fc-nav-logo">forecastr <span>×</span> weekly accounting</div>
+    <div class="fc-nav-right">
+      <a href="#connect">Get Started</a>
+    </div>
+  </nav>
+
+  {{/* ── Hero ── */}}
+  <section class="fc-hero">
+    <div class="container">
+      <h1>Your books, <em>built for Forecastr</em></h1>
+      <p class="subtitle">
+        Your Forecastr models are only as good as the data feeding them.
+        We make sure every transaction is clean, categorized, and mapped
+        to the chart of accounts Forecastr actually needs.
+      </p>
+      <a href="#connect" class="btn-primary">Connect QuickBooks</a>
+    </div>
+  </section>
+
+  {{/* ── The Problem ── */}}
+  <section class="fc-section fc-section--alt">
+    <div class="container">
+      <h2>Why messy books break your models</h2>
+      <p class="lead">
+        Forecastr pulls actuals from QuickBooks to build your forecasts.
+        When the books are messy, every model built on top of them is fiction.
+      </p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="icon">📊</div>
+          <h3>Garbage in, garbage out</h3>
+          <p>Unreconciled accounts and misclassified expenses mean your revenue forecast is based on data that doesn't reflect reality.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">🗺️</div>
+          <h3>Wrong chart of accounts</h3>
+          <p>A generic COA doesn't map to Forecastr's model categories. You're forcing the platform to guess — and it guesses wrong.</p>
+        </div>
+        <div class="problem-card">
+          <div class="icon">⏱️</div>
+          <h3>Stale data, slow onboarding</h3>
+          <p>2–4 weeks of cleanup before Forecastr can even build your first model. That's time and money you can't afford.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── Assessment Preview ── */}}
+  <section class="fc-section">
+    <div class="container">
+      <h2>See where you stand — instantly</h2>
+      <p class="lead">
+        Connect your QuickBooks and get a Forecastr Readiness Score.
+        We'll assess your books and show you exactly what needs to happen
+        before your data is model-ready.
+      </p>
+      <div class="score-preview">
+        <div class="score-ring">
+          <span class="grade">B+</span>
+        </div>
+        <div class="score-label">Forecastr Readiness Score</div>
+        <p class="score-desc">
+          A snapshot of how quickly your data can start flowing cleanly into a Forecastr model.
+        </p>
+        <ul class="checklist">
+          <li>Bookkeeping quality & reconciliation status</li>
+          <li>Chart of accounts alignment with Forecastr</li>
+          <li>Complexity profile & transaction volume</li>
+          <li>Red flags that block clean data flow</li>
+          <li>Prioritized recommendations & timeline</li>
+          <li>Monthly bookkeeping proposal based on actual complexity</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {{/* ── Final CTA ── */}}
+  <section class="fc-cta-section" id="connect">
+    <h2>Get Forecastr-ready books</h2>
+    <p>
+      Connect your QuickBooks for a free assessment.
+      No commitment. No sales pitch. Just a clear picture of where you stand.
+    </p>
+    <a href="https://map.weeklyaccounting.com/quick-create" class="btn-primary">Connect QuickBooks</a>
+  </section>
+
+  {{/* ── Footer ── */}}
+  <footer class="fc-footer">
+    <p>
+      Powered by <a href="https://www.weeklyaccounting.com">Weekly Accounting</a>
+      · Built by <a href="https://phaedrusqualitybookkeeping.com/about/">Phaedrus</a>
+    </p>
+  </footer>
+
+</body>
+</html>
