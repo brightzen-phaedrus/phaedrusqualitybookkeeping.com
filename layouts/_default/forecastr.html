@@ -534,6 +534,42 @@
     .q-result .btn-secondary {
       margin: 0.4rem;
     }
+    .q-back {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gray);
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+    .q-back:hover {
+      color: var(--gray-light);
+    }
+    .q-other-input {
+      margin-top: 0.75rem;
+      display: none;
+    }
+    .q-other-input.visible {
+      display: block;
+    }
+    .q-other-input input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .q-other-input input::placeholder { color: var(--gray); }
+    .q-other-input input:focus { border-color: var(--green); }
 
     /* ── Footer ── */
     .fc-footer {
@@ -712,8 +748,14 @@
           <div class="q-options">
             <button class="q-option" onclick="qAnswer('alt','xero'); qRoute('book')">Xero</button>
             <button class="q-option" onclick="qAnswer('alt','wave'); qRoute('book')">Wave</button>
-            <button class="q-option" onclick="qAnswer('alt','other'); qRoute('book')">Other</button>
+            <button class="q-option" id="q-other-btn" onclick="showOtherInput()">Other</button>
+            <button class="q-option" onclick="qAnswer('alt','none'); qRoute('book')">No, nothing yet</button>
           </div>
+          <div class="q-other-input" id="q-other-box">
+            <input type="text" id="q-other-text" placeholder="What software do you use?">
+            <button class="q-btn-next" onclick="submitOther()" style="margin-top:0.75rem">Continue</button>
+          </div>
+          <div style="text-align:center"><button class="q-back" onclick="qBack(1)">← Back</button></div>
         </div>
 
         {{/* Step 2: Pre-revenue? */}}
@@ -723,6 +765,7 @@
             <button class="q-option" onclick="qAnswer('prerev','yes'); qNext(3)">Yes</button>
             <button class="q-option" onclick="qAnswer('prerev','no'); qNext(3)">No</button>
           </div>
+          <div style="text-align:center"><button class="q-back" onclick="qBack(1)">← Back</button></div>
         </div>
 
         {{/* Step 3: What would you like to do? */}}
@@ -732,6 +775,7 @@
             <a class="q-option" href="#" onclick="qRoute('book'); return false;">Set up a call to discuss</a>
             <a class="q-option" href="#" onclick="qRoute('connect'); return false;">Connect your books for a free evaluation</a>
           </div>
+          <div style="text-align:center"><button class="q-back" onclick="qBack(2)">← Back</button></div>
         </div>
 
         {{/* Result: Book a meeting */}}
@@ -764,6 +808,34 @@
 
     function qAnswer(key, val) {
       answers[key] = val;
+    }
+
+    function qBack(step) {
+      document.querySelector('.q-step.active').classList.remove('active');
+      document.querySelector('[data-step="' + step + '"]').classList.add('active');
+      // Update dots
+      const dotIndex = mainSteps.indexOf(step);
+      dots.forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i < dotIndex) d.classList.add('done');
+        if (i === dotIndex) d.classList.add('active');
+      });
+      currentStep = step;
+    }
+
+    function showOtherInput() {
+      document.getElementById('q-other-box').classList.add('visible');
+      document.getElementById('q-other-text').focus();
+    }
+
+    function submitOther() {
+      const val = document.getElementById('q-other-text').value.trim();
+      if (!val) {
+        document.getElementById('q-other-text').style.borderColor = '#ef4444';
+        return;
+      }
+      qAnswer('alt', val);
+      qRoute('book');
     }
 
     function qNext(step) {
