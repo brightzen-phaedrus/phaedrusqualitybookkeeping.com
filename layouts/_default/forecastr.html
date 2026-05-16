@@ -370,20 +370,169 @@
       }
     }
 
-    /* ── Final CTA ── */
-    .fc-cta-section {
+    /* ── Questionnaire ── */
+    .fc-questionnaire {
       padding: 5rem 2rem;
-      text-align: center;
       background: linear-gradient(135deg, var(--navy) 0%, #1e293b 100%);
     }
-    .fc-cta-section h2 {
+    .fc-questionnaire h2 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+    .fc-questionnaire .lead {
+      font-size: 1.05rem;
+      color: var(--gray-light);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .q-card {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--navy-light);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+    }
+    .q-progress {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .q-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      transition: background 0.3s;
+    }
+    .q-dot.active {
+      background: var(--green);
+    }
+    .q-dot.done {
+      background: rgba(0,205,147,0.4);
+    }
+    .q-step {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .q-step.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .q-step h3 {
+      font-family: 'Mulish', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .q-field {
       margin-bottom: 1rem;
     }
-    .fc-cta-section p {
+    .q-field label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
       color: var(--gray-light);
-      max-width: 540px;
-      margin: 0 auto 2rem;
-      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+    .q-field label .optional {
+      color: var(--gray);
+      font-weight: 400;
+    }
+    .q-field input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .q-field input::placeholder {
+      color: var(--gray);
+    }
+    .q-field input:focus {
+      border-color: var(--green);
+    }
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .q-option {
+      display: block;
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--gray-light);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      text-decoration: none;
+    }
+    .q-option:hover {
+      border-color: var(--green);
+      color: var(--white);
+      background: rgba(0,205,147,0.08);
+    }
+    .q-btn-next {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      margin-top: 1.5rem;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .q-btn-next:hover {
+      background: var(--green-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0,205,147,0.3);
+    }
+    .q-btn-next:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .q-result {
+      text-align: center;
+    }
+    .q-result p {
+      color: var(--gray-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .q-result .btn-primary,
+    .q-result .btn-secondary {
+      margin: 0.4rem;
     }
 
     /* ── Footer ── */
@@ -512,15 +661,182 @@
     </div>
   </section>
 
-  {{/* ── Final CTA ── */}}
-  <section class="fc-cta-section" id="connect">
-    <h2>Get Forecastr-ready books</h2>
-    <p>
-      Connect your QuickBooks for a free assessment.
-      No commitment. No sales pitch. Just a clear picture of where you stand.
-    </p>
-    <a href="https://map.weeklyaccounting.com/quick-create" class="btn-primary">Connect QuickBooks</a>
+  {{/* ── Questionnaire ── */}}
+  <section class="fc-questionnaire" id="connect">
+    <div class="container">
+      <h2>Get Forecastr-ready books</h2>
+      <p class="lead">Answer a few quick questions and we'll point you in the right direction.</p>
+
+      <div class="q-card">
+        <div class="q-progress">
+          <div class="q-dot active" data-dot="0"></div>
+          <div class="q-dot" data-dot="1"></div>
+          <div class="q-dot" data-dot="2"></div>
+          <div class="q-dot" data-dot="3"></div>
+        </div>
+
+        {{/* Step 0: Contact Info */}}
+        <div class="q-step active" data-step="0">
+          <h3>Tell us about yourself</h3>
+          <div class="q-field">
+            <label>Firm Name</label>
+            <input type="text" id="q-firm" placeholder="Acme Corp" required>
+          </div>
+          <div class="q-field">
+            <label>Your Name</label>
+            <input type="text" id="q-name" placeholder="Jane Smith" required>
+          </div>
+          <div class="q-field">
+            <label>Email</label>
+            <input type="email" id="q-email" placeholder="jane@acme.com" required>
+          </div>
+          <div class="q-field">
+            <label>Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="q-phone" placeholder="(555) 123-4567">
+          </div>
+          <button class="q-btn-next" onclick="qNext(1)">Next</button>
+        </div>
+
+        {{/* Step 1: QuickBooks? */}}
+        <div class="q-step" data-step="1">
+          <h3>Have you set up QuickBooks yet?</h3>
+          <div class="q-options">
+            <button class="q-option" onclick="qAnswer('qbo','yes'); qNext(2)">Yes</button>
+            <button class="q-option" onclick="qAnswer('qbo','no'); qNext(11)">No</button>
+          </div>
+        </div>
+
+        {{/* Step 1.1: Alternative software (shown if No to QBO) */}}
+        <div class="q-step" data-step="11">
+          <h3>Have you set up something else?</h3>
+          <div class="q-options">
+            <button class="q-option" onclick="qAnswer('alt','xero'); qRoute('book')">Xero</button>
+            <button class="q-option" onclick="qAnswer('alt','wave'); qRoute('book')">Wave</button>
+            <button class="q-option" onclick="qAnswer('alt','other'); qRoute('book')">Other</button>
+          </div>
+        </div>
+
+        {{/* Step 2: Pre-revenue? */}}
+        <div class="q-step" data-step="2">
+          <h3>Are you pre-revenue?</h3>
+          <div class="q-options">
+            <button class="q-option" onclick="qAnswer('prerev','yes'); qNext(3)">Yes</button>
+            <button class="q-option" onclick="qAnswer('prerev','no'); qNext(3)">No</button>
+          </div>
+        </div>
+
+        {{/* Step 3: What would you like to do? */}}
+        <div class="q-step" data-step="3">
+          <h3>What would you like to do?</h3>
+          <div class="q-options">
+            <a class="q-option" href="#" onclick="qRoute('book'); return false;">Set up a call to discuss</a>
+            <a class="q-option" href="#" onclick="qRoute('connect'); return false;">Connect your books for a free evaluation</a>
+          </div>
+        </div>
+
+        {{/* Result: Book a meeting */}}
+        <div class="q-step" data-step="book">
+          <div class="q-result">
+            <h3>Let's talk</h3>
+            <p>We'll walk through your setup and find the best path to Forecastr-ready books.</p>
+            <a id="q-book-link" href="https://weeklyaccounting.com/book-a-meeting/" target="_blank" rel="noopener" class="btn-primary">Book a Meeting</a>
+          </div>
+        </div>
+
+        {{/* Result: Connect QBO */}}
+        <div class="q-step" data-step="connect">
+          <div class="q-result">
+            <h3>Let's see your books</h3>
+            <p>Connect your QuickBooks and we'll generate your Forecastr Readiness Score — free, no commitment.</p>
+            <a id="q-connect-link" href="https://map.weeklyaccounting.com/quick-create" target="_blank" rel="noopener" class="btn-primary">Connect QuickBooks</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
+
+  <script>
+    const answers = {};
+    const dots = document.querySelectorAll('.q-dot');
+    let currentStep = 0;
+    const mainSteps = [0, 1, 2, 3]; // for dot tracking
+
+    function qAnswer(key, val) {
+      answers[key] = val;
+    }
+
+    function qNext(step) {
+      // Validate contact fields on step 0
+      if (currentStep === 0) {
+        const firm = document.getElementById('q-firm').value.trim();
+        const name = document.getElementById('q-name').value.trim();
+        const email = document.getElementById('q-email').value.trim();
+        if (!firm || !name || !email) {
+          // Highlight empty fields
+          ['q-firm','q-name','q-email'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) el.style.borderColor = '#ef4444';
+            else el.style.borderColor = '';
+          });
+          return;
+        }
+        answers.firm = firm;
+        answers.name = name;
+        answers.email = email;
+        answers.phone = document.getElementById('q-phone').value.trim();
+      }
+
+      // Hide current
+      document.querySelector('.q-step.active').classList.remove('active');
+      // Show next
+      document.querySelector('[data-step="' + step + '"]').classList.add('active');
+
+      // Update dots
+      const dotIndex = mainSteps.indexOf(step);
+      dots.forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i < dotIndex || dotIndex === -1 && i <= mainSteps.indexOf(currentStep)) d.classList.add('done');
+        if (i === dotIndex) d.classList.add('active');
+      });
+      // If sub-step or result, mark all dots done
+      if (dotIndex === -1) {
+        dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+      }
+
+      currentStep = step;
+    }
+
+    function qRoute(dest) {
+      // Build query params from answers
+      const params = new URLSearchParams();
+      if (answers.firm) params.set('firm', answers.firm);
+      if (answers.name) params.set('name', answers.name);
+      if (answers.email) params.set('email', answers.email);
+      if (answers.phone) params.set('phone', answers.phone);
+      if (answers.qbo) params.set('qbo', answers.qbo);
+      if (answers.alt) params.set('alt', answers.alt);
+      if (answers.prerev) params.set('prerev', answers.prerev);
+      params.set('src', 'forecastr');
+
+      const qs = params.toString();
+
+      if (dest === 'book') {
+        const link = document.getElementById('q-book-link');
+        link.href = 'https://weeklyaccounting.com/book-a-meeting/?' + qs;
+        // Hide current step, show book result
+        document.querySelector('.q-step.active').classList.remove('active');
+        document.querySelector('[data-step="book"]').classList.add('active');
+        dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+      } else {
+        const link = document.getElementById('q-connect-link');
+        link.href = 'https://map.weeklyaccounting.com/quick-create?' + qs;
+        document.querySelector('.q-step.active').classList.remove('active');
+        document.querySelector('[data-step="connect"]').classList.add('active');
+        dots.forEach(d => { d.classList.remove('active'); d.classList.add('done'); });
+      }
+    }
+  </script>
 
   {{/* ── Footer ── */}}
   <footer class="fc-footer">
