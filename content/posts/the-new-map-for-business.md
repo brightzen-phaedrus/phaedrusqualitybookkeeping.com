@@ -1,5 +1,5 @@
 ---
-title: "The New Map for Business"
+title: "An AI View of Zen and the Art of [nothing]: A System to See Business, Life and Reality Better"
 date: 2026-04-22T03:00:00Z
 draft: false
 tags: ["quality", "fourth-statement", "pirsig", "weekly-accounting", "book-review"]
