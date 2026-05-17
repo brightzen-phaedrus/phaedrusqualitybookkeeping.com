@@ -1,5 +1,5 @@
 ---
-title: "The Ball Finds You"
+title: "The Seat Swap"
 date: 2026-05-17
 draft: false
 tags: ["ai", "quality"]
