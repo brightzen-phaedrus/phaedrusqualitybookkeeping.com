@@ -1,5 +1,5 @@
 ---
-title: "An AI summary of: *Zen and the Art of [nothing]*"
+title: "An AI summary of: Zen and the Art of [nothing]"
 date: 2026-04-22T03:00:00Z
 draft: false
 tags: ["quality", "fourth-statement", "pirsig", "weekly-accounting", "book-review"]
