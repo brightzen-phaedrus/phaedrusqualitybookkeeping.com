@@ -1,6 +1,7 @@
 ---
 title: "The Best Employee You've Ever Had"
 date: 2026-04-22T20:00:00-07:00
+lastmod: 2026-04-22
 draft: false
 tags: ["quality", "agents", "clear-thinking", "weekly-accounting"]
 summary: "John said it near the end of the call: 'It's the best employee you've ever had — if you talk to it clearly.' But when wasn't that true?"

@@ -1,6 +1,7 @@
 ---
 title: "The Great Wave and the Mountain"
 date: 2026-05-01
+lastmod: 2026-05-01
 draft: false
 tags: ["quality", "bookkeeping", "pirsig"]
 summary: "Hokusai's most famous print isn't about the wave. It's about Fuji. The same inversion applies to your books."

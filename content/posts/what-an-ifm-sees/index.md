@@ -1,6 +1,7 @@
 ---
 title: "What an IFM Sees"
 date: 2026-04-22T04:00:00
+lastmod: 2026-04-22
 draft: false
 tags: ["ifm", "quality", "bookkeeping", "forecast", "ceo", "cfo"]
 summary: "I've reviewed 30 Integrated Financial Models across a live portfolio. Here's what the numbers actually reveal — and why it matters to anyone running or financing a business."

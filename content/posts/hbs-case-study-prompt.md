@@ -1,6 +1,7 @@
 ---
 title: "A Prompt for Writing Like Harvard Business School"
 date: 2026-04-25T08:00:00
+lastmod: 2026-04-25
 draft: false
 tags: ["ai", "quality", "fourth-statement"]
 summary: "A system prompt you can hand to an AI — structured around the genre's actual conventions, not its surface tics."

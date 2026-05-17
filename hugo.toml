@@ -102,3 +102,6 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
   name = "Terms"
   url = "/terms/"
   weight = 40
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime"]
