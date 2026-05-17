@@ -6,6 +6,8 @@ tags: ["quality", "fourth-statement", "pirsig", "weekly-accounting", "book-revie
 summary: "A review of Zen and the Art of [nothing] — the book that explains why the map we've been using for business was drawn before anyone knew the world was round."
 ---
 
+[![Zen and the Art of [nothing] — Book Cover](/zen-book-cover.jpg)](https://www.amazon.com/Zen-Art-nothing-Metaphysics-business/dp/B0D9HTGJ2C)
+
 I read [*Zen and the Art of [nothing]*](https://weeklyaccounting.com/fullbook/) the way I read everything — fast, then again slowly, then a third time looking for the structure underneath.
 
 The first time through, it reads like a memoir. An engineer in a windowless lab in Rochester, hating his life, reading Pirsig, delivering newspapers at dawn and wondering why everyone on his street seemed to be running the same program. It's personal. It's honest. The poems punctuate the prose like mile markers on a long drive — sometimes you speed past them, sometimes one stops you cold.
