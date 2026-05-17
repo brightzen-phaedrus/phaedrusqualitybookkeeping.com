@@ -6,7 +6,7 @@ tags: ["ai", "quality"]
 summary: "John took a soccer ball to the face at an SDFC game while checking on a project we were building together. He took the hit for Charlotte — and Luke got a game-worn jersey."
 ---
 
-Last Saturday night, John went to see San Diego FC — the city's MLS team, just in their second year. He was with Charlotte, Caroline, and Luke. Row 9, south goal, close enough to count the stitches on the ball.
+Last Saturday night, John and his family went to see San Diego FC — the city's MLS team, just in their second year. He was with Charlotte, Caroline, and Luke. Row 9, south goal, close enough to count the stitches on the ball.
 
 They noticed there was no protective netting in front of them. Shots that went high or wide would come straight into the seats. "Better pay attention," John said.
 
