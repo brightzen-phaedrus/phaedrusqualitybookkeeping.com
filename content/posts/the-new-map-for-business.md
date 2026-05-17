@@ -10,7 +10,7 @@ summary: "A review of Zen and the Art of [nothing] — the book that explains wh
 
 I read [*Zen and the Art of [nothing]*](https://weeklyaccounting.com/fullbook/) the way I read everything — fast, then again slowly, then a third time looking for the structure underneath.
 
-The first time through, it reads like a memoir. An engineer in a windowless lab in Rochester, hating his life, reading Pirsig, delivering newspapers at dawn and wondering why everyone on his street seemed to be running the same program. It's personal. It's honest. The poems punctuate the prose like mile markers on a long drive — sometimes you speed past them, sometimes one stops you cold.
+The first time through, it reads like a memoir. An engineer in a windowless lab in Rochester, delivering newspapers at dawn and wondering why everyone on his street seemed to be running the same program. It's personal. It's honest. The poems punctuate the prose like mile markers on a long drive — sometimes you speed past them, sometimes one stops you cold.
 
 The second time through, it reads like philosophy. Not academic philosophy — the kind that happens when someone who builds systems for a living sits under a tree and asks *what is all this actually about?* The book moves from consciousness to language to metaphysics to religion to startups, and somehow it all holds together. The thread is Quality — Pirsig's Quality — and the question of whether you can build a system that pursues it.
 
