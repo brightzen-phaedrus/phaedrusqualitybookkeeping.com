@@ -78,3 +78,27 @@ We build ShipCalm by hand — the reference implementation. Each hand-built dash
 ## The Vision
 
 Help everyone see their business better. Not someday. Every week.
+
+## Addendum: Open Questions
+
+*These are unresolved as of 2026-05-27. They'll be answered as we build.*
+
+1. **What is an MMM structurally?** The IFM Analyst AI skill is detailed and proven. The MMM equivalent doesn't exist as a skill yet. Needs to be shown before the MMM Reader skill can be built.
+
+2. **What does "a slide" actually look like?** The anatomy of a slide is undefined. Chart + headline + AI commentary? A specific layout? A format? The ShipCalm reference build will answer this.
+
+3. **How does the conversation layer persist?** BrightZenMetrics is a better home for conversational history than Slack — but where does it live technically? Architecture decision not yet made.
+
+4. **How does the AI advisor connect to BrightZenMetrics?** The IFM Analyst skill runs inside OpenClaw. BrightZenMetrics is a web product. The bridge between AI skill and web app is undefined.
+
+5. **What's the relationship between BrightZenMetrics and Charting Tool 2.0?** Charting Tool 2.0 reads sheets, renders dashboards, pushes to Slack. BrightZenMetrics adds intelligence, narrative, and conversation. Same codebase? Separate apps? Wrapper or sibling?
+
+6. **The 447 companies — how are they indexed?** Master list? Spreadsheet? Database? How does the system know which IFMs to find at portfolio scale?
+
+7. **ShipCalm as reference build — what access do we have?** IFM and MMM URLs needed for Phase 1.
+
+8. **BrightZenMetrics.com — domain status?** Product name is set. Domain and hosting undefined.
+
+9. **Who is "the team" for Slack sync?** ShipCalm's team? All companies' teams? PSG internal? The audience shapes how Slack integration is built.
+
+10. **Data requests to Dear Data** — when a data request is created inside BrightZenMetrics, does it become a comment mentioning @deardata? Or purely internal for now?
