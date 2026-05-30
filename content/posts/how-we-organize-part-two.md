@@ -37,7 +37,7 @@ These gaps aren't bugs. They're boundaries.
 
 Each gap is a **context boundary.** The person — or the AI — working in one layer doesn't need to hold the full context of every other layer. The analyst doesn't need to understand how the charting tool renders SVGs. The charting tool doesn't need to understand double-entry bookkeeping. Each layer is a manageable world. Each layer produces Quality.
 
-This is how you scale. Perfect one company's view of its business — ShipCalm's charts, ShipCalm's commentary, ShipCalm's board deck — and you develop a system that improves Quality across 500 companies in a month.
+This is how you scale. Perfect one company's view of its business — ShipCalm's charts, ShipCalm's commentary, ShipCalm's board deck — and you develop a system that improves Quality across 500 companies in a month. Then 1,000 after that.
 
 It's also how you organize a team. The people who produce clean books don't need to understand forecast modeling. The people who build forecasts don't need to understand dashboard rendering. The people who review dashboards and tell the story don't need to understand any of it — they need to see the charts and say what matters.
 
