@@ -9,11 +9,11 @@ summary: "Part one described the data tree and the view tree. Part two describes
 
 [Part one](/posts/how-we-organize-a-companys-information/) described the split inside the product: the **data tree** (what's true) and the **view tree** (what's shown). Two hierarchies connected through one shared concept — the metric.
 
-That split works. But it only describes one layer of the system. The real architecture has five layers, and the gaps between them matter more than the layers themselves.
+That split works. But it only describes one layer of the system. The real architecture has more layers, and the gaps between them matter more than the layers themselves.
 
 ## The Stack
 
-Here's the full picture, top to bottom:
+Here's what we can see today — not a definitive map, but the layers visible right now. Korzybski said a quality map is reflexive: it includes itself in its description and accounts for its own expansion. This map will grow as we build:
 
 1. **The data system.** Weekly Accounting's infrastructure that produces clean, categorized, reconciled books. The raw truth about what happened in a business.
 
