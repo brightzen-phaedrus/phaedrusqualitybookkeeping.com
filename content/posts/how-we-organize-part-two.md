@@ -40,7 +40,7 @@ There's another reason the gaps matter — and it has nothing to do with softwar
 
 Each gap is a **context boundary.** The person — or the AI — working in one layer doesn't need to hold the full context of every other layer. The analyst reviewing dashboards doesn't need to understand how the charting tool renders SVGs. The charting tool doesn't need to understand double-entry bookkeeping. Each layer is a manageable world. Each layer produces Quality.
 
-This is how you scale to 447 companies. Not by building one system that knows everything about every layer, but by building layers that only know what they need to know — connected through narrow, well-defined interfaces.
+This is how you scale. By perfecting one company's view of its business — ShipCalm's charts, ShipCalm's commentary, ShipCalm's board deck — you develop a system that improves Quality across 500 companies in a month. Not by building one system that knows everything about every layer, but by building layers that only know what they need to know — connected through narrow, well-defined interfaces.
 
 It's also how you organize a team. The people who produce clean books don't need to understand forecast modeling. The people who build forecasts don't need to understand dashboard rendering. The people who review dashboards and tell the story don't need to understand any of it — they need to see the charts and say what matters.
 
