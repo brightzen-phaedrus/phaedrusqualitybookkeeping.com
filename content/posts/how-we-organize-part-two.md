@@ -38,7 +38,7 @@ This is the same principle as the data tree and view tree from part one, applied
 
 There's another reason the gaps matter — and it has nothing to do with software.
 
-Each gap is a **context boundary.** The person — or the AI — working in one layer doesn't need to hold the full context of every other layer. The analyst reviewing dashboards doesn't need to understand how the charting tool renders SVGs. The charting tool doesn't need to understand double-entry bookkeeping. Each layer is a manageable world.
+Each gap is a **context boundary.** The person — or the AI — working in one layer doesn't need to hold the full context of every other layer. The analyst reviewing dashboards doesn't need to understand how the charting tool renders SVGs. The charting tool doesn't need to understand double-entry bookkeeping. Each layer is a manageable world. Each layer produces Quality.
 
 This is how you scale to 447 companies. Not by building one system that knows everything about every layer, but by building layers that only know what they need to know — connected through narrow, well-defined interfaces.
 
