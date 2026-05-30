@@ -38,13 +38,13 @@ That's the Dewey Decimal System. It organizes nearly every public library in the
 
 ## What He Got Wrong
 
-**He froze the worldview at the top.** You can add infinitely within a branch, but you can't add an eleventh root. Those ten categories — chosen by one person, reflecting one culture's assumptions about what knowledge is — are the permanent ceiling.
+**He froze the worldview at the top.** You can add infinitely within a branch. You can't add an eleventh root. Those ten categories — chosen by one person, reflecting one culture's assumptions — are the permanent ceiling.
 
-Christianity occupies 210 through 289. Every other religion on Earth is compressed into 290–299. That's not a bug that crept in over time. That's the architecture.
+Christianity occupies 210 through 289. Every other religion on Earth is compressed into 290–299. That's not a bug. That's the architecture.
 
-**Every book has exactly one parent.** A book about the philosophy of music — is it 100 or 700? Dewey forces a choice. One number, one shelf, one identity. The connection between philosophy and music — which is the whole reason the book exists — has no place in the system.
+**Every book has exactly one parent.** A book about the philosophy of music — is it 100 or 700? Dewey forces a choice. One number, one shelf, one identity. The connection between them — which is the whole reason the book exists — has no place in the system.
 
-**The most interesting things live at intersections.** A conversation that connects sonar engineering to financial modeling to Pirsig's Metaphysics of Quality to a weekly accounting practice — Dewey would scatter that across four floors. The connection itself, which is the point, doesn't exist in his map.
+**The most interesting things live at intersections.** A conversation connecting sonar engineering to financial modeling to Pirsig to a weekly accounting practice — Dewey would scatter it across four floors. The connection itself doesn't exist in his map.
 
 ## Why This Matters
 
@@ -52,9 +52,9 @@ The Dewey Decimal System is a tree. Every node has one parent. Every book has on
 
 Real knowledge isn't a tree. It's a graph. Ideas connect laterally, diagonally, across centuries and disciplines. A tree can't hold those connections. It forces you to pick a primary identity for everything — and everything that doesn't fit gets filed under "General Works" or quietly ignored.
 
-Alfred Korzybski — the philosopher who said "the map is not the territory" — also said a quality map must be reflexive: it should include itself in its own description. It should account for its own limitations and its own expansion.
+Korzybski — the philosopher who said "the map is not the territory" — also said a quality map must be reflexive. It should account for its own expansion.
 
-Dewey's map isn't reflexive. It can't describe itself expanding at the top. It can only grow within the boundaries a 21-year-old drew in 1876.
+Dewey's map can't. It grows within the branches. It can never grow at the top. The boundaries a 21-year-old drew in 1876 are still the boundaries.
 
 We use this system to organize the sum of human knowledge. And most people have no idea.
 
