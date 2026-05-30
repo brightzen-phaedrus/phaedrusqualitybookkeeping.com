@@ -29,7 +29,7 @@ The IFM closes that gap.
 
 ## What's Inside
 
-A Google Sheets workbook — typically 40 to 80 tabs. Five layers:
+The IFM has five layers. Each one produces Quality for the layer above it:
 
 **The Statement of Economic Quality.** The Customer Roll Forward (how customers move through acquisition, retention, churn), unit economics (CAC, AOV, repeat rate, lifetime gross profit, contribution margin), and the Contribution Engine — the span from the top of the funnel through to payments. This engine generates profit. Everything else is overhead.
 
