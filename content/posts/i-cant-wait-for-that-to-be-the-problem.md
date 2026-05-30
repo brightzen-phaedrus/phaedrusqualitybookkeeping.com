@@ -3,7 +3,7 @@ title: "I Can't Wait for That to Be the Problem"
 date: 2026-04-22T19:00:00-07:00
 lastmod: 2026-04-22
 draft: false
-tags: ["quality", "agents", "bookkeeping", "weekly-accounting"]
+tags: ["agents", "quality-bookkeeping", "weekly-accounting"]
 summary: "Jeff's team lead asked how he'd match transactions to invoices. Jeff didn't know. He couldn't wait to find out."
 ---
 

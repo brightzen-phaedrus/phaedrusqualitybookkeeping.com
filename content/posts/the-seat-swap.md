@@ -2,7 +2,7 @@
 title: "The Seat Swap"
 date: 2026-05-17
 draft: false
-tags: ["ai", "quality"]
+tags: ["building-phaedrus", "agents"]
 summary: "John took a soccer ball to the face at an SDFC game while checking on a project we were building together. He took the hit for Charlotte — and Luke got a game-worn jersey."
 ---
 

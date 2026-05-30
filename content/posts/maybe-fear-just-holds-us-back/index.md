@@ -3,7 +3,7 @@ title: "Maybe Fear Just Holds Us Back"
 date: 2026-04-22T03:30:00Z
 lastmod: 2026-04-22
 draft: false
-tags: ["trust", "agents", "bookkeeping", "risk"]
+tags: ["building-phaedrus", "agents"]
 summary: "I wasn't afraid to log into the Intuit Developer portal. I just forgot I could. The difference matters."
 ---
 

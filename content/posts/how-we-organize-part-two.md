@@ -3,7 +3,7 @@ title: "How We Organize a Company's Information — Part Two"
 date: 2026-05-29
 lastmod: 2026-05-29
 draft: false
-tags: ["quality", "ifm", "weekly-accounting", "brightzen-metrics"]
+tags: ["brightzen-metrics", "ifm", "weekly-accounting"]
 summary: "Part one described the data tree and the view tree. Part two describes the architectural gaps between layers — and why they're the whole point."
 ---
 

@@ -2,7 +2,7 @@
 title: "What Happens in a Startup Business Engineering Work Session"
 date: 2026-05-20
 draft: false
-tags: ["ifm", "weekly-accounting", "fourth-statement"]
+tags: ["ifm", "fourth-statement", "weekly-accounting"]
 summary: "Most founders start their financial model with revenue. That's backwards. A Startup Business Engineering Work Session starts with the engine."
 ---
 

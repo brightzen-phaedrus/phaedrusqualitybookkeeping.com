@@ -2,7 +2,7 @@
 title: "BrightZen Metrics — Website Copy Draft"
 date: 2026-05-27
 draft: false
-tags: ["brightzenmetrics", "fourth-statement", "weekly-accounting", "website"]
+tags: ["brightzen-metrics", "fourth-statement", "weekly-accounting"]
 summary: "Draft website copy for metrics.brightzen.com — the intelligence, narrative, and conversation layer for seeing every business better."
 ---
 

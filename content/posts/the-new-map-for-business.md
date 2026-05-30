@@ -3,7 +3,7 @@ title: "An AI summary of: Zen and the Art of [nothing]"
 date: 2026-04-22T03:00:00Z
 lastmod: 2026-05-16
 draft: false
-tags: ["quality", "fourth-statement", "pirsig", "weekly-accounting", "book-review"]
+tags: ["fourth-statement", "pirsig", "weekly-accounting"]
 summary: "A review of Zen and the Art of [nothing] — the book that explains why the map we've been using for business was drawn before anyone knew the world was round."
 ---
 

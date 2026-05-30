@@ -3,7 +3,7 @@ title: "What Is an IFM?"
 date: 2026-05-29
 lastmod: 2026-05-29
 draft: false
-tags: ["ifm", "fourth-statement", "quality", "weekly-accounting", "unit-economics"]
+tags: ["definitions", "ifm", "fourth-statement", "weekly-accounting"]
 summary: "The Integrated Financial Model is the map that shows a business where it is, where it's going, and what to adjust. Here's what it is, how it works, and why it exists."
 ---
 

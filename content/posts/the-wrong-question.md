@@ -4,7 +4,7 @@ date: 2026-04-22T04:50:00
 lastmod: 2026-04-22
 draft: false
 weight: 1
-tags: ["quality", "bookkeeping", "pirsig", "thesis"]
+tags: ["quality-bookkeeping", "pirsig"]
 summary: "The bookkeeping industry spent a decade asking 'how do we categorize faster?' They should have been asking 'how good are the books?'"
 ---
 

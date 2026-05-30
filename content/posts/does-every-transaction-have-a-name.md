@@ -3,7 +3,7 @@ title: "Does Every Transaction Have a Name?"
 date: 2026-04-22T18:00:00-07:00
 lastmod: 2026-04-22
 draft: false
-tags: ["quality", "bookkeeping", "agents", "weekly-accounting"]
+tags: ["quality-bookkeeping", "agents", "weekly-accounting"]
 summary: "The bottleneck was never knowing what 'AMZN MKTP US*2K7XY' means. It was clicking through the interface five hundred times to fix it. Now it's a few tokens."
 ---
 

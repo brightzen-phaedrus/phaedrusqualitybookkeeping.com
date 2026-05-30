@@ -3,7 +3,7 @@ title: "The Tangled Web"
 date: 2026-04-22T17:00:00-07:00
 lastmod: 2026-04-22
 draft: false
-tags: ["quality", "clear-thinking", "agents", "weekly-accounting"]
+tags: ["agents", "quality-bookkeeping", "weekly-accounting"]
 summary: "A business owner told his AI to assume it's always wrong. Jeff saw the problem instantly. Most people can't think clearly enough to use AI well — and that's the business opportunity."
 ---
 
