@@ -52,7 +52,13 @@ The gaps are what make each layer learnable, delegatable, and replaceable withou
 
 ## What This Means for BrightZen Metrics
 
-The metrics layer sits at position four. Its only dependency on the layer below is read access to the charting tool's database. That's the entire interface. It doesn't re-fetch from Google Sheets. It doesn't re-render charts. It reads what the charting tool already produced and adds the layer that turns dashboards into a board presentation.
+BrightZen Metrics starts at the top. With an owner running a business.
+
+What are your goals? Express them in numbers. Look at the results weekly.
+
+My goal was to free my time. So we built this system to pursue Quality.
+
+The metrics layer sits at position four in the stack. Its only dependency on the layer below is read access to the charting tool's database. That's the entire interface. It doesn't re-fetch from Google Sheets. It doesn't re-render charts. It reads what the charting tool already produced and adds the layer that turns dashboards into a board presentation.
 
 Not your father's board presentation. One that runs the business.
 
