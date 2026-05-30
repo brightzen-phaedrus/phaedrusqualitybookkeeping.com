@@ -59,7 +59,7 @@ The forecast doesn't change every week. The actuals do. The gap between what was
 
 **Not a financial statement.** It contains financial statements, plus the operational model that explains them. The statements are the *what*. The IFM adds the *why* and the *what's next*.
 
-**Not software.** It's a spreadsheet. Deliberately. Every formula visible, every assumption traceable. No black box.
+**Not a black box.** Every formula is visible. Every assumption is traceable. Anyone can follow a number from the board deck back to the transaction that produced it.
 
 ## The Twelve Actions
 
