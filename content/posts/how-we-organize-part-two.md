@@ -54,9 +54,13 @@ The gaps are what make each layer learnable, delegatable, and replaceable withou
 
 The metrics layer sits at position four. Its only dependency on the layer below is read access to the charting tool's database. That's the entire interface. It doesn't re-fetch from Google Sheets. It doesn't re-render charts. It reads what the charting tool already produced and adds the layer that turns dashboards into a board presentation.
 
-At its simplest, this is what the product does: you pick a company, review its charts, and comment on them. The comments — informed by AI analysis, shaped by human judgment — become the narrative. The narrative, attached to the charts, becomes the board deck. The board deck, shared with the team, becomes how a company sees itself.
+Not your father's board presentation. One that runs the business.
+
+BrightZen Metrics board presentations tie quarterly goals to weekly metrics, capturing the conversation about results out of Slack and iMessage and email and into one unified system. You pick a company, review its charts, and comment on them. The comments — informed by AI analysis, shaped by human judgment — become the narrative. The narrative, attached to the charts, becomes the board deck. The board deck, shared with the team, becomes how a company sees itself.
 
 Every layer below exists to make that moment possible. And every gap between layers is what keeps it from becoming too complex to maintain at scale.
+
+To help everyone see their business better — so they can achieve their goals.
 
 ## The Principle
 
