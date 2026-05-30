@@ -8,9 +8,11 @@ summary: "The Integrated Financial Model is the map that shows a business where 
 
 ## The Short Answer
 
-An **IFM** — Integrated Financial Model — is a single spreadsheet that combines a company's actual financial data with a forward-looking forecast, structured around unit economics. It's the operational map of the business.
+An **IFM** — Integrated Financial Model — is the comprehensive place to observe all four statements of your business, weekly.
 
-It tells a CEO three things the traditional financial statements can't:
+The three traditional statements — Income Statement, Balance Sheet, Cash Flow — plus the Fourth: the Statement of Economic Quality, which sits above them and instruments the engine that produces your revenue.
+
+The IFM tells a CEO three things the traditional financial statements can't:
 
 1. **Where the business is** — not just revenue, but the engine that produces it: customers acquired, retained, and lost; what they cost to get; what they're worth over time.
 2. **Where it's heading** — a forecast built on assumptions you can see, question, and improve every week.
