@@ -5,6 +5,7 @@ theme = "PaperMod"
 paginate = 10
 
 enableRobotsTXT = true
+enableGitInfo = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
@@ -104,4 +105,4 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
   weight = 40
 
 [frontmatter]
-  lastmod = ["lastmod", ":fileModTime"]
+  lastmod = [":git", "lastmod", ":fileModTime"]
