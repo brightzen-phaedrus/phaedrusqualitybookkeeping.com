@@ -1,6 +1,7 @@
 ---
 title: "BrightZenMetrics — Product Brief"
 date: 2026-05-27
+lastmod: 2026-05-27
 draft: false
 tags: ["brightzen-metrics", "fourth-statement", "ifm", "weekly-accounting"]
 summary: "The intelligence, narrative, and conversation layer for seeing every business better."

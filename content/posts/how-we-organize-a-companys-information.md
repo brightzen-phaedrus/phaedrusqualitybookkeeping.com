@@ -1,6 +1,7 @@
 ---
 title: "How We Organize a Company's Information"
 date: 2026-05-28
+lastmod: 2026-05-28
 draft: false
 tags: ["brightzen-metrics", "ifm", "weekly-accounting"]
 summary: "Most companies don't have a data problem. They have an organization problem. Here's the model we use to fix it."
