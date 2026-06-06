@@ -51,6 +51,14 @@ Data covers **41 months** of billing history (January 2023 – May 2026). June 2
 
 ---
 
+## Monthly Churn Rate Over Time
+
+![Monthly Customer Churn Rate by Client Manager](/churn-by-manager.png)
+
+*3-month rolling average of monthly churn rate per client manager, with firm-wide rate (black line) from the IFM. Jul 2024 – May 2026.*
+
+---
+
 ## Manager Profiles
 
 ### Nate Plating
