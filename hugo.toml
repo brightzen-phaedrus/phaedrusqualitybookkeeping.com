@@ -13,6 +13,11 @@ buildExpired = false
 [minify]
   disableXML = true
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
   env = "production"
   title = "Phaedrus Quality Bookkeeping"
