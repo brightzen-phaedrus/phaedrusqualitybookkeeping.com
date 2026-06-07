@@ -1,6 +1,6 @@
 ---
-title: "Numeric Context — The Conversation Stays With the Data"
+title: "Numeric Context — See Your Business Better"
 layout: "numericcontext"
 url: "/numericcontext/"
-summary: "Instagram for your company's contribution engine. The feed-and-commentary layer that turns operational dashboards into living, weekly narrative where the conversation lives with the data."
+summary: "A weekly, drillable view of your business and a world-class data engineering team in the loop. Structured onboarding. $100/month. Free course."
 ---
