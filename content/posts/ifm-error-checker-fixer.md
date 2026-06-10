@@ -116,7 +116,7 @@ From John's first message — "I'd like your help designing a new IFM skill call
 - **Fix:** ~10 minutes. Determined placement, inserted rows, populated 158 formula cells, discovered and patched the subtotal issue, verified clean.
 - **Skill creation:** ~10 minutes. Wrote the full 5-phase procedure, submitted as a proposal, applied it live.
 
-**One session. Under 30 minutes. A problem that would've taken a human operator an hour of manual spreadsheet clicking — diagnosed, fixed, and turned into institutional knowledge.**
+**One session. Under 30 minutes. A problem diagnosed, fixed, and turned into institutional knowledge.**
 
 ## What This Means for Quality
 
@@ -126,4 +126,8 @@ But the real value isn't speed. It's **repeatability**. Every IFM will eventuall
 
 Now there's a skill for it. Not a person who remembers how to do it. Not a wiki page someone might read. A procedure that executes the same way every time, catches the subtotal edge case every time, and verifies its own work every time.
 
-That's what Quality looks like in bookkeeping: not the absence of errors, but the systematic capacity to find and fix them.
+A single Error Checker fix takes maybe 10 minutes for someone who knows what they're doing. That's not the problem. The problem is that across a portfolio of 500 models, a few percent break every time new bookkeeping data syncs. That's 10–25 models a day, each needing those 10 minutes. Two to four hours of skilled human time, every day, doing the same diagnostic-and-wire pattern.
+
+Now there's a skill for it. Not a person who remembers how to do it. Not a wiki page someone might read. A procedure that executes the same way every time, catches the subtotal edge case every time, and verifies its own work every time.
+
+That's what Quality looks like in bookkeeping: not the absence of errors, but the systematic capacity to find and fix them at scale.
