@@ -10,7 +10,7 @@ We have a tab in our charting tool that lists every row a business chart can con
 
 Then we stopped and argued about the name for longer than it seemed to deserve.
 
-If that sounds like a waste of time, you haven't sat with Korzybski long enough. "The map is not the territory" — the word is not the thing. The name on the tab is not the rows. But the name is the handle everyone grabs when they reach for the rows — and a bad handle bends how people think about what they're holding. Naming is not decoration. Naming is the cheapest, highest-leverage quality work there is, because you do it once and everyone inherits it forever.
+If that sounds like a waste of time, you haven't sat with Korzybski long enough. "The map is not the territory" — the word is not the thing. Naming is the cheapest, highest-leverage quality work there is, because you do it once and everyone inherits it forever.
 
 So we did the work.
 
