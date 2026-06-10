@@ -128,6 +128,6 @@ Now there's a skill for it. Not a person who remembers how to do it. Not a wiki 
 
 A single Error Checker fix takes maybe 10 minutes for someone who knows what they're doing. That's not the problem. The problem is that across a portfolio of 500 models, a few percent break every time new bookkeeping data syncs. That's 10–25 models a day, each needing those 10 minutes. Two to four hours of skilled human time, every day, doing the same diagnostic-and-wire pattern.
 
-Now there's a skill for it. Not a person who remembers how to do it. Not a wiki page someone might read. A procedure that executes the same way every time, catches the subtotal edge case every time, and verifies its own work every time.
+Now there's a skill for it. A procedure that executes the same way every time, catches the subtotal edge case every time, and verifies its own work while learning and remembering every time.
 
 That's what Quality looks like in bookkeeping: not the absence of errors, but the systematic capacity to find and fix them at scale.
