@@ -2,7 +2,11 @@
 title: "Client Churn Analysis by Client Manager"
 date: 2026-06-06
 draft: false
+sitemap:
+  disable: true
 tags: ["weekly-accounting", "churn", "retention", "quality"]
+hiddenInHomeList: "true"
+hiddenInRss: true
 summary: "Monthly churn rate analysis across Weekly Accounting's client manager team — Jan 2023 through May 2026."
 ---
 
