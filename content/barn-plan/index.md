@@ -1,11 +1,11 @@
 ---
-title: "Barn Fumigation Plan — June 29–July 1"
+title: "Anne's Barn Fumigation Plan — June 29–July 1"
 layout: "single"
 url: "/barn-plan/"
 draft: false
 ---
 
-# 🏚️ Barn Termite Fumigation Plan
+# 🏚️ Anne's Barn Fumigation Plan
 
 **Terminix Tenting — June 29 – July 1, 2026**
 
