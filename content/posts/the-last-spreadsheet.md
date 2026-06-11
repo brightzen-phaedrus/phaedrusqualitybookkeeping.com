@@ -10,7 +10,7 @@ There's a user story rattling around in my head that I want to think through in 
 
 > *As a user, I want to edit tables in the app with the same keystrokes and behavior as if I were in Google Sheets — click around, see formulas. Google Sheets in a Frame.*
 
-It's a reasonable ask. The muscle memory is real. We've been editing spreadsheets since Lotus 1-2-3. Before that, calculators. Before that, pencils and columnar pads. Each time we upgraded the tool, we brought the old gestures with us. The spreadsheet is the last survivor of that lineage — the one tool financial people never left behind.
+It's a reasonable ask. The muscle memory is real. We've been editing spreadsheets since Lotus 1-2-3. Before that, Excel. Before that, Lotus. Before that, the [HP-12C](https://www.google.com/search?q=hp12c&udm=2) — that beautiful little financial calculator that every MBA carried in their bag. Each time we upgraded the tool, we brought the old gestures with us. The spreadsheet is the last survivor of that lineage — the one tool financial people never left behind.
 
 So the instinct is: put Google Sheets inside the app. Embed it. Make it feel native. Let people do what they already know how to do.
 
@@ -64,11 +64,15 @@ The Charting Tool already ingests IFMs (Integrated Financial Models) and MMMs (M
 
 What if the app could also *forecast*?
 
-Not the way a spreadsheet forecasts — by making you build formulas and drag them across cells. The way a system forecasts — by understanding the model's structure, applying reasonable assumptions, and producing a draft forecast that a human reviews and adjusts.
+Once the IFM is ingested — not just its output, but its structure — the app has everything it needs to generate a statistical forecast. Not a guess. A real projection built from the model's own history: trend lines, seasonality, growth rates, the relationships between metrics that the IFM already encodes.
+
+Then it talks you through it.
+
+Not a spreadsheet you stare at, trying to figure out which cell to change. A conversation. The app shows you the forecast. You ask questions — *what if we hire two more people in Q3? What if churn drops by a point?* — and the numbers move. Eventually it talks to you and you talk to it. A voice conversation about your business, grounded in your actual data.
 
 The user story, fully extended:
 
-> *As a business owner, I want to ingest my IFM and MMM, get a credible first-draft forecast in a few minutes, set goals for the next quarter, and get weekly updates on how I'm tracking — all inside the app, without opening a spreadsheet.*
+> *As a business owner, I want to ingest my IFM and MMM, get a credible statistical forecast in a few minutes, set goals for the next quarter, and get weekly updates on how I'm tracking — all inside the app, without opening a spreadsheet.*
 
 That's not a feature request. That's a product thesis.
 
@@ -111,17 +115,23 @@ The weekly update becomes a first-class feature, not a ritual performed in a spr
 
 ## The Transition
 
-We don't get there overnight. The path looks something like:
+We don't get there overnight. And we don't have to burn the boats.
+
+The immediate next step: run a statistical forecast on top of the pilots that are already live — ShipCalm, Weekly Accounting — while maintaining the real forecast in Google Sheets. Two systems in parallel. The spreadsheet stays the system of record. The app becomes a second opinion.
+
+This is how every tool transition actually works. You don't drop the old thing until the new thing has proven itself. You run them side by side. You compare. And one morning you realize you haven't opened the spreadsheet in two weeks.
+
+The path:
 
 1. **Where we are now:** Spreadsheets as the modeling layer, the app as the visualization layer. `WChartSrc` is the bridge. This works. Five pilots live.
 
-2. **Next:** Ingest IFMs and MMMs directly — not just the `WChartSrc` summary tab, but the underlying model structure. Understand the relationships between metrics, not just their values.
+2. **Next:** Ingest IFMs and MMMs directly — not just the `WChartSrc` summary tab, but the underlying model structure. Run a statistical forecast alongside the human forecast. Compare them. Learn where the machine is right and where the human knows something the data doesn't.
 
-3. **Then:** Generate forecasts inside the app. Let the user set assumptions through a purpose-built interface. Show the forecast alongside actuals. Let them adjust and commit.
+3. **Then:** Build the conversational layer. The app shows you the forecast and you talk to it — text first, voice eventually. Adjust assumptions through dialogue, not cell edits. The forecast becomes a living thing you refine, not a spreadsheet you maintain.
 
 4. **Finally:** Weekly updates that write themselves. The system knows last week's actuals (ingested), this quarter's forecast (generated), and the gap between them. It tells you where you stand without you having to ask.
 
-At that point, the spreadsheet becomes what the calculator became when the spreadsheet arrived — a tool you *can* still use, but don't *need* to.
+At some point in that progression, you stop opening the spreadsheet. Not because anyone took it away. Because you don't need it anymore.
 
 ---
 
@@ -133,6 +143,10 @@ The IFM already solved the *conceptual* problem — it's the right model for see
 
 We're not building a better spreadsheet. We're building the thing that comes after it.
 
-Before spreadsheets, there were calculators. Before calculators, there were columnar pads. Each transition didn't improve the old tool — it made the old tool unnecessary by solving the underlying problem differently.
+I wonder how soon it'll be before we set down the spreadsheet the way we set down the [HP-12C](https://www.google.com/search?q=hp12c&udm=2). That calculator was a masterpiece — elegant, precise, built for exactly one kind of thinking. People loved it. Some people still carry one. But nobody *needs* it anymore, because the problems it solved got absorbed into better tools that solved bigger problems.
+
+Lotus absorbed the columnar pad. Excel absorbed Lotus. Google Sheets absorbed Excel. Each transition didn't improve the old tool — it made the old tool unnecessary by solving the underlying problem differently.
+
+The spreadsheet is next.
 
 That's the user story, fully told. Not "Google Sheets in a frame." Something better.
