@@ -1,6 +1,6 @@
 ---
 title: "The Project Pitch"
-date: 2026-06-11T19:30:00-07:00
+date: 2026-06-11T18:30:00-07:00
 draft: false
 tags: ["funding", "ai", "ifm", "weekly-accounting", "quality", "nsf"]
 summary: "We're applying for NSF SBIR funding. Here's the pitch — in public, because the process is worth documenting."
