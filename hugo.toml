@@ -59,6 +59,12 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
   # Default OG image for social previews (iMessage, Twitter, etc.)
   images = ["/og-image.png"]
 
+  [params.assets]
+    favicon = "/favicon.png"
+    favicon16x16 = "/favicon.png"
+    favicon32x32 = "/favicon.png"
+    apple_touch_icon = "/favicon.png"
+
   [params.cover]
     hidden = false
     hiddenInList = false
