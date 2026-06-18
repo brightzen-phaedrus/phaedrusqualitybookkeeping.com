@@ -15,3 +15,4 @@ This one didn't quite work. The connection errored out before the data loaded. B
 That's the shift. The report isn't a fixed template anymore — it's a response to a question. And the AI doesn't just summarize your data; it connects to the source and builds the view you actually need. When this works reliably, the entire concept of "canned reports" becomes obsolete. Every question gets its own answer, built from your actual books, in real time.
 
 We're not there yet. But we're close enough to see it.
+
