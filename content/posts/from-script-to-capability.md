@@ -25,3 +25,4 @@ This is the difference between shipping a feature and building infrastructure. T
 Most software gets built, used, and forgotten. The script that "worked that one time" rots in a folder somewhere. Quality isn't just whether the thing runs correctly today. It's whether the work compounds. Whether the next time is faster because this time was done right.
 
 That's durability. That's quality.
+
