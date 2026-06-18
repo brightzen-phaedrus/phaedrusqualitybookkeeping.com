@@ -1,7 +1,7 @@
 ---
 title: "Reconcile your mind"
 date: 2026-06-18
-draft: true
+draft: false
 tags: ["ai", "quality", "bookkeeping", "brightzen", "reconciliation"]
 summary: "Reconciliation isn't only for bank accounts. The first scheduled run of a system that checks our own working notes against reality — and what it found."
 ---
