@@ -1,0 +1,104 @@
+{{- define "main" }}
+
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description | markdownify }}</div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+<div class="md-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := .RegularPages.ByDate.Reverse }}
+
+<style>
+.post-sort{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:1rem 0 1.5rem;font-size:.85rem}
+.post-sort .label{opacity:.65}
+.post-sort button{cursor:pointer;border:1px solid var(--border);background:var(--entry);color:inherit;border-radius:6px;padding:.3rem .6rem;font-size:.85rem;line-height:1}
+.post-sort button[aria-pressed="true"]{border-color:var(--secondary);font-weight:700}
+.post-sort button .arrow{opacity:.7;font-size:.8em;margin-left:.25rem}
+</style>
+
+<nav class="post-sort" aria-label="Sort posts">
+  <span class="label">Sort by</span>
+  <button type="button" data-key="date" aria-pressed="true">Date posted<span class="arrow">&#8595;</span></button>
+  <button type="button" data-key="lastmod" aria-pressed="false">Date edited<span class="arrow">&#8595;</span></button>
+</nav>
+
+<div id="post-list">
+  {{- range $pages }}
+  <article class="post-entry" data-date="{{ .Date.Unix }}" data-lastmod="{{ .Lastmod.Unix }}">
+    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+    {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+    <header class="entry-header">
+      <h2 class="entry-hint-parent">{{ .Title }}</h2>
+    </header>
+    {{- if (ne (.Param "hideSummary") true) }}
+    <div class="entry-content">
+      <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <footer class="entry-footer">
+      {{- partial "post_meta.html" . -}}
+    </footer>
+    {{- end }}
+    <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  </article>
+  {{- end }}
+</div>
+
+<script>
+(function () {
+  var nav = document.querySelector('.post-sort');
+  var list = document.getElementById('post-list');
+  if (!nav || !list) return;
+  var state = { key: 'date', dir: -1 };
+  function apply() {
+    var items = Array.prototype.slice.call(list.querySelectorAll('.post-entry'));
+    items.sort(function (a, b) {
+      var av = parseInt(a.getAttribute('data-' + state.key), 10) || 0;
+      var bv = parseInt(b.getAttribute('data-' + state.key), 10) || 0;
+      return (av - bv) * state.dir;
+    });
+    items.forEach(function (el) { list.appendChild(el); });
+    Array.prototype.forEach.call(nav.querySelectorAll('button'), function (btn) {
+      var on = btn.getAttribute('data-key') === state.key;
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var arrow = btn.querySelector('.arrow');
+      if (arrow) arrow.innerHTML = on ? (state.dir === -1 ? '&#8595;' : '&#8593;') : '&#8595;';
+    });
+  }
+  nav.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-key]');
+    if (!btn) return;
+    var key = btn.getAttribute('data-key');
+    if (key === state.key) { state.dir = -state.dir; }
+    else { state.key = key; state.dir = -1; }
+    apply();
+  });
+  apply();
+})();
+</script>
+
+{{- end }}{{- /* end main */ -}}
