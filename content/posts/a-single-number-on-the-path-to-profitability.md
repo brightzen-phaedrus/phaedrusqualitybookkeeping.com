@@ -1,7 +1,7 @@
 ---
 title: "A Single Number on the Path to Profitability"
 date: 2026-06-18
-draft: false
+draft: true
 tags: ["ifm", "weekly-accounting", "quality", "fourth-statement", "shipcalm"]
 summary: "Jake needed one thing to feel comfortable. Greg turned it into a formula. That's the whole point."
 ---
