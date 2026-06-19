@@ -1,7 +1,7 @@
 ---
 title: "How to Craft an Epic"
 date: 2026-06-18
-draft: true
+draft: false
 tags: ["process", "backlog", "ai"]
 summary: "Best practices for writing an Epic in the backlog — what an Epic is, how to slice it, and what makes its stories buildable."
 ---
