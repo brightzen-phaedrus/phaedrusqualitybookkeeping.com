@@ -1,7 +1,7 @@
 ---
 title: "Three Axes: Minds, Abilities, and the Companies They Serve"
 date: 2026-06-20
-draft: true
+draft: false
 tags: ["ai", "agents", "quality", "bookkeeping", "building-phaedrus"]
 summary: "How the system behind this site is organized — not as one big assistant, but as focused environments, shared skills, and the companies they act on. Three axes that keep the work clean as it grows."
 ---
