@@ -1,7 +1,7 @@
 ---
 title: "The Electric Bicycle"
 date: 2026-06-28
-draft: true
+draft: false
 tags: ["ai", "agents", "quality", "building-phaedrus", "harness"]
 summary: "What it actually felt like to learn an agent harness — and why the leverage turned out not to be speed."
 ---
