@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bare Span — Less Metal. More Sky.</title>
+  <meta name="description" content="Outdoor coverings reimagined. Geometry replaces mass. Less steel, cleaner lines, more sky.">
+
+  <meta property="og:title" content="Bare Span">
+  <meta property="og:description" content="Less metal. More sky. Outdoor coverings reimagined.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --charcoal:    #1a1a2e;
+      --steel:       #2d2d44;
+      --steel-light: #4a4a6a;
+      --sky:         #87ceeb;
+      --sky-deep:    #5ba3c9;
+      --sky-pale:    #d4eef8;
+      --warm:        #f5e6d3;
+      --warm-light:  #faf4ed;
+      --cream:       #fffdf9;
+      --sand:        #e8ddd0;
+      --copper:      #c47d4e;
+      --copper-light:#d4945f;
+      --text:        #1a1a2e;
+      --text-light:  #555568;
+      --text-muted:  #8888a0;
+      --white:       #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--copper); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--copper-light); }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    /* Animated structural lines */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.12;
+    }
+    .hero-lines svg {
+      width: 100%;
+      height: 100%;
+    }
+    .hero-lines line {
+      stroke: var(--sky);
+      stroke-width: 0.5;
+      animation: lineFade 8s ease-in-out infinite alternate;
+    }
+    .hero-lines line:nth-child(odd) { animation-delay: -4s; }
+    @keyframes lineFade {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    /* Sky gradient at top */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(135,206,235,0.08) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Bottom curve */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 2rem;
+    }
+    .logo-mark span {
+      display: block;
+      width: 2px;
+      background: var(--sky);
+      border-radius: 1px;
+    }
+    .logo-mark span:nth-child(1) { height: 24px; }
+    .logo-mark span:nth-child(2) { height: 40px; }
+    .logo-mark span:nth-child(3) { height: 32px; }
+    .logo-mark span:nth-child(4) { height: 44px; }
+    .logo-mark span:nth-child(5) { height: 28px; }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .thin {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.45em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      color: var(--sky);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      border: 1.5px solid var(--sky);
+      color: var(--sky);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.3s;
+    }
+    .hero-cta:hover {
+      background: var(--sky);
+      color: var(--charcoal);
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .container-wide {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    .section-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Problem/Insight Split ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 5rem 0;
+    }
+    @media (max-width: 700px) {
+      .split { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .split-card {
+      padding: 2.5rem;
+      border-radius: 20px;
+    }
+    .split-card.dark {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.75);
+    }
+    .split-card.dark .section-label { color: var(--sky); }
+    .split-card.dark .section-title { color: var(--white); }
+    .split-card.dark strong { color: var(--white); }
+    .split-card.light {
+      background: var(--warm-light);
+      border: 1px solid var(--sand);
+    }
+
+    /* ── Principles ── */
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    @media (max-width: 700px) {
+      .principles { grid-template-columns: 1fr; }
+    }
+    .principle {
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .principle-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .principle h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .principle p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: var(--charcoal);
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2.5rem;
+      color: var(--sky);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── Visual Section (structural diagram) ── */
+    .visual-section {
+      background: var(--warm-light);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .diagram-container {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      aspect-ratio: 16/7;
+      position: relative;
+      background: var(--cream);
+      border-radius: 20px;
+      border: 1px solid var(--sand);
+      overflow: hidden;
+    }
+    .diagram-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Comparison ── */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 3rem 0;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    @media (max-width: 600px) {
+      .comparison { grid-template-columns: 1fr; }
+    }
+    .comp-side {
+      padding: 2.5rem;
+    }
+    .comp-side.before {
+      background: #f0ece6;
+    }
+    .comp-side.after {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.75);
+    }
+    .comp-side.after strong { color: var(--white); }
+    .comp-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .comp-side.before .comp-label { color: var(--text-muted); }
+    .comp-side.after .comp-label { color: var(--sky); }
+    .comp-list {
+      list-style: none;
+      padding: 0;
+    }
+    .comp-list li {
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .comp-list .icon { font-size: 1rem; flex-shrink: 0; }
+
+    /* ── Applications ── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      .apps-grid { grid-template-columns: 1fr; }
+    }
+    .app-card {
+      background: var(--warm-light);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .app-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .app-card h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+    .app-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ── Quote ── */
+    .quote-section {
+      background: var(--charcoal);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .quote-text {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: var(--white);
+      max-width: 600px;
+      margin: 0 auto 1rem;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .quote-attr {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-section .section-title {
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: var(--charcoal);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.3s;
+      border: 2px solid var(--charcoal);
+    }
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--charcoal);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--sand);
+    }
+    .footer a { color: var(--text-muted); }
+    .footer a:hover { color: var(--copper); }
+
+    /* ── Divider ── */
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--copper), var(--sky));
+      border-radius: 2px;
+      margin: 0 auto;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .hero { padding: 1.5rem; min-height: 90vh; }
+      .container, .container-wide { padding: 0 1.25rem; }
+      .section { padding: 3.5rem 0; }
+      .split-card { padding: 1.75rem; }
+      .stats-bar { gap: 2rem; padding: 2.5rem 1.5rem; }
+      .stat-number { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-lines">
+      <svg viewBox="0 0 1000 600" preserveAspectRatio="none">
+        <!-- Minimal truss lines -->
+        <line x1="0" y1="400" x2="200" y2="200"/>
+        <line x1="200" y1="200" x2="400" y2="400"/>
+        <line x1="400" y1="400" x2="600" y2="200"/>
+        <line x1="600" y1="200" x2="800" y2="400"/>
+        <line x1="800" y1="400" x2="1000" y2="200"/>
+        <line x1="0" y1="400" x2="1000" y2="400"/>
+        <line x1="0" y1="200" x2="1000" y2="200"/>
+        <line x1="200" y1="200" x2="200" y2="400"/>
+        <line x1="600" y1="200" x2="600" y2="400"/>
+        <line x1="400" y1="200" x2="400" y2="400"/>
+        <line x1="800" y1="200" x2="800" y2="400"/>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <div class="logo-mark">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <h1>
+        <span class="thin">Outdoor Coverings Reimagined</span>
+        Bare Span
+      </h1>
+      <p class="hero-sub">
+        Geometry replaces mass. Every unnecessary member removed. What remains is structure reduced to its most honest form — and a lot more sky.
+      </p>
+      <a href="#philosophy" class="hero-cta">See the Difference</a>
+    </div>
+  </section>
+
+  <!-- Problem / Insight -->
+  <div class="container-wide">
+    <div class="split" id="philosophy">
+      <div class="split-card dark">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title" style="font-size:1.5rem;">Conventional shade structures use twice the steel they need.</h2>
+        <p class="section-body" style="font-size:0.95rem;">
+          Walk under any restaurant patio, hotel poolside, or backyard pergola. Look up. You'll see a dense grid of welded steel — member after member, junction after junction. It blocks the view it was built to frame. <strong>The structure becomes the obstruction.</strong>
+        </p>
+      </div>
+      <div class="split-card light">
+        <span class="section-label">The Insight</span>
+        <h2 class="section-title" style="font-size:1.5rem;">Smart geometry does what brute steel cannot.</h2>
+        <p class="section-body" style="font-size:0.95rem;">
+          A Warren truss carries the same load as a dense grid — with <strong>40% fewer members</strong>. Tension cables replace compression bars. Every connection point is a decision. We made fewer, better ones.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">40%</div>
+      <div class="stat-label">Less Steel</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2×</div>
+      <div class="stat-label">More Visible Sky</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">½</div>
+      <div class="stat-label">The Weld Count</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">0</div>
+      <div class="stat-label">Compromised Load Rating</div>
+    </div>
+  </div>
+
+  <!-- Principles -->
+  <div class="container">
+    <section class="section" style="text-align:center;">
+      <span class="section-label">Design Principles</span>
+      <h2 class="section-title">Three rules. No exceptions.</h2>
+    </section>
+    <div class="principles">
+      <div class="principle">
+        <span class="principle-icon">◯</span>
+        <h3>Every Member Earns Its Place</h3>
+        <p>If a bar doesn't carry load, it's gone. No decorative filler. No "just in case." Structure is not ornament.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-icon">△</span>
+        <h3>Triangles Over Grids</h3>
+        <p>Triangulation converts bending into pure tension and compression. The geometry does the work so the steel doesn't have to.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-icon">—</span>
+        <h3>Tension Before Mass</h3>
+        <p>A cable in tension is stronger pound-for-pound than a tube in compression. We use tension wherever physics allows.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Structural Diagram -->
+  <section class="visual-section">
+    <div class="container">
+      <span class="section-label">Engineering</span>
+      <h2 class="section-title">The same span. Half the frame.</h2>
+    </div>
+    <div class="container-wide">
+      <div class="diagram-container">
+        <svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
+          <!-- Conventional (top) -->
+          <text x="175" y="30" fill="#888" font-size="11" font-family="Inter,sans-serif" font-weight="600" text-anchor="middle" letter-spacing="0.1em">CONVENTIONAL</text>
+          <!-- Dense grid -->
+          <line x1="25" y1="50" x2="325" y2="50" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="25" y1="130" x2="325" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <!-- Verticals -->
+          <line x1="25" y1="50" x2="25" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="75" y1="50" x2="75" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="125" y1="50" x2="125" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="175" y1="50" x2="175" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="225" y1="50" x2="225" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="275" y1="50" x2="275" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <line x1="325" y1="50" x2="325" y2="130" stroke="#ccc" stroke-width="1.5"/>
+          <!-- Diagonals (dense) -->
+          <line x1="25" y1="50" x2="75" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="75" y1="50" x2="25" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="75" y1="50" x2="125" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="125" y1="50" x2="75" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="125" y1="50" x2="175" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="175" y1="50" x2="125" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="175" y1="50" x2="225" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="225" y1="50" x2="175" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="225" y1="50" x2="275" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="275" y1="50" x2="225" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="275" y1="50" x2="325" y2="130" stroke="#ccc" stroke-width="1"/>
+          <line x1="325" y1="50" x2="275" y2="130" stroke="#ccc" stroke-width="1"/>
+          <text x="175" y="155" fill="#bbb" font-size="10" font-family="Inter,sans-serif" text-anchor="middle">26 members · 14 joints</text>
+
+          <!-- Bare Span (bottom) -->
+          <text x="525" y="30" fill="#c47d4e" font-size="11" font-family="Inter,sans-serif" font-weight="600" text-anchor="middle" letter-spacing="0.1em">BARE SPAN</text>
+          <!-- Warren truss -->
+          <line x1="375" y1="50" x2="675" y2="50" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="375" y1="130" x2="675" y2="130" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- End verticals only -->
+          <line x1="375" y1="50" x2="375" y2="130" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="675" y1="50" x2="675" y2="130" stroke="#1a1a2e" stroke-width="2"/>
+          <!-- Warren diagonals (alternating, no verticals) -->
+          <line x1="375" y1="130" x2="425" y2="50" stroke="#5ba3c9" stroke-width="1.5"/>
+          <line x1="425" y1="50" x2="475" y2="130" stroke="#5ba3c9" stroke-width="1.5"/>
+          <line x1="475" y1="130" x2="525" y2="50" stroke="#5ba3c9" stroke-width="1.5"/>
+          <line x1="525" y1="50" x2="575" y2="130" stroke="#5ba3c9" stroke-width="1.5"/>
+          <line x1="575" y1="130" x2="625" y2="50" stroke="#5ba3c9" stroke-width="1.5"/>
+          <line x1="625" y1="50" x2="675" y2="130" stroke="#5ba3c9" stroke-width="1.5"/>
+          <text x="525" y="155" fill="#5ba3c9" font-size="10" font-family="Inter,sans-serif" font-weight="600" text-anchor="middle">12 members · 8 joints</text>
+
+          <!-- Arrow between -->
+          <text x="350" y="95" fill="#c47d4e" font-size="18" font-family="Inter,sans-serif" text-anchor="middle">→</text>
+
+          <!-- Load arrows (same on both) -->
+          <line x1="100" y1="170" x2="100" y2="195" stroke="#ddd" stroke-width="1" marker-end="none"/>
+          <line x1="175" y1="170" x2="175" y2="195" stroke="#ddd" stroke-width="1"/>
+          <line x1="250" y1="170" x2="250" y2="195" stroke="#ddd" stroke-width="1"/>
+          <polygon points="97,195 103,195 100,200" fill="#ddd"/>
+          <polygon points="172,195 178,195 175,200" fill="#ddd"/>
+          <polygon points="247,195 253,195 250,200" fill="#ddd"/>
+
+          <line x1="450" y1="170" x2="450" y2="195" stroke="#5ba3c9" stroke-width="1"/>
+          <line x1="525" y1="170" x2="525" y2="195" stroke="#5ba3c9" stroke-width="1"/>
+          <line x1="600" y1="170" x2="600" y2="195" stroke="#5ba3c9" stroke-width="1"/>
+          <polygon points="447,195 453,195 450,200" fill="#5ba3c9"/>
+          <polygon points="522,195 528,195 525,200" fill="#5ba3c9"/>
+          <polygon points="597,195 603,195 600,200" fill="#5ba3c9"/>
+
+          <text x="350" y="215" fill="#888" font-size="10" font-family="Inter,sans-serif" text-anchor="middle">Same load rating</text>
+
+          <!-- Bottom comparison bar -->
+          <rect x="80" y="240" width="190" height="8" rx="4" fill="#ddd"/>
+          <rect x="80" y="255" width="100" height="3" rx="1.5" fill="#eee"/>
+          <text x="175" y="275" fill="#bbb" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">100% material</text>
+
+          <rect x="430" y="240" width="114" height="8" rx="4" fill="#1a1a2e"/>
+          <rect x="430" y="255" width="60" height="3" rx="1.5" fill="#5ba3c9"/>
+          <text x="487" y="275" fill="#5ba3c9" font-size="9" font-family="Inter,sans-serif" font-weight="600" text-anchor="middle">~54% material</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before/After -->
+  <div class="container-wide">
+    <section class="section">
+      <div class="container" style="text-align:center; margin-bottom:2rem;">
+        <span class="section-label">Side by Side</span>
+        <h2 class="section-title">What changes. What doesn't.</h2>
+      </div>
+      <div class="comparison">
+        <div class="comp-side before">
+          <span class="comp-label">Conventional Frame</span>
+          <ul class="comp-list">
+            <li><span class="icon">⬛</span> Dense welded grid pattern</li>
+            <li><span class="icon">⬛</span> Redundant cross-bracing</li>
+            <li><span class="icon">⬛</span> 40+ weld points per bay</li>
+            <li><span class="icon">⬛</span> Heavy visual footprint</li>
+            <li><span class="icon">⬛</span> Higher fabrication cost</li>
+            <li><span class="icon">⬛</span> More steel = more rust surface</li>
+          </ul>
+        </div>
+        <div class="comp-side after">
+          <span class="comp-label">Bare Span</span>
+          <ul class="comp-list">
+            <li><span class="icon" style="color:var(--sky);">◇</span> <strong>Warren truss geometry</strong></li>
+            <li><span class="icon" style="color:var(--sky);">◇</span> Every member load-bearing</li>
+            <li><span class="icon" style="color:var(--sky);">◇</span> ~20 weld points per bay</li>
+            <li><span class="icon" style="color:var(--sky);">◇</span> <strong>Open, clean sightlines</strong></li>
+            <li><span class="icon" style="color:var(--sky);">◇</span> Lower material + labor</li>
+            <li><span class="icon" style="color:var(--sky);">◇</span> Less steel = less maintenance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Applications -->
+  <div class="container">
+    <section class="section">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <span class="section-label">Applications</span>
+        <h2 class="section-title">Where less frame means more.</h2>
+      </div>
+      <div class="apps-grid">
+        <div class="app-card">
+          <span class="app-icon">🍽</span>
+          <h3>Restaurant Patios</h3>
+          <p>Guests came for the sunset, not the ceiling grid. Open the view without losing the shade.</p>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🏡</span>
+          <h3>Residential Outdoor Living</h3>
+          <p>Backyard pergolas and pool covers that feel like architecture, not industrial scaffolding.</p>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🏨</span>
+          <h3>Hospitality & Resorts</h3>
+          <p>Poolside cabanas, rooftop bars, event spaces. Premium spaces deserve premium structure.</p>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🏢</span>
+          <h3>Commercial Entries</h3>
+          <p>Walkway covers, loading canopies, outdoor retail. Clean lines at commercial scale.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="divider" style="margin-bottom:2.5rem;"></div>
+    <p class="quote-text">"The best structure is the one you don't notice — because it's doing its job with nothing to spare."</p>
+    <p class="quote-attr">— The Bare Span Principle</p>
+    <div class="divider" style="margin-top:2.5rem;"></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="section-title">Ready to look up<br>and see sky?</h2>
+    <p>We're building the first prototypes now. If you have an outdoor space that deserves better structure, let's talk.</p>
+    <a href="mailto:z@brightzen.com" class="cta-btn">Get in Touch</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Bare Span is a <a href="https://phaedrusqualitybookkeeping.com">Phaedrus Quality Bookkeeping</a> project.</p>
+    <p style="margin-top:0.3rem;">Del Mar, California</p>
+  </footer>
+
+</body>
+</html>
