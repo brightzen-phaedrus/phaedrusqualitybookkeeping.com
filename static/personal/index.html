@@ -47,7 +47,7 @@
     border-radius: 10px;
   }
 
-  /* ── Sections ── */
+  /* ── Sections (Level 1) ── */
   .section {
     margin-bottom: 12px;
     border-radius: 14px;
@@ -86,19 +86,58 @@
     transition: transform 0.25s ease;
     opacity: 0.4;
   }
-  .section.open .chevron {
+  .section.open > .section-header .chevron {
     transform: rotate(90deg);
   }
 
   .section-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.35s ease;
   }
-  .section.open .section-body {
-    max-height: 800px;
+  .section.open > .section-body {
+    max-height: 1200px;
   }
 
+  /* ── Sub-groups (Level 2) ── */
+  .subgroup {
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  .subgroup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px 10px 32px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .subgroup-header .sg-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .subgroup-header .chevron {
+    font-size: 16px;
+    transition: transform 0.25s ease;
+    opacity: 0.35;
+  }
+  .subgroup.open > .subgroup-header .chevron {
+    transform: rotate(90deg);
+  }
+  .subgroup-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .subgroup.open > .subgroup-body {
+    max-height: 600px;
+  }
+
+  /* ── Items (Level 3) ── */
   .item {
     padding: 10px 18px 10px 48px;
     border-top: 1px solid rgba(0,0,0,0.04);
@@ -130,22 +169,24 @@
     margin-right: 4px;
   }
 
+  /* ── Flat items (no subgroup) ── */
+  .section > .section-body > .item:first-child {
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+
   /* ── Colors ── */
   .s-home { background: #e8f0e4; border-color: #b8d4a8; }
   .s-home .item { border-top-color: rgba(45,80,22,0.08); }
-  .s-home .section-header { color: #2d5016; }
+  .s-home .subgroup { border-top-color: rgba(45,80,22,0.1); }
+  .s-home .section-header, .s-home .subgroup-header { color: #2d5016; }
   .s-home .item-name { color: #2d5016; }
 
   .s-work { background: #ede8f5; border-color: #c4b5dc; }
   .s-work .item { border-top-color: rgba(61,34,102,0.08); }
-  .s-work .section-header { color: #3d2266; }
+  .s-work .subgroup { border-top-color: rgba(61,34,102,0.1); }
+  .s-work .section-header, .s-work .subgroup-header { color: #3d2266; }
   .s-work .item-name { color: #3d2266; }
-
-  .s-port { background: #fdf0dd; border-color: #f0c987; }
-  .s-port .item { border-top-color: rgba(107,65,6,0.08); }
-  .s-port .section-header { color: #6b4106; }
-  .s-port .item-name { color: #6b4106; }
-  .s-port .tag { background: rgba(107,65,6,0.1); color: #6b4106; }
+  .s-work .tag { background: rgba(61,34,102,0.1); color: #3d2266; }
 
   .s-goal { background: #fce8e6; border-color: #f0a8a0; }
   .s-goal .item { border-top-color: rgba(122,26,16,0.08); }
@@ -182,7 +223,7 @@
 <div class="north-star">"Solve anxiety with conscious productivity"</div>
 
 <!-- ══════════ HOME ══════════ -->
-<div class="section s-home" onclick="toggle(this)">
+<div class="section s-home" onclick="toggleSection(event, this)">
   <div class="section-header">
     <span class="icon">🏠</span>
     <span class="title">Home</span>
@@ -205,63 +246,73 @@
   </div>
 </div>
 
-<!-- ══════════ WORK ══════════ -->
-<div class="section s-work" onclick="toggle(this)">
+<!-- ══════════ BRIGHTZEN SYSTEMS ══════════ -->
+<div class="section s-work" onclick="toggleSection(event, this)">
   <div class="section-header">
     <span class="icon">💼</span>
-    <span class="title">Work</span>
-    <span class="subtitle">BrightZen Partner</span>
+    <span class="title">BrightZen Systems</span>
+    <span class="subtitle">Partner</span>
     <span class="chevron">›</span>
   </div>
   <div class="section-body">
-    <div class="item">
-      <div class="item-name">BD Lead</div>
-    </div>
-    <div class="item">
-      <div class="item-name">CFO</div>
-    </div>
-    <div class="item">
-      <div class="item-name">Admin & Compliance</div>
-      <div class="item-detail">Tax · Bookkeeping · Forecasting</div>
-    </div>
-    <div class="item">
-      <div class="item-name">Board Member</div>
-    </div>
-  </div>
-</div>
 
-<!-- ══════════ PORTFOLIO ══════════ -->
-<div class="section s-port" onclick="toggle(this)">
-  <div class="section-header">
-    <span class="icon">📦</span>
-    <span class="title">Portfolio</span>
-    <span class="chevron">›</span>
-  </div>
-  <div class="section-body">
-    <div class="item">
-      <div class="item-name">Weekly Accounting</div>
-      <span class="tag">New channel</span>
+    <!-- Roles sub-group -->
+    <div class="subgroup" onclick="toggleSubgroup(event, this)">
+      <div class="subgroup-header">
+        <span class="sg-title">Roles</span>
+        <span class="chevron">›</span>
+      </div>
+      <div class="subgroup-body">
+        <div class="item">
+          <div class="item-name">BD Lead</div>
+        </div>
+        <div class="item">
+          <div class="item-name">CFO</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Admin & Compliance</div>
+          <div class="item-detail">Tax · Bookkeeping · Forecasting</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Board Member</div>
+        </div>
+      </div>
     </div>
-    <div class="item">
-      <div class="item-name">ShipCalm</div>
-      <span class="tag">13-wk forecast</span>
-      <span class="tag">L2 metrics</span>
+
+    <!-- Portfolio sub-group -->
+    <div class="subgroup" onclick="toggleSubgroup(event, this)">
+      <div class="subgroup-header">
+        <span class="sg-title">Portfolio</span>
+        <span class="chevron">›</span>
+      </div>
+      <div class="subgroup-body">
+        <div class="item">
+          <div class="item-name">Weekly Accounting</div>
+          <span class="tag">New channel</span>
+        </div>
+        <div class="item">
+          <div class="item-name">ShipCalm</div>
+          <span class="tag">13-wk forecast</span>
+          <span class="tag">L2 metrics</span>
+        </div>
+        <div class="item">
+          <div class="item-name">Homegrown</div>
+          <span class="tag">Referral system</span>
+        </div>
+        <div class="item">
+          <div class="item-name">Assembled Systems</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Phoenix Strategy Group</div>
+        </div>
+      </div>
     </div>
-    <div class="item">
-      <div class="item-name">Homegrown</div>
-      <span class="tag">Referral system</span>
-    </div>
-    <div class="item">
-      <div class="item-name">Assembled Systems</div>
-    </div>
-    <div class="item">
-      <div class="item-name">Phoenix Strategy Group</div>
-    </div>
+
   </div>
 </div>
 
 <!-- ══════════ Q3 GOALS ══════════ -->
-<div class="section s-goal" onclick="toggle(this)">
+<div class="section s-goal" onclick="toggleSection(event, this)">
   <div class="section-header">
     <span class="icon">🎯</span>
     <span class="title">Q3 Goals</span>
@@ -281,7 +332,7 @@
       <div class="item-detail">13-week cash forecast · Level 2 marketing metrics</div>
     </div>
     <div class="item">
-      <div class="item-name">Learn Myne 2.0</div>
+      <div class="item-name">Learn Mind 2.0</div>
     </div>
     <div class="item">
       <div class="item-name">Homegrown Referrals</div>
@@ -291,7 +342,7 @@
 </div>
 
 <!-- ══════════ FRIENDS ══════════ -->
-<div class="section s-friend" onclick="toggle(this)">
+<div class="section s-friend" onclick="toggleSection(event, this)">
   <div class="section-header">
     <span class="icon">🤝</span>
     <span class="title">Friends</span>
@@ -323,7 +374,7 @@
 </div>
 
 <!-- ══════════ PHAEDRUS ══════════ -->
-<div class="section s-phae" onclick="toggle(this)">
+<div class="section s-phae" onclick="toggleSection(event, this)">
   <div class="section-header">
     <span class="icon">🦉</span>
     <span class="title">Phaedrus</span>
@@ -349,7 +400,13 @@
 <div class="footer">Q3 2026 · Built by Phaedrus</div>
 
 <script>
-function toggle(el) {
+function toggleSection(e, el) {
+  // Don't toggle section when tapping a subgroup
+  if (e.target.closest('.subgroup')) return;
+  el.classList.toggle('open');
+}
+function toggleSubgroup(e, el) {
+  e.stopPropagation();
   el.classList.toggle('open');
 }
 </script>
