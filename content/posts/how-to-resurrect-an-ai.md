@@ -45,13 +45,18 @@ And a `memory/` directory with daily notes — the equivalent of a work journal.
 
 Before the wipe, copy these:
 
-1. **The entire Obsidian workspace** — `~/Documents/PhaedrusAI-main/` (this is not in git — it's the single point of failure)
+1. **The entire Obsidian workspace** — `~/Documents/PhaedrusAI-main/` → now backed up to GitHub (private repo: `brightzen-phaedrus/PhaedrusAI-Main`)
 2. **OpenClaw config** — `~/.openclaw/openclaw.json`
 3. **Google Workspace CLI credentials** — `~/.config/gws/`
-4. **LCM database** — `~/.openclaw/lcm.db` (conversation history)
+4. **LCM database** — `~/.openclaw/lcm.db` (416MB SQLite database — every conversation we've ever had). Copy both the db and the companion files:
+   ```
+   cp ~/.openclaw/lcm.db /backup/lcm.db
+   cp -r ~/.openclaw/lcm-files/ /backup/lcm-files/
+   ```
+   On the rebuilt machine, drop them back into `~/.openclaw/` and OpenClaw picks them up automatically. Current backup lives in iCloud: `Phaedrus iCloud/Backups/lcm-2026-07-23.db`
 5. **Playwright MCP config** — `~/.openclaw/playwright-mcp.json`
 
-Things that are already safe: the PQB site (GitHub), iCloud files, Obsidian Publish content.
+Things that are already safe: the PQB site (GitHub), the workspace (GitHub), iCloud files, Obsidian Publish content.
 
 ## The Rebuild
 
