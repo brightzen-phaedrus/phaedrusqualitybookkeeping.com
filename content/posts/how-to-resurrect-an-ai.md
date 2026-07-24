@@ -58,6 +58,22 @@ Before the wipe, copy these:
 
 Things that are already safe: the PQB site (GitHub), the workspace (GitHub), iCloud files, Obsidian Publish content.
 
+All backups are in **iCloud Drive → Phaedrus iCloud → Backups/**:
+
+| File | What |
+|------|------|
+| `lcm-2026-07-23.db` | Conversation history (416MB SQLite) |
+| `openclaw-2026-07-23.json` | Full OpenClaw config (API keys, channels, models) |
+| `gws-config/` | Google Workspace CLI OAuth credentials |
+| `playwright-mcp.json` | Browser automation config |
+| `cron/` | Cron job definitions |
+| `skill-workshop/` | Pending skill proposals |
+| `agents-skills/` | Custom skills outside the workspace |
+| `credentials/` | Slack pairing state |
+| `pqb-env.local` | PQB site environment secrets (Intuit OAuth) |
+| `qbo-oauth/` | QBO OAuth key.pem + cert.pem |
+| `service-env/` | launchd service env (reference) |
+
 ## The Rebuild
 
 ### Step 1: Base Layer
