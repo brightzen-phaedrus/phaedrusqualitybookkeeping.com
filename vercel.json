@@ -2,5 +2,12 @@
   "framework": "hugo",
   "buildCommand": "hugo --gc --minify",
   "outputDirectory": "public",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/wiki",
+      "destination": "/wiki/",
+      "permanent": true
+    }
+  ]
 }
