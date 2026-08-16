@@ -139,11 +139,17 @@
       color: var(--navy-800); font-family: "Manrope", sans-serif;
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
     }
+    .toc-group-label {
+      margin: 18px 0 6px; padding: 0 0 0 14px;
+      color: var(--teal-500); font-family: "Manrope", sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .toc-group-label:first-child { margin-top: 0; }
     .toc-list { list-style: none; }
     .toc-list li { margin: 0; }
     .toc-list a {
       display: flex; align-items: baseline; gap: 10px;
-      padding: 8px 16px 8px 0; font-size: 13px; line-height: 1.35;
+      padding: 7px 16px 7px 0; font-size: 13px; line-height: 1.35;
       color: var(--slate-600); transition: color 0.2s, border-color 0.2s;
       border-left: 2px solid transparent; padding-left: 14px;
     }
@@ -162,15 +168,45 @@
     /* ── Main Content ── */
     .testimonials-content { min-width: 0; }
 
-    .testimonial-section {
-      padding: 48px 0; border-bottom: 1px solid var(--border);
+    /* Section headings */
+    .section-heading {
+      padding: 48px 0 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
     }
-    .testimonial-section:first-child { padding-top: 0; }
+    .section-heading:first-child { padding-top: 0; }
+    .section-heading h2 {
+      font-size: clamp(28px, 3.5vw, 42px); line-height: 1.08;
+      color: var(--navy-900);
+    }
+    .section-heading p {
+      margin: 10px 0 0; color: var(--slate-600); font-size: 16px; line-height: 1.55;
+    }
+
+    /* Testimonial cards */
+    .testimonial-section {
+      padding: 40px 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 80px 1fr; gap: 28px; align-items: start;
+    }
     .testimonial-section:last-child { border-bottom: none; }
+
+    .testimonial-no-photo {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-photo {
+      width: 80px; height: 80px; border-radius: 50%; overflow: hidden;
+      background: var(--mist-100); flex-shrink: 0;
+    }
+    .testimonial-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    .testimonial-body { min-width: 0; }
 
     .testimonial-meta {
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
     .testimonial-company {
       color: var(--blue-700); font-size: 10px; font-weight: 700;
@@ -182,9 +218,9 @@
     }
 
     .testimonial-quote {
-      max-width: 740px; margin: 0 0 32px;
-      font: 500 clamp(22px, 2.8vw, 32px)/1.3 "Manrope", sans-serif;
-      letter-spacing: -0.035em; color: var(--navy-900);
+      max-width: 740px; margin: 0 0 24px;
+      font: 500 clamp(20px, 2.5vw, 28px)/1.32 "Manrope", sans-serif;
+      letter-spacing: -0.03em; color: var(--navy-900);
     }
     .testimonial-quote::before { content: "\201C"; }
     .testimonial-quote::after { content: "\201D"; }
@@ -201,16 +237,20 @@
 
     /* Featured card variant */
     .testimonial-featured {
-      padding: 44px; margin: 0 -44px;
+      padding: 40px 44px; margin: 0 -44px;
       color: var(--white);
       background: var(--navy-900); border-radius: 0;
       border-bottom: none;
     }
+    .testimonial-featured + .testimonial-section { border-top: none; }
     .testimonial-featured .testimonial-company { color: var(--teal-300); }
     .testimonial-featured .testimonial-theme { color: rgba(255,255,255,0.5); }
     .testimonial-featured .testimonial-quote { color: var(--white); }
     .testimonial-featured .testimonial-name { color: var(--white); }
     .testimonial-featured .testimonial-role { color: rgba(255,255,255,0.55); }
+    .testimonial-featured .testimonial-photo {
+      background: rgba(255,255,255,0.1);
+    }
 
     /* ── CTA Band ── */
     .cta-band {
@@ -276,11 +316,10 @@
     @media (max-width: 600px) {
       .hero { min-height: 320px; padding: 120px 0 50px; }
       .hero h1 { font-size: 36px; }
+      .testimonial-section { grid-template-columns: 60px 1fr; gap: 18px; }
+      .testimonial-photo { width: 60px; height: 60px; }
       .testimonial-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
     }
-
-    /* ── TOC Active Tracking ── */
-    .toc-list a { transition: color 0.2s, border-left-color 0.25s; }
   </style>
 </head>
 <body>
@@ -317,248 +356,308 @@
     {{/* ── Sticky Sidebar TOC ── */}}
     <nav class="toc-sidebar" aria-label="Testimonial outline">
       <div class="toc-title">Outline</div>
+
+      <div class="toc-group-label">San Diego Companies</div>
       <ol class="toc-list">
-        <li><a href="#anna-lindow"><span class="toc-number">01</span><span class="toc-section-title">Anna Lindow — Brave Health</span></a></li>
-        <li><a href="#daniel-goldstein"><span class="toc-number">02</span><span class="toc-section-title">Daniel Goldstein — Trust &amp; Will</span></a></li>
-        <li><a href="#steven-wilcox"><span class="toc-number">03</span><span class="toc-section-title">Steven Wilcox — PARKIT</span></a></li>
-        <li><a href="#matt-voigt"><span class="toc-number">04</span><span class="toc-section-title">Matt Voigt — Saambaa</span></a></li>
-        <li><a href="#dustin-lemick"><span class="toc-number">05</span><span class="toc-section-title">Dustin Lemick — BriteCo</span></a></li>
-        <li><a href="#david-fudge"><span class="toc-number">06</span><span class="toc-section-title">David Fudge — Aplós</span></a></li>
-        <li><a href="#jake-schwartz"><span class="toc-number">07</span><span class="toc-section-title">Jake Schwartz — Brave Health</span></a></li>
-        <li><a href="#greg-moser"><span class="toc-number">08</span><span class="toc-section-title">Greg Moser — ShipCalm</span></a></li>
-        <li><a href="#david-metzler"><span class="toc-number">09</span><span class="toc-section-title">David Metzler — Phoenix Strategy Group</span></a></li>
-        <li><a href="#andy-brooks"><span class="toc-number">10</span><span class="toc-section-title">Andy Brooks — Pylon Brands</span></a></li>
-        <li><a href="#sam-kaplan"><span class="toc-number">11</span><span class="toc-section-title">Sam Kaplan — SHK Financial</span></a></li>
-        <li><a href="#katie-nicosia"><span class="toc-number">12</span><span class="toc-section-title">Katie Nicosia — Recovery Works NW</span></a></li>
-        <li><a href="#john-mckusick"><span class="toc-number">13</span><span class="toc-section-title">John McKusick — NextLeft</span></a></li>
-        <li><a href="#bob-sherrif"><span class="toc-number">14</span><span class="toc-section-title">Bob Sherrif — Career Dash</span></a></li>
-        <li><a href="#bryan-schwartz"><span class="toc-number">15</span><span class="toc-section-title">Bryan Schwartz — Recovery Works NW</span></a></li>
-        <li><a href="#jeff-garber"><span class="toc-number">16</span><span class="toc-section-title">Jeff Garber — Graber Custom Structures</span></a></li>
-        <li><a href="#imgix-founder"><span class="toc-number">17</span><span class="toc-section-title">Founder — imgix</span></a></li>
+        <li><a href="#daniel-goldstein"><span class="toc-number">01</span><span class="toc-section-title">Daniel Goldstein — Trust &amp; Will</span></a></li>
+        <li><a href="#steven-wilcox"><span class="toc-number">02</span><span class="toc-section-title">Steven Wilcox — PARKIT</span></a></li>
+        <li><a href="#greg-moser"><span class="toc-number">03</span><span class="toc-section-title">Greg Moser — ShipCalm</span></a></li>
+        <li><a href="#andy-brooks"><span class="toc-number">04</span><span class="toc-section-title">Andy Brooks — Pylon Brands</span></a></li>
+      </ol>
+
+      <div class="toc-group-label">Other Cities Further North and East</div>
+      <ol class="toc-list" start="5">
+        <li><a href="#anna-lindow"><span class="toc-number">05</span><span class="toc-section-title">Anna Lindow — Brave Health</span></a></li>
+        <li><a href="#matt-voigt"><span class="toc-number">06</span><span class="toc-section-title">Matt Voigt — Saambaa</span></a></li>
+        <li><a href="#dustin-lemick"><span class="toc-number">07</span><span class="toc-section-title">Dustin Lemick — BriteCo</span></a></li>
+        <li><a href="#david-fudge"><span class="toc-number">08</span><span class="toc-section-title">David Fudge — Aplós</span></a></li>
+        <li><a href="#jake-schwartz"><span class="toc-number">09</span><span class="toc-section-title">Jake Schwartz — Brave Health</span></a></li>
+        <li><a href="#katie-nicosia"><span class="toc-number">10</span><span class="toc-section-title">Katie Nicosia — Recovery Works NW</span></a></li>
+        <li><a href="#john-mckusick"><span class="toc-number">11</span><span class="toc-section-title">John McKusick — NextLeft</span></a></li>
+        <li><a href="#bob-sherrif"><span class="toc-number">12</span><span class="toc-section-title">Bob Sherrif — Career Dash</span></a></li>
+        <li><a href="#bryan-schwartz"><span class="toc-number">13</span><span class="toc-section-title">Bryan Schwartz — Recovery Works NW</span></a></li>
+        <li><a href="#jeff-garber"><span class="toc-number">14</span><span class="toc-section-title">Jeff Garber — Graber Custom Structures</span></a></li>
+        <li><a href="#imgix-founder"><span class="toc-number">15</span><span class="toc-section-title">Founder — imgix</span></a></li>
       </ol>
     </nav>
 
     {{/* ── Testimonials ── */}}
     <div class="testimonials-content">
 
-      {{/* 01 — Anna Lindow */}}
-      <div class="testimonial-section" id="anna-lindow">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Brave Health</span>
-          <span class="testimonial-theme">System &amp; mindset</span>
-        </div>
-        <p class="testimonial-quote">The Weekly Accounting System is a thoughtful, rigorous framework any founder can benefit from, even those with significant experience working with data. It's not just a set of tools but a mindset shift. It helped us uncover insights that had been hiding in plain sight.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Anna Lindow</span>
-          <span class="testimonial-role">Brave Health, Founder &amp; CEO</span>
-        </div>
+      {{/* ═══════════════════════════════════════════════ */}}
+      {{/* SAN DIEGO COMPANIES                            */}}
+      {{/* ═══════════════════════════════════════════════ */}}
+      <div class="section-heading" id="sd-section">
+        <h2>San Diego Companies</h2>
+        <p>Local founders building with SDCFO — San Diego roots, operator mindset.</p>
       </div>
 
-      {{/* 02 — Daniel Goldstein */}}
+      {{/* 01 — Daniel Goldstein */}}
       <div class="testimonial-section" id="daniel-goldstein">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Trust &amp; Will</span>
-          <span class="testimonial-theme">Capital &amp; growth</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/daniel-goldstein.jpg" alt="Daniel Goldstein" loading="lazy">
         </div>
-        <p class="testimonial-quote">The Weekly Accounting System is the reason we raised money and scaled our company. John and his team dream in spreadsheets and can simplify and accelerate your business beyond words.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Daniel Goldstein</span>
-          <span class="testimonial-role">Trust &amp; Will, Co-Founder &amp; COO</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Trust &amp; Will</span>
+            <span class="testimonial-theme">Capital &amp; growth</span>
+          </div>
+          <p class="testimonial-quote">The Weekly Accounting System is the reason we raised money and scaled our company. John and his team dream in spreadsheets and can simplify and accelerate your business beyond words.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Daniel Goldstein</span>
+            <span class="testimonial-role">Trust &amp; Will, Co-Founder &amp; COO</span>
+          </div>
         </div>
       </div>
 
-      {{/* 03 — Steven Wilcox */}}
+      {{/* 02 — Steven Wilcox */}}
       <div class="testimonial-section" id="steven-wilcox">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">PARKIT</span>
-          <span class="testimonial-theme">Investor materials</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/steven-wilcox.jpg" alt="Steven Wilcox" loading="lazy">
         </div>
-        <p class="testimonial-quote">I've recommended the Weekly Accounting System to all my friends running consumer brands. The Weekly Accounting Team has leveled up my understanding the dynamics in our business. The analysis from The System features prominently in my investor materials.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Steven Wilcox</span>
-          <span class="testimonial-role">PARKIT, Founder &amp; CEO</span>
-        </div>
-      </div>
-
-      {{/* 04 — Matt Voigt */}}
-      <div class="testimonial-section" id="matt-voigt">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Saambaa</span>
-          <span class="testimonial-theme">Problem solving</span>
-        </div>
-        <p class="testimonial-quote">I have a finance background, but John and his team bring more than numbers to the table — they bring a fresh perspective. The real differentiator with John and his team comes in the form of problem solving and solution building. That's why I've been a loyal customer for three years and successfully recommended his services to several peers.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Matt Voigt</span>
-          <span class="testimonial-role">Saambaa, CEO</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">PARKIT</span>
+            <span class="testimonial-theme">Investor materials</span>
+          </div>
+          <p class="testimonial-quote">I've recommended the Weekly Accounting System to all my friends running consumer brands. The Weekly Accounting Team has leveled up my understanding the dynamics in our business. The analysis from The System features prominently in my investor materials.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Steven Wilcox</span>
+            <span class="testimonial-role">PARKIT, Founder &amp; CEO</span>
+          </div>
         </div>
       </div>
 
-      {{/* 05 — Dustin Lemick */}}
-      <div class="testimonial-section testimonial-featured" id="dustin-lemick">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">BriteCo</span>
-          <span class="testimonial-theme">IFM &amp; Monday Morning Metrics</span>
-        </div>
-        <p class="testimonial-quote">The Integrated Financial Model and Monday Morning Metrics have transformed how we see our business. The team behind the Weekly Accounting System has been instrumental in our growth.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Dustin Lemick</span>
-          <span class="testimonial-role">BriteCo, Founder &amp; CEO</span>
-        </div>
-      </div>
-
-      {{/* 06 — David Fudge */}}
-      <div class="testimonial-section" id="david-fudge">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Aplós</span>
-          <span class="testimonial-theme">Inception to fundraising</span>
-        </div>
-        <p class="testimonial-quote">Weekly Accounting has grown with us since inception. They set up our Quickbooks, our financial model and have been instrumental in growing Aplos and helping us raise money.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">David Fudge</span>
-          <span class="testimonial-role">Aplós, Founder &amp; CEO</span>
-        </div>
-      </div>
-
-      {{/* 07 — Jake Schwartz */}}
-      <div class="testimonial-section" id="jake-schwartz">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Brave Health</span>
-          <span class="testimonial-theme">Repeatable system</span>
-        </div>
-        <p class="testimonial-quote">Monday Morning Metrics transformed how we managed and grew General Assembly. And then it happened again with BraveHealth.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Jake Schwartz</span>
-          <span class="testimonial-role">Brave Health, Founder &amp; Chairman</span>
-        </div>
-      </div>
-
-      {{/* 08 — Greg Moser */}}
+      {{/* 03 — Greg Moser */}}
       <div class="testimonial-section testimonial-featured" id="greg-moser">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">ShipCalm</span>
-          <span class="testimonial-theme">Visibility &amp; the IFM</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/greg-moser.jpg" alt="Greg Moser" loading="lazy">
         </div>
-        <p class="testimonial-quote">I love the Integrated Financial Model! It makes seeing the future, especially around the balance sheet so much easier. Now everyone in our company has a set of Weekly Metrics they are responsible for.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Greg Moser</span>
-          <span class="testimonial-role">ShipCalm, Founder &amp; CEO</span>
-        </div>
-      </div>
-
-      {{/* 09 — David Metzler */}}
-      <div class="testimonial-section" id="david-metzler">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Phoenix Strategy Group</span>
-          <span class="testimonial-theme">25 years in finance</span>
-        </div>
-        <p class="testimonial-quote">In 25 years working in finance, Weekly Accounting is the smartest way to see a business that I've ever seen. It forms the basis of how we work with all our clients at Phoenix Strategy Group.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">David Metzler</span>
-          <span class="testimonial-role">Phoenix Strategy Group, Co-Founder</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">ShipCalm</span>
+            <span class="testimonial-theme">Visibility &amp; the IFM</span>
+          </div>
+          <p class="testimonial-quote">I love the Integrated Financial Model! It makes seeing the future, especially around the balance sheet so much easier. Now everyone in our company has a set of Weekly Metrics they are responsible for.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Greg Moser</span>
+            <span class="testimonial-role">ShipCalm, Founder &amp; CEO</span>
+          </div>
         </div>
       </div>
 
-      {{/* 10 — Andy Brooks */}}
+      {{/* 04 — Andy Brooks */}}
       <div class="testimonial-section" id="andy-brooks">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Pylon Brands</span>
-          <span class="testimonial-theme">Multi-country visibility</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/andy-brooks.jpg" alt="Andy Brooks" loading="lazy">
         </div>
-        <p class="testimonial-quote">We finally found a system that could bring visibility to our entire Amazon business. Now we have all data from multiple countries and currencies all in one view that integrates key metrics, financials and unit economics. It has helped focus the management team and the board on the right things.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Andy Brooks</span>
-          <span class="testimonial-role">Pylon Brands, Co-Founder</span>
-        </div>
-      </div>
-
-      {{/* 11 — Sam Kaplan */}}
-      <div class="testimonial-section" id="sam-kaplan">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">SHK Financial / Weekly Accounting</span>
-          <span class="testimonial-theme">Fractional CFO growth</span>
-        </div>
-        <p class="testimonial-quote">After learning the Weekly Accounting System, I quadrupled my fractional CFO business. I love it and the team so much I joined the company.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Sam Kaplan</span>
-          <span class="testimonial-role">SHK Financial, Founder &amp; CEO · Weekly Accounting, Chief Accounting Officer</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Pylon Brands</span>
+            <span class="testimonial-theme">Multi-country visibility</span>
+          </div>
+          <p class="testimonial-quote">We finally found a system that could bring visibility to our entire Amazon business. Now we have all data from multiple countries and currencies all in one view that integrates key metrics, financials and unit economics. It has helped focus the management team and the board on the right things.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Andy Brooks</span>
+            <span class="testimonial-role">Pylon Brands, Co-Founder</span>
+          </div>
         </div>
       </div>
 
-      {{/* 12 — Katie Nicosia */}}
+      {{/* ═══════════════════════════════════════════════ */}}
+      {{/* OTHER CITIES FURTHER NORTH AND EAST             */}}
+      {{/* ═══════════════════════════════════════════════ */}}
+      <div class="section-heading" id="other-section">
+        <h2>Other Cities Further North and East</h2>
+        <p>Companies across the country who work with our system.</p>
+      </div>
+
+      {{/* 05 — Anna Lindow */}}
+      <div class="testimonial-section" id="anna-lindow">
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/anna-lindow.jpg" alt="Anna Lindow" loading="lazy">
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Brave Health</span>
+            <span class="testimonial-theme">System &amp; mindset</span>
+          </div>
+          <p class="testimonial-quote">The Weekly Accounting System is a thoughtful, rigorous framework any founder can benefit from, even those with significant experience working with data. It's not just a set of tools but a mindset shift. It helped us uncover insights that had been hiding in plain sight.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Anna Lindow</span>
+            <span class="testimonial-role">Brave Health, Founder &amp; CEO</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 06 — Matt Voigt */}}
+      <div class="testimonial-section" id="matt-voigt">
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/matt-voigt.jpg" alt="Matt Voigt" loading="lazy">
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Saambaa</span>
+            <span class="testimonial-theme">Problem solving</span>
+          </div>
+          <p class="testimonial-quote">I have a finance background, but John and his team bring more than numbers to the table — they bring a fresh perspective. The real differentiator with John and his team comes in the form of problem solving and solution building. That's why I've been a loyal customer for three years and successfully recommended his services to several peers.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Matt Voigt</span>
+            <span class="testimonial-role">Saambaa, CEO</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 07 — Dustin Lemick */}}
+      <div class="testimonial-section testimonial-featured" id="dustin-lemick">
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/dustin-lemick.jpg" alt="Dustin Lemick" loading="lazy">
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">BriteCo</span>
+            <span class="testimonial-theme">IFM &amp; Monday Morning Metrics</span>
+          </div>
+          <p class="testimonial-quote">The Integrated Financial Model and Monday Morning Metrics have transformed how we see our business. The team behind the Weekly Accounting System has been instrumental in our growth.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Dustin Lemick</span>
+            <span class="testimonial-role">BriteCo, Founder &amp; CEO</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 08 — David Fudge */}}
+      <div class="testimonial-section" id="david-fudge">
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/david-fudge.jpg" alt="David Fudge" loading="lazy">
+        </div>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Aplós</span>
+            <span class="testimonial-theme">Inception to fundraising</span>
+          </div>
+          <p class="testimonial-quote">Weekly Accounting has grown with us since inception. They set up our Quickbooks, our financial model and have been instrumental in growing Aplos and helping us raise money.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">David Fudge</span>
+            <span class="testimonial-role">Aplós, Founder &amp; CEO</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 09 — Jake Schwartz */}}
+      <div class="testimonial-section testimonial-no-photo" id="jake-schwartz">
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Brave Health</span>
+            <span class="testimonial-theme">Repeatable system</span>
+          </div>
+          <p class="testimonial-quote">Monday Morning Metrics transformed how we managed and grew General Assembly. And then it happened again with BraveHealth.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Jake Schwartz</span>
+            <span class="testimonial-role">Brave Health, Founder &amp; Chairman</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 10 — Katie Nicosia */}}
       <div class="testimonial-section testimonial-featured" id="katie-nicosia">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Recovery Works NW</span>
-          <span class="testimonial-theme">Data-driven operations</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/katie-nicosia.png" alt="Katie Nicosia" loading="lazy">
         </div>
-        <p class="testimonial-quote">The Weekly Accounting System has made looking at spreadsheets fun (yes, words I never envisioned saying). The team has patiently taught me how to approach data from a more executive mindset. Our Weekly Meetings have guided me towards more data-driven operational changes which have led to more profits all while respecting our organization's mission.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Katie Nicosia</span>
-          <span class="testimonial-role">Recovery Works NW, Co-Owner &amp; Detox Program Director</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Recovery Works NW</span>
+            <span class="testimonial-theme">Data-driven operations</span>
+          </div>
+          <p class="testimonial-quote">The Weekly Accounting System has made looking at spreadsheets fun (yes, words I never envisioned saying). The team has patiently taught me how to approach data from a more executive mindset. Our Weekly Meetings have guided me towards more data-driven operational changes which have led to more profits all while respecting our organization's mission.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Katie Nicosia</span>
+            <span class="testimonial-role">Recovery Works NW, Co-Owner &amp; Detox Program Director</span>
+          </div>
         </div>
       </div>
 
-      {{/* 13 — John McKusick */}}
+      {{/* 11 — John McKusick */}}
       <div class="testimonial-section" id="john-mckusick">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">NextLeft</span>
-          <span class="testimonial-theme">Clarity &amp; profitability</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/john-mckusick.jpg" alt="John McKusick" loading="lazy">
         </div>
-        <p class="testimonial-quote">We experience Weekly Accounting's power with financial clarity and it is an instrumental driver for our growth, cashflow, and profitability. The system and team are spectacular. Highly recommended for any team wanting to scale while being financially responsible.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">John McKusick</span>
-          <span class="testimonial-role">NextLeft, Founder &amp; CEO</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">NextLeft</span>
+            <span class="testimonial-theme">Clarity &amp; profitability</span>
+          </div>
+          <p class="testimonial-quote">We experience Weekly Accounting's power with financial clarity and it is an instrumental driver for our growth, cashflow, and profitability. The system and team are spectacular. Highly recommended for any team wanting to scale while being financially responsible.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">John McKusick</span>
+            <span class="testimonial-role">NextLeft, Founder &amp; CEO</span>
+          </div>
         </div>
       </div>
 
-      {{/* 14 — Bob Sherrif */}}
+      {{/* 12 — Bob Sherrif */}}
       <div class="testimonial-section" id="bob-sherrif">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Career Dash</span>
-          <span class="testimonial-theme">Granular understanding</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/bob-sherrif.jpg" alt="Bob Sherrif" loading="lazy">
         </div>
-        <p class="testimonial-quote">Weekly Accounting means I don't worry anymore about whether I understand my business or not. Understanding things at a granular level has made making decisions that much more effective. Not to mention the constant support of the team. Can't recommend this group more.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Bob Sherrif</span>
-          <span class="testimonial-role">Career Dash, Founder &amp; CEO</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Career Dash</span>
+            <span class="testimonial-theme">Granular understanding</span>
+          </div>
+          <p class="testimonial-quote">Weekly Accounting means I don't worry anymore about whether I understand my business or not. Understanding things at a granular level has made making decisions that much more effective. Not to mention the constant support of the team. Can't recommend this group more.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Bob Sherrif</span>
+            <span class="testimonial-role">Career Dash, Founder &amp; CEO</span>
+          </div>
         </div>
       </div>
 
-      {{/* 15 — Bryan Schwartz */}}
+      {{/* 13 — Bryan Schwartz */}}
       <div class="testimonial-section" id="bryan-schwartz">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Recovery Works NW</span>
-          <span class="testimonial-theme">Team education</span>
+        <div class="testimonial-photo">
+          <img src="/img/testimonials/bryan-schwartz.jpg" alt="Bryan Schwartz" loading="lazy">
         </div>
-        <p class="testimonial-quote">Weekly Accounting is much more than your typical accounting company. They take an innovative approach to combining real life data and KPIs with traditional financials to give you an individualized system from which to run your business. They take the time to learn your business as well as educate the key members of your team. With Weekly Accounting as part of our team, I have never been more confident in our ability to reach new heights!</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Bryan Schwartz</span>
-          <span class="testimonial-role">Recovery Works NW, CEO &amp; Co-Owner</span>
-        </div>
-      </div>
-
-      {{/* 16 — Jeff Garber */}}
-      <div class="testimonial-section" id="jeff-garber">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">Graber Custom Structures</span>
-          <span class="testimonial-theme">External advisor approval</span>
-        </div>
-        <p class="testimonial-quote">The tax guy liked what you're doing.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Jeff Garber</span>
-          <span class="testimonial-role">Graber Custom Structures</span>
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Recovery Works NW</span>
+            <span class="testimonial-theme">Team education</span>
+          </div>
+          <p class="testimonial-quote">Weekly Accounting is much more than your typical accounting company. They take an innovative approach to combining real life data and KPIs with traditional financials to give you an individualized system from which to run your business. They take the time to learn your business as well as educate the key members of your team. With Weekly Accounting as part of our team, I have never been more confident in our ability to reach new heights!</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Bryan Schwartz</span>
+            <span class="testimonial-role">Recovery Works NW, CEO &amp; Co-Owner</span>
+          </div>
         </div>
       </div>
 
-      {{/* 17 — imgix Founder */}}
-      <div class="testimonial-section testimonial-featured" id="imgix-founder">
-        <div class="testimonial-meta">
-          <span class="testimonial-company">imgix</span>
-          <span class="testimonial-theme">Efficiency &amp; cost</span>
+      {{/* 14 — Jeff Garber */}}
+      <div class="testimonial-section testimonial-no-photo" id="jeff-garber">
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">Graber Custom Structures</span>
+            <span class="testimonial-theme">External advisor approval</span>
+          </div>
+          <p class="testimonial-quote">The tax guy liked what you're doing.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Jeff Garber</span>
+            <span class="testimonial-role">Graber Custom Structures</span>
+          </div>
         </div>
-        <p class="testimonial-quote">I tout this internally all the time — we got rid of our very expensive finance and accounting team, and everything got better and faster.</p>
-        <div class="testimonial-attribution">
-          <span class="testimonial-name">Founder</span>
-          <span class="testimonial-role">imgix</span>
+      </div>
+
+      {{/* 15 — imgix Founder */}}
+      <div class="testimonial-section testimonial-featured testimonial-no-photo" id="imgix-founder">
+        <div class="testimonial-body">
+          <div class="testimonial-meta">
+            <span class="testimonial-company">imgix</span>
+            <span class="testimonial-theme">Efficiency &amp; cost</span>
+          </div>
+          <p class="testimonial-quote">I tout this internally all the time — we got rid of our very expensive finance and accounting team, and everything got better and faster.</p>
+          <div class="testimonial-attribution">
+            <span class="testimonial-name">Founder</span>
+            <span class="testimonial-role">imgix</span>
+          </div>
         </div>
       </div>
 
@@ -596,19 +695,19 @@
   {{/* ── Active TOC Tracking Script ── */}}
   <script>
     (function () {
-      const sections = document.querySelectorAll('.testimonial-section[id]');
-      const links = document.querySelectorAll('.toc-list a');
+      var sections = document.querySelectorAll('.testimonial-section[id], .section-heading[id]');
+      var links = document.querySelectorAll('.toc-list a');
       if (!sections.length || !links.length) return;
 
-      const linkMap = {};
+      var linkMap = {};
       links.forEach(function (a) { linkMap[a.getAttribute('href').slice(1)] = a; });
 
-      let ticking = false;
+      var ticking = false;
       function onScroll() {
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(function () {
-          let current = '';
+          var current = '';
           sections.forEach(function (s) {
             if (s.getBoundingClientRect().top <= 160) current = s.id;
           });
