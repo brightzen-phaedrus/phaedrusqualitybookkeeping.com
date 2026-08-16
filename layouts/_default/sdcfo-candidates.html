@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071726;
+      --teal-300: #39d0c6;
+      --sheet-green: #0b5d3b;
+      --sheet-green-mid: #188038;
+      --band-green: #d9ead3;
+      --band-green-text: #0b5d3b;
+      --grid-line: #d7dce0;
+      --col-header-bg: #f1f3f4;
+      --col-header-text: #5f6368;
+      --cell-text: #202124;
+      --muted: #5f6368;
+      --linkedin: #0A66C2;
+      --accepted: #e6f4ea;
+      --accepted-text: #137333;
+      --pending-text: #b06000;
+      --pending-bg: #fef7e0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f8f9fa; color: var(--cell-text); font-family: "Roboto", Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    /* SDCFO site header */
+    .site-header { background: rgba(7,23,38,0.97); border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .header-inner { max-width: min(1400px, calc(100vw - 40px)); margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+    .header-brand { color: #fff; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-note { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+    /* Sheets chrome */
+    .sheet-chrome { max-width: min(1400px, calc(100vw - 24px)); margin: 18px auto 0; background: #fff; border: 1px solid var(--grid-line); border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 8px 30px rgba(7,23,38,0.08); }
+
+    .sheet-titlebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px; }
+    .sheet-icon { width: 26px; height: 34px; border-radius: 4px; background: var(--sheet-green-mid); position: relative; flex-shrink: 0; }
+    .sheet-icon::after { content: ""; position: absolute; inset: 9px 5px 6px; background:
+      linear-gradient(#fff, #fff) 0 0/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 6px/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 12px/100% 2px no-repeat; opacity: 0.95; }
+    .sheet-name { font-size: 17px; font-weight: 500; }
+    .sheet-menus { display: flex; gap: 14px; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+    .sheet-updated { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+    .formula-bar { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); padding: 6px 16px; font-size: 13px; }
+    .fx { color: var(--muted); font-style: italic; font-family: "Roboto Mono", monospace; font-size: 12px; }
+    .formula-box { flex: 1; color: var(--muted); font-family: "Roboto Mono", monospace; font-size: 12px; border-left: 1px solid var(--grid-line); padding-left: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Grid */
+    .grid-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 1180px; font-size: 13px; }
+    th, td { border: 1px solid var(--grid-line); padding: 7px 10px; vertical-align: top; text-align: left; }
+
+    /* column letters row */
+    .col-letters th { background: var(--col-header-bg); color: var(--col-header-text); font-weight: 500; font-size: 11px; text-align: center; padding: 3px 4px; border-color: #c9ced3; }
+    .row-num { background: var(--col-header-bg); color: var(--col-header-text); font-size: 11px; text-align: center; width: 34px; min-width: 34px; font-weight: 500; border-color: #c9ced3 !important; vertical-align: middle; }
+
+    /* main header band — IFM style */
+    .head-band th { background: var(--sheet-green); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; border-color: #0a5134; }
+
+    /* stage section band */
+    .stage-band td { background: var(--band-green); color: var(--band-green-text); font-weight: 700; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .stage-band .stage-count { font-weight: 500; text-transform: none; letter-spacing: 0; color: #3c6e50; margin-left: 8px; }
+
+    .name-cell { white-space: nowrap; font-weight: 500; }
+    .li-link { display: inline-flex; align-items: center; gap: 7px; }
+    .li-badge { width: 16px; height: 16px; border-radius: 3px; background: var(--linkedin); color: #fff; display: inline-grid; place-items: center; font: 700 10px/1 Arial, sans-serif; flex-shrink: 0; }
+    .li-link:hover { text-decoration: underline; text-decoration-color: var(--linkedin); }
+
+    .role-cell { min-width: 170px; }
+    .co-cell { white-space: nowrap; }
+    .bg-cell { min-width: 320px; color: #3c4043; line-height: 1.45; }
+    .cohort-cell { white-space: nowrap; font-size: 12px; color: var(--muted); }
+    .date-cell { font-family: "Roboto Mono", monospace; font-size: 12px; white-space: nowrap; text-align: right; }
+
+    .status-pill { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 11.5px; font-weight: 500; white-space: nowrap; }
+    .st-pending { background: var(--pending-bg); color: var(--pending-text); }
+    .st-accepted { background: var(--accepted); color: var(--accepted-text); }
+    .next-cell { min-width: 170px; color: #3c4043; }
+
+    .empty-row td:not(.row-num) { color: #9aa0a6; font-style: italic; background: #fbfbfb; }
+
+    tbody tr:hover td:not(.row-num) { background: #f6fbf8; }
+    .stage-band:hover td { background: var(--band-green) !important; }
+
+    /* sheet tabs */
+    .sheet-tabs { display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; }
+    .sheet-tab { padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; }
+    .sheet-tab.active { background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }
+
+    .page-footer { max-width: min(1400px, calc(100vw - 24px)); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .page-footer a { color: var(--sheet-green-mid); font-weight: 500; }
+
+    @media (max-width: 700px) {
+      .sheet-menus { display: none; }
+      .header-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="/sdcfo/">SDCFO<span>.Group</span> — Draft Pages</a>
+      <span class="header-note">Internal · Candidate pipeline</span>
+    </div>
+  </header>
+
+  <div class="sheet-chrome">
+
+    <div class="sheet-titlebar">
+      <div class="sheet-icon" aria-hidden="true"></div>
+      <div>
+        <div class="sheet-name">SDCFO Candidate Pipeline</div>
+        <div class="sheet-menus"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Data</span><span>Help</span></div>
+      </div>
+      <span class="sheet-updated">Last updated 2026-08-16 · Maintained by Phaedrus</span>
+    </div>
+
+    <div class="formula-bar">
+      <span class="fx">fx</span>
+      <span class="formula-box">=VLOOKUP(Candidate, Pipeline_Src, MATCH("Stage", Header, 0), FALSE)</span>
+    </div>
+
+    <div class="grid-wrap">
+      <table>
+        <thead>
+          <tr class="col-letters">
+            <th class="row-num"></th>
+            <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th>
+          </tr>
+          <tr class="head-band">
+            <td class="row-num">1</td>
+            <th>Candidate</th>
+            <th>Role</th>
+            <th>Company</th>
+            <th>Background</th>
+            <th>Cohort</th>
+            <th>Invite Sent</th>
+            <th>Status / Next Step</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{/* ═══ MEETING SCHEDULED ═══ */}}
+          <tr class="stage-band">
+            <td class="row-num">2</td>
+            <td colspan="7">Meeting Scheduled<span class="stage-count">— 0</span></td>
+          </tr>
+          <tr class="empty-row">
+            <td class="row-num">3</td>
+            <td colspan="7">None yet — candidates move here when a call is on the calendar.</td>
+          </tr>
+
+          {{/* ═══ KEEP WARM ═══ */}}
+          <tr class="stage-band">
+            <td class="row-num">4</td>
+            <td colspan="7">Keep Warm<span class="stage-count">— 0</span></td>
+          </tr>
+          <tr class="empty-row">
+            <td class="row-num">5</td>
+            <td colspan="7">None yet — engaged candidates who aren't ready to meet land here.</td>
+          </tr>
+
+          {{/* ═══ ENGAGED ═══ */}}
+          <tr class="stage-band">
+            <td class="row-num">6</td>
+            <td colspan="7">Engaged<span class="stage-count">— 1</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">7</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/lynn-he/" target="_blank" rel="noopener"><span class="li-badge">in</span>Linghui He</a></td>
+            <td class="role-cell">Supply Chain Analyst</td>
+            <td class="co-cell">Hyundai Mobis</td>
+            <td class="bg-cell">UCSD B.S. Business Economics + Master of Professional Accountancy. SQL confirmed (passed LinkedIn assessment). Younger — mid-20s.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-accepted">Accepted 08/16</span> Awaiting reply to note — nudge if quiet by 08/20.</td>
+          </tr>
+
+          {{/* ═══ COLD OUTREACH ═══ */}}
+          <tr class="stage-band">
+            <td class="row-num">8</td>
+            <td colspan="7">Cold Outreach<span class="stage-count">— 15 invites pending</span></td>
+          </tr>
+
+          <tr>
+            <td class="row-num">9</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/evan-vanderbyl/" target="_blank" rel="noopener"><span class="li-badge">in</span>Evan Vanderbyl</a></td>
+            <td class="role-cell">Senior FP&amp;A Analyst</td>
+            <td class="co-cell">AEVEX Aerospace</td>
+            <td class="bg-cell">MBA from Point Loma Nazarene, B.S. Finance &amp; Economics. ~31. Strongest fit on age + profile in the FP&amp;A batch.</td>
+            <td class="cohort-cell">FP&amp;A 28–32</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">10</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/tyler-meyers-cpa/" target="_blank" rel="noopener"><span class="li-badge">in</span>Tyler Meyers, CPA</a></td>
+            <td class="role-cell">Senior FP&amp;A Analyst</td>
+            <td class="co-cell">DDC Solutions</td>
+            <td class="bg-cell">UCSB Economics &amp; Accounting '16, CPA. SaaS, manufacturing, and investment-sector FP&amp;A — modeling, automation, performance optimization. ~32.</td>
+            <td class="cohort-cell">FP&amp;A 28–32</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Note may not have attached.</td>
+          </tr>
+          <tr>
+            <td class="row-num">11</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/andrew-davidson-b55663159/" target="_blank" rel="noopener"><span class="li-badge">in</span>Andrew Davidson</a></td>
+            <td class="role-cell">Senior FP&amp;A Analyst</td>
+            <td class="co-cell">Qdoba (corporate)</td>
+            <td class="bg-cell">B.S. Finance '15 (Eastern Illinois). Financial services background, statistical data analysis. ~32–33.</td>
+            <td class="cohort-cell">FP&amp;A 28–32</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">12</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/liammakagiansar/" target="_blank" rel="noopener"><span class="li-badge">in</span>Liam Makagiansar</a></td>
+            <td class="role-cell">Senior Analyst, FP&amp;A</td>
+            <td class="co-cell">GC AI</td>
+            <td class="bg-cell">USD Knauss B.B.A. Finance, summa cum laude. FP&amp;A at a legal-AI startup — startup-native. Likely late 20s.</td>
+            <td class="cohort-cell">FP&amp;A 28–32</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">13</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/u-saha/" target="_blank" rel="noopener"><span class="li-badge">in</span>Udayan Saha</a></td>
+            <td class="role-cell">Senior FP&amp;A Analyst</td>
+            <td class="co-cell">General Atomics Aero</td>
+            <td class="bg-cell">USD MBA (Corporate Finance), UCSD B.S. Biochem. Forecasting, reporting, financial strategy — aerospace + biotech. ~33–34, slightly over band.</td>
+            <td class="cohort-cell">FP&amp;A 28–32</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+
+          <tr>
+            <td class="row-num">14</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/elsayedrana/" target="_blank" rel="noopener"><span class="li-badge">in</span>Rana ElSayed</a></td>
+            <td class="role-cell">Financial &amp; Data Analyst</td>
+            <td class="co-cell">Axos Bank</td>
+            <td class="bg-cell">M.A. Economics, Sorbonne — ranked 2nd in class. SQL, Python, Stata, Power BI. Strongest econ+SQL fit on paper.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">15</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/rameh-mehrjou/" target="_blank" rel="noopener"><span class="li-badge">in</span>Rameh Mehrjou</a></td>
+            <td class="role-cell">Data &amp; Financial Analyst</td>
+            <td class="co-cell">Earth Economics</td>
+            <td class="bg-cell">PhD Economics (Concordia) — microeconometrics, labor econ. SQL confirmed. Likely mid-30s; deepest quant background in the pool.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">16</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/sophie-wang-zr/" target="_blank" rel="noopener"><span class="li-badge">in</span>Sophie Wang</a></td>
+            <td class="role-cell">Data Analyst</td>
+            <td class="co-cell">—</td>
+            <td class="bg-cell">UCSD double major Data Science + Economics, 3.9 GPA. SQL, Python, Tableau, ETL, predictive modeling. New grad — youngest in pool.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">17</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/josee-farmer-26987019a/" target="_blank" rel="noopener"><span class="li-badge">in</span>Josee Farmer</a></td>
+            <td class="role-cell">Senior Economic Analyst</td>
+            <td class="co-cell">Experian</td>
+            <td class="bg-cell">B.A. Economics (Pepperdine) w/ CS + applied math minors; M.S. Applied Economics in progress at Johns Hopkins. SQL not listed but near-certain.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">18</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/dan-ciraolo/" target="_blank" rel="noopener"><span class="li-badge">in</span>Dan Ciraolo</a></td>
+            <td class="role-cell">Business Data Analyst</td>
+            <td class="co-cell">Intuit</td>
+            <td class="bg-cell">B.S. Mathematics (Maryland). Strong SQL, Stata, SAS, statistical modeling. Math not econ — near-miss included at John's call. ~34.</td>
+            <td class="cohort-cell">Econ + SQL</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span></td>
+          </tr>
+
+          <tr>
+            <td class="row-num">19</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/maryann-berron-4a1ab23/" target="_blank" rel="noopener"><span class="li-badge">in</span>Maryann Berron</a></td>
+            <td class="role-cell">VP Finance / Head of Finance &amp; HR</td>
+            <td class="co-cell">Blooma</td>
+            <td class="bg-cell">20+ years in venture-backed startups. Runs all finance, HR, compliance, ops at a CRE fintech SaaS. Best pure "head of finance at a startup" fit.</td>
+            <td class="cohort-cell">Finance Leaders</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Peer note</td>
+          </tr>
+          <tr>
+            <td class="row-num">20</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/agatha-martindale-cpa-5530156/" target="_blank" rel="noopener"><span class="li-badge">in</span>Agatha Martindale, CPA</a></td>
+            <td class="role-cell">Chief Financial Officer</td>
+            <td class="co-cell">Clockwork Bio</td>
+            <td class="bg-cell">Recently hired CFO at biotech startup. Perplexity AI Business Fellow, UCSF Innovation Ventures advisor — AI-forward finance leader.</td>
+            <td class="cohort-cell">Finance Leaders</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Peer note</td>
+          </tr>
+          <tr>
+            <td class="row-num">21</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/eliciaritter/" target="_blank" rel="noopener"><span class="li-badge">in</span>Elicia Ritter</a></td>
+            <td class="role-cell">Head of Finance</td>
+            <td class="co-cell">Wildfire Systems</td>
+            <td class="bg-cell">Carlsbad fintech/rewards-platform startup. Background spans small private companies to large public ones with international operations.</td>
+            <td class="cohort-cell">Finance Leaders</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Peer note</td>
+          </tr>
+          <tr>
+            <td class="row-num">22</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/criscalsada/" target="_blank" rel="noopener"><span class="li-badge">in</span>Cris Calsada</a></td>
+            <td class="role-cell">Chief Financial Officer</td>
+            <td class="co-cell">Regulus Therapeutics</td>
+            <td class="bg-cell">Clinical-stage biotech — technically public but small-cap, startup-scale. Mutuals include Killu Sanborn.</td>
+            <td class="cohort-cell">Finance Leaders</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Peer note</td>
+          </tr>
+          <tr>
+            <td class="row-num">23</td>
+            <td class="name-cell"><a class="li-link" href="https://www.linkedin.com/in/judy-zhang-8064a21/" target="_blank" rel="noopener"><span class="li-badge">in</span>Judy Zhang</a></td>
+            <td class="role-cell">VP Finance</td>
+            <td class="co-cell">Nexthink</td>
+            <td class="bg-cell">Vista-owned growth SaaS — later-stage, "startup" is a stretch, but senior finance at a growth tech company.</td>
+            <td class="cohort-cell">Finance Leaders</td>
+            <td class="date-cell">08/16/26</td>
+            <td class="next-cell"><span class="status-pill st-pending">Pending</span> Peer note</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sheet-tabs">
+      <span class="sheet-tab active">Pipeline</span>
+      <span class="sheet-tab">Info_Src</span>
+      <span class="sheet-tab">Outreach_Log</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Stages: Cold Outreach → Engaged → Meeting Scheduled / Keep Warm. Invites sent from John's LinkedIn with personal notes; daily inbox scan runs 8:00 AM PT.</span>
+    <a href="/sdcfo/">← All SDCFO draft pages</a>
+  </div>
+
+</body>
+</html>
