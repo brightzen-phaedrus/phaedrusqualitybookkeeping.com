@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Params.summary | default .Description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071726;
+      --navy-900: #0b1f33;
+      --navy-800: #12324a;
+      --blue-700: #146c94;
+      --teal-500: #2a9d98;
+      --teal-300: #39d0c6;
+      --mist-100: #eaf4f6;
+      --sand-100: #f6f1e8;
+      --cloud-50: #f8fbfc;
+      --slate-600: #526578;
+      --slate-300: #b7c3cc;
+      --white: #ffffff;
+      --border: rgba(11, 31, 51, 0.14);
+      --shadow: 0 28px 80px rgba(7, 23, 38, 0.16);
+      --shell: min(1180px, calc(100vw - 40px));
+      --toc-width: 300px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      color: var(--navy-900); background: var(--cloud-50);
+      font-family: "DM Sans", sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: "Manrope", sans-serif; letter-spacing: -0.045em; font-weight: 600; }
+
+    /* Header */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+      background: rgba(7, 23, 38, 0.96); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .header-inner {
+      max-width: var(--shell); margin: 0 auto;
+      height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+    }
+    .header-brand { color: var(--white); font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-nav { display: flex; align-items: center; gap: 28px; }
+    .header-nav a { color: rgba(255,255,255,0.72); font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .header-nav a:hover { color: var(--white); }
+    .header-cta {
+      display: inline-flex; min-height: 40px; align-items: center;
+      padding: 0 18px; border-radius: 6px; font-weight: 700; font-size: 13px;
+      background: var(--teal-500); color: var(--navy-950); transition: background 0.2s, transform 0.2s;
+    }
+    .header-cta:hover { background: var(--teal-300); transform: translateY(-1px); }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 480px; overflow: hidden;
+      color: var(--white); padding: 150px 0 80px;
+      background: radial-gradient(circle at 84% 18%, rgba(20,108,148,0.35), transparent 30%), var(--navy-950);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 120px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.12)); pointer-events: none;
+    }
+    .hero-orbit { position: absolute; border: 1px solid rgba(114,209,202,0.13); border-radius: 50%; }
+    .hero-orbit-one { width: 620px; height: 620px; right: -250px; top: -160px; }
+    .hero-orbit-two { width: 420px; height: 420px; right: -80px; top: 40px; }
+    .hero-inner { position: relative; z-index: 2; max-width: var(--shell); margin: 0 auto; padding: 0 20px; }
+    .eyebrow { margin: 0 0 20px; color: var(--teal-300); text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; font-weight: 700; }
+    .hero h1 { max-width: 800px; font-size: clamp(42px, 5vw, 68px); line-height: 1.02; }
+    .hero-lede { max-width: 640px; margin: 24px 0 0; color: rgba(255,255,255,0.68); font-size: 19px; line-height: 1.55; }
+
+    /* Stats band */
+    .stats-band {
+      padding: 40px 0; background: var(--white); border-bottom: 1px solid var(--border);
+    }
+    .stats-grid {
+      max-width: var(--shell); margin: 0 auto; padding: 0 20px;
+      display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; flex: 1; min-width: 120px; }
+    .stat-number {
+      display: block; font: 600 clamp(32px, 4vw, 48px)/1 "Manrope", sans-serif;
+      letter-spacing: -0.04em; color: var(--navy-900);
+    }
+    .stat-label { display: block; margin-top: 8px; color: var(--slate-600); font-size: 13px; font-weight: 500; }
+
+    /* Layout */
+    .page-body {
+      max-width: var(--shell); margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: var(--toc-width) 1fr; gap: 60px;
+      padding-top: 60px; padding-bottom: 120px;
+    }
+
+    /* TOC */
+    .toc-sidebar {
+      position: sticky; top: 92px; align-self: start;
+      max-height: calc(100vh - 112px); overflow-y: auto;
+      padding: 28px 0; border-right: 1px solid var(--border);
+    }
+    .toc-sidebar::-webkit-scrollbar { width: 3px; }
+    .toc-sidebar::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: 3px; }
+    .toc-title {
+      margin: 0 0 20px; padding: 0 0 14px; border-bottom: 1px solid var(--border);
+      color: var(--navy-800); font-family: "Manrope", sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .toc-group-label {
+      margin: 18px 0 6px; padding: 0 0 0 14px;
+      color: var(--teal-500); font-family: "Manrope", sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .toc-group-label:first-child { margin-top: 0; }
+    .toc-list { list-style: none; }
+    .toc-list a {
+      display: flex; align-items: baseline; gap: 10px;
+      padding: 7px 16px 7px 0; font-size: 13px; line-height: 1.35;
+      color: var(--slate-600); transition: color 0.2s, border-color 0.2s;
+      border-left: 2px solid transparent; padding-left: 14px;
+    }
+    .toc-list a:hover { color: var(--navy-900); }
+    .toc-list a.active { color: var(--navy-900); font-weight: 600; border-left-color: var(--teal-500); }
+    .toc-number {
+      flex-shrink: 0; width: 22px; color: var(--teal-500);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+    }
+    .toc-section-title { font-weight: 500; }
+
+    /* Content */
+    .experience-content { min-width: 0; }
+
+    .section-heading { padding: 48px 0 8px; border-bottom: 1px solid var(--border); }
+    .section-heading:first-child { padding-top: 0; }
+    .section-heading h2 { font-size: clamp(28px, 3.5vw, 42px); line-height: 1.08; }
+    .section-heading p { margin: 10px 0 0; color: var(--slate-600); font-size: 16px; line-height: 1.55; }
+
+    /* Experience entry */
+    .exp-section {
+      padding: 40px 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 80px 1fr; gap: 28px; align-items: start;
+    }
+    .exp-section:last-child { border-bottom: none; }
+
+    .exp-logo {
+      width: 80px; height: 80px; border-radius: 14px; overflow: hidden;
+      background: var(--white); border: 1px solid var(--border);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .exp-logo img { width: 60px; height: 60px; object-fit: contain; display: block; }
+    .exp-logo-initial {
+      width: 80px; height: 80px; border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--navy-900); color: var(--teal-300);
+      font: 700 28px/1 "Manrope", sans-serif; letter-spacing: -0.03em;
+    }
+
+    .exp-body { min-width: 0; }
+
+    .exp-meta {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      margin-bottom: 20px;
+    }
+    .exp-company {
+      color: var(--blue-700); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .exp-theme {
+      color: var(--slate-600); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    .exp-headline {
+      max-width: 740px; margin: 0 0 16px;
+      font: 500 clamp(20px, 2.5vw, 28px)/1.32 "Manrope", sans-serif;
+      letter-spacing: -0.03em; color: var(--navy-900);
+    }
+
+    .exp-description {
+      max-width: 680px; margin: 0 0 20px;
+      color: var(--slate-600); font-size: 15px; line-height: 1.65;
+    }
+
+    .exp-metric {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: var(--mist-100); border-radius: 6px;
+      font: 600 14px/1 "Manrope", sans-serif; color: var(--navy-900);
+    }
+    .exp-metric-label { color: var(--slate-600); font-weight: 500; font-size: 12px; }
+
+    .exp-role { margin-top: 16px; }
+    .exp-role-title { font: 600 14px/1.3 "Manrope", sans-serif; color: var(--navy-900); }
+    .exp-role-detail { color: var(--slate-600); font-size: 13px; }
+
+    /* Featured */
+    .exp-featured {
+      padding: 40px 44px; margin: 0 -44px;
+      color: var(--white); background: var(--navy-900); border-bottom: none;
+    }
+    .exp-featured + .exp-section { border-top: none; }
+    .exp-featured .exp-company { color: var(--teal-300); }
+    .exp-featured .exp-theme { color: rgba(255,255,255,0.5); }
+    .exp-featured .exp-headline { color: var(--white); }
+    .exp-featured .exp-description { color: rgba(255,255,255,0.6); }
+    .exp-featured .exp-logo { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14); }
+    .exp-featured .exp-metric { background: rgba(255,255,255,0.1); color: var(--white); }
+    .exp-featured .exp-metric-label { color: rgba(255,255,255,0.55); }
+    .exp-featured .exp-role-title { color: var(--white); }
+    .exp-featured .exp-role-detail { color: rgba(255,255,255,0.55); }
+
+    /* CTA */
+    .cta-band { padding: 100px 0; text-align: center; background: var(--white); border-top: 1px solid var(--border); }
+    .cta-band .eyebrow { color: var(--blue-700); margin-bottom: 16px; }
+    .cta-band h2 { max-width: 680px; margin: 0 auto 20px; font-size: clamp(32px, 4vw, 52px); line-height: 1.06; }
+    .cta-band p { max-width: 520px; margin: 0 auto 36px; color: var(--slate-600); font-size: 17px; line-height: 1.6; }
+    .button-primary {
+      display: inline-flex; min-height: 52px; align-items: center;
+      padding: 0 28px; border-radius: 6px; font-weight: 700; font-size: 15px;
+      background: var(--teal-500); color: var(--navy-950);
+      box-shadow: 0 12px 30px rgba(22,166,161,0.2); transition: background 0.2s, transform 0.2s;
+    }
+    .button-primary:hover { background: var(--teal-300); transform: translateY(-2px); }
+    .cta-reassurance {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 9px 20px; margin-top: 16px; color: var(--slate-600); font-size: 11px;
+    }
+    .cta-reassurance span { display: flex; align-items: center; gap: 20px; }
+    .cta-reassurance span:not(:last-child)::after { content: "·"; color: var(--teal-500); }
+
+    /* Footer */
+    .site-footer { padding: 40px 0; text-align: center; background: var(--navy-950); color: rgba(255,255,255,0.45); font-size: 12px; }
+    .footer-inner { max-width: var(--shell); margin: 0 auto; padding: 0 20px; }
+    .footer-inner a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .footer-inner a:hover { color: var(--white); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 10px; }
+    .footer-brand { margin-bottom: 14px; font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.7); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .page-body { grid-template-columns: 1fr; gap: 0; }
+      .toc-sidebar {
+        position: relative; top: 0; max-height: none; overflow: visible;
+        border-right: none; border-bottom: 1px solid var(--border);
+        padding: 24px 0; margin-bottom: 32px;
+      }
+      .exp-featured { margin: 0 -20px; padding: 32px 20px; }
+      .header-nav .nav-links { display: none; }
+      .stats-grid { justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .hero { min-height: 340px; padding: 120px 0 50px; }
+      .hero h1 { font-size: 36px; }
+      .exp-section { grid-template-columns: 60px 1fr; gap: 18px; }
+      .exp-logo, .exp-logo-initial { width: 60px; height: 60px; }
+      .exp-logo img { width: 44px; height: 44px; }
+      .exp-logo-initial { font-size: 22px; }
+      .exp-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="https://sdcfogroup.com">SDCFO<span>.Group</span></a>
+      <nav class="header-nav">
+        <span class="nav-links">
+          <a href="https://sdcfogroup.com/#services">Services</a>
+          <a href="https://sdcfogroup.com/#unit-economics">Unit Economics</a>
+          <a href="https://sdcfogroup.com/john-zdanowski">Meet John</a>
+        </span>
+        <a class="header-cta" href="https://sdcfogroup.com/start-conversation#conversation">Start Conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+    <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow">Selected experience</p>
+      <h1>From early-stage financing to IPOs and acquisitions.</h1>
+      <p class="hero-lede">Twenty-five years helping founders prepare, raise, grow, and sell. As a co-founder, founding investor, board member, and fractional CFO for venture-backed startups and growth companies.</p>
+    </div>
+  </section>
+
+  <section class="stats-band">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number">100+</span>
+        <span class="stat-label">Private equity &amp; debt financings</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Dozens</span>
+        <span class="stat-label">Venture capital rounds</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">2</span>
+        <span class="stat-label">IPOs</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">16</span>
+        <span class="stat-label">Acquisitions</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">7</span>
+        <span class="stat-label">Secondary stock sales</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-body">
+
+    <nav class="toc-sidebar" aria-label="Experience outline">
+      <div class="toc-title">Outline</div>
+
+      <div class="toc-group-label">Company Experience</div>
+      <ol class="toc-list">
+        <li><a href="#general-assembly"><span class="toc-number">01</span><span class="toc-section-title">General Assembly</span></a></li>
+        <li><a href="#market-leader"><span class="toc-number">02</span><span class="toc-section-title">Market Leader</span></a></li>
+        <li><a href="#second-life"><span class="toc-number">03</span><span class="toc-section-title">Second Life / Linden Lab</span></a></li>
+        <li><a href="#assembled-brands"><span class="toc-number">04</span><span class="toc-section-title">Assembled Brands</span></a></li>
+        <li><a href="#commissions-inc"><span class="toc-number">05</span><span class="toc-section-title">Commissions Inc</span></a></li>
+        <li><a href="#robin-healthcare"><span class="toc-number">06</span><span class="toc-section-title">Robin Healthcare</span></a></li>
+        <li><a href="#shipcalm"><span class="toc-number">07</span><span class="toc-section-title">ShipCalm</span></a></li>
+      </ol>
+
+      <div class="toc-group-label">Founded &amp; Co-Founded</div>
+      <ol class="toc-list" start="8">
+        <li><a href="#sdcfo-group"><span class="toc-number">08</span><span class="toc-section-title">SDCFO Group</span></a></li>
+        <li><a href="#weekly-accounting"><span class="toc-number">09</span><span class="toc-section-title">Weekly Accounting</span></a></li>
+        <li><a href="#psg"><span class="toc-number">10</span><span class="toc-section-title">Phoenix Strategy Group</span></a></li>
+        <li><a href="#brightzen"><span class="toc-number">11</span><span class="toc-section-title">BrightZen</span></a></li>
+      </ol>
+
+      <div class="toc-group-label">Education</div>
+      <ol class="toc-list" start="12">
+        <li><a href="#hbs"><span class="toc-number">12</span><span class="toc-section-title">Harvard Business School</span></a></li>
+        <li><a href="#ge"><span class="toc-number">13</span><span class="toc-section-title">General Electric</span></a></li>
+      </ol>
+    </nav>
+
+    <div class="experience-content">
+
+      {{/* ═══ COMPANY EXPERIENCE ═══ */}}
+      <div class="section-heading" id="company-section">
+        <h2>Company Experience</h2>
+        <p>Selected engagements across venture capital, private equity, M&amp;A, operating finance, and company exits.</p>
+      </div>
+
+      {{/* 01 — General Assembly */}}
+      <div class="exp-section exp-featured" id="general-assembly">
+        <div class="exp-logo">
+          <img src="/img/logos/general-assembly.png" alt="General Assembly logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">General Assembly</span>
+            <span class="exp-theme">Growth &amp; acquisition</span>
+          </div>
+          <p class="exp-headline">Supported the company on its path to a $413 million acquisition.</p>
+          <p class="exp-description">General Assembly grew from a startup into a global education company. John provided financial leadership through the company's rapid scaling phase, building the financial infrastructure and operating metrics that supported the growth story through to exit.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> $413M acquisition</div>
+        </div>
+      </div>
+
+      {{/* 02 — Market Leader */}}
+      <div class="exp-section" id="market-leader">
+        <div class="exp-logo">
+          <img src="/img/logos/market-leader.png" alt="Market Leader logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Market Leader</span>
+            <span class="exp-theme">IPO &amp; acquisition</span>
+          </div>
+          <p class="exp-headline">Experience spanning the company's public offering and later $355 million acquisition.</p>
+          <p class="exp-description">From taking the company public to navigating the complexities of operating as a public company, through to its ultimate acquisition — a full lifecycle of financial leadership.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> IPO + $355M acquisition</div>
+        </div>
+      </div>
+
+      {{/* 03 — Second Life / Linden Lab */}}
+      <div class="exp-section" id="second-life">
+        <div class="exp-logo">
+          <img src="/img/logos/linden-lab.png" alt="Linden Lab logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Second Life / Linden Lab</span>
+            <span class="exp-theme">Revenue &amp; profitability</span>
+          </div>
+          <p class="exp-headline">Helped grow revenue eightfold while moving the business to profitability.</p>
+          <p class="exp-description">Linden Lab's virtual world platform was a pioneering technology company with a complex economic model. John built the financial systems that connected user economics, virtual currency flows, and operating metrics into a clear management view — driving an 8× revenue increase and the transition to sustained profitability.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> 8× revenue · Profitable</div>
+        </div>
+      </div>
+
+      {{/* 04 — Assembled Brands */}}
+      <div class="exp-section exp-featured" id="assembled-brands">
+        <div class="exp-logo">
+          <img src="/img/logos/assembled-brands.png" alt="Assembled Brands logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Assembled Brands</span>
+            <span class="exp-theme">Capital</span>
+          </div>
+          <p class="exp-headline">Helped the company raise $100 million.</p>
+          <p class="exp-description">Assembled Brands provides working capital to consumer brands. John provided the financial modeling, reporting infrastructure, and investor-grade materials that supported the company's capital raising across multiple rounds.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> $100M raised</div>
+        </div>
+      </div>
+
+      {{/* 05 — Commissions Inc */}}
+      <div class="exp-section" id="commissions-inc">
+        <div class="exp-logo">
+          <img src="/img/logos/commissions-inc.png" alt="Commissions Inc logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Commissions Inc</span>
+            <span class="exp-theme">Two company sales</span>
+          </div>
+          <p class="exp-headline">Acquired for $45 million and later resold for $220 million.</p>
+          <p class="exp-description">A real estate technology platform that John helped position for its initial acquisition, then continued to support through the second, significantly larger exit — demonstrating the compounding value of disciplined financial infrastructure.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> $45M → $220M (two exits)</div>
+        </div>
+      </div>
+
+      {{/* 06 — Robin Healthcare */}}
+      <div class="exp-section" id="robin-healthcare">
+        <div class="exp-logo-initial" aria-label="Robin Healthcare">RH</div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Robin Healthcare</span>
+            <span class="exp-theme">Venture financing</span>
+          </div>
+          <p class="exp-headline">Closed a $50 million Series B financing.</p>
+          <p class="exp-description">Robin Healthcare uses AI to reduce physician documentation burden. John provided the financial modeling, unit economics analysis, and investor reporting that supported a successful Series B raise.</p>
+          <div class="exp-metric"><span class="exp-metric-label">Outcome&nbsp;&nbsp;</span> $50M Series B</div>
+        </div>
+      </div>
+
+      {{/* 07 — ShipCalm */}}
+      <div class="exp-section" id="shipcalm">
+        <div class="exp-logo">
+          <img src="/img/logos/shipcalm.png" alt="ShipCalm logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">ShipCalm</span>
+            <span class="exp-theme">Fractional CFO</span>
+          </div>
+          <p class="exp-headline">Fractional CFO providing ongoing financial leadership and the Weekly Accounting System.</p>
+          <p class="exp-description">ShipCalm is a third-party logistics company. John serves as fractional CFO, implementing the Integrated Financial Model, Monday Morning Metrics, and the full Weekly Accounting operating cadence — giving leadership a weekly forward view of the business.</p>
+          <div class="exp-role">
+            <span class="exp-role-title">Fractional CFO</span>
+            <span class="exp-role-detail"> · Current engagement</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* ═══ FOUNDED & CO-FOUNDED ═══ */}}
+      <div class="section-heading" id="founded-section">
+        <h2>Founded &amp; Co-Founded</h2>
+        <p>Companies John started and continues to build.</p>
+      </div>
+
+      {{/* 08 — SDCFO Group */}}
+      <div class="exp-section exp-featured" id="sdcfo-group">
+        <div class="exp-logo-initial" style="background: var(--teal-500); color: var(--navy-950);">SD</div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">SDCFO Group</span>
+            <span class="exp-theme">Founder</span>
+          </div>
+          <p class="exp-headline">San Diego roots. Financial clarity for your next stage of growth.</p>
+          <p class="exp-description">SDCFO Group brings together the CFO System, Accounting System, and Data System into one accountable finance function. Connected data, reliable forecasts, unit economics, and senior financial guidance from one team — for founder-led companies whose decisions have outgrown monthly reporting alone.</p>
+          <div class="exp-role">
+            <span class="exp-role-title">Founder</span>
+            <span class="exp-role-detail"> · San Diego, CA</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 09 — Weekly Accounting */}}
+      <div class="exp-section" id="weekly-accounting">
+        <div class="exp-logo">
+          <img src="/img/logos/weekly-accounting.png" alt="Weekly Accounting logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Weekly Accounting</span>
+            <span class="exp-theme">Co-Founder &amp; CEO</span>
+          </div>
+          <p class="exp-headline">The system behind the system — built and refined across dozens of companies over twenty years.</p>
+          <p class="exp-description">Co-founded with Jeff Abrams. Weekly Accounting created the Integrated Financial Model, the Fourth Statement (Statement of Economic Quality), the Contribution Engine, Monday Morning Metrics, and the Weekly Accounting Performance Matrix. These tools form the operating backbone of SDCFO Group.</p>
+          <div class="exp-role">
+            <span class="exp-role-title">Co-Founder &amp; CEO</span>
+            <span class="exp-role-detail"> · Co-founded with Jeff Abrams</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 10 — Phoenix Strategy Group */}}
+      <div class="exp-section" id="psg">
+        <div class="exp-logo-initial">PSG</div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Phoenix Strategy Group</span>
+            <span class="exp-theme">Co-Founder</span>
+          </div>
+          <p class="exp-headline">Strategic financial advisory built on the Weekly Accounting System.</p>
+          <p class="exp-description">Co-founded with David Metzler. Phoenix Strategy Group uses the Weekly Accounting System as the basis for how it works with all of its clients — providing fractional CFO services, financial modeling, and strategic advisory to growth-stage companies.</p>
+          <div class="exp-role">
+            <span class="exp-role-title">Co-Founder</span>
+            <span class="exp-role-detail"> · Co-founded with David Metzler</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* 11 — BrightZen */}}
+      <div class="exp-section" id="brightzen">
+        <div class="exp-logo">
+          <img src="/img/logos/brightzen.png" alt="BrightZen logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">BrightZen</span>
+            <span class="exp-theme">Founder</span>
+          </div>
+          <p class="exp-headline">The holding company and systems platform behind SDCFO Group and Weekly Accounting.</p>
+          <p class="exp-description">BrightZen is the parent entity that houses the financial technology, intellectual property, and operating infrastructure that powers the Weekly Accounting System and SDCFO Group's service delivery.</p>
+          <div class="exp-role">
+            <span class="exp-role-title">Founder</span>
+          </div>
+        </div>
+      </div>
+
+      {{/* ═══ EDUCATION ═══ */}}
+      <div class="section-heading" id="education-section">
+        <h2>Education</h2>
+      </div>
+
+      {{/* 12 — Harvard Business School */}}
+      <div class="exp-section" id="hbs">
+        <div class="exp-logo">
+          <img src="/img/logos/hbs.png" alt="Harvard Business School logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">Harvard Business School</span>
+            <span class="exp-theme">MBA</span>
+          </div>
+          <p class="exp-headline">Master of Business Administration.</p>
+          <p class="exp-description">Harvard Business School provided the foundation for John's approach to business engineering — the intersection of strategy, finance, data, and execution that defines how SDCFO Group works with founders today.</p>
+        </div>
+      </div>
+
+      {{/* 13 — General Electric */}}
+      <div class="exp-section" id="ge">
+        <div class="exp-logo">
+          <img src="/img/logos/ge.png" alt="General Electric logo" loading="lazy">
+        </div>
+        <div class="exp-body">
+          <div class="exp-meta">
+            <span class="exp-company">General Electric</span>
+            <span class="exp-theme">Engineering &amp; management</span>
+          </div>
+          <p class="exp-headline">Engineering and Management Training Program.</p>
+          <p class="exp-description">Where it started — an electrical engineering degree applied through GE's rotational program. The discipline of engineering and systems thinking that John learned at GE runs through everything SDCFO Group builds today.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="cta-band">
+    <div style="max-width: var(--shell); margin: 0 auto; padding: 0 20px;">
+      <p class="eyebrow">Start with a conversation</p>
+      <h2>Bring your hardest financial question.</h2>
+      <p>Tell us what is changing in the business, where the numbers stop being useful, and which decision needs a clearer answer.</p>
+      <a class="button-primary" href="https://sdcfogroup.com/start-conversation#conversation">Start Conversation</a>
+      <div class="cta-reassurance">
+        <span>Takes about a minute</span>
+        <span>Goes directly to John</span>
+        <span>No obligation</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">SDCFO.Group</div>
+      <p>San Diego roots. Financial clarity for your next stage of growth.</p>
+      <p style="margin-top: 12px;">© SDCFO.Group · Powered by <a href="https://weeklyaccounting.com">Weekly Accounting Inc.</a></p>
+      <div class="footer-links">
+        <a href="https://sdcfogroup.com/privacy">Privacy</a>
+        <a href="https://sdcfogroup.com/sms-terms">SMS Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var sections = document.querySelectorAll('.exp-section[id], .section-heading[id]');
+      var links = document.querySelectorAll('.toc-list a');
+      if (!sections.length || !links.length) return;
+      var linkMap = {};
+      links.forEach(function (a) { linkMap[a.getAttribute('href').slice(1)] = a; });
+      var ticking = false;
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+          var current = '';
+          sections.forEach(function (s) {
+            if (s.getBoundingClientRect().top <= 160) current = s.id;
+          });
+          links.forEach(function (a) { a.classList.remove('active'); });
+          if (current && linkMap[current]) linkMap[current].classList.add('active');
+          ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>
