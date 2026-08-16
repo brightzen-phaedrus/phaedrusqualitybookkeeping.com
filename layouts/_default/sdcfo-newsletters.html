@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071726;
+      --teal-300: #39d0c6;
+      --sheet-green: #0b5d3b;
+      --sheet-green-mid: #188038;
+      --band-green: #d9ead3;
+      --band-green-text: #0b5d3b;
+      --grid-line: #d7dce0;
+      --col-header-bg: #f1f3f4;
+      --col-header-text: #5f6368;
+      --cell-text: #202124;
+      --muted: #5f6368;
+      --hi-bg: #e6f4ea; --hi-text: #137333;
+      --med-bg: #fef7e0; --med-text: #b06000;
+      --lo-bg: #f1f3f4; --lo-text: #5f6368;
+      --noise-bg: #fce8e6; --noise-text: #c5221f;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f8f9fa; color: var(--cell-text); font-family: "Roboto", Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    .site-header { background: rgba(7,23,38,0.97); border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .header-inner { max-width: min(1400px, calc(100vw - 40px)); margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+    .header-brand { color: #fff; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-note { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+    .sheet-chrome { max-width: min(1400px, calc(100vw - 24px)); margin: 18px auto 0; background: #fff; border: 1px solid var(--grid-line); border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 8px 30px rgba(7,23,38,0.08); }
+
+    .sheet-titlebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px; }
+    .sheet-icon { width: 26px; height: 34px; border-radius: 4px; background: var(--sheet-green-mid); position: relative; flex-shrink: 0; }
+    .sheet-icon::after { content: ""; position: absolute; inset: 9px 5px 6px; background:
+      linear-gradient(#fff, #fff) 0 0/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 6px/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 12px/100% 2px no-repeat; opacity: 0.95; }
+    .sheet-name { font-size: 17px; font-weight: 500; }
+    .sheet-menus { display: flex; gap: 14px; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+    .sheet-updated { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+    .formula-bar { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); padding: 7px 16px; }
+    .fx { color: var(--muted); font-style: italic; font-family: "Roboto Mono", monospace; font-size: 12px; }
+    .search-box { flex: 1; border: 1px solid var(--grid-line); border-radius: 6px; padding: 7px 12px; font: 13px "Roboto", sans-serif; color: var(--cell-text); outline: none; }
+    .search-box:focus { border-color: var(--sheet-green-mid); box-shadow: 0 0 0 2px rgba(24,128,56,0.12); }
+    .result-count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+
+    .grid-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 1150px; font-size: 13px; }
+    th, td { border: 1px solid var(--grid-line); padding: 7px 10px; vertical-align: top; text-align: left; }
+
+    .col-letters th { background: var(--col-header-bg); color: var(--col-header-text); font-weight: 500; font-size: 11px; text-align: center; padding: 3px 4px; border-color: #c9ced3; }
+    .row-num { background: var(--col-header-bg); color: var(--col-header-text); font-size: 11px; text-align: center; width: 34px; min-width: 34px; font-weight: 500; border-color: #c9ced3 !important; vertical-align: middle; }
+
+    .head-band th { background: var(--sheet-green); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; border-color: #0a5134; }
+
+    .tier-band td { background: var(--band-green); color: var(--band-green-text); font-weight: 700; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .tier-band .tier-note { font-weight: 500; text-transform: none; letter-spacing: 0; color: #3c6e50; margin-left: 8px; }
+
+    .date-cell { font-family: "Roboto Mono", monospace; font-size: 12px; white-space: nowrap; }
+    .src-cell { white-space: nowrap; font-weight: 500; }
+    .subj-cell { min-width: 220px; font-weight: 500; }
+    .subj-cell a:hover { text-decoration: underline; text-decoration-color: var(--sheet-green-mid); }
+    .sum-cell { min-width: 380px; color: #3c4043; line-height: 1.5; }
+    .rel-pill { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 11.5px; font-weight: 500; white-space: nowrap; }
+    .rel-high { background: var(--hi-bg); color: var(--hi-text); }
+    .rel-med { background: var(--med-bg); color: var(--med-text); }
+    .rel-low { background: var(--lo-bg); color: var(--lo-text); }
+    .rel-noise { background: var(--noise-bg); color: var(--noise-text); }
+    .open-cell { white-space: nowrap; font-size: 12px; }
+    .open-cell a { color: var(--sheet-green-mid); font-weight: 500; }
+    .open-cell a:hover { text-decoration: underline; }
+
+    tbody tr:hover td:not(.row-num) { background: #f6fbf8; }
+    .tier-band:hover td { background: var(--band-green) !important; }
+
+    .sheet-tabs { display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; }
+    .sheet-tab { padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; }
+    .sheet-tab.active { background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }
+    .sheet-tab a { color: inherit; }
+
+    .page-footer { max-width: min(1400px, calc(100vw - 24px)); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .page-footer a { color: var(--sheet-green-mid); font-weight: 500; }
+
+    @media (max-width: 700px) { .sheet-menus, .header-note { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="/sdcfo/">SDCFO<span>.Group</span> — Draft Pages</a>
+      <span class="header-note">Internal · Newsletter digest</span>
+    </div>
+  </header>
+
+  <div class="sheet-chrome">
+
+    <div class="sheet-titlebar">
+      <div class="sheet-icon" aria-hidden="true"></div>
+      <div>
+        <div class="sheet-name">Newsletter Digest — z@brightzen.com</div>
+        <div class="sheet-menus"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Data</span><span>Help</span></div>
+      </div>
+      <span class="sheet-updated">Last updated 2026-08-16 · Maintained by Phaedrus</span>
+    </div>
+
+    <div class="formula-bar">
+      <span class="fx">fx</span>
+      <input type="search" id="digest-search" class="search-box" placeholder='Search the log — try "AI", "VC", "HBS", "referral"…' autocomplete="off">
+      <span class="result-count" id="result-count">14 issues</span>
+    </div>
+
+    <div class="grid-wrap">
+      <table id="digest-table">
+        <thead>
+          <tr class="col-letters">
+            <th class="row-num"></th>
+            <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+          </tr>
+          <tr class="head-band">
+            <td class="row-num">1</td>
+            <th>Date</th>
+            <th>Source</th>
+            <th>Issue</th>
+            <th>Summary</th>
+            <th>Relevance</th>
+            <th>Open</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{/* ═══ HIGH SIGNAL ═══ */}}
+          <tr class="tier-band" data-tier="high">
+            <td class="row-num"></td>
+            <td colspan="6">High Signal<span class="tier-note">— AI × business, founder economics. Read these.</span></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="high">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">Sundays with Sam</td>
+            <td class="subj-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-32-i-robot" target="_blank" rel="noopener">#32: I, Robot</a></td>
+            <td class="sum-cell">Sam on the "strange phase" of AI agents entering everyday work. Sponsor is Even G2 — camera-free AI display glasses that put a live sales copilot in the seller's field of view. The agent-augmented-human theme is squarely in your Phaedrus/BrightZen lane.</td>
+            <td><span class="rel-pill rel-high">High</span></td>
+            <td class="open-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-32-i-robot" target="_blank" rel="noopener">Substack ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="high">
+            <td class="row-num"></td>
+            <td class="date-cell">08/02/26</td>
+            <td class="src-cell">Sundays with Sam</td>
+            <td class="subj-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-30-sloppy-metaphors" target="_blank" rel="noopener">#30: Sloppy Metaphors</a></td>
+            <td class="sum-cell">Sam built an OpenClaw agent ("Abraham") as a social media manager, then let it auto-reply to comments — and unpacks why automated engagement felt hollow. Directly relevant: it's the same platform Phaedrus runs on, and a cautionary tale about where agents should and shouldn't speak for you.</td>
+            <td><span class="rel-pill rel-high">High</span></td>
+            <td class="open-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-30-sloppy-metaphors" target="_blank" rel="noopener">Substack ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="high">
+            <td class="row-num"></td>
+            <td class="date-cell">08/09/26</td>
+            <td class="src-cell">Sundays with Sam</td>
+            <td class="subj-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-31-fit-check" target="_blank" rel="noopener">#31: Fit Check</a></td>
+            <td class="sum-cell">China's Moonshot AI released Kimi K3, an open-weight model near US frontier quality at ~50–70% lower cost than GPT and Fable. Shifts the AI conversation from benchmarks to geopolitics — can China distill instead of train? Closed-lab leaders argue open weights are a security threat. Good macro read on AI cost curves.</td>
+            <td><span class="rel-pill rel-high">High</span></td>
+            <td class="open-cell"><a href="https://samfjacobs.substack.com/p/sundays-with-sam-31-fit-check" target="_blank" rel="noopener">Substack ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="high">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">Adam Robinson (RB2B)</td>
+            <td class="subj-cell">VC just got worse for founders</td>
+            <td class="sum-cell">In characteristically blunt terms: new VC deal structures have made an already founder-hostile game worse. His conclusion — unless the business is truly capital-intensive, bootstrapping beats venture for most founders. Aligns with the Contribution Engine / self-funded-growth worldview.</td>
+            <td><span class="rel-pill rel-high">High</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/1a00b6925153783c" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          {{/* ═══ MEDIUM ═══ */}}
+          <tr class="tier-band" data-tier="med">
+            <td class="row-num"></td>
+            <td colspan="6">Medium<span class="tier-note">— worth a skim when you have the time.</span></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="med">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">HBS Alumni Update</td>
+            <td class="subj-cell">Favorite professors; MLS commissioner; the AI debate</td>
+            <td class="sum-cell">Skydeck podcast asked returning alums "who was your favorite professor?" — stories of life-altering classroom moments. Also: an alum named MLS commissioner, and a piece on shifting the AI debate. Nostalgia + a data point on how HBS is framing AI.</td>
+            <td><span class="rel-pill rel-med">Medium</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/1a00b4e2e73a2319" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="med">
+            <td class="row-num"></td>
+            <td class="date-cell">08/02/26</td>
+            <td class="src-cell">HBS Alumni Update</td>
+            <td class="subj-cell">Advice that sticks; unlikely entrepreneur; startup milestones</td>
+            <td class="sum-cell">This year's Alumni Achievement Award recipients — Larry Culp, Paul Finnegan, Jennifer Eplett Reilly, Mitt Romney — share the advice that stuck with them. Short, quotable leadership material.</td>
+            <td><span class="rel-pill rel-med">Medium</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fc3353e48319c0" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="med">
+            <td class="row-num"></td>
+            <td class="date-cell">07/31/26</td>
+            <td class="src-cell">Adam Robinson (RB2B)</td>
+            <td class="subj-cell">Hold me.</td>
+            <td class="sum-cell">MoltSets waitlist crossed 5,000 — 3× RB2B's waitlist in half the time — while the product's core APIs still aren't proven. Honest founder-anxiety writing about launching ahead of the tech and undercutting a market by 90%.</td>
+            <td><span class="rel-pill rel-med">Medium</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fb95c492066af8" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="med">
+            <td class="row-num"></td>
+            <td class="date-cell">08/08/26</td>
+            <td class="src-cell">Adam Robinson (RB2B)</td>
+            <td class="subj-cell">We invented a new way to validate emails</td>
+            <td class="sum-cell">B2B email validation is breaking: Microsoft sends fake auth responses, Google tightened too — so "valid" emails bounce and "invalid" ones are often real. MoltSets claims a new validation approach. Relevant only if outbound email becomes a WA/SDCFO channel.</td>
+            <td><span class="rel-pill rel-med">Medium</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fe296676ad2c9b" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          {{/* ═══ LOW ═══ */}}
+          <tr class="tier-band" data-tier="low">
+            <td class="row-num"></td>
+            <td colspan="6">Low<span class="tier-note">— generic prompts and motivation. Skip unless bored.</span></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="low">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">Alignable (Carlsbad)</td>
+            <td class="subj-cell">You have four months left. What's your number?</td>
+            <td class="sum-cell">Weekly playbook prompt: turn your year-end revenue goal from a vague direction into a math problem, then work the referral network. The framing (goal → math) is fine; the content is boilerplate.</td>
+            <td><span class="rel-pill rel-low">Low</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/1a00cb63f9aab38d" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="low">
+            <td class="row-num"></td>
+            <td class="date-cell">08/09/26</td>
+            <td class="src-cell">Alignable (Carlsbad)</td>
+            <td class="subj-cell">One name. One relationship. Your whole year.</td>
+            <td class="sum-cell">Claims $367K of "potential business" in your network (147 contacts × $2,500 avg). Referral-network arithmetic to drive clicks into their intro tool.</td>
+            <td><span class="rel-pill rel-low">Low</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fe829e28380bad" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="low">
+            <td class="row-num"></td>
+            <td class="date-cell">08/02/26</td>
+            <td class="src-cell">Alignable (Carlsbad)</td>
+            <td class="subj-cell">The referral you didn't see coming</td>
+            <td class="sum-cell">"Ask Allie" (their AI) to surface who in your network is ready to send business. Same referral pitch, new wrapper.</td>
+            <td><span class="rel-pill rel-low">Low</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fc4682489f0d43" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="low">
+            <td class="row-num"></td>
+            <td class="date-cell">08/09/26</td>
+            <td class="src-cell">HBS Alumni Update</td>
+            <td class="subj-cell">Fired up; a talking painting; hummus side hustle</td>
+            <td class="sum-cell">Alum profile: Dan Gertsacov (MBA '04), three years running Big Green Egg. Plus a talking painting and a hummus side hustle. Human-interest issue, light on substance.</td>
+            <td><span class="rel-pill rel-low">Low</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/19fe741790f8d30e" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="low">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">Jen Gottlieb</td>
+            <td class="subj-cell">the failure math nobody talks about</td>
+            <td class="sum-cell">Motivational volume-over-perfection piece: Sinatra's 17% hit rate, Picasso's &lt;1%, Dyson's 5,126 prototypes. Pleasant, but it's a warm-up to sell her brand program.</td>
+            <td><span class="rel-pill rel-low">Low</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/1a00c1ff7f8505df" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+          {{/* ═══ NOISE ═══ */}}
+          <tr class="tier-band" data-tier="noise">
+            <td class="row-num"></td>
+            <td colspan="6">Noise<span class="tier-note">— unsubscribe candidates.</span></td>
+          </tr>
+
+          <tr class="digest-row" data-tier="noise">
+            <td class="row-num"></td>
+            <td class="date-cell">08/16/26</td>
+            <td class="src-cell">Magdalena Grace</td>
+            <td class="subj-cell">Love and money don't have to be HARD…</td>
+            <td class="sum-cell">Manifestation/coaching funnel aimed at "ladies" — five sends in three weeks, zero relevance. Recommend unsubscribe; archiving on sight until then.</td>
+            <td><span class="rel-pill rel-noise">Noise</span></td>
+            <td class="open-cell"><a href="https://mail.google.com/mail/u/0/#all/1a00c5a85dcd007f" target="_blank" rel="noopener">Gmail ↗</a></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sheet-tabs">
+      <span class="sheet-tab active">Digest_Log</span>
+      <span class="sheet-tab"><a href="/sdcfo/candidates/">Pipeline</a></span>
+      <span class="sheet-tab">Info_Src</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Sorted by relevance to John: High Signal → Medium → Low → Noise. Log covers z@brightzen.com newsletters, trailing ~3 weeks; refreshed by Phaedrus during email triage.</span>
+    <a href="/sdcfo/">← All SDCFO draft pages</a>
+  </div>
+
+  <script>
+    (function () {
+      var input = document.getElementById('digest-search');
+      var count = document.getElementById('result-count');
+      var rows = [].slice.call(document.querySelectorAll('#digest-table tbody tr.digest-row'));
+      var bands = [].slice.call(document.querySelectorAll('#digest-table tbody tr.tier-band'));
+      function renumber() {
+        var visible = [].slice.call(document.querySelectorAll('#digest-table tbody tr')).filter(function (r) { return r.style.display !== 'none'; });
+        var n = 2;
+        visible.forEach(function (r) { var c = r.querySelector('.row-num'); if (c) c.textContent = n++; });
+      }
+      function filter() {
+        var q = input.value.trim().toLowerCase();
+        var shown = 0;
+        rows.forEach(function (r) {
+          var hit = !q || r.innerText.toLowerCase().indexOf(q) !== -1;
+          r.style.display = hit ? '' : 'none';
+          if (hit) shown++;
+        });
+        bands.forEach(function (b) {
+          var tier = b.getAttribute('data-tier');
+          var any = rows.some(function (r) { return r.getAttribute('data-tier') === tier && r.style.display !== 'none'; });
+          b.style.display = any ? '' : 'none';
+        });
+        count.textContent = shown + (shown === 1 ? ' issue' : ' issues');
+        renumber();
+      }
+      input.addEventListener('input', filter);
+      filter();
+    })();
+  </script>
+
+</body>
+</html>
