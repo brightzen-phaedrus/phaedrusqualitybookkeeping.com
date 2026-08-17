@@ -63,9 +63,30 @@
     .page-footer{max-width:min(1400px,calc(100vw - 24px));margin:14px auto 40px;display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;padding:0 4px}
     .page-footer a{color:#0b57d0}
     .page-footer a:hover{text-decoration:underline}
+    body.locked .sheet-chrome, body.locked .page-footer{display:none}
+    .gate-overlay{display:none;position:fixed;inset:0;background:var(--navy-950);z-index:50;place-items:center}
+    body.locked .gate-overlay{display:grid}
+    .gate-box{background:#fff;border-radius:12px;padding:34px 38px;width:min(380px,calc(100vw - 40px));box-shadow:0 20px 60px rgba(0,0,0,.4);text-align:center}
+    .gate-box h1{font-family:"Manrope",sans-serif;font-size:19px;letter-spacing:-.02em;margin-bottom:6px}
+    .gate-box p{color:var(--muted);font-size:13px;margin-bottom:18px}
+    .gate-box input{width:100%;border:1px solid var(--grid-line);border-radius:8px;padding:10px 12px;font:inherit;text-align:center;letter-spacing:.3em;outline:none}
+    .gate-box input:focus{border-color:var(--sheet-green-mid)}
+    .gate-box button{margin-top:12px;width:100%;border:none;border-radius:8px;background:var(--sheet-green);color:#fff;font:600 14px "Roboto",sans-serif;padding:10px 0;cursor:pointer}
+    .gate-box button:hover{background:var(--sheet-green-mid)}
+    .gate-err{color:#c5221f;font-size:12px;margin-top:10px;min-height:15px}
   </style>
 </head>
-<body>
+<body class="locked">
+
+  <div class="gate-overlay">
+    <form class="gate-box" id="gate-form">
+      <h1>SDCFO<span style="color:var(--sheet-green-mid)">.Group</span> — Local Contacts</h1>
+      <p>This page is private. Enter the passphrase to continue.</p>
+      <input type="password" id="gate-input" inputmode="numeric" autocomplete="off" placeholder="••••" autofocus>
+      <button type="submit">Unlock</button>
+      <div class="gate-err" id="gate-err"></div>
+    </form>
+  </div>
 
   <header class="site-header">
     <div class="header-inner">
@@ -7692,6 +7713,25 @@
   </div>
 
   <script>
+    (function () {
+      var KEY = 'sdcfo_lc_unlocked';
+      var body = document.body;
+      function unlock() { body.classList.remove('locked'); }
+      try { if (localStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
+      var form = document.getElementById('gate-form');
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var v = document.getElementById('gate-input').value.trim();
+        if (v === '5050') {
+          try { localStorage.setItem(KEY, '1'); } catch (e) {}
+          unlock();
+        } else {
+          document.getElementById('gate-err').textContent = 'Not it. Try again.';
+          document.getElementById('gate-input').value = '';
+        }
+      });
+    })();
+
     (function () {
       var input = document.getElementById('contact-search');
       var count = document.getElementById('result-count');
