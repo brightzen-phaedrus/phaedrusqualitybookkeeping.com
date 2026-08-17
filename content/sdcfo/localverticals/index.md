@@ -13,7 +13,7 @@ heroMeta: "**Offer:** locally-branded accounting / bookkeeping / fractional-CFO,
 
 ## The one-paragraph answer
 
-Your instinct on ad agencies, ecommerce, and dev shops is right. Your instinct on startups is wrong — that niche is owned by Kruze, Pilot, and Burkland, and the VC, not the founder, often picks the accountant. Home services is right but you named the wrong three: **HVAC/plumbing and electrical clear the revenue bar; pool service and maid service do not.** Construction is right but must be split — **residential remodel/design-build is the single best ICP in the county**, while commercial GCs are locked up by incumbent CPAs and surety requirements. The biggest verticals you did not mention are **veterinary practices, architecture & engineering firms, and nonprofits**, and all three beat most of your original list.
+Your instinct on ad agencies, ecommerce, and dev shops is right. Your instinct on startups is right too — but it's a **network motion, not a list motion**. Kruze, Pilot, and Burkland own the commodity end of the market, and the VC often picks the accountant — a dynamic that cuts in your favor, because you know the VCs, you've sat on the boards, and you've operated the exits. Their service is remote and faceless; warm referrals peel their clients off. (Details in "The network play" below.) Home services is right but you named the wrong three: **HVAC/plumbing and electrical clear the revenue bar; pool service and maid service do not.** Construction is right but must be split — **residential remodel/design-build is the single best ICP in the county**, while commercial GCs are locked up by incumbent CPAs and surety requirements. The biggest verticals you did not mention are **veterinary practices, architecture & engineering firms, and nonprofits**, and all three beat most of your original list.
 
 ---
 
@@ -141,6 +141,20 @@ Four weighted factors. Scores 1–5.
 
 **Drag:** organizations above ~$2M need finance-committee approval. Price-sensitive, and some will churn.
 
+### The network play: VC-backed startups
+
+This vertical breaks the scoring model, because its reachability is entirely network-dependent. For a firm without standing in the venture ecosystem, it belongs on the avoid list — Kruze, Pilot, Burkland, Graphite, and Fondo are entrenched at the commodity end, and the VC often picks the accountant. **For you, both of those facts are the opportunity, not the barrier.**
+
+**Why the incumbents are vulnerable:** Kruze and Pilot run high-volume, remote, largely offshored operations. Founders complain about turnover in their account teams, formulaic monthly packages, and price escalation at each funding stage. None of them will sit in a board meeting, and none of them has operated a company. The service is a utility — and utilities get switched the moment someone credible offers more for the same money.
+
+**Why you win:** the accountant-picker is usually the VC or an experienced board member — and that's your network, not a cold list. First CFO of General Assembly ($2M → $100M, $413M exit), CFO of Second Life, co-founder of Assembled Brands, board and fractional-CFO roles through Commissions Inc, Robin Healthcare, and PSG, 19 exits. One intro from a VC, lawyer, or fellow board member converts a startup that no amount of outbound would reach.
+
+**Motion:** referral-only. No landing page, no list, no dialing. Tell the ten VCs and startup lawyers you know best that you're taking a handful of venture-backed clients locally. Ask each portfolio founder one question: *"Has your accountant ever sat in your board meeting?"*
+
+**Hook:** board-ready financials and a fractional CFO who has been the CFO — at Kruze bookkeeping prices for the first six months of any client who switches.
+
+**Sizing:** San Diego seed-through-B startups number in the low hundreds at any moment. This won't anchor the practice — but at $2–4K/month retainers with near-zero acquisition cost, ten network-referred startup clients are worth as much as thirty list-worked trades clients, and they arrive pre-sold.
+
 ---
 
 ## Two motions, not one
@@ -152,7 +166,7 @@ This matters operationally and Homegrown needs to know it before building anythi
 | Motion | Verticals | Channel |
 |---|---|---|
 | **Phone + direct mail + local SEO** | Remodelers, HVAC/plumbing, electrical, landscaping | CSLB export, permit data, association events. Homegrown builds landing pages and local SEO; the firm dials. |
-| **Email + LinkedIn + partner referral** | Agencies, dev shops, ecommerce, A&E, veterinary, nonprofits | Clutch/Storeleads/990 scrapes, Sales Navigator, association directories. Fully digital, Homegrown's home turf. |
+| **Email + LinkedIn + partner referral** | Agencies, dev shops, ecommerce, A&E, veterinary, nonprofits, VC-backed startups (referral-only) | Clutch/Storeleads/990 scrapes, Sales Navigator, association directories. Fully digital, Homegrown's home turf. Startups ride the personal network — no list at all. |
 
 Do not let a single "outbound program" get designed for both.
 
@@ -195,7 +209,6 @@ All free, all legal, all phone-bearing.
 |---|---|
 | **Solar installers** | Section 25D expired 12/31/2025 and NEM 3.0 is permanent. ~100 US solar bankruptcies in the cycle. Churn and bad-debt risk. Target C-10 electrical instead |
 | **Dental practices** | Great economics, but the Academy of Dental CPAs, the Dental Accounting Association, and a local SD dental CPA already own the position |
-| **VC-backed startups** | Kruze, Pilot, Burkland, Graphite, and Fondo are entrenched, and **the VC often picks the accountant** — which breaks your single-decision-maker requirement outright |
 | **Pool service, maid service, handyman, garage door** | Fail the revenue bar. A $1M pool company needs ~8 techs and 500 accounts; a $1M janitorial firm needs ~14 employees (revenue per employee is $70.8K, lowest in the county). Only ~68 of 274 SD pool-adjacent firms have 5+ employees |
 | **Commercial general contractors** | Clear $1M easily, but surety and bonding requirements keep an established construction CPA entrenched, and above ~$10M they aren't one-owner quick closes |
 | **Real estate brokerages** | $846K average and most of that is gross commission flowing out to 1099 agents. Only 66 SD brokerages have 10+ W-2 staff. Pivot to real estate *lessors/syndicators* ($5,047K/establishment) instead |
