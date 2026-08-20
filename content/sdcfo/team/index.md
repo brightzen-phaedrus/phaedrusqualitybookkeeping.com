@@ -49,9 +49,13 @@ Jad is connected to the Weekly Accounting network and follows the firm closely. 
 
 ---
 
-## Viny Kaur
+## Viny K — V.P. of Finance & Reporting
 
-*(Internal note: could not locate a matching LinkedIn profile under this name or common variants, and no match on the Weekly Accounting company roster. Needs confirmation — correct spelling or profile link — before this bio can be written.)*
+**Education:** California State University, Fullerton — B.B.A. in Accounting (2002–2006), followed immediately by an M.B.A. in Finance (2006–2008). Accounting first, finance second: the fundamentals before the strategy.
+
+**Before Weekly Accounting:** Viny brings 15+ years as a finance business leader across diversified sectors. She started as Accounting Manager at Synergy Pacific Management in Irvine (2007–2009), then joined Content.ad, where she has served as V.P. of Finance & Reporting since 2009 — over 17 years running finance for a digital advertising platform through fast-paced, growth-driven environments. Her focus: building high-performing teams with an emphasis on automation, accountability, and continuous learning, and increasing revenue, cash flow, and productivity through strategic planning and strong internal controls. Core competencies span strategic business planning, management reporting and analysis, budgeting and forecasting, cash flow management, risk management, and performance metrics.
+
+**With the team:** Viny works with the Weekly Accounting network from Irvine, California. Seventeen years of owning the numbers at one company is its own credential — she has seen every cycle a business can go through and reported on all of them.
 
 ---
 
@@ -75,4 +79,4 @@ Jad is connected to the Weekly Accounting network and follows the firm closely. 
 
 ---
 
-*Profiles compiled from public LinkedIn data, August 2026. Two entries pending confirmation.*
+*Profiles compiled from public LinkedIn data, August 2026. One entry (Jad) pending details.*
