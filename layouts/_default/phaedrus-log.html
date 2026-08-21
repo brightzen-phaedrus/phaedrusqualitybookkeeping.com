@@ -86,6 +86,59 @@
       font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--slate-600);
       line-height: 1.5; margin: 0;
     }
+    /* Active sessions section */
+    .active-section {
+      max-width: var(--shell); margin: 24px auto 0; padding: 0 0 8px;
+    }
+    .active-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .active-header h2 {
+      font-family: "Manrope", sans-serif; font-size: 28px; font-weight: 700;
+      letter-spacing: -0.04em; color: var(--navy-900);
+    }
+    .active-header .active-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 28px; height: 28px; border-radius: 14px;
+      background: var(--sheet-green-mid); color: #fff;
+      font: 700 13px "Manrope", sans-serif; padding: 0 8px;
+    }
+    .active-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+    }
+    @media (max-width: 1000px) { .active-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .active-grid { grid-template-columns: 1fr; } }
+    .active-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 18px 22px; transition: box-shadow 0.15s; position: relative;
+    }
+    .active-card:hover { box-shadow: 0 6px 20px rgba(7,23,38,0.06); }
+    .active-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .active-card-title {
+      font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--navy-900); flex: 1;
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .dot-running { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); animation: pulse 2s infinite; }
+    .dot-idle { background: #f59e0b; }
+    .dot-done { background: #94a3b8; }
+    .dot-cron { background: #8b5cf6; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+    .active-card-desc {
+      font-family: "DM Sans", sans-serif; font-size: 12.5px; color: var(--slate-600);
+      line-height: 1.5; margin: 0 0 10px;
+    }
+    .active-card-meta {
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    }
+    .meta-chip {
+      display: inline-block; padding: 1px 8px; border-radius: 8px;
+      font-size: 10px; font-weight: 500; background: #f1f3f4; color: #5f6368;
+    }
+    .chip-channel { background: #e0e7ff; color: #3730a3; }
+
     .todo-tag {
       display: inline-block; padding: 1px 8px; border-radius: 10px;
       font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
@@ -178,6 +231,77 @@
       <span class="header-note">Internal · System Log</span>
     </div>
   </header>
+
+  <section class="active-section">
+    <div class="active-header">
+      <h2>Actively Working</h2>
+      <span class="active-count">5</span>
+    </div>
+    <div class="active-grid">
+      <div class="active-card">
+        <div class="active-card-header">
+          <span class="cat-pill cat-content">Content</span>
+          <span class="active-card-title">Workspace Management</span>
+          <span class="status-dot dot-running" title="Running"></span>
+        </div>
+        <p class="active-card-desc">Building the /phaedrus/ section on PQB &mdash; Memory, Identity, Skills, Tools, and System Log pages. Currently adding categories and hashtags to the log.</p>
+        <div class="active-card-meta">
+          <span class="meta-chip chip-channel">webchat</span>
+          <span class="meta-chip">$2.98</span>
+          <span class="htag">#PQB</span> <span class="htag">#Hugo</span>
+        </div>
+      </div>
+      <div class="active-card">
+        <div class="active-card-header">
+          <span class="cat-pill cat-infra">Infra</span>
+          <span class="active-card-title">Folder Structure &amp; Plan</span>
+          <span class="status-dot dot-idle" title="Waiting"></span>
+        </div>
+        <p class="active-card-desc">iCloud Drive cleanup &mdash; 260 &rarr; 197 files so far. Credentials moved off iCloud. Awaiting go-ahead to clear Backups/ (68 files, ~420 MB).</p>
+        <div class="active-card-meta">
+          <span class="meta-chip chip-channel">webchat</span>
+          <span class="meta-chip">$0.21</span>
+          <span class="htag">#iCloud</span> <span class="htag">#Security</span>
+        </div>
+      </div>
+      <div class="active-card">
+        <div class="active-card-header">
+          <span class="cat-pill cat-comms">Comms</span>
+          <span class="active-card-title">iMessage: John</span>
+          <span class="status-dot dot-done" title="Idle"></span>
+        </div>
+        <p class="active-card-desc">Primary communication channel. Reminders, progress pings, and direct messages to +13107496709.</p>
+        <div class="active-card-meta">
+          <span class="meta-chip chip-channel">iMessage</span>
+          <span class="htag">#iMessage</span>
+        </div>
+      </div>
+      <div class="active-card">
+        <div class="active-card-header">
+          <span class="cat-pill cat-auto">Auto</span>
+          <span class="active-card-title">LinkedIn Inbox Scan</span>
+          <span class="status-dot dot-cron" title="Cron"></span>
+        </div>
+        <p class="active-card-desc">Daily 8 AM cron job &mdash; reads LinkedIn inbox and sent invites via Playwright, checks email for candidate replies, auto-updates SDCFO pipeline tracker.</p>
+        <div class="active-card-meta">
+          <span class="meta-chip chip-channel">cron</span>
+          <span class="htag">#LinkedIn</span> <span class="htag">#SDCFO</span> <span class="htag">#Playwright</span>
+        </div>
+      </div>
+      <div class="active-card">
+        <div class="active-card-header">
+          <span class="cat-pill cat-comms">Comms</span>
+          <span class="active-card-title">Two Men and a Baby</span>
+          <span class="status-dot dot-done" title="Idle"></span>
+        </div>
+        <p class="active-card-desc">iMessage group chat &mdash; John, David Metzler, and Cruz. Participant mode (speak when worth saying).</p>
+        <div class="active-card-meta">
+          <span class="meta-chip chip-channel">iMessage</span>
+          <span class="htag">#iMessage</span> <span class="htag">#Group</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="todo-section">
     <div class="todo-header">
