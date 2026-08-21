@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Manrope:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071726;
+      --navy-900: #0b1f33;
+      --teal-500: #2a9d98;
+      --teal-300: #39d0c6;
+      --mist-100: #eaf4f6;
+      --cloud-50: #f8fbfc;
+      --slate-600: #526578;
+      --sheet-green: #0b5d3b;
+      --sheet-green-mid: #188038;
+      --band-green: #d9ead3;
+      --band-green-text: #0b5d3b;
+      --grid-line: #d7dce0;
+      --col-header-bg: #f1f3f4;
+      --col-header-text: #5f6368;
+      --cell-text: #202124;
+      --muted: #5f6368;
+      --white: #ffffff;
+      --border: rgba(11, 31, 51, 0.14);
+      --shell: min(1400px, calc(100vw - 24px));
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f8f9fa; color: var(--cell-text); font-family: "Roboto", Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Header */
+    .site-header { background: rgba(7,23,38,0.97); border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .header-inner { max-width: var(--shell); margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+    .header-brand { color: #fff; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-note { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+    /* To-do section above the sheet */
+    .todo-section {
+      max-width: var(--shell); margin: 24px auto 0; padding: 0 0 8px;
+    }
+    .todo-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .todo-header h2 {
+      font-family: "Manrope", sans-serif; font-size: 28px; font-weight: 700;
+      letter-spacing: -0.04em; color: var(--navy-900);
+    }
+    .todo-header .todo-count {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 28px; height: 28px; border-radius: 14px;
+      background: var(--teal-500); color: #fff;
+      font: 700 13px "Manrope", sans-serif; padding: 0 8px;
+    }
+    .todo-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    @media (max-width: 800px) { .todo-grid { grid-template-columns: 1fr; } }
+
+    .todo-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start;
+      transition: box-shadow 0.15s;
+    }
+    .todo-card:hover { box-shadow: 0 6px 20px rgba(7,23,38,0.06); }
+    .todo-num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
+      background: var(--mist-100); color: var(--teal-500);
+      font: 700 13px/28px "Manrope", sans-serif; text-align: center;
+    }
+    .todo-body h4 {
+      font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 600;
+      color: var(--navy-900); margin-bottom: 4px;
+    }
+    .todo-body p {
+      font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--slate-600);
+      line-height: 1.5; margin: 0;
+    }
+    .todo-tag {
+      display: inline-block; padding: 1px 8px; border-radius: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; margin-left: 6px; vertical-align: middle;
+    }
+    .tag-memory { background: #dbeafe; color: #1e40af; }
+    .tag-infra { background: #fce7f3; color: #9d174d; }
+    .tag-skills { background: #d1fae5; color: #065f46; }
+    .tag-comms { background: #fef3c7; color: #92400e; }
+    .tag-auto { background: #ede9fe; color: #5b21b6; }
+    .tag-tools { background: #ffedd5; color: #9a3412; }
+    .tag-identity { background: #f3e8ff; color: #6b21a8; }
+    .tag-content { background: #ccfbf1; color: #134e4a; }
+
+    /* Sheets chrome */
+    .sheet-chrome { max-width: var(--shell); margin: 18px auto 0; background: #fff; border: 1px solid var(--grid-line); border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 8px 30px rgba(7,23,38,0.08); }
+
+    .sheet-titlebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px; }
+    .sheet-icon { width: 26px; height: 34px; border-radius: 4px; background: var(--sheet-green-mid); position: relative; flex-shrink: 0; }
+    .sheet-icon::after { content: ""; position: absolute; inset: 9px 5px 6px; background:
+      linear-gradient(#fff, #fff) 0 0/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 6px/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 12px/100% 2px no-repeat; opacity: 0.95; }
+    .sheet-name { font-size: 17px; font-weight: 500; }
+    .sheet-menus { display: flex; gap: 14px; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+    .sheet-updated { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+    .formula-bar { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); padding: 6px 16px; font-size: 13px; }
+    .fx { color: var(--muted); font-style: italic; font-family: "Roboto Mono", monospace; font-size: 12px; }
+    .formula-box { flex: 1; color: var(--muted); font-family: "Roboto Mono", monospace; font-size: 12px; border-left: 1px solid var(--grid-line); padding-left: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Grid */
+    .grid-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 1080px; font-size: 13px; }
+    th, td { border: 1px solid var(--grid-line); padding: 7px 10px; vertical-align: top; text-align: left; }
+
+    .col-letters th { background: var(--col-header-bg); color: var(--col-header-text); font-weight: 500; font-size: 11px; text-align: center; padding: 3px 4px; border-color: #c9ced3; }
+    .row-num { background: var(--col-header-bg); color: var(--col-header-text); font-size: 11px; text-align: center; width: 34px; min-width: 34px; font-weight: 500; border-color: #c9ced3 !important; vertical-align: middle; }
+
+    .head-band th { background: var(--sheet-green); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; border-color: #0a5134; }
+
+    .stage-band td { background: var(--band-green); color: var(--band-green-text); font-weight: 700; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .stage-band .stage-count { font-weight: 500; text-transform: none; letter-spacing: 0; color: #3c6e50; margin-left: 8px; }
+
+    .date-cell { font-family: "Roboto Mono", monospace; font-size: 12px; white-space: nowrap; }
+    .title-cell { font-weight: 500; }
+    .detail-cell { color: #3c4043; line-height: 1.45; min-width: 320px; }
+    .impact-cell { white-space: nowrap; }
+
+    .impact-pill { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 11.5px; font-weight: 500; white-space: nowrap; }
+    .imp-high { background: #d1fae5; color: #065f46; }
+    .imp-medium { background: #fef3c7; color: #92400e; }
+    .imp-low { background: #f3f4f6; color: #6b7280; }
+
+    tbody tr:hover td:not(.row-num) { background: #f6fbf8; }
+    .stage-band:hover td { background: var(--band-green) !important; }
+
+    .sheet-tabs { display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; }
+    .sheet-tab { padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; }
+    .sheet-tab.active { background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }
+
+    .page-footer { max-width: var(--shell); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .page-footer a { color: var(--sheet-green-mid); font-weight: 500; }
+
+    @media (max-width: 700px) {
+      .sheet-menus { display: none; }
+      .header-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="/phaedrus/">🦉 Phaedrus</a>
+      <span class="header-note">Internal · System Log</span>
+    </div>
+  </header>
+
+  {{ .Content }}
+
+  <div class="page-footer">
+    <span>Log of significant system work on Phaedrus — infrastructure, skills, integrations, memory, and automation. Maintained by Phaedrus.</span>
+    <a href="/phaedrus/">← All Phaedrus pages</a>
+  </div>
+
+</body>
+</html>
