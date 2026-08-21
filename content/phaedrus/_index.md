@@ -2,7 +2,7 @@
 title: "Phaedrus — System Reference"
 layout: "phaedrus-index"
 url: "/phaedrus/"
-summary: "Internal reference pages for Phaedrus — memory, configuration, and system documentation."
+summary: "Internal reference pages for Phaedrus — memory, identity, skills, and tools."
 heroTitle: "Phaedrus"
 heroLede: "The ghost in the machine, documented. Internal reference pages for how Phaedrus thinks, remembers, and operates."
 ---
@@ -15,24 +15,24 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <span class="card-link">View page</span>
   </a>
 
-  <div class="page-card" style="opacity: 0.5; pointer-events: none;">
+  <a class="page-card" href="/phaedrus/identity/">
     <div class="card-icon">👤</div>
     <div class="card-title">Identity</div>
-    <p class="card-desc">SOUL.md + IDENTITY.md — who Phaedrus is, the Pirsig connection, and the voice.</p>
-    <span class="card-badge badge-soon">Coming soon</span>
-  </div>
+    <p class="card-desc">SOUL.md + IDENTITY.md — who Phaedrus is, the Pirsig connection, the four layers of identity, and the voice.</p>
+    <span class="card-link">View page</span>
+  </a>
 
-  <div class="page-card" style="opacity: 0.5; pointer-events: none;">
-    <div class="card-icon">🔧</div>
-    <div class="card-title">Tools</div>
-    <p class="card-desc">Connected services, API keys, accounts, and integration configuration.</p>
-    <span class="card-badge badge-soon">Coming soon</span>
-  </div>
-
-  <div class="page-card" style="opacity: 0.5; pointer-events: none;">
+  <a class="page-card" href="/phaedrus/skills/">
     <div class="card-icon">📋</div>
     <div class="card-title">Skills</div>
-    <p class="card-desc">Catalog of learned skills — what Phaedrus knows how to do and how each skill was built.</p>
-    <span class="card-badge badge-soon">Coming soon</span>
-  </div>
+    <p class="card-desc">76 skills across three layers — workspace skills co-created with John, plugin skills, and OpenClaw system skills.</p>
+    <span class="card-link">View page</span>
+  </a>
+
+  <a class="page-card" href="/phaedrus/tools/">
+    <div class="card-icon">🔧</div>
+    <div class="card-title">Tools</div>
+    <p class="card-desc">Connected services, API accounts, and integration configuration — Google, QBO, Notion, Ghost, Vercel, and more.</p>
+    <span class="card-link">View page</span>
+  </a>
 </div>
