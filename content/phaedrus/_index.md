@@ -35,4 +35,11 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <p class="card-desc">Connected services, API accounts, and integration configuration — Google, QBO, Notion, Ghost, Vercel, and more.</p>
     <span class="card-link">View page</span>
   </a>
+
+  <a class="page-card" href="/phaedrus/icloud-cleanup/">
+    <div class="card-icon">📂</div>
+    <div class="card-title">iCloud Drive Cleanup</div>
+    <p class="card-desc">Audit and reorganization plan for the Phaedrus iCloud shared folder — 260 files, ~470 MB. Reviewed 2026-08-21.</p>
+    <span class="card-link">View page</span>
+  </a>
 </div>
