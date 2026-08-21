@@ -8,6 +8,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
 ---
 
 <div class="page-grid">
+  <a class="page-card" href="/phaedrus/obsidian/">
+    <div class="card-icon">📗</div>
+    <div class="card-title">Obsidian Workspace</div>
+    <p class="card-desc">The workspace as a spreadsheet — MEMORY.md rendered row by row in a Sheets-style view. More tabs (AGENTS, SOUL, TOOLS) coming.</p>
+    <span class="card-link">View page</span>
+  </a>
+
   <a class="page-card" href="/phaedrus/memory/">
     <div class="card-icon">🧠</div>
     <div class="card-title">Memory</div>

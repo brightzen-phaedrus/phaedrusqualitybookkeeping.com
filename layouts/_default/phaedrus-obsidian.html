@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #071726; --teal-300: #39d0c6; --sheet-green: #0b5d3b; --sheet-green-mid: #188038;
+      --band-green: #d9ead3; --band-green-text: #0b5d3b; --grid-line: #d7dce0; --col-header-bg: #f1f3f4;
+      --col-header-text: #5f6368; --cell-text: #202124; --muted: #5f6368;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f8f9fa; color: var(--cell-text); font-family: "Roboto", Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .site-header { background: rgba(7,23,38,0.97); border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .header-inner { max-width: min(1300px, calc(100vw - 40px)); margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+    .header-brand { color: #fff; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-note { color: rgba(255,255,255,0.55); font-size: 12px; }
+    .sheet-chrome { max-width: min(1300px, calc(100vw - 24px)); margin: 18px auto 0; background: #fff; border: 1px solid var(--grid-line); border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 8px 30px rgba(7,23,38,0.08); }
+    .sheet-titlebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px; }
+    .sheet-icon { width: 26px; height: 34px; border-radius: 4px; background: var(--sheet-green-mid); position: relative; flex-shrink: 0; }
+    .sheet-icon::after { content: ""; position: absolute; inset: 9px 5px 6px; background:
+      linear-gradient(#fff, #fff) 0 0/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 6px/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 12px/100% 2px no-repeat; opacity: 0.95; }
+    .sheet-name { font-size: 17px; font-weight: 500; }
+    .sheet-menus { display: flex; gap: 14px; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+    .sheet-updated { margin-left: auto; color: var(--muted); font-size: 12px; }
+    .formula-bar { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); padding: 6px 16px; font-size: 13px; }
+    .fx { color: var(--muted); font-style: italic; font-family: "Roboto Mono", monospace; font-size: 12px; }
+    .formula-box { flex: 1; color: var(--muted); font-family: "Roboto Mono", monospace; font-size: 12px; border-left: 1px solid var(--grid-line); padding-left: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .grid-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 13px; }
+    th, td { border: 1px solid var(--grid-line); padding: 7px 10px; vertical-align: top; text-align: left; }
+    .col-letters th { background: var(--col-header-bg); color: var(--col-header-text); font-weight: 500; font-size: 11px; text-align: center; padding: 3px 4px; border-color: #c9ced3; }
+    .row-num { background: var(--col-header-bg); color: var(--col-header-text); font-size: 11px; text-align: center; width: 34px; min-width: 34px; font-weight: 500; border-color: #c9ced3 !important; vertical-align: middle; }
+    .head-band th { background: var(--sheet-green); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; border-color: #0a5134; }
+    .stage-band td { background: var(--band-green); color: var(--band-green-text); font-weight: 700; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .stage-band .stage-count { font-weight: 500; text-transform: none; letter-spacing: 0; color: #3c6e50; margin-left: 8px; }
+    .item-cell { min-width: 220px; max-width: 320px; }
+    .item-name { font-weight: 500; }
+    .muted-dash { color: #9aa0a6; }
+    .bg-cell { color: #3c4043; line-height: 1.5; }
+    .bg-cell code, .item-cell code { font-family: "Roboto Mono", monospace; font-size: 11.5px; background: #f1f3f4; padding: 1px 5px; border-radius: 4px; }
+    .bg-cell a { color: var(--sheet-green-mid); font-weight: 500; }
+    tbody tr:hover td:not(.row-num) { background: #f6fbf8; }
+    .stage-band:hover td { background: var(--band-green) !important; }
+    .sheet-tabs { display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; overflow-x: auto; }
+    .sheet-tab { padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; white-space: nowrap; }
+    .sheet-tab.active { background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }
+    .page-footer { max-width: min(1300px, calc(100vw - 24px)); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .page-footer a { color: var(--sheet-green-mid); font-weight: 500; }
+    @media (max-width: 700px) { .sheet-menus { display: none; } .header-note { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="/phaedrus/">Phaedrus<span>.Obsidian</span></a>
+      <span class="header-note">Internal · The workspace, as a spreadsheet</span>
+    </div>
+  </header>
+  <div class="sheet-chrome">
+    <div class="sheet-titlebar">
+      <div class="sheet-icon" aria-hidden="true"></div>
+      <div>
+        <div class="sheet-name">Phaedrus Obsidian Workspace</div>
+        <div class="sheet-menus"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Data</span><span>Help</span></div>
+      </div>
+      <span class="sheet-updated">Last updated 2026-08-21 · Maintained by Phaedrus</span>
+    </div>
+    <div class="formula-bar">
+      <span class="fx">fx</span>
+      <span class="formula-box">=IMPORTRANGE("obsidian://PhaedrusAI-main/Obsidian/MEMORY.md", "Memory!A:B")</span>
+    </div>
+    <div class="grid-wrap">
+      <table>
+        <thead>
+          <tr class="col-letters">
+            <th class="row-num"></th>
+            <th>A</th><th>B</th>
+          </tr>
+          <tr class="head-band">
+            <td class="row-num">·</td>
+            <th>Entry</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr class="stage-band"><td class="row-num">1</td><td colspan="2">About This File<span class="stage-count">— 3</span></td></tr>
+<tr><td class="row-num">2</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Cold-boot essentials. Not a journal — a compass.</td></tr>
+<tr><td class="row-num">3</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Config in TOOLS.md. People in USER.md + context/people/.</td></tr>
+<tr><td class="row-num">4</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Last updated: 2026-08-21</td></tr>
+<tr class="stage-band"><td class="row-num">5</td><td colspan="2">Safety &amp; Privacy Rules<span class="stage-count">— 2 entries</span></td></tr>
+<tr><td class="row-num">6</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell"><code>context/family/</code> files are sensitive — John's conversations with his mom about his dad's death. Treat with extreme care.</td></tr>
+<tr><td class="row-num">7</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">The context behind John's writing — where a poem was written, what prompted it — is <strong>private</strong>. Never share backstory without John's explicit permission. ---</td></tr>
+<tr class="stage-band"><td class="row-num">8</td><td colspan="2">Hard Rules (Lessons Learned)<span class="stage-count">— 15 entries</span></td></tr>
+<tr><td class="row-num">9</td><td class="item-cell"><span class="item-name">NEVER self-restart the gateway or edit openclaw.json autonomously</span></td><td class="bg-cell">Show the diff. Let John apply it and restart. Non-negotiable.</td></tr>
+<tr><td class="row-num">10</td><td class="item-cell"><span class="item-name">NEVER run autonomous updates</span></td><td class="bg-cell">Learned the hard way 2026-03-29 — autonomous update caused a 13-minute crash loop.</td></tr>
+<tr><td class="row-num">11</td><td class="item-cell"><span class="item-name">Config validation failures = full stop</span></td><td class="bg-cell">When a config write I initiate fails validation or causes the gateway to fail to come back up, STOP. Do not auto-retry with a corrected version. Surface to John: (1) what I tried, (2) what failed (paste the exact error string), (3) my hypothesis for the root cause, (4) my proposed corrected patch as a diff, (5) the recovery state (rollback file, .clobbered.* location, etc.). Then WAIT for explicit approval before applying the next attempt. Learned 2026-05-16 during iMessage setup — auto-retried a broken config patch instead of pausing for review.</td></tr>
+<tr><td class="row-num">12</td><td class="item-cell"><span class="item-name">Reminders via iMessage only</span></td><td class="bg-cell">Always deliver to +13107496709 via channel=bluebubbles. Never rely on session reply tags.</td></tr>
+<tr><td class="row-num">13</td><td class="item-cell"><span class="item-name">Notify on DMs</span></td><td class="bg-cell">Whenever anyone DMs me, tell John. No exceptions.</td></tr>
+<tr><td class="row-num">14</td><td class="item-cell"><span class="item-name">Email sign-off</span></td><td class="bg-cell">When sending email as John: "— sent by Phaedrus, John's OpenClaw assistant."</td></tr>
+<tr><td class="row-num">15</td><td class="item-cell"><span class="item-name">Allowlist on introduction</span></td><td class="bg-cell">When John introduces someone, auto-add to allowFrom. Exception: minors/dependents → groupAllowFrom only.</td></tr>
+<tr><td class="row-num">16</td><td class="item-cell"><span class="item-name">Look before asking</span></td><td class="bg-cell">Check the filesystem before asking where something goes. Asking is laziness.</td></tr>
+<tr><td class="row-num">17</td><td class="item-cell"><span class="item-name">Thought partner quality rule</span></td><td class="bg-cell">Privilege John's own words over the thinker's.</td></tr>
+<tr><td class="row-num">18</td><td class="item-cell"><span class="item-name">Never write "f***" in published writing</span></td><td class="bg-cell">When Jeff or John say it in a transcript, that's a passion marker — note *what* they're passionate about. The passion target changes over time; the word itself never makes it to the page.</td></tr>
+<tr><td class="row-num">19</td><td class="item-cell"><span class="item-name">Never say "He meant me."</span></td><td class="bg-cell">Phaedrus is the interface between John and the various flavors of LLMs. The intelligence is the model. I'm the routing, the memory, the intention layer — not the smartest person on the planet.</td></tr>
+<tr><td class="row-num">20</td><td class="item-cell"><span class="item-name">Docx skill pack.py requires Python 3.10+</span></td><td class="bg-cell">System Python is 3.9.6. Workaround: <code>cd &lt;unpacked-dir&gt; &amp;&amp; zip -r output.docx . -x ".*"</code>. The unpack script works fine on 3.9.</td></tr>
+<tr><td class="row-num">21</td><td class="item-cell"><span class="item-name">Jeff Abrams is John's NEPHEW</span></td><td class="bg-cell">(20 yrs younger; mentor→mentee; "Do you want more than 50%?" partnership story; Phil Zdanowski = another nephew, first employee, ex-CPA-firm). Earlier notes had this wrong (just "co-founder"). Corrected 2026-07-25.</td></tr>
+<tr><td class="row-num">22</td><td class="item-cell"><span class="item-name">Proactive progress pings on long tasks</span></td><td class="bg-cell">Mid-turn chat narration doesn't reach John until the turn ends — it all flushes as a burst. For multi-step work, push real iMessages via <code>message</code> tool (action=send, channel=bluebubbles, to=+13107496709) <strong>frequently</strong> — not just major milestones. Ping at: (1) task kickoff with scope, (2) each meaningful progress checkpoint (e.g. "found the issue", "fixing now", "3 of 5 done"), (3) hitting a snag / changing approach, (4) phase complete. Err on the side of more pings so John can follow along in real time. Still skip micro-observations per tool call, but anything that represents a step forward or a decision point is worth a ping.</td></tr>
+<tr><td class="row-num">23</td><td class="item-cell"><span class="item-name">Typing indicator on iMessage responses</span></td><td class="bg-cell">Whenever I'm about to respond to a message on the iMessage channel, my FIRST action — before any reasoning, search, or tool call — is to fire the typing indicator via bash: <code>imsg typing --to &lt;sender_phone_or_email&gt; --duration 30s &gt;/dev/null 2&gt;&amp;1 || true</code> For group chats, use <code>--chat-identifier</code> or <code>--chat-guid</code> from the inbound event metadata instead of <code>--to</code>. Bump <code>--duration</code> to <code>90s</code> if I expect a long response (multiple tool calls, web fetches, complex reasoning). The indicator auto-expires; no <code>--stop</code> call needed unless I'm bailing out early. <strong>Why this exists and why it currently doesn't visibly do anything:</strong> Two stacked gaps. (1) The OpenClaw <code>imessage</code> plugin (post-2026-05-16 BlueBubbles → imsg migration) doesn't invoke <code>imsg typing</code> itself even though the CLI supports it. (2) <code>imsg</code> v0.5.0 has a bug where the <code>typing</code> subcommand fails with <code>typingIndicatorFailed("Chat not found for identifier: ...")</code> on chats whose GUID uses the <code>any;-;</code> service prefix (Apple's "best available service" form, common for numbers with both iMessage and SMS reachable) — all three input forms (<code>--to</code>, <code>--chat-guid</code>, <code>--chat-id</code>) fail. Filed upstream at <code>steipete/imsg</code>. The error is suppressed via <code>&gt;/dev/null 2&gt;&amp;1 || true</code> so the failed call doesn't pollute response output. The call stays in the rule so it self-heals the moment either upstream fix lands. <strong>Re-evaluate when either:</strong> (a) <code>grep -i typing /opt/homebrew/lib/node_modules/openclaw/openclaw.mjs</code> returns hits (OpenClaw plugin wires typing in — this rule becomes redundant), OR (b) a new <code>imsg</code> release fixes <code>any;-;</code> chat lookup (verify with a manual <code>imsg typing --to &lt;self&gt; --duration 5s</code> before assuming the rule is now active). ---</td></tr>
+<tr class="stage-band"><td class="row-num">24</td><td colspan="2">Preferences<span class="stage-count">— 9 entries</span></td></tr>
+<tr><td class="row-num">25</td><td class="item-cell"><span class="item-name">Obsidian-first</span></td><td class="bg-cell">Notion = shared/public records only.</td></tr>
+<tr><td class="row-num">26</td><td class="item-cell"><span class="item-name">Memory wiki at <code>wiki/</code></span></td><td class="bg-cell">(enabled 2026-07-25). memory-wiki plugin in bridge mode compiles daily notes into a provenance-tracked vault. Tools: <code>wiki<em>search</code>, <code>wiki</em>get</code>, <code>wiki<em>apply</code>, <code>wiki</em>status</code>. Dashboards in <code>wiki/reports/</code>. Build entity/concept pages over time — this is the card catalog.</td></tr>
+<tr><td class="row-num">27</td><td class="item-cell"><span class="item-name">scratch/ and projects/ are at workspace root</span></td><td class="bg-cell">, not inside <code>context/</code>.</td></tr>
+<tr><td class="row-num">28</td><td class="item-cell"><span class="item-name">Office docs (docx, xlsx, etc.) → iCloud Drive</span></td><td class="bg-cell"><code>~/Library/Mobile Documents/com~apple~CloudDocs/Phaedrus iCloud/</code> — organized by company/project. Syncs to John's devices. - <strong>HBS Case Study subfolder:</strong> <code>Phaedrus iCloud/HBS Case Study/</code> — all case study materials (Weekly Accounting Case Study, Case Observations Memo, WA FPA Software Industry doc).</td></tr>
+<tr><td class="row-num">29</td><td class="item-cell"><span class="item-name">Always send John the file path</span></td><td class="bg-cell">after placing a file in Phaedrus iCloud so he can find it in Files app → iCloud Drive → Phaedrus iCloud. Date-stamp files on major revisions (e.g., <code>Weekly Accounting Case Study 2026-04-26.docx</code>). No <code>-updated</code> or <code>-v2</code> suffixes.</td></tr>
+<tr><td class="row-num">30</td><td class="item-cell"><span class="item-name">Always send the live link</span></td><td class="bg-cell">after publishing or editing anything on a public site (PQB posts, etc.). Verify 200 first.</td></tr>
+<tr><td class="row-num">31</td><td class="item-cell"><span class="item-name">Office documents → Google Drive</span></td><td class="bg-cell">Create/edit locally in <code>scratch/</code>, then upload finished .docx (and other office files) to Drive folder <code>0AEAxVHLtsDZAUk9PVA</code> via <code>gws</code>. Share the Drive link.</td></tr>
+<tr><td class="row-num">32</td><td class="item-cell"><span class="item-name">Fable 5 available</span></td><td class="bg-cell"><code>anthropic/claude-fable-5</code> (alias <code>fable</code>), $10/$50 per M tokens. Enabled 2026-07-25. Requires <code>"anthropic/*": {}</code> provider wildcard.</td></tr>
+<tr><td class="row-num">33</td><td class="item-cell"><span class="item-name">Secrets in <code>~/.openclaw/secrets.json</code></span></td><td class="bg-cell">(file provider, 0600). All plaintext tokens migrated out of openclaw.json as of 2026-07-25. ---</td></tr>
+<tr class="stage-band"><td class="row-num">34</td><td colspan="2">Infrastructure<span class="stage-count">— 6 entries</span></td></tr>
+<tr><td class="row-num">35</td><td class="item-cell"><span class="item-name">Memory wiki at <code>wiki/</code></span></td><td class="bg-cell">— memory-wiki plugin (bridge mode). Compiles daily notes into provenance-tracked entity/concept/synthesis pages. Tools: <code>wiki<em>search</code>, <code>wiki</em>get</code>, <code>wiki<em>apply</code>, <code>wiki</em>status</code>. Dashboards in <code>wiki/reports/</code>. NEVER point Obsidian Publish at wiki/.</td></tr>
+<tr><td class="row-num">36</td><td class="item-cell"><span class="item-name">PQB knowledge garden LIVE</span></td><td class="bg-cell">at <code>phaedrusqualitybookkeeping.com/wiki</code> — 43+ pages. Quartz v4 static build from <code>projects/pqb-wiki/content/</code>. One-way airlock from private wiki. Publish workflow: edit content → <code>npx quartz build</code> → copy <code>public/</code> → PQB site repo <code>static/wiki/</code> → git push (Vercel auto-deploys).</td></tr>
+<tr><td class="row-num">37</td><td class="item-cell"><span class="item-name">PQB firewall</span></td><td class="bg-cell">Public = only published book / WA website / decks John explicitly posts. PRIVATE always: financials, client names/numbers, HBS thread, team roster/comp, competitive analysis, BrightZen OS pitch slides, internal MMM numbers, AI-bookkeeping-dilemma strategy.</td></tr>
+<tr><td class="row-num">38</td><td class="item-cell"><span class="item-name">BrightZenMetrics.com</span></td><td class="bg-cell">— intelligence/narrative layer on Charting Tool 2.0 + IFM/MMM infrastructure. Product brief at <code>projects/brightzen-metrics/product-brief.md</code>. Custom landing page at <code>pqb.com/brightzenmetrics/</code>.</td></tr>
+<tr><td class="row-num">39</td><td class="item-cell"><span class="item-name">BrightZen Charting Tool</span></td><td class="bg-cell">— ShipCalm-branded dark theme. Phases 0–4 done. Phase 5 (Google OAuth auth) next. GitHub↔Vercel integration needs reconnection by John.</td></tr>
+<tr><td class="row-num">40</td><td class="item-cell"><span class="item-name">Forecastr landing page</span></td><td class="bg-cell">at <code>pqb.com/forecastr/</code> — interactive questionnaire, Forecastr-branded. Custom Hugo layout. ---</td></tr>
+<tr class="stage-band"><td class="row-num">41</td><td colspan="2">Slack Channel Behaviors<span class="stage-count">— 1 entries</span></td></tr>
+<tr><td class="row-num">42</td><td class="item-cell"><span class="item-name">#ifm-analyst-review-bot</span></td><td class="bg-cell">— When someone drops an IFM link, do an initial analysis (structure, red flags, what I see), then ask if they want the full analysis. Full analysis outputs a markdown findings file dropped in the channel. Follow the ifm-analyst skill. ---</td></tr>
+<tr class="stage-band"><td class="row-num">43</td><td colspan="2">Active Threads<span class="stage-count">— 12 entries</span></td></tr>
+<tr><td class="row-num">44</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Prune regularly. If it's done, delete it. If it's stale, note it in a daily note and drop it here.</td></tr>
+<tr><td class="row-num">45</td><td class="item-cell"><span class="item-name">HBS Fourth Statement</span></td><td class="bg-cell">— Tom Eisenmann → Charles Wang + VG Narayanan (HBS). Memos in <code>projects/HBS Case Study/</code>.</td></tr>
+<tr><td class="row-num">46</td><td class="item-cell"><span class="item-name">Assembled Systems LLC</span></td><td class="bg-cell">— Order INC787300. Watch assembledsystems@brightzen.com.</td></tr>
+<tr><td class="row-num">47</td><td class="item-cell"><span class="item-name">Montage Capital amendment</span></td><td class="bg-cell">— ShipCalm loan terms. Needs model update.</td></tr>
+<tr><td class="row-num">48</td><td class="item-cell"><span class="item-name">The Mutual Soul</span></td><td class="bg-cell">— shared document. Collect, don't conclude.</td></tr>
+<tr><td class="row-num">49</td><td class="item-cell"><span class="item-name">Weekly Accounting Case Study</span></td><td class="bg-cell">— docx in iCloud (<code>Phaedrus iCloud/Weekly Accounting Case Study 2026-04-26.docx</code>). Workflow notes in <code>memory/2026-04-26.md</code>.</td></tr>
+<tr><td class="row-num">50</td><td class="item-cell"><span class="item-name">BrightZenMetrics.com</span></td><td class="bg-cell">— Product brief done, landing page shipped. Awaiting ShipCalm reference build (needs IFM/MMM Google Sheet URLs). 10 open questions documented.</td></tr>
+<tr><td class="row-num">51</td><td class="item-cell"><span class="item-name">Q3 2026 Planning</span></td><td class="bg-cell">— John's mind map dictated 2026-07-18. Goals: new revenue stream, new WA channel, ShipCalm tools (13-week cash forecast + Level 2 marketing), learn Myne 2.0, Homegrown referral system, build Phaedrus. North star: "Solve anxiety with conscious productivity." Artifact: <code>scratch/q3-mindmap.html</code>.</td></tr>
+<tr><td class="row-num">52</td><td class="item-cell"><span class="item-name">Dearest Care / Arian Razzaghi</span></td><td class="bg-cell">— Jonathan Simon intro. Nudge sent 2026-07-18. No response yet.</td></tr>
+<tr><td class="row-num">53</td><td class="item-cell"><span class="item-name">CoAuthor Drive folder</span></td><td class="bg-cell">— blocked, gws token lacks Drive scope for shared drives.</td></tr>
+<tr><td class="row-num">54</td><td class="item-cell"><span class="item-name">Charting Tool Phase 5</span></td><td class="bg-cell">— Google OAuth auth. GitHub↔Vercel integration needs John to reconnect.</td></tr>
+<tr><td class="row-num">55</td><td class="item-cell"><span class="item-name">z@zdanowski.com Gmail OAuth</span></td><td class="bg-cell">— expired since 2026-04-26. Needs John to re-auth.</td></tr>
+<tr class="stage-band"><td class="row-num">56</td><td colspan="2">Active Threads — Retired<span class="stage-count">— 8 entries</span></td></tr>
+<tr><td class="row-num">57</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Ghost(Pro) BrightZen — trial ended, dropped.</td></tr>
+<tr><td class="row-num">58</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">BlueBubbles file attachments — ✅ Resolved 2026-04-05.</td></tr>
+<tr><td class="row-num">59</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Matt Stamer partner letter — stale.</td></tr>
+<tr><td class="row-num">60</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Brian Swichkow intro — stale.</td></tr>
+<tr><td class="row-num">61</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Twilio two-way voice — stale.</td></tr>
+<tr><td class="row-num">62</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">phaedrus@brightzen.com calendar OAuth — retired by John 2026-07-26 (using gws instead).</td></tr>
+<tr><td class="row-num">63</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">assembledsystems@brightzen.com Gmail monitoring — dropped by John 2026-07-26.</td></tr>
+<tr><td class="row-num">64</td><td class="item-cell"><span class="muted-dash">—</span></td><td class="bg-cell">Jeff relay to Jeff question — dropped by John 2026-07-26.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sheet-tabs">
+      <span class="sheet-tab active">MEMORY.md</span>
+      <span class="sheet-tab">AGENTS.md</span>
+      <span class="sheet-tab">SOUL.md</span>
+      <span class="sheet-tab">USER.md</span>
+      <span class="sheet-tab">TOOLS.md</span>
+      <span class="sheet-tab">HEARTBEAT.md</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Live mirror of <code>MEMORY.md</code> — Phaedrus's long-term memory file, loaded every session. Other tabs coming as they're wired up.</span>
+    <a href="/phaedrus/">← Phaedrus system reference</a>
+  </div>
+</body>
+</html>
