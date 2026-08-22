@@ -195,7 +195,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">🗂️</div>
     <div class="row-main">
       <div class="row-title">Skills Inventory — Claude vs. Phaedrus</div>
-      <p class="row-desc">Cross-inventory of the two skill libraries: 14 skills in John's claude.ai account, 31 in the Phaedrus workspace. What overlaps, what's unique to each side, and the sync policy for the one skill that lives in both.</p>
+      <p class="row-desc">Cross-inventory of the two skill libraries: 16 skills in John's claude.ai account, 31 in the Phaedrus workspace. Three now sync by design — google-sheets-modeling carried down, pqb-site and sdcfo-tracker-update carried up so the laptop can publish too.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
@@ -207,6 +207,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/22</span> pqb-site + sdcfo-tracker-update pushed up to the Claude account, laptop-adapted</li>
         <li><span class="act-date">08/22</span> First cross-inventory; google-sheets-modeling ported, byte-identical</li>
       </ul>
     </div>

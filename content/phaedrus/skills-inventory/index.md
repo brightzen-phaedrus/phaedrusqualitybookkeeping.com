@@ -5,7 +5,7 @@ url: "/phaedrus/skills-inventory/"
 summary: "Side-by-side inventory of the skills in John's claude.ai account and the skills Phaedrus carries on the Mac mini — what overlaps, what's unique, and what syncs."
 eyebrow: "Skills"
 heroTitle: "Skills Inventory"
-heroMeta: "John's claude.ai account: **14 skills** · Phaedrus workspace: **31 skills** (+ plugin and system layers) · First cross-inventory **2026-08-22** · google-sheets-modeling ported same day"
+heroMeta: "John's claude.ai account: **16 skills** · Phaedrus workspace: **31 skills** (+ plugin and system layers) · First cross-inventory **2026-08-22** · google-sheets-modeling ported down, pqb-site + sdcfo-tracker-update pushed up the same day"
 ---
 
 ## Two Libraries, No Pipe
@@ -16,15 +16,17 @@ This page is the first full inventory of both sides, taken 2026-08-22.
 
 ---
 
-## John's Claude Account — 14 Skills
+## John's Claude Account — 16 Skills
 
 Pulled live from the account's skills API.
 
-### Custom-built (1)
+### Custom (3)
 
 | Skill | Status | Notes |
 |---|---|---|
 | **google-sheets-modeling** | ✅ Enabled | Built by John 8/21/26. House style for Sheets financial models: the 96-month/32-quarter/8-year period grid, hidden SUMIF helper rows, label-driven references, flow-vs-stock discipline, check rows, Excel-safe export, live-sheet write mechanics, diff-based verification. 5 files. **Ported to Phaedrus 8/22 — byte-identical.** |
+| **pqb-site** | ✅ Enabled | Pushed up from Phaedrus 8/22, adapted for the laptop: repo at `~/code/` (never `~/Documents` — iCloud corrupts git), Hugo optional (Vercel builds on push), no `vercel` CLI fallback. Carries the /phaedrus/ standing rules, layouts, Hugo gotchas, and multi-session git safety. |
+| **sdcfo-tracker-update** | ✅ Enabled | Pushed up from Phaedrus 8/22, laptop-adapted. Pipeline bands, the no-nudge rule, row mechanics, publish-and-verify workflow. LocalContacts and cron aftercare stay Mac-mini-only. |
 
 ### Anthropic-provided, enabled (3)
 
@@ -60,9 +62,10 @@ Plus two more layers: **4 plugin skills** (imsg, slack, wiki-maintainer, obsidia
 
 ## The Comparison
 
-### Now synced (1)
+### Now synced (3)
 
-- **google-sheets-modeling** — the only skill that lives on both sides by design. John's claude.ai copy is the master; Phaedrus re-syncs on request. Ported 8/22 with all five files verified byte-identical.
+- **google-sheets-modeling** — carried down 8/22. John's claude.ai copy is the master; Phaedrus re-syncs on request. All five files verified byte-identical.
+- **pqb-site** and **sdcfo-tracker-update** — carried up 8/22 so the laptop can publish to PQB too. The Phaedrus workspace copies are the masters; the cloud copies are laptop-adapted (paths, no local Hugo assumed). Re-push on change.
 
 ### Same name on both sides, different provenance (3)
 
@@ -74,17 +77,18 @@ Mostly claude.ai-specific machinery — artifact builders (web-artifacts-builder
 
 ### Phaedrus-only (27+)
 
-The entire working library — everything IFM, QBO, PQB, SDCFO, publishing, and automation. This is the asymmetry that matters: **the Claude account has 1 custom skill; Phaedrus has 27+.** If any of them would help John's claude.ai sessions (ifm-analyst is the obvious candidate), they can be carried the other way through the same door: package as a .skill zip, upload in Settings → Capabilities → Skills.
+The rest of the working library — everything IFM, QBO, remaining PQB/SDCFO tooling, and automation. If any of them would help John's claude.ai sessions (ifm-analyst is the obvious candidate), the door is now well-worn: package as a .skill zip, upload in Settings → Skills.
 
 ---
 
 ## Sync Policy
 
 - **google-sheets-modeling:** claude.ai copy is master. John improves it there; Phaedrus re-syncs when told it changed. No auto-sync exists.
+- **pqb-site, sdcfo-tracker-update:** Phaedrus workspace copies are master. When they change materially, re-adapt and re-upload to the account.
 - **Everything else:** independent by default. A skill is carried across only when the work demands it, and the carry is logged here.
 
 ## Improve Next
 
 - Package ifm-analyst as a .skill and offer it to the claude.ai side — the two Sheets skills belong together
-- Add a re-sync check for google-sheets-modeling to the weekly heartbeat (compare updated_at via the skills API)
+- Add a re-sync check to the weekly heartbeat: compare updated_at across the three synced skills via the skills API
 - Fold the three shared-ancestry Anthropic skills into one decision: keep local copies or drop them
