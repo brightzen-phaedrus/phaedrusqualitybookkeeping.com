@@ -40,7 +40,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Publish Chapter 1 of Seeing Your Business Better — draft + figures exist</li>
+          <li>Draft Chapter 2 of Seeing Your Business Better — the sonar origin story</li>
           <li>Give Chapter 16 and future manuscript pages a home here</li>
         </ul>
       </div>
@@ -48,6 +48,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> Chapter 1 published — Driving with a Dirty Windshield</li>
         <li><span class="act-date">08/21</span> Section launched with the SYBB series outline</li>
         <li><span class="act-date">07/26</span> SYBB series decisions locked — 6 chapters + landing</li>
       </ul>

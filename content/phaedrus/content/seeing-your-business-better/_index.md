@@ -10,6 +10,8 @@ heroMeta: "**6-part first-person series** — the 142-slide talk deck, rewritten
 
 Converts the 142-slide talk deck into a 6-part first-person series (plus a landing page) for phaedrusqualitybookkeeping.com/wiki/. Slide references are PDF page numbers. The deck's spoken storytelling beats — windshield, sonar, muffler, "Exactly!!" — are preserved as written scenes; build-slide sequences collapse into single figures.
 
+**Published chapters:** [Part 1 — Driving with a Dirty Windshield](/phaedrus/content/seeing-your-business-better/driving-with-a-dirty-windshield/)
+
 ## Decisions (locked 2026-07-26)
 
 - **Series title:** *Seeing Your Business Better*, with *Zen and the Art of Weekly Accounting* as the recurring section-divider motif inside chapters (the deck's divider art carries over).

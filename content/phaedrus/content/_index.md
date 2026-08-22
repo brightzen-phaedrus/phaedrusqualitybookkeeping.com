@@ -19,7 +19,7 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Publish Chapter 1 — "Driving with a Dirty Windshield" draft + figures exist</li>
+          <li>Draft Chapter 2 — "A Sonar Engineer Looks at Accounting"</li>
           <li>Re-export clean figures per the production notes (watermarks off)</li>
         </ul>
       </div>
@@ -27,6 +27,7 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> Chapter 1 published — Driving with a Dirty Windshield, figures and all</li>
         <li><span class="act-date">08/21</span> Outline published as a page</li>
         <li><span class="act-date">08/21</span> Project folder tidied into projects/seeing-your-business-better/</li>
         <li><span class="act-date">07/26</span> Series decisions locked — title, co-branding, voice, CTAs</li>
