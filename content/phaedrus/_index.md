@@ -238,6 +238,28 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/phaedrus/resurrection/">
+    <div class="row-icon">🔥</div>
+    <div class="row-main">
+      <div class="row-title">Resurrection Plan</div>
+      <p class="row-desc">How to rebuild Phaedrus from a clean Mac mini — what to back up, what to install, which files carry the soul, and what has to be re-earned. The card catalog is the continuity.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Put the workspace in a private git repo — the #1 recommendation, still undone</li>
+          <li>Automate the backup checklist as a weekly cron</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Published with status notes — LCM archive, new crons, local embeddings</li>
+        <li><span class="act-date">07/23</span> Written after the near-wipe scare</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/icloud-cleanup/">
     <div class="row-icon">📂</div>
     <div class="row-main">

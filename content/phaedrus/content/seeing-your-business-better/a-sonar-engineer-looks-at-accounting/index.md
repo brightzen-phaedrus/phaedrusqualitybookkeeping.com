@@ -18,7 +18,7 @@ Engineering degrees. Years designing sonar systems. GE's Edison Engineering Prog
 
 Here's what's not on that list: an accounting license.
 
-I am not an accountant. That's not a confession. It turns out to be the whole point.
+I am not an accountant. That's not a confession. It's the point.
 
 ## What sonar taught me
 
@@ -28,11 +28,11 @@ It **samples the environment** — sound in, everything, all the time. It **sepa
 
 ![The sonar signal chain: sonars sample the environment, separate signal from noise using a value system, make a map, and decide — people in business do the same four steps](figures/sonar-signal-chain.png)
 
-That's not a metaphor. That's the actual signal chain, and I spent years of my life inside it. And when I finally got close to businesses — first as a banker, then as an operator — I saw the same chain everywhere. Every operator samples their environment. Every operator separates signal from noise using some value system. Every operator carries a map and makes decisions from it.
+That's not a metaphor. That's the actual signal chain, and I spent years inside it. When I got close to businesses — first as a banker, then as an operator — I saw the same chain everywhere. Every operator samples their environment. Every operator separates signal from noise using some value system. Every operator carries a map and makes decisions from it.
 
 Which means the quality of your decisions is capped by the quality of your map.
 
-So the question that mattered to me was the engineer's question: *who built the map, and when was it calibrated?*
+The question that mattered was the engineer's question: *who built the map, and when was it calibrated?*
 
 ## The 500-year-old map
 
@@ -44,7 +44,7 @@ Pacioli wrote down double-entry bookkeeping in the *Summa de Arithmetica*, and e
 
 For five hundred years, all accountants have done is make more rules. The map got more precise, more standardized, more compliant. It did not get more useful for the person driving.
 
-Which brings me to the line I say in every talk. Half the room laughs. The accountants in the room wince, because they know it's not an insult — it's a job description:
+Which brings me to the line I say in every talk. Half the room laughs. The accountants wince — they know it's not an insult; it's a job description:
 
 > **"A CPA is a license to do your books in a way that doesn't help the business."**
 
@@ -52,9 +52,9 @@ Compliance is real work and it has to be done. But compliance is the back window
 
 ## The receipts
 
-Fair question at this point: why listen to a sonar guy about accounting?
+Fair question: why listen to a sonar guy about accounting?
 
-Because the system works, and it has for a long time. With The System behind them: five companies past $100M in revenue. A $100M fund. Nineteen exits — General Assembly, Second Life, HouseValues among them.
+Because the system works. With The System behind them: five companies past $100M in revenue. A $100M fund. Nineteen exits — General Assembly, Second Life, HouseValues among them.
 
 ![Track record: five $100M companies and a $100M fund built with The System, plus 19 exits including General Assembly, Second Life, and HouseValues](figures/receipts-logos.png)
 
@@ -64,7 +64,7 @@ And because we run our own company on it. Weekly Accounting, founded 2021: 200 c
 
 ## A new map
 
-So that's the setup. An engineer looks at accounting and sees a sensor system with a five-hundred-year-old display — enormous signal coming in, a value system tuned for compliance instead of navigation, and operators squinting through the noise.
+That's the setup. An engineer looks at accounting and sees a sensor system with a five-hundred-year-old display — enormous signal coming in, a value system tuned for compliance instead of navigation, and operators squinting through the noise.
 
 The fix isn't more reports. The fix is a new map, drawn for the driver.
 
