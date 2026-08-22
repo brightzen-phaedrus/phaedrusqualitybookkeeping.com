@@ -11,6 +11,27 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
 
 <div class="page-rows">
 
+  <a class="page-row" href="/phaedrus/content/knowledge-garden/">
+    <div class="row-icon">🌿</div>
+    <div class="row-main">
+      <div class="row-title">Knowledge Garden — Native Edition</div>
+      <p class="row-desc">The full public wiki converted to the site's own format — 24 pages + 19 poems + the poems index, every wikilink rewired, complete inventory table on the landing. Quartz original stays canonical at /wiki/.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Decide the canonical home — keep both or sunset the Quartz build</li>
+          <li>Auto-sync when the pqb-wiki source changes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> All 45 source files converted — zero missing, zero broken links</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/content/seeing-your-business-better/">
     <div class="row-icon">🪟</div>
     <div class="row-main">

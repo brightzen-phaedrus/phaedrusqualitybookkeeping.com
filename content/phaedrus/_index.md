@@ -49,8 +49,8 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> Converted to native pages at <a href="/phaedrus/content/knowledge-garden/" style="text-decoration:underline">/phaedrus/content/knowledge-garden/</a> — 45/45 files</li>
         <li><span class="act-date">08/21</span> SYBB Ch1 cross-links pointed at garden pages (ifm, mmm, fourth-statement)</li>
-        <li><span class="act-date">08/16</span> 43+ pages live at /wiki/</li>
       </ul>
     </div>
   </a>
