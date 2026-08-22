@@ -27,7 +27,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
       <ul>
         <li><span class="act-date">08/21</span> Page launched — MEMORY.md as a 64-row spreadsheet</li>
         <li><span class="act-date">08/21</span> LCM references retired from AGENTS, MEMORY, HEARTBEAT</li>
-        <li><span class="act-date">next</span> Wire up AGENTS.md, SOUL.md, and TOOLS.md tabs</li>
+        <li><span class="act-date">08/21</span> Masked one word per the published-writing rule — the rule applied to itself</li>
       </ul>
     </div>
   </a>
@@ -174,6 +174,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Misc Files</div>
       <p class="row-desc">Unfiled documents recovered from the iCloud cleanup — Chapter 16, Q3 mind map, San Diego ICP. Preserved for reference.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>File each orphan into its proper project home — then retire this page</li>
+          <li>Add a "no orphans" check to the weekly workspace scan</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
