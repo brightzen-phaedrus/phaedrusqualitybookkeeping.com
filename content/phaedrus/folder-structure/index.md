@@ -1,13 +1,12 @@
 ---
 title: "Folder Structure & Plan"
-layout: "single"
+layout: "phaedrus-report"
 url: "/phaedrus/folder-structure/"
 summary: "iCloud Drive cleanup execution log — what we did, what's left, and the final folder structure."
+eyebrow: "Active Session"
+heroTitle: "Folder Structure & Plan"
+heroMeta: "iCloud Drive cleanup — 260 files down to 117, ~470 MB down to ~25 MB · Credentials secured, duplicates removed, orphans published · **2026-08-21** · WebChat"
 ---
-
-# Folder Structure & Plan
-
-**Session:** 2026-08-21, 3:42–5:30 PM PT · **Channel:** WebChat
 
 John asked Phaedrus to review the entire iCloud Drive shared folder, draft a cleanup plan, and execute it. Here's what happened.
 
