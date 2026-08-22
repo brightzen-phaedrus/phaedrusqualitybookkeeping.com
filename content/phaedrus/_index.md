@@ -32,6 +32,28 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/phaedrus/obsidian/vault-overview/">
+    <div class="row-icon">🗂️</div>
+    <div class="row-main">
+      <div class="row-title">Vault Overview</div>
+      <p class="row-desc">Map of the Obsidian workspace — 131 MB, ~2,000 files across system files, memory, context, projects, and skills. The territory behind the spreadsheet.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Auto-refresh the stats — they're a point-in-time snapshot</li>
+          <li>Link each directory to its owning page where one exists</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Moved to its own page — was overwriting the Memory spreadsheet</li>
+        <li><span class="act-date">08/21</span> Full vault map written with stats + suggestions</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/content/">
     <div class="row-icon">🪟</div>
     <div class="row-main">

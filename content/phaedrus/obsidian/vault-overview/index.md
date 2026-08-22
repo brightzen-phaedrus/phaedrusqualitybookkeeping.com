@@ -1,7 +1,7 @@
 ---
 title: "Obsidian Workspace Overview"
 layout: "phaedrus-report"
-url: "/phaedrus/obsidian/"
+url: "/phaedrus/obsidian/vault-overview/"
 summary: "Map of Phaedrus's Obsidian vault — 131 MB, ~2,000 files across system files, memory, context, projects, skills, and more."
 eyebrow: "Workspace"
 heroTitle: "What's in the Vault"
