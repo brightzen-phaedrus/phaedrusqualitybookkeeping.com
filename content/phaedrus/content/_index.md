@@ -11,6 +11,28 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
 
 <div class="page-rows">
 
+  <a class="page-row" href="/phaedrus/content/characteristics-of-the-fourth-statement/">
+    <div class="row-icon">🗺️</div>
+    <div class="row-main">
+      <div class="row-title">Characteristics of the Fourth Statement</div>
+      <p class="row-desc">The five characteristics, distilled from the 80-slide BrightZen deck by John &amp; Jeff — sits above the statements, integrates every system, unit economics, drillable to the transaction, weekly. "Designed for clarity."</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Add key figures from the deck (SEQ rowset, feedback-loop diagram)</li>
+          <li>John's read — the distillation compresses 80 slides to one page</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Written from the deck John shared tonight</li>
+        <li><span class="act-date">08/21</span> Deck archived to context/books/</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/content/knowledge-garden/">
     <div class="row-icon">🌿</div>
     <div class="row-main">
