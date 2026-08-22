@@ -48,7 +48,8 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/21</span> Chapter 1 published — Driving with a Dirty Windshield</li>
+        <li><span class="act-date">08/21</span> Chapter 2 drafted — A Sonar Engineer Looks at Accounting</li>
+        <li><span class="act-date">08/21</span> Chapter 1 published; Chapter 16 moved home from Misc</li>
         <li><span class="act-date">08/21</span> Section launched with the SYBB series outline</li>
         <li><span class="act-date">07/26</span> SYBB series decisions locked — 6 chapters + landing</li>
       </ul>
@@ -196,7 +197,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">📎</div>
     <div class="row-main">
       <div class="row-title">Misc Files</div>
-      <p class="row-desc">Unfiled documents recovered from the iCloud cleanup — Chapter 16, Q3 mind map, San Diego ICP. Preserved for reference.</p>
+      <p class="row-desc">Unfiled documents recovered from the iCloud cleanup — Q3 mind map, Q3 outline, San Diego ICP. Preserved for reference until each finds a home.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>

@@ -1,9 +1,11 @@
 ---
 title: "Chapter 16 — What We Gave Away"
 layout: "phaedrus-report"
-url: "/phaedrus/misc/chapter-16/"
+url: "/phaedrus/content/chapter-16/"
+aliases:
+  - "/phaedrus/misc/chapter-16/"
 summary: "Recovered manuscript chapter — after fifteen chapters and a lifetime of questions, the book was done. Then a Monday night text."
-eyebrow: "Misc Files · Manuscript"
+eyebrow: "Content · Manuscript"
 heroTitle: "What We Gave Away"
 heroMeta: "**Chapter 16** — recovered from the iCloud cleanup, written after the book was \"done\" · [Original .docx](/phaedrus/misc/Chapter%2016%20-%20What%20We%20Gave%20Away.docx) · **July 2026**"
 ---

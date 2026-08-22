@@ -6,33 +6,10 @@ summary: "Unfiled documents from the iCloud Drive cleanup — orphan files prese
 headerNote: "Misc Files"
 eyebrow: "Misc Files"
 heroTitle: "Orphans, Cataloged"
-heroLede: "Four unfiled documents recovered from the root of the Phaedrus iCloud shared folder during the 2026-08-21 cleanup. Preserved here until they find a permanent home — then this page retires."
+heroLede: "Unfiled documents recovered from the root of the Phaedrus iCloud shared folder during the 2026-08-21 cleanup. Preserved here until they find a permanent home — then this page retires. Chapter 16 has already graduated to /phaedrus/content/."
 ---
 
 <div class="page-rows">
-
-  <a class="page-row" href="/phaedrus/misc/chapter-16/">
-    <div class="row-icon">📖</div>
-    <div class="row-main">
-      <div class="row-title">Chapter 16 — What We Gave Away</div>
-      <p class="row-desc">Book manuscript chapter, now readable as a page — after fifteen chapters the book was "done," then a Monday night text. Original .docx linked from the page.</p>
-      <div class="row-improve">
-        <div class="improve-label">Improve next</div>
-        <ul>
-          <li>File the .docx with the Book 2 manuscript folder</li>
-          <li>Confirm it's the latest draft before filing</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row-activity">
-      <div class="activity-label">File info</div>
-      <ul>
-        <li><span class="act-date">08/21</span> Converted to subpage — read it at /misc/chapter-16/</li>
-        <li><span class="act-date">docx</span> 10 KB original preserved</li>
-        <li><span class="act-date">07/21</span> Last modified</li>
-      </ul>
-    </div>
-  </a>
 
   <a class="page-row" href="/phaedrus/misc/Miss%20New%20to%20San%20Diego%20ICP.pdf">
     <div class="row-icon">🎯</div>

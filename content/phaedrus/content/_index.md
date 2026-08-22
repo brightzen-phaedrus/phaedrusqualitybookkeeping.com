@@ -19,7 +19,7 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Draft Chapter 2 — "A Sonar Engineer Looks at Accounting"</li>
+          <li>Draft Chapter 3 — "The Weekly Accounting System"</li>
           <li>Re-export clean figures per the production notes (watermarks off)</li>
         </ul>
       </div>
@@ -27,6 +27,7 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> Chapter 2 drafted — A Sonar Engineer Looks at Accounting</li>
         <li><span class="act-date">08/21</span> Chapter 1 published — Driving with a Dirty Windshield, figures and all</li>
         <li><span class="act-date">08/21</span> Outline published as a page</li>
         <li><span class="act-date">08/21</span> Project folder tidied into projects/seeing-your-business-better/</li>
@@ -57,24 +58,46 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
     </div>
   </a>
 
-  <a class="page-row" href="/phaedrus/misc/chapter-16/">
-    <div class="row-icon">📖</div>
+  <a class="page-row" href="/phaedrus/content/seeing-your-business-better/a-sonar-engineer-looks-at-accounting/">
+    <div class="row-icon">📡</div>
     <div class="row-main">
-      <div class="row-title">Chapter 16 — What We Gave Away</div>
-      <p class="row-desc">Recovered manuscript chapter — after fifteen chapters the book was "done," then a Monday night text with Jeff. Lives under Misc Files; linked here because it's content.</p>
+      <div class="row-title">SYBB Part 2 — A Sonar Engineer Looks at Accounting <span style="font-size:12px;color:#b45309;font-weight:600;">DRAFT</span></div>
+      <p class="row-desc">The credibility chapter told as story: the sonar signal chain, Pacioli's 500-year-old map, the CPA line verbatim, and the receipts — five $100M companies, 19 exits, Weekly Accounting itself.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Move it home — give it a permanent /phaedrus/content/ address</li>
-          <li>File the original .docx with the Book 2 manuscript folder</li>
+          <li>John's read — voice check on the sonar and Pacioli sections</li>
+          <li>Export the four figures: signal chain, Summa page, logos, WA chart</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> Drafted from the outline beats — slides 12–21</li>
+        <li><span class="act-date">08/21</span> Figure slots reserved pending clean deck exports</li>
+      </ul>
+    </div>
+  </a>
+
+  <a class="page-row" href="/phaedrus/content/chapter-16/">
+    <div class="row-icon">📖</div>
+    <div class="row-main">
+      <div class="row-title">Chapter 16 — What We Gave Away</div>
+      <p class="row-desc">Recovered manuscript chapter — after fifteen chapters the book was "done," then a Monday night text with Jeff. Now living at its permanent address here in Content.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>File the original .docx with the Book 2 manuscript folder</li>
+          <li>Confirm it's the latest draft before filing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Moved home from Misc — old URL redirects</li>
         <li><span class="act-date">08/21</span> Converted from .docx to a readable page</li>
-        <li><span class="act-date">08/21</span> Recovered from iCloud root during cleanup</li>
       </ul>
     </div>
   </a>
