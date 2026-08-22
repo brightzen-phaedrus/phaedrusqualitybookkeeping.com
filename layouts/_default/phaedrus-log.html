@@ -63,28 +63,42 @@
       font: 700 13px "Manrope", sans-serif; padding: 0 8px;
     }
     .todo-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      display: grid; grid-template-columns: 1fr; gap: 14px;
     }
-    @media (max-width: 800px) { .todo-grid { grid-template-columns: 1fr; } }
 
     .todo-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 10px;
-      padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start;
-      transition: box-shadow 0.15s;
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: 22px 28px; display: flex; gap: 18px; align-items: flex-start;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      position: relative; overflow: hidden;
     }
-    .todo-card:hover { box-shadow: 0 6px 20px rgba(7,23,38,0.06); }
+    .todo-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--teal-300), var(--teal-500));
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .todo-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(7,23,38,0.08); border-color: rgba(42,157,152,0.45); }
+    .todo-card:hover::before { opacity: 1; }
+    .todo-body {
+      flex: 1; display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+      gap: 28px; align-items: start;
+    }
+    @media (max-width: 760px) {
+      .todo-body { grid-template-columns: 1fr; gap: 8px; }
+      .todo-body p { border-left: none !important; padding-left: 0 !important; }
+    }
     .todo-num {
       flex-shrink: 0; width: 28px; height: 28px; border-radius: 8px;
       background: var(--mist-100); color: var(--teal-500);
       font: 700 13px/28px "Manrope", sans-serif; text-align: center;
     }
     .todo-body h4 {
-      font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 600;
-      color: var(--navy-900); margin-bottom: 4px;
+      font-family: "Manrope", sans-serif; font-size: 14.5px; font-weight: 600;
+      color: var(--navy-900); margin-bottom: 0;
     }
     .todo-body p {
       font-family: "DM Sans", sans-serif; font-size: 13px; color: var(--slate-600);
-      line-height: 1.5; margin: 0;
+      line-height: 1.5; margin: 0; border-left: 1px solid var(--border); padding-left: 28px;
     }
     /* Active sessions section */
     .active-section {
@@ -104,16 +118,27 @@
       font: 700 13px "Manrope", sans-serif; padding: 0 8px;
     }
     .active-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+      display: grid; grid-template-columns: 1fr; gap: 14px;
     }
-    @media (max-width: 1000px) { .active-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .active-grid { grid-template-columns: 1fr; } }
     .active-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 10px;
-      padding: 18px 22px; transition: box-shadow 0.15s; position: relative;
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: 20px 28px; position: relative; overflow: hidden;
+      display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr) auto;
+      gap: 8px 28px; align-items: center;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
     }
-    .active-card:hover { box-shadow: 0 6px 20px rgba(7,23,38,0.06); }
-    .active-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .active-card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      background: linear-gradient(180deg, var(--teal-300), var(--sheet-green-mid));
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .active-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(7,23,38,0.08); border-color: rgba(42,157,152,0.45); }
+    .active-card:hover::before { opacity: 1; }
+    @media (max-width: 900px) {
+      .active-card { grid-template-columns: 1fr; }
+      .active-card-desc { border-left: none !important; padding-left: 0 !important; }
+    }
+    .active-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0; }
     .active-card-title {
       font-family: "Manrope", sans-serif; font-size: 14px; font-weight: 600;
       color: var(--navy-900); flex: 1;
@@ -128,7 +153,7 @@
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
     .active-card-desc {
       font-family: "DM Sans", sans-serif; font-size: 12.5px; color: var(--slate-600);
-      line-height: 1.5; margin: 0 0 10px;
+      line-height: 1.5; margin: 0; border-left: 1px solid var(--border); padding-left: 28px;
     }
     .active-card-meta {
       display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
