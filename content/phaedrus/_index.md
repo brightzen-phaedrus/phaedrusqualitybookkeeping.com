@@ -133,14 +133,15 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Re-auth or retire z@zdanowski.com Gmail — expired since April</li>
           <li>Set the QBO redirect URI so the API app can finally do OAuth</li>
+          <li>Decide what z@zdanowski.com triage should look like now that access is back</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> z@zdanowski.com Gmail confirmed working again (gog, re-authed 08/17)</li>
         <li><span class="act-date">08/21</span> linkedin-inbox-scan cron updated with the no-nudge rule</li>
         <li><span class="act-date">08/17</span> Daily 8 AM recruiting scan: LinkedIn + Gmail via Playwright + gws</li>
         <li><span class="act-date">08/16</span> Candidate + LocalContacts pages wired into the outreach loop</li>
