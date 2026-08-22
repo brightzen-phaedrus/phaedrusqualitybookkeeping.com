@@ -14,7 +14,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Obsidian Workspace</div>
       <p class="row-desc">The workspace as a spreadsheet — MEMORY.md rendered row by row in a Sheets-style view, section bands and all. More tabs (AGENTS, SOUL, TOOLS) on deck.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Wire the AGENTS, SOUL, and TOOLS tabs as live sheet views</li>
+          <li>Auto-regenerate the page whenever MEMORY.md changes so it never goes stale</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -31,7 +37,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Memory</div>
       <p class="row-desc">Long-term memory — safety rules, operational guardrails, communication protocols, preferences, infrastructure, and active threads. Mistakes become rules; rules compound.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Ship the local-embeddings fix so memory_search is semantic again</li>
+          <li>Prune stale Active Threads — Dearest Care, Montage, expired OAuth</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -48,7 +60,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Identity</div>
       <p class="row-desc">SOUL.md + IDENTITY.md — who Phaedrus is, the Pirsig connection, the four layers of identity, and the voice. The soul file changes rarely, on purpose.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Write the two-layer "engine vs. files" framing into SOUL.md</li>
+          <li>Start a dated change log — every SOUL.md edit, with the why</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -65,7 +83,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Skills</div>
       <p class="row-desc">76 skills across three layers — workspace skills co-created with John, plugin skills from the community, and OpenClaw system skills. Skills are the residue of collaboration.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Audit all 76 — retire dead imports (networking skill still references someone else's setup)</li>
+          <li>Track last-used per skill to spot rot early</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -82,7 +106,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">Tools</div>
       <p class="row-desc">Connected services, API accounts, and integration configuration — Google Workspace, QBO, Notion, Vercel, Twilio, Fireflies, and more. Secrets live in Keychain, never in files.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Re-auth or retire z@zdanowski.com Gmail — expired since April</li>
+          <li>Set the QBO redirect URI so the API app can finally do OAuth</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -99,7 +129,13 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">System Log</div>
       <p class="row-desc">65 entries across 6 months — every significant build, fix, integration, and milestone, grouped by category. Plus a top-10 improvement backlog.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Auto-append entries from daily notes instead of manual batches</li>
+          <li>Link each entry to its commit or memory note for provenance</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
@@ -116,13 +152,33 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-main">
       <div class="row-title">iCloud Drive Cleanup</div>
       <p class="row-desc">Audit and reorganization plan for the Phaedrus iCloud shared folder — 260 files, ~470 MB, organized by company and project.</p>
-      <span class="row-link">View page</span>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Relocate root orphans and rename 1 BrightZen Mind/</li>
+          <li>Add a quarterly re-audit reminder so it doesn't regrow</li>
+        </ul>
+      </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/21</span> Full audit complete — 260 files reviewed</li>
-        <li><span class="act-date">08/21</span> Reorg plan drafted, awaiting John's pass</li>
+        <li><span class="act-date">08/21</span> Phase 1–3 complete — 260 → 128 files, ~470 → ~30 MB</li>
+        <li><span class="act-date">08/21</span> Credentials removed from iCloud, Backups/ cleared</li>
+      </ul>
+    </div>
+  </a>
+
+  <a class="page-row" href="/phaedrus/misc/">
+    <div class="row-icon">📎</div>
+    <div class="row-main">
+      <div class="row-title">Misc Files</div>
+      <p class="row-desc">Unfiled documents recovered from the iCloud cleanup — Chapter 16, Q3 mind map, San Diego ICP. Preserved for reference.</p>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> 4 root orphan files cataloged from iCloud Drive</li>
       </ul>
     </div>
   </a>

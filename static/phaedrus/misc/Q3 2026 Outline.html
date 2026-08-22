@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Q3 2026 — John Z</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #fafaf8;
+    color: #1a1a1a;
+    padding: 20px 16px 60px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    padding: 24px 0 20px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  header .sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 4px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .north-star {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    font-style: italic;
+    margin: 0 0 28px;
+    padding: 12px 16px;
+    background: #f0f0ee;
+    border-radius: 10px;
+  }
+
+  /* ── Sections (Level 1) ── */
+  .section {
+    margin-bottom: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1.5px solid;
+    transition: box-shadow 0.2s;
+  }
+  .section.open {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .section-header .icon { font-size: 20px; margin-right: 10px; }
+  .section-header .title {
+    flex: 1;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  .section-header .subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-left: 4px;
+  }
+  .section-header .chevron {
+    font-size: 18px;
+    transition: transform 0.25s ease;
+    opacity: 0.4;
+  }
+  .section.open > .section-header .chevron {
+    transform: rotate(90deg);
+  }
+
+  .section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .section.open > .section-body {
+    max-height: 1200px;
+  }
+
+  /* ── Sub-groups (Level 2) ── */
+  .subgroup {
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  .subgroup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px 10px 32px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .subgroup-header .sg-title {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .subgroup-header .chevron {
+    font-size: 16px;
+    transition: transform 0.25s ease;
+    opacity: 0.35;
+  }
+  .subgroup.open > .subgroup-header .chevron {
+    transform: rotate(90deg);
+  }
+  .subgroup-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .subgroup.open > .subgroup-body {
+    max-height: 600px;
+  }
+
+  /* ── Items (Level 3) ── */
+  .item {
+    padding: 10px 18px 10px 48px;
+    border-top: 1px solid rgba(0,0,0,0.04);
+  }
+  .item:last-child {
+    padding-bottom: 14px;
+  }
+  .item-name {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.1px;
+  }
+  .item-detail {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.55;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 5px;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+
+  /* ── Flat items (no subgroup) ── */
+  .section > .section-body > .item:first-child {
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+
+  /* ── Colors ── */
+  .s-home { background: #e8f0e4; border-color: #b8d4a8; }
+  .s-home .item { border-top-color: rgba(45,80,22,0.08); }
+  .s-home .subgroup { border-top-color: rgba(45,80,22,0.1); }
+  .s-home .section-header, .s-home .subgroup-header { color: #2d5016; }
+  .s-home .item-name { color: #2d5016; }
+
+  .s-work { background: #ede8f5; border-color: #c4b5dc; }
+  .s-work .item { border-top-color: rgba(61,34,102,0.08); }
+  .s-work .subgroup { border-top-color: rgba(61,34,102,0.1); }
+  .s-work .section-header, .s-work .subgroup-header { color: #3d2266; }
+  .s-work .item-name { color: #3d2266; }
+  .s-work .tag { background: rgba(61,34,102,0.1); color: #3d2266; }
+
+  .s-goal { background: #fce8e6; border-color: #f0a8a0; }
+  .s-goal .item { border-top-color: rgba(122,26,16,0.08); }
+  .s-goal .section-header { color: #7a1a10; }
+  .s-goal .item-name { color: #7a1a10; }
+
+  .s-friend { background: #e3f0f8; border-color: #96c8e8; }
+  .s-friend .item { border-top-color: rgba(12,74,110,0.08); }
+  .s-friend .section-header { color: #0c4a6e; }
+  .s-friend .item-name { color: #0c4a6e; }
+
+  .s-phae { background: #f5e8ec; border-color: #deb5c2; }
+  .s-phae .item { border-top-color: rgba(107,29,58,0.08); }
+  .s-phae .section-header { color: #6b1d3a; }
+  .s-phae .item-name { color: #6b1d3a; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Q3 2026</h1>
+  <div class="sub">John Z</div>
+</header>
+
+<div class="north-star">"Solve anxiety with conscious productivity"</div>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="section s-home" onclick="toggleSection(event, this)">
+  <div class="section-header">
+    <span class="icon">🏠</span>
+    <span class="title">Home</span>
+    <span class="chevron">›</span>
+  </div>
+  <div class="section-body">
+    <div class="item">
+      <div class="item-name">Husband</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Father</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Land Steward</div>
+    </div>
+    <div class="item">
+      <div class="item-name">CFO</div>
+      <div class="item-detail">Household finance</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ BRIGHTZEN SYSTEMS ══════════ -->
+<div class="section s-work" onclick="toggleSection(event, this)">
+  <div class="section-header">
+    <span class="icon">💼</span>
+    <span class="title">BrightZen Systems</span>
+    <span class="subtitle">Partner</span>
+    <span class="chevron">›</span>
+  </div>
+  <div class="section-body">
+
+    <!-- Roles sub-group -->
+    <div class="subgroup" onclick="toggleSubgroup(event, this)">
+      <div class="subgroup-header">
+        <span class="sg-title">Roles</span>
+        <span class="chevron">›</span>
+      </div>
+      <div class="subgroup-body">
+        <div class="item">
+          <div class="item-name">BD Lead</div>
+        </div>
+        <div class="item">
+          <div class="item-name">CFO</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Admin & Compliance</div>
+          <div class="item-detail">Tax · Bookkeeping · Forecasting</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Board Member</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio sub-group -->
+    <div class="subgroup" onclick="toggleSubgroup(event, this)">
+      <div class="subgroup-header">
+        <span class="sg-title">Portfolio</span>
+        <span class="chevron">›</span>
+      </div>
+      <div class="subgroup-body">
+        <div class="item">
+          <div class="item-name">Weekly Accounting</div>
+          <span class="tag">New channel</span>
+        </div>
+        <div class="item">
+          <div class="item-name">ShipCalm</div>
+          <span class="tag">13-wk forecast</span>
+          <span class="tag">L2 metrics</span>
+        </div>
+        <div class="item">
+          <div class="item-name">Homegrown</div>
+          <span class="tag">Referral system</span>
+        </div>
+        <div class="item">
+          <div class="item-name">Assembled Systems</div>
+        </div>
+        <div class="item">
+          <div class="item-name">Phoenix Strategy Group</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ Q3 GOALS ══════════ -->
+<div class="section s-goal" onclick="toggleSection(event, this)">
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <span class="title">Q3 Goals</span>
+    <span class="chevron">›</span>
+  </div>
+  <div class="section-body">
+    <div class="item">
+      <div class="item-name">New Revenue Stream</div>
+      <div class="item-detail">Evaluate pipeline · $250/mo bookkeeping concept</div>
+    </div>
+    <div class="item">
+      <div class="item-name">WA New Channel</div>
+      <div class="item-detail">Find new distribution for Weekly Accounting</div>
+    </div>
+    <div class="item">
+      <div class="item-name">ShipCalm Tools</div>
+      <div class="item-detail">13-week cash forecast · Level 2 marketing metrics</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Learn Mind 2.0</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Homegrown Referrals</div>
+      <div class="item-detail">Leverage full contact network</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FRIENDS ══════════ -->
+<div class="section s-friend" onclick="toggleSection(event, this)">
+  <div class="section-header">
+    <span class="icon">🤝</span>
+    <span class="title">Friends</span>
+    <span class="chevron">›</span>
+  </div>
+  <div class="section-body">
+    <div class="item">
+      <div class="item-name">Local</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Rochester</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Clarkson</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Syracuse</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Boston</div>
+    </div>
+    <div class="item">
+      <div class="item-name">LA</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Seattle</div>
+    </div>
+    <div class="item">
+      <div class="item-name">SF</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PHAEDRUS ══════════ -->
+<div class="section s-phae" onclick="toggleSection(event, this)">
+  <div class="section-header">
+    <span class="icon">🦉</span>
+    <span class="title">Phaedrus</span>
+    <span class="subtitle">Personal Assistant</span>
+    <span class="chevron">›</span>
+  </div>
+  <div class="section-body">
+    <div class="item">
+      <div class="item-name">Memory & Context</div>
+      <div class="item-detail">Continuity across sessions</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Workflow Automation</div>
+      <div class="item-detail">Email, calendar, bookkeeping</div>
+    </div>
+    <div class="item">
+      <div class="item-name">Tool Development</div>
+      <div class="item-detail">Skills, integrations, IFM</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Q3 2026 · Built by Phaedrus</div>
+
+<script>
+function toggleSection(e, el) {
+  // Don't toggle section when tapping a subgroup
+  if (e.target.closest('.subgroup')) return;
+  el.classList.toggle('open');
+}
+function toggleSubgroup(e, el) {
+  e.stopPropagation();
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
