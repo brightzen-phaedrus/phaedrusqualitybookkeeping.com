@@ -11,15 +11,15 @@ heroLede: "Four unfiled documents recovered from the root of the Phaedrus iCloud
 
 <div class="page-rows">
 
-  <a class="page-row" href="/phaedrus/misc/Chapter%2016%20-%20What%20We%20Gave%20Away.docx">
+  <a class="page-row" href="/phaedrus/misc/chapter-16/">
     <div class="row-icon">📖</div>
     <div class="row-main">
       <div class="row-title">Chapter 16 — What We Gave Away</div>
-      <p class="row-desc">Book manuscript chapter — belongs with the <em>Zen and the Art of Weekly Accounting</em> materials.</p>
+      <p class="row-desc">Book manuscript chapter, now readable as a page — after fifteen chapters the book was "done," then a Monday night text. Original .docx linked from the page.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>File with the Book 2 manuscript folder</li>
+          <li>File the .docx with the Book 2 manuscript folder</li>
           <li>Confirm it's the latest draft before filing</li>
         </ul>
       </div>
@@ -27,9 +27,9 @@ heroLede: "Four unfiled documents recovered from the root of the Phaedrus iCloud
     <div class="row-activity">
       <div class="activity-label">File info</div>
       <ul>
-        <li><span class="act-date">docx</span> 10 KB</li>
+        <li><span class="act-date">08/21</span> Converted to subpage — read it at /misc/chapter-16/</li>
+        <li><span class="act-date">docx</span> 10 KB original preserved</li>
         <li><span class="act-date">07/21</span> Last modified</li>
-        <li><span class="act-date">08/21</span> Recovered from iCloud root</li>
       </ul>
     </div>
   </a>
