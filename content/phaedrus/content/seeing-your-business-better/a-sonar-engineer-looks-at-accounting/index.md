@@ -26,7 +26,7 @@ A sonar system does four things, in order.
 
 It **samples the environment** — sound in, everything, all the time. It **separates signal from noise** — and it does that using a value system: what matters, what doesn't, what's a whale and what's a submarine. It **makes a map of the territory**. And then a human being **decides from the map**.
 
-<!-- figure slot: sonar signal chain (slides 18–19) -->
+![The sonar signal chain: sonars sample the environment, separate signal from noise using a value system, make a map, and decide — people in business do the same four steps](figures/sonar-signal-chain.png)
 
 That's not a metaphor. That's the actual signal chain, and I spent years of my life inside it. And when I finally got close to businesses — first as a banker, then as an operator — I saw the same chain everywhere. Every operator samples their environment. Every operator separates signal from noise using some value system. Every operator carries a map and makes decisions from it.
 
@@ -38,7 +38,7 @@ So the question that mattered to me was the engineer's question: *who built the 
 
 The answer is: a Franciscan friar named Luca Pacioli, in 1494.
 
-<!-- figure slot: Summa de Arithmetica page (slide 20) -->
+![A page from Luca Pacioli's Summa de Arithmetica (1494) — the book that defined double-entry bookkeeping and the financial statements accountants still use today](figures/summa-1494.png)
 
 Pacioli wrote down double-entry bookkeeping in the *Summa de Arithmetica*, and everything your accountant hands you — income statement, balance sheet, statement of cash flows — descends from that book. It was a masterpiece. It's also five hundred years old, and it was built to answer a merchant's question — *what happened?* — not an operator's question — *what should I do next?*
 
@@ -56,11 +56,11 @@ Fair question at this point: why listen to a sonar guy about accounting?
 
 Because the system works, and it has for a long time. With The System behind them: five companies past $100M in revenue. A $100M fund. Nineteen exits — General Assembly, Second Life, HouseValues among them.
 
-<!-- figure slot: company logos (slides 14–15) -->
+![Track record: five $100M companies and a $100M fund built with The System, plus 19 exits including General Assembly, Second Life, and HouseValues](figures/receipts-logos.png)
 
 And because we run our own company on it. Weekly Accounting, founded 2021: 200 customers, 500 companies on the system, $4M in revenue — self-funded and profitable. Our own net-revenue-versus-customers chart hangs where everyone can see it. We practice what we preach, weekly.
 
-<!-- figure slot: WA net revenue vs customers chart (slide 2) -->
+![Weekly Accounting's net revenue vs active customers chart — founded 2021, 200 customers, $4M revenue, self-funded and profitable](figures/wa-net-revenue.png)
 
 ## A new map
 
