@@ -22,11 +22,25 @@ The Fourth Statement is designed for clarity.
 
 The Fourth Statement:
 
-1. **Sits above the other financial statements** — the income statement and balance sheet don't disappear; they move below it
-2. **Integrates data from every business system** — QuickBooks, the ad platforms, the CRM, the bank, all of it
-3. **Is based on Unit Economics** — the business seen at the per-customer level
-4. **Extends all the way down to each transaction** — every row drillable, into every system
-5. **Ties everything together each week** — not month-end. Weekly.
+**1. Integrates data from every business system** — QuickBooks, Shopify, the ad platforms, the CRM, the bank, all of it.
+
+![The Fourth Statement integrates data from every business system — Chase, QuickBooks, Bill.com, Shopify, Facebook Ads, Google Analytics, Stripe, HubSpot, and more](figures/1-integrates-every-system.png)
+
+**2. Is based on Unit Economics** — the business seen at the per-customer level: ad spend and new customers become CAC; purchases, order value, and margin become Lifetime Gross Profit; together they make the headline ratio, LTGP:CAC.
+
+![The unit economics driver tree — from advertising spend and orders to CAC, Lifetime Gross Profit, and the LTGP:CAC ratio](figures/2-unit-economics.png)
+
+**3. Extends all the way down to each transaction** — every number decomposes to the customers and transactions underneath it.
+
+![Customer-level detail — monthly revenue by individual customer, down to the one that churned](figures/3-down-to-each-transaction.png)
+
+**4. Sits above the other financial statements** — the income statement and balance sheet don't disappear; they move below it.
+
+![The traditional statements — income statement and balance sheet — sitting below the Fourth Statement](figures/4-above-the-statements.png)
+
+**5. Ties everything together each week** — not month-end. Weekly.
+
+![The Statement of Economic Quality with weekly columns — ad spend, leads, appointments, proposals, CAC, customer roll forward](figures/5-weekly.png)
 
 We call it the **[Statement of Economic Quality](/phaedrus/content/knowledge-garden/seq/)**.
 
