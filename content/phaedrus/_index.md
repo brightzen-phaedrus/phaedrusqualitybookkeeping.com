@@ -32,6 +32,28 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/phaedrus/content/">
+    <div class="row-icon">🪟</div>
+    <div class="row-main">
+      <div class="row-title">Content</div>
+      <p class="row-desc">Longer-form work product published as pages — series plans, chapter drafts, manuscripts. First up: the Seeing Your Business Better series outline.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Publish Chapter 1 of Seeing Your Business Better — draft + figures exist</li>
+          <li>Give Chapter 16 and future manuscript pages a home here</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Section launched with the SYBB series outline</li>
+        <li><span class="act-date">07/26</span> SYBB series decisions locked — 6 chapters + landing</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/memory/">
     <div class="row-icon">🧠</div>
     <div class="row-main">

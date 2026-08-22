@@ -1,0 +1,37 @@
+---
+title: "Phaedrus — Content"
+layout: "phaedrus-index"
+url: "/phaedrus/content/"
+summary: "Longer-form work product — series plans, drafts, and manuscripts, published as pages."
+headerNote: "Content"
+eyebrow: "Content"
+heroTitle: "Content"
+heroLede: "Longer-form work product — series plans, chapter drafts, and manuscripts, published as readable pages."
+---
+
+<div class="page-rows">
+
+  <a class="page-row" href="/phaedrus/content/seeing-your-business-better/">
+    <div class="row-icon">🪟</div>
+    <div class="row-main">
+      <div class="row-title">Seeing Your Business Better</div>
+      <p class="row-desc">The 6-part first-person series plan — the 142-slide talk deck rewritten as wiki chapters: dirty windshield → sonar engineer → the Weekly Accounting system → unit economics → implementation → the vanity-metric case study.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Publish Chapter 1 — "Driving with a Dirty Windshield" draft + figures exist</li>
+          <li>Re-export clean figures per the production notes (watermarks off)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Outline published as a page</li>
+        <li><span class="act-date">08/21</span> Project folder tidied into projects/seeing-your-business-better/</li>
+        <li><span class="act-date">07/26</span> Series decisions locked — title, co-branding, voice, CTAs</li>
+      </ul>
+    </div>
+  </a>
+
+</div>
