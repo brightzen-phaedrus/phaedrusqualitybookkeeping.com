@@ -153,12 +153,12 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="header-brand" href="/phaedrus/">🦉 Phaedrus</a>
-      <span class="header-note">Internal · System Reference</span>
+      <span class="header-note">Internal · {{ .Params.headerNote | default "System Reference" }}</span>
     </div>
   </header>
 
   <main class="page-main">
-    <p class="eyebrow">System Reference</p>
+    <p class="eyebrow">{{ .Params.eyebrow | default "System Reference" }}</p>
     <h1>{{ .Params.heroTitle | default .Title }}</h1>
     <p class="page-lede">{{ .Params.heroLede | default "The ghost in the machine, documented." }}</p>
 
