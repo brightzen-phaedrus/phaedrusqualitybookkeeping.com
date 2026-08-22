@@ -11,6 +11,27 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
 
 <div class="page-rows">
 
+  <a class="page-row" href="/phaedrus/content/mythosimages/">
+    <div class="row-icon">🖼️</div>
+    <div class="row-main">
+      <div class="row-title">Mythos Images — The Visual Archive</div>
+      <p class="row-desc">All 171 images from the Mythos-era shared iCloud folder — early IFM and MMM sketches, dual-entry diagrams, rollforwards, whiteboard photos, logos, and the life around them. The visual prehistory of the Fourth Statement canon.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Curate the canon-relevant diagrams into the knowledge garden with commentary</li>
+          <li>Add dates/context captions where John remembers the story</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/22</span> Published — 171 images converted from iCloud, zero failures</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/content/characteristics-of-the-fourth-statement/">
     <div class="row-icon">🗺️</div>
     <div class="row-main">
