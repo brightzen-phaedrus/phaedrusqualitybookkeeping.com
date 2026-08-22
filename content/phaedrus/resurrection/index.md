@@ -16,7 +16,7 @@ This plan was written 2026-07-23. Still accurate in shape; these details have mo
 - **Cron jobs are now two:** `morning-email-scan` (7 AM, both inboxes — recreated 08/21 after the original vanished) and `linkedin-inbox-scan` (8 AM, SDCFO pipeline).
 - **Memory embeddings are local:** the `llama-cpp` plugin + `memorySearch.provider: "local"` are now part of what makes the config whole.
 - **The skills list evolves** — trust the live catalog at [/phaedrus/skills/](/phaedrus/skills/) over the snapshot below (networking was deleted 08/21).
-- **The #1 recommendation stands, still undone:** the workspace is not in git.
+- **The #1 recommendation is DONE:** the workspace is in a private git repo (`brightzen-phaedrus/PhaedrusAI-Main`, since 2026-08-20) and synced daily. The backup checklist below still applies to config and credentials outside the workspace.
 
 ---
 
