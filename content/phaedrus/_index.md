@@ -13,21 +13,21 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">📗</div>
     <div class="row-main">
       <div class="row-title">Obsidian Workspace</div>
-      <p class="row-desc">The workspace as a spreadsheet — MEMORY.md rendered row by row in a Sheets-style view, section bands and all. More tabs (AGENTS, SOUL, TOOLS) on deck.</p>
+      <p class="row-desc">Full map of the vault — 131 MB, ~2,000 files across 15 directories. System files, 56 daily notes, 60 people profiles, 81 IFM reviews, 31 skills, 19 projects, 10 thought partners, and the compiled wiki.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Wire the AGENTS, SOUL, and TOOLS tabs as live sheet views</li>
-          <li>Auto-regenerate the page whenever MEMORY.md changes so it never goes stale</li>
+          <li>Clean up scratch/ — 1,012 files, mostly debug artifacts older than 30 days</li>
+          <li>Consolidate meeting-log/ into context/meetings/ (two folders doing the same thing)</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/21</span> Page launched — MEMORY.md as a 64-row spreadsheet</li>
+        <li><span class="act-date">08/21</span> Full workspace overview page with statistics and suggestions</li>
         <li><span class="act-date">08/21</span> LCM references retired from AGENTS, MEMORY, HEARTBEAT</li>
-        <li><span class="act-date">08/21</span> Masked one word per the published-writing rule — the rule applied to itself</li>
+        <li><span class="act-date">07/25</span> Memory wiki launched — 132 compiled pages from daily notes</li>
       </ul>
     </div>
   </a>
