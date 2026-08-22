@@ -32,6 +32,28 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/wiki/">
+    <div class="row-icon">🌿</div>
+    <div class="row-main">
+      <div class="row-title">Knowledge Garden</div>
+      <p class="row-desc">The public wiki — 43+ pages on the IFM, the Fourth Statement, the SEQ, signal vs. noise, and the rest of the canon. Quartz-built, one-way airlock from the private memory wiki.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Publish the SYBB chapters into the garden once figures are final</li>
+          <li>Add entity pages as the private wiki drafts graduate</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> SYBB Ch1 cross-links pointed at garden pages (ifm, mmm, fourth-statement)</li>
+        <li><span class="act-date">08/16</span> 43+ pages live at /wiki/</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/outline/">
     <div class="row-icon">🌳</div>
     <div class="row-main">
