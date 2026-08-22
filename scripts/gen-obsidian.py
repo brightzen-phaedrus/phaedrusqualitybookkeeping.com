@@ -1,114 +1,253 @@
 import re, html
 
-SRC = "/Users/phaedrus/Documents/PhaedrusAI-main/Obsidian/MEMORY.md"
+VAULT = "/Users/phaedrus/Documents/PhaedrusAI-main/Obsidian"
 OUT = "layouts/_default/phaedrus-obsidian.html"
 
+# USER.md excluded — contains family details including a minor (privacy).
+TABS = [
+    ("MEMORY.md",    f"{VAULT}/MEMORY.md"),
+    ("AGENTS.md",    f"{VAULT}/AGENTS.md"),
+    ("SOUL.md",      f"{VAULT}/SOUL.md"),
+    ("TOOLS.md",     f"{VAULT}/TOOLS.md"),
+    ("HEARTBEAT.md", f"{VAULT}/HEARTBEAT.md"),
+]
+
+# ---------------------------------------------------------------------------
+# Inline formatting
+# ---------------------------------------------------------------------------
+
+def mask_profanity(s):
+    return s.replace("fuck", "f***").replace("Fuck", "F***")
+
 def inline(s):
-    s = s.replace("fuck", "f***").replace("Fuck", "F***")
+    s = mask_profanity(s)
     s = html.escape(s, quote=False)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"`([^`]+)`", r"<code>\1</code>", s)
-    s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', s)
+    s = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)",
+               r'<a href="\2" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r"_([A-Za-z][^_]*)_", r"<em>\1</em>", s)
     return s
 
-lines = open(SRC).read().splitlines()
-sections = []   # (name, [entries]) ; entry = (item, detail) or ("_note_", text)
-cur = None
-entry_lines = []
+# ---------------------------------------------------------------------------
+# Markdown → (preamble, sections) parser
+# ---------------------------------------------------------------------------
 
-def flush_entry():
-    global entry_lines
-    if not entry_lines or cur is None: return
-    raw = entry_lines
-    first = raw[0][2:].strip()  # strip "- "
-    extra = []
-    in_code = False
-    for l in raw[1:]:
-        t = l.strip()
-        if t.startswith("```"):
-            in_code = not in_code
-            extra.append("\u0000CODE\u0000")
-            continue
-        if t:
-            extra.append(t)
-    m = re.match(r"\*\*(.+?)\*\*\s*(.*)", first)
-    if m:
-        item = m.group(1).rstrip(".").rstrip(":")
-        detail = m.group(2)
-    else:
-        item = ""
-        detail = first
-    if extra:
-        detail = (detail + " " if detail else "") + " ".join(extra)
-    # collapse code markers into <code> spans
-    parts = detail.split("\u0000CODE\u0000")
-    out = ""
-    for i,p in enumerate(parts):
-        p = p.strip()
-        if i % 2 == 1:
-            out += ' <code>' + html.escape(p, quote=False).replace("fuck","f***") + '</code> '
-        else:
-            out += inline(p)
-    cur[1].append((inline(item), out.strip()))
+def parse_md(path):
+    """Parse a markdown file into (preamble_lines, sections).
+    sections = [(name, [(item_html, detail_html), ...])]
+    """
+    raw_lines = open(path).read().splitlines()
+    sections = []
+    preamble = []
+    cur = None          # current (name, entries_list)
+    cur_h2 = None       # tracks ## name for ### prefixing
     entry_lines = []
+    in_code = False
 
-preamble = []
-for ln in lines:
-    if ln.startswith("# "):
-        continue
-    h = re.match(r"^(##+)\s+(.*)", ln)
-    if h:
-        flush_entry()
-        name = h.group(2).strip()
-        if h.group(1) == "###" and sections:
-            name = sections[-1][0] + " — " + name
-        cur = (name, [])
-        sections.append(cur)
-        continue
-    if ln.startswith("- "):
-        flush_entry()
+    def flush_entry():
+        nonlocal entry_lines
+        if not entry_lines or cur is None:
+            entry_lines = []
+            return
+        raw = entry_lines
+        first_line = raw[0].strip()
+        # Strip leading list markers: "- ", "* ", "1. "
+        first = re.sub(r'^[-*]\s+', '', first_line)
+        first = re.sub(r'^\d+\.\s+', '', first)
+
+        extra = []
+        cf = False
+        for l in raw[1:]:
+            t = l.strip()
+            if t.startswith("```"):
+                cf = not cf
+                extra.append("\u0000CODE\u0000")
+                continue
+            if t:
+                extra.append(t)
+
+        m = re.match(r"\*\*(.+?)\*\*\s*(.*)", first)
+        if m:
+            item = m.group(1).rstrip(".").rstrip(":")
+            detail = m.group(2)
+        else:
+            item = ""
+            detail = first
+
+        if extra:
+            detail = (detail + " " if detail else "") + " ".join(extra)
+
+        # Collapse code markers into <code> spans
+        parts = detail.split("\u0000CODE\u0000")
+        out = ""
+        for i, p in enumerate(parts):
+            p = p.strip()
+            if i % 2 == 1:
+                out += (' <code>'
+                        + html.escape(p, quote=False).replace("fuck", "f***")
+                        + '</code> ')
+            else:
+                out += inline(p)
+
+        cur[1].append((inline(item), out.strip()))
+        entry_lines = []
+
+    for ln in raw_lines:
+        t = ln.strip()
+
+        # Skip the title (# heading)
+        if ln.startswith("# "):
+            continue
+
+        # Code fences — track open/close for continuation
+        if t.startswith("```"):
+            if in_code:
+                entry_lines.append(ln)
+                in_code = False
+                continue
+            else:
+                if not entry_lines:
+                    entry_lines = [ln]
+                else:
+                    entry_lines.append(ln)
+                in_code = True
+                continue
+
+        # Inside a code block — always continuation
+        if in_code:
+            entry_lines.append(ln)
+            continue
+
+        # Section headers
+        h = re.match(r"^(##+)\s+(.*)", ln)
+        if h:
+            flush_entry()
+            name = h.group(2).strip()
+            level = h.group(1)
+            if level == "##":
+                cur_h2 = name
+            elif level == "###" and cur_h2:
+                name = cur_h2 + " — " + name
+            cur = (name, [])
+            sections.append(cur)
+            continue
+
+        # Blank lines / separators flush entries
+        if t in ("", "---"):
+            if entry_lines:
+                flush_entry()
+            continue
+
+        # List items (bullet or numbered) start new entries
+        if re.match(r'^[-*]\s+', ln) or re.match(r'^\d+\.\s+', ln):
+            flush_entry()
+            if cur is None:
+                cur = ("General", [])
+                sections.append(cur)
+            entry_lines = [ln]
+            continue
+
+        # Indented lines are continuation of the current entry
+        if entry_lines and (ln.startswith("  ") or ln.startswith("\t")):
+            entry_lines.append(ln)
+            continue
+
+        # Non-indented standalone text — flush any pending entry first
+        if entry_lines:
+            flush_entry()
+
+        # Preamble (before first section) vs. section content
         if cur is None:
-            cur = ("General", []); sections.append(cur)
-        entry_lines = [ln]
-        continue
-    if entry_lines:
-        entry_lines.append(ln)
-        continue
-    t = ln.strip()
-    if t in ("", "---"): continue
-    if cur is None:
-        if t.startswith("_") : preamble.append(t.strip("_"))
-    else:
-        cur[1].append(("", inline(t.strip("_"))))
-flush_entry()
+            if t.startswith("_"):
+                preamble.append(t.strip("_"))
+        else:
+            # Route through entry system so bold patterns get extracted
+            entry_lines = [ln]
 
-rows = []
-n = 1
-def band(label, count):
-    global n
-    rows.append(f'<tr class="stage-band"><td class="row-num">{n}</td><td colspan="2">{label}<span class="stage-count">— {count}</span></td></tr>'); 
-def row(item, detail):
-    global n
-    it = f'<span class="item-name">{item}</span>' if item else '<span class="muted-dash">—</span>'
-    rows.append(f'<tr><td class="row-num">{n}</td><td class="item-cell">{it}</td><td class="bg-cell">{detail}</td></tr>')
+    flush_entry()
+    return preamble, sections
 
-n = 1
-band("About This File", len(preamble)); n += 1
-for p in preamble:
-    row("", inline(p)); n += 1
-for name, entries in sections:
-    if not entries: continue
-    band(html.escape(name), f"{len(entries)} entries"); n += 1
-    for item, detail in entries:
-        row(item, detail); n += 1
+# ---------------------------------------------------------------------------
+# Build tbody HTML for one tab
+# ---------------------------------------------------------------------------
 
-TBODY = "\n".join(rows)
+def build_tbody(preamble, sections):
+    rows = []
+    n = 1
 
-template = open("layouts/_default/sdcfo-candidates.html").read()
+    def band(label, count_label):
+        nonlocal n
+        rows.append(
+            f'<tr class="stage-band"><td class="row-num">{n}</td>'
+            f'<td colspan="2">{label}'
+            f'<span class="stage-count">— {count_label}</span></td></tr>')
 
-head_style_end = template.index("</style>")
-style = template[:head_style_end]
+    def row(item, detail):
+        nonlocal n
+        it = (f'<span class="item-name">{item}</span>' if item
+              else '<span class="muted-dash">—</span>')
+        rows.append(
+            f'<tr><td class="row-num">{n}</td>'
+            f'<td class="item-cell">{it}</td>'
+            f'<td class="bg-cell">{detail}</td></tr>')
+
+    if preamble:
+        band("About This File", str(len(preamble)))
+        n += 1
+        for p in preamble:
+            row("", inline(p))
+            n += 1
+
+    for name, entries in sections:
+        if not entries:
+            continue
+        band(html.escape(name), f"{len(entries)} entries")
+        n += 1
+        for item, detail in entries:
+            row(item, detail)
+            n += 1
+
+    return "\n".join(rows), n - 1   # html, total_rows
+
+# ---------------------------------------------------------------------------
+# Build the page
+# ---------------------------------------------------------------------------
+
+tab_parts = []  # (display_name, tab_id, tbody_html, formula_text)
+for tab_name, path in TABS:
+    tab_id = tab_name.replace(".", "_").lower()
+    preamble, sections = parse_md(path)
+    tbody_html, row_count = build_tbody(preamble, sections)
+    sheet_label = tab_name.replace(".md", "")
+    formula = (f'=IMPORTRANGE("obsidian://PhaedrusAI-main/Obsidian/{tab_name}", '
+               f'"{sheet_label}!A:B")')
+    tab_parts.append((tab_name, tab_id, tbody_html, formula))
+    print(f"  {tab_name}: {row_count} rows")
+
+# Build tbody blocks (first visible, rest hidden)
+tbody_blocks = []
+for i, (name, tid, tbody_html, _) in enumerate(tab_parts):
+    display = "" if i == 0 else ' style="display:none"'
+    tbody_blocks.append(
+        f'        <tbody id="{tid}" class="tab-body"{display}>\n'
+        f'{tbody_html}\n'
+        f'        </tbody>')
+ALL_TBODY = "\n".join(tbody_blocks)
+
+# Build tab spans
+tab_spans = []
+for i, (name, tid, _, formula) in enumerate(tab_parts):
+    active = " active" if i == 0 else ""
+    safe_formula = html.escape(formula, quote=True)
+    tab_spans.append(
+        f'      <span class="sheet-tab{active}" data-tab="{tid}" '
+        f'data-formula="{safe_formula}">{name}</span>')
+# Add privacy comment where USER.md tab would have been
+tab_spans.insert(3, '      <!-- USER.md tab excluded: contains family details including a minor -->')
+TABS_HTML = "\n".join(tab_spans)
+
+DEFAULT_FORMULA = html.escape(tab_parts[0][3], quote=False)
 
 page = f"""<!DOCTYPE html>
 <html lang="en" dir="auto">
@@ -166,7 +305,8 @@ page = f"""<!DOCTYPE html>
     tbody tr:hover td:not(.row-num) {{ background: #f6fbf8; }}
     .stage-band:hover td {{ background: var(--band-green) !important; }}
     .sheet-tabs {{ display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; overflow-x: auto; }}
-    .sheet-tab {{ padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; white-space: nowrap; }}
+    .sheet-tab {{ padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; white-space: nowrap; cursor: pointer; user-select: none; }}
+    .sheet-tab:hover {{ background: rgba(255,255,255,0.6); }}
     .sheet-tab.active {{ background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }}
     .page-footer {{ max-width: min(1300px, calc(100vw - 24px)); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }}
     .page-footer a {{ color: var(--sheet-green-mid); font-weight: 500; }}
@@ -191,7 +331,7 @@ page = f"""<!DOCTYPE html>
     </div>
     <div class="formula-bar">
       <span class="fx">fx</span>
-      <span class="formula-box">=IMPORTRANGE("obsidian://PhaedrusAI-main/Obsidian/MEMORY.md", "Memory!A:B")</span>
+      <span class="formula-box" id="formula-text">{DEFAULT_FORMULA}</span>
     </div>
     <div class="grid-wrap">
       <table>
@@ -206,26 +346,38 @@ page = f"""<!DOCTYPE html>
             <th>Detail</th>
           </tr>
         </thead>
-        <tbody>
-{TBODY}
-        </tbody>
+{ALL_TBODY}
       </table>
     </div>
     <div class="sheet-tabs">
-      <span class="sheet-tab active">MEMORY.md</span>
-      <span class="sheet-tab">AGENTS.md</span>
-      <span class="sheet-tab">SOUL.md</span>
-      <span class="sheet-tab">USER.md</span>
-      <span class="sheet-tab">TOOLS.md</span>
-      <span class="sheet-tab">HEARTBEAT.md</span>
+{TABS_HTML}
     </div>
   </div>
   <div class="page-footer">
-    <span>Live mirror of <code>MEMORY.md</code> — Phaedrus's long-term memory file, loaded every session. Other tabs coming as they're wired up.</span>
+    <span>Live mirror of Phaedrus's Obsidian workspace — MEMORY.md, AGENTS.md, SOUL.md, TOOLS.md, HEARTBEAT.md. USER.md excluded for privacy.</span>
     <a href="/phaedrus/">← Phaedrus system reference</a>
   </div>
+  <script>
+  (function() {{
+    var tabs = document.querySelectorAll('.sheet-tab');
+    var bodies = document.querySelectorAll('.tab-body');
+    var formulaBox = document.getElementById('formula-text');
+    tabs.forEach(function(tab) {{
+      tab.addEventListener('click', function() {{
+        var target = this.getAttribute('data-tab');
+        var formula = this.getAttribute('data-formula');
+        tabs.forEach(function(t) {{ t.classList.remove('active'); }});
+        this.classList.add('active');
+        bodies.forEach(function(b) {{
+          b.style.display = (b.id === target) ? '' : 'none';
+        }});
+        formulaBox.textContent = formula;
+      }});
+    }});
+  }})();
+  </script>
 </body>
 </html>
 """
 open(OUT, "w").write(page)
-print("rows:", len(rows))
+print(f"Wrote {OUT}")

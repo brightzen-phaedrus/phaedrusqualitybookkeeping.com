@@ -17,14 +17,15 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Clean up scratch/ — 1,012 files, mostly debug artifacts older than 30 days</li>
-          <li>Consolidate meeting-log/ into context/meetings/ (two folders doing the same thing)</li>
+          <li>Publish a USER.md-safe summary tab</li>
+          <li>Auto-regen on MEMORY.md change</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/21</span> AGENTS/SOUL/TOOLS/HEARTBEAT tabs live</li>
         <li><span class="act-date">08/21</span> Full workspace overview page with statistics and suggestions</li>
         <li><span class="act-date">08/21</span> LCM references retired from AGENTS, MEMORY, HEARTBEAT</li>
         <li><span class="act-date">07/25</span> Memory wiki launched — 132 compiled pages from daily notes</li>
