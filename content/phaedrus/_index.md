@@ -184,9 +184,30 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/22</span> google-sheets-modeling ported from John's Claude account</li>
         <li><span class="act-date">08/21</span> New skill: sdcfo-tracker-update — pipeline edit → build → verify</li>
         <li><span class="act-date">08/16</span> SDCFO recruiting workflows born from the LinkedIn outreach sprint</li>
-        <li><span class="act-date">08/15</span> pqb-site + sdcfo draft-page patterns codified</li>
+      </ul>
+    </div>
+  </a>
+
+  <a class="page-row" href="/phaedrus/skills-inventory/">
+    <div class="row-icon">🗂️</div>
+    <div class="row-main">
+      <div class="row-title">Skills Inventory — Claude vs. Phaedrus</div>
+      <p class="row-desc">Cross-inventory of the two skill libraries: 14 skills in John's claude.ai account, 31 in the Phaedrus workspace. What overlaps, what's unique to each side, and the sync policy for the one skill that lives in both.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Package ifm-analyst as a .skill for the claude.ai side</li>
+          <li>Heartbeat re-sync check on google-sheets-modeling</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/22</span> First cross-inventory; google-sheets-modeling ported, byte-identical</li>
       </ul>
     </div>
   </a>
