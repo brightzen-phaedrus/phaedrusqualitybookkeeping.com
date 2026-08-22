@@ -32,6 +32,27 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/outline/">
+    <div class="row-icon">🌳</div>
+    <div class="row-main">
+      <div class="row-title">Site Outline</div>
+      <p class="row-desc">Every page on the site in one tree — auto-generated from the content graph on every build, so it can never go stale. Sections with live page counts.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Fold the wiki's page list in — it builds outside Hugo</li>
+          <li>Add one-line descriptions on hover</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/21</span> Page created — auto-generates from .Site.Pages</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/phaedrus/obsidian/vault-overview/">
     <div class="row-icon">🗂️</div>
     <div class="row-main">
