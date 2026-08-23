@@ -114,10 +114,10 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/22</span> Mythos Images archive — 171 images published</li>
         <li><span class="act-date">08/21</span> Chapter 2 drafted — A Sonar Engineer Looks at Accounting</li>
         <li><span class="act-date">08/21</span> Chapter 1 published; Chapter 16 moved home from Misc</li>
         <li><span class="act-date">08/21</span> Section launched with the SYBB series outline</li>
-        <li><span class="act-date">07/26</span> SYBB series decisions locked — 6 chapters + landing</li>
       </ul>
     </div>
   </a>
@@ -241,7 +241,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">📜</div>
     <div class="row-main">
       <div class="row-title">System Log</div>
-      <p class="row-desc">65 entries across 6 months — every significant build, fix, integration, and milestone, grouped by category. Plus a top-10 improvement backlog.</p>
+      <p class="row-desc">76 entries across 6 months — every significant build, fix, integration, and milestone, grouped by category. Plus a top-10 improvement backlog.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
@@ -253,9 +253,9 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/22</span> 6 entries: drive cleanups, Mythos Images, skills sync, folder-org skill</li>
         <li><span class="act-date">08/21</span> Obsidian workspace page, LCM retirement, tracker skill — one afternoon</li>
         <li><span class="act-date">08/16</span> SDCFO candidate pipeline tracker shipped</li>
-        <li><span class="act-date">08/15</span> SDCFO draft pages + website critique</li>
       </ul>
     </div>
   </a>
@@ -298,8 +298,30 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/22</span> Deep cleanup: 206 GB → ~20 GB (iTunes, .ipsw, audiobooks); root 18→10 folders</li>
+        <li><span class="act-date">08/22</span> Google Drive reorganized: Companies mirror, Meet recordings trashed, 85 files sorted</li>
         <li><span class="act-date">08/21</span> Phase 1–3 complete — 260 → 128 files, ~470 → ~30 MB</li>
-        <li><span class="act-date">08/21</span> Credentials removed from iCloud, Backups/ cleared</li>
+      </ul>
+    </div>
+  </a>
+
+  <a class="page-row" href="/phaedrus/workspace-restructure/">
+    <div class="row-icon">🔧</div>
+    <div class="row-main">
+      <div class="row-title">Workspace Restructure</div>
+      <p class="row-desc">Dropping Obsidian — flatten the Obsidian/ nesting to the repo root, create a separate openclaw-config repo for ~/.openclaw/ infrastructure. Two moves, one cleaner structure.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Execute the flatten once John confirms specifics</li>
+          <li>Set up the openclaw-config repo with proper .gitignore</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/22</span> Plan discussed — Option B (separate repo) chosen, awaiting go</li>
       </ul>
     </div>
   </a>
