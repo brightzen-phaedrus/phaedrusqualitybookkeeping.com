@@ -14,7 +14,7 @@ heroMeta: "**Updated 2026-08-23 PT** — the first job is conversations. Goal: f
 
 Be the fastest fractional CFO firm to $1m in revenue in human history.
 
-The first job is not a prettier site on this domain, and it is not a cloned bookkeeping firm. The first job is **conversations**.
+The first job is conversations.
 
 ## How we generate them
 
