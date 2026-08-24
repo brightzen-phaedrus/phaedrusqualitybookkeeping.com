@@ -28,7 +28,7 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/23</span> Plan rewritten: conversations via content, not the A/B fork</li>
+        <li><span class="act-date">08/23</span> Cut the plan below How we generate them</li>
         <li><span class="act-date">08/23</span> First publish at /sdcfo/plan/</li>
       </ul>
     </div>
