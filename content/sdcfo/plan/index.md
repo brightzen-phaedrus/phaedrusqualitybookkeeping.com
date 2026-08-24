@@ -4,73 +4,52 @@ layout: "sdcfo-report"
 url: "/sdcfo/plan/"
 date: 2026-08-23
 draft: false
-summary: "Plan with John, not for him. Fractional CFO firm in a box; first motion still open."
+summary: "Conversations first. Content to email and social, landing on SDCFOGroup.com, run by GrokBots. Fastest fractional CFO firm to $1m."
 eyebrow: "Living plan"
 heroTitle: "SDCFO living plan"
-heroMeta: "**Updated 2026-08-23 PT** — plan with John, not for him. SuperDoer executes only after this is written and John says yes."
+heroMeta: "**Updated 2026-08-23 PT** — the first job is conversations. Goal: fastest fractional CFO firm to $1m in revenue in human history."
 ---
 
-## What we are building
+## The thesis
 
-AI-native financial operations company, grown from John's contacts, outbound, and research.
+Be the fastest fractional CFO firm to $1m in revenue in human history.
 
-Product (FACT, Oct 25 Strategy): a fractional CFO firm in a box. Operating system plus a human guide. Views on the business, weekly updates, a number to text or call. Someone is looking over the shoulder.
+The first job is not a prettier site on this domain, and it is not a cloned bookkeeping firm. The first job is **conversations**.
 
-Offer split (FACT, same call):
+## How we generate them
+
+Test content marketing to email and social. That traffic lands on **SDCFOGroup.com** landing pages.
+
+A team of GrokBots does the work: draft, ship, measure, iterate. Humans decide what goes public and who gets contacted.
+
+## What this replaces
+
+The prior plan's open fork (list outreach vs. PQB site conversion) is deleted. Conversations are the motion. Content is the test. SDCFOGroup.com is the destination.
+
+Do not invent a bookkeeping firm for sale. Do not invent contacts, meetings, or revenue.
+
+## Offer (still true)
+
+Fractional CFO firm in a box: operating system plus a human guide. Views on the business, weekly updates, a number to text or call.
 
 - Digital Fractional CFO ~$1,000/month. Oversee everything. Books optional. No meetings unless they want them.
 - Weekly Accounting ~$2,000/month with a client manager, if they want meetings.
 
-Adjacent loop (FACT, Digital COO): connect systems → IFM → weekly review → calibrate → compound.
-
-Funnels (FACT): two openers, "my books suck" and "I need money." Bookkeeper Checkup is the halo / conversation generator. Core is still books plus the view of the business given back. Do not invent a bookkeeping firm for sale.
-
-Do not clone: Weekly Accounting bookkeeping, Email Bot, CRM Manager, LinkedIn Bot, zCompound Bookkeeper, iCloud Contact Bot, ShipCalm IFM. Use them as sources only if John says so.
-
-## Pulse
-
-FACT from Oct 25: talk to 20 new businesses a week toward a unified 40/week (then they were at ~12). That pulse is the growth engine. One conversation with a business owner is the unit.
-
-I have not seen a contact list, inbox, or current conversation count. Those numbers from October 2025 are not today's count.
-
-## Site (FACT, Drive review 2026-08-15, Jeff)
-
-Highest leverage:
-
-1. Fix Start Conversation so the form submits to SDCFO, not the visitor's email app.
-2. Proof: reuse WA testimonials, name SDCFO as implementer. Our Experience page. Slides 14–15 still missing.
-3. How We Work: onboarding, timelines, cadence, who does what, deliverables.
-
-No production site change without John's yes.
-
-## Two motions (open)
-
-These change the plan. Pick one first.
-
-A. Conversations from the existing list. 20/week. Openers: books suck / I need money. Bookkeeper Checkup as the reason to talk. I cannot start this until I can see a real list (or John points at who holds it). I will not invent names.
-
-B. Site conversion from the Aug 15 review. Fix submit, then proof, then How We Work. SuperDoer does the work after John agrees the copy and the order.
+Funnels stay honest: "my books suck" and "I need money." Bookkeeper Checkup can still open a conversation. Core is still books plus the view of the business given back.
 
 ## Open now
 
-- First motion: A or B. Waiting on John.
-- Who holds the live list (CRM Manager? LinkedIn Bot? iCloud?). Not asked yet.
-- Whether Digital COO is the same product as Digital Fractional CFO, or a later layer.
-- Current conversation count this week. Not seen.
-- Slides 14–15 for Our Experience. Not in the Drive doc.
+- First content piece and which SDCFOGroup.com landing page it points at.
+- Which GrokBots own email vs. social vs. landing copy.
+- What counts as a conversation this week.
+- Current conversation count. Not seen.
 
 ## Constraints
 
-Never without John's yes: send mail, chats, posts; spend; contact a person; change production.
+Never without John's yes: send mail, chats, posts; spend; contact a person; change a production landing page.
 
-No invented contacts, meetings, or revenue.
+No invented contacts, meetings, or revenue. Public pages only get what John explicitly publishes.
 
-## After the first decision
+## After the first conversation test
 
-If A: next ask is who holds the list and what "a conversation" means this week (call, text, LinkedIn, walk-up). Then a written outreach plan. SuperDoer executes that plan. I do not send.
-
-If B: next ask is which of the three site fixes is first (submit vs proof vs How We Work). Then a written page plan. SuperDoer executes.
-
-## Sources
-
-Source notes stay off this site unless John publishes them.
+Write what ran, where it landed, and what it produced. Then the next piece. SuperDoer and the GrokBot team execute the written test. They do not send until John says yes.

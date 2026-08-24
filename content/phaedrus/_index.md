@@ -10,23 +10,24 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
 <div class="page-rows">
 
 
-  <a class="page-row" href="/sdcfo/plan/">
+    <a class="page-row" href="/sdcfo/plan/">
     <div class="row-icon">📜</div>
     <div class="row-main">
       <div class="row-title">SDCFO living plan</div>
-      <p class="row-desc">Plan with John, not for him. Fractional CFO firm in a box; first motion still open (conversations vs site conversion).</p>
+      <p class="row-desc">Conversations first. Content to email and social, landing on SDCFOGroup.com, run by GrokBots. Fastest fractional CFO firm to $1m.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>John picks motion A or B</li>
-          <li>Name who holds the live conversation list</li>
+          <li>Name the first content piece and its SDCFOGroup.com landing page</li>
+          <li>Assign which GrokBots own email vs social vs landing copy</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/23</span> Living plan published at /sdcfo/plan/</li>
+        <li><span class="act-date">08/23</span> Plan rewritten: conversations via content, not the A/B fork</li>
+        <li><span class="act-date">08/23</span> First publish at /sdcfo/plan/</li>
       </ul>
     </div>
   </a>
