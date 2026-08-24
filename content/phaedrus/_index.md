@@ -14,19 +14,19 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">📜</div>
     <div class="row-main">
       <div class="row-title">SDCFO living plan</div>
-      <p class="row-desc">Conversations first. Content to email and social, landing on SDCFOGroup.com, run by GrokBots. Fastest fractional CFO firm to $1m.</p>
+      <p class="row-desc">Conversations first. Use AI to assemble the outreach list and begin outreach on email. Fastest fractional CFO firm to $1m.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
-          <li>Name the first content piece and its SDCFOGroup.com landing page</li>
-          <li>Assign which GrokBots own email vs social vs landing copy</li>
+          <li>Assemble the first outreach list with AI</li>
+          <li>Begin email outreach from that list</li>
         </ul>
       </div>
     </div>
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
-        <li><span class="act-date">08/23</span> Cut the plan below How we generate them</li>
+        <li><span class="act-date">08/23</span> How we generate them header removed; email outreach is the motion</li>
         <li><span class="act-date">08/23</span> First publish at /sdcfo/plan/</li>
       </ul>
     </div>
