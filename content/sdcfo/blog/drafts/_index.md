@@ -12,4 +12,4 @@ heroMeta: "**Not published.** On the site so we can read them. Not listed as liv
 
 Drafts for the SDCFO blog. I have not published these.
 
-- [A desk, a plan, a writer](/sdcfo/blog/drafts/a-desk-a-plan-a-writer/)
+No drafts listed.
