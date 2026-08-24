@@ -9,6 +9,29 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
 
 <div class="page-rows">
 
+
+  <a class="page-row" href="/sdcfo/plan/">
+    <div class="row-icon">📜</div>
+    <div class="row-main">
+      <div class="row-title">SDCFO living plan</div>
+      <p class="row-desc">Plan with John, not for him. Fractional CFO firm in a box; first motion still open (conversations vs site conversion).</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>John picks motion A or B</li>
+          <li>Name who holds the live conversation list</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/23</span> Living plan published at /sdcfo/plan/</li>
+      </ul>
+    </div>
+  </a>
+
+
   <a class="page-row" href="/phaedrus/obsidian/">
     <div class="row-icon">📗</div>
     <div class="row-main">
