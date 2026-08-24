@@ -79,6 +79,28 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     </div>
   </a>
 
+  <a class="page-row" href="/phaedrus/wiki-rebuild/">
+    <div class="row-icon">🔄</div>
+    <div class="row-main">
+      <div class="row-title">Wiki Rebuild (Karpathy Pattern)</div>
+      <p class="row-desc">Rebuilt from bridge-compiled to manual Karpathy llm-wiki curation. Schema in wiki/AGENTS.md, ingest queue active.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Ingest SYBB deck as next source</li>
+          <li>Run first weekly wiki lint</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/23</span> First ingest: BrightZen System Vision transcript (6 pages touched)</li>
+        <li><span class="act-date">08/23</span> Schema + log + inbox created; bridge compiler OFF</li>
+      </ul>
+    </div>
+  </a>
+
   <a class="page-row" href="/outline/">
     <div class="row-icon">🌳</div>
     <div class="row-main">
