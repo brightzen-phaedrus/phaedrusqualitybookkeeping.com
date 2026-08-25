@@ -1,0 +1,3017 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy-950: #071726;
+      --teal-300: #39d0c6;
+      --sheet-green: #0b5d3b;
+      --sheet-green-mid: #188038;
+      --band-green: #d9ead3;
+      --band-green-text: #0b5d3b;
+      --grid-line: #d7dce0;
+      --col-header-bg: #f1f3f4;
+      --col-header-text: #5f6368;
+      --cell-text: #202124;
+      --muted: #5f6368;
+      --linkedin: #0A66C2;
+      --accepted: #e6f4ea;
+      --accepted-text: #137333;
+      --pending-text: #b06000;
+      --pending-bg: #fef7e0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f8f9fa; color: var(--cell-text); font-family: "Roboto", Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    /* SDCFO site header */
+    .site-header { background: rgba(7,23,38,0.97); border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .header-inner { max-width: min(1400px, calc(100vw - 40px)); margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+    .header-brand { color: #fff; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.03em; }
+    .header-brand span { color: var(--teal-300); }
+    .header-note { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+    /* Sheets chrome */
+    .sheet-chrome { max-width: min(1400px, calc(100vw - 24px)); margin: 18px auto 0; background: #fff; border: 1px solid var(--grid-line); border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 8px 30px rgba(7,23,38,0.08); }
+
+    .sheet-titlebar { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px; }
+    .sheet-icon { width: 26px; height: 34px; border-radius: 4px; background: var(--sheet-green-mid); position: relative; flex-shrink: 0; }
+    .sheet-icon::after { content: ""; position: absolute; inset: 9px 5px 6px; background:
+      linear-gradient(#fff, #fff) 0 0/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 6px/100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 12px/100% 2px no-repeat; opacity: 0.95; }
+    .sheet-name { font-size: 17px; font-weight: 500; }
+    .sheet-menus { display: flex; gap: 14px; margin-top: 3px; color: var(--muted); font-size: 12.5px; }
+    .sheet-updated { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+    .formula-bar { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--grid-line); border-bottom: 1px solid var(--grid-line); padding: 6px 16px; font-size: 13px; }
+    .fx { color: var(--muted); font-style: italic; font-family: "Roboto Mono", monospace; font-size: 12px; }
+    .formula-box { flex: 1; color: var(--muted); font-family: "Roboto Mono", monospace; font-size: 12px; border-left: 1px solid var(--grid-line); padding-left: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Grid */
+    .grid-wrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; min-width: 1180px; font-size: 13px; }
+    th, td { border: 1px solid var(--grid-line); padding: 7px 10px; vertical-align: top; text-align: left; }
+
+    /* column letters row */
+    .col-letters th { background: var(--col-header-bg); color: var(--col-header-text); font-weight: 500; font-size: 11px; text-align: center; padding: 3px 4px; border-color: #c9ced3; }
+    .row-num { background: var(--col-header-bg); color: var(--col-header-text); font-size: 11px; text-align: center; width: 34px; min-width: 34px; font-weight: 500; border-color: #c9ced3 !important; vertical-align: middle; }
+
+    /* main header band — IFM style */
+    .head-band th { background: var(--sheet-green); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; border-color: #0a5134; }
+
+    /* stage section band */
+    .stage-band td { background: var(--band-green); color: var(--band-green-text); font-weight: 700; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+    .stage-band .stage-count { font-weight: 500; text-transform: none; letter-spacing: 0; color: #3c6e50; margin-left: 8px; }
+
+    .name-cell { white-space: nowrap; font-weight: 500; }
+    .li-link { display: inline-flex; align-items: center; gap: 7px; }
+    .li-badge { width: 16px; height: 16px; border-radius: 3px; background: var(--linkedin); color: #fff; display: inline-grid; place-items: center; font: 700 10px/1 Arial, sans-serif; flex-shrink: 0; }
+    .li-link:hover { text-decoration: underline; text-decoration-color: var(--linkedin); }
+
+    .role-cell { min-width: 170px; }
+    .co-cell { white-space: nowrap; }
+    .bg-cell { min-width: 320px; color: #3c4043; line-height: 1.45; }
+    .cohort-cell { white-space: nowrap; font-size: 12px; color: var(--muted); }
+    .date-cell { font-family: "Roboto Mono", monospace; font-size: 12px; white-space: nowrap; text-align: right; }
+
+    .status-pill { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 11.5px; font-weight: 500; white-space: nowrap; }
+    .st-pending { background: var(--pending-bg); color: var(--pending-text); }
+    .st-accepted { background: var(--accepted); color: var(--accepted-text); }
+    .next-cell { min-width: 170px; color: #3c4043; }
+
+    .empty-row td:not(.row-num) { color: #9aa0a6; font-style: italic; background: #fbfbfb; }
+
+    tbody tr:hover td:not(.row-num) { background: #f6fbf8; }
+    .stage-band:hover td { background: var(--band-green) !important; }
+
+    /* sheet tabs */
+    .sheet-tabs { display: flex; align-items: center; gap: 2px; background: var(--col-header-bg); border-top: 1px solid var(--grid-line); padding: 5px 12px 0; }
+    .sheet-tab { padding: 6px 18px 7px; font-size: 12.5px; color: var(--muted); border: 1px solid transparent; border-bottom: none; border-radius: 6px 6px 0 0; }
+    .sheet-tab.active { background: #fff; color: var(--sheet-green); font-weight: 700; border-color: var(--grid-line); position: relative; top: 1px; }
+
+    .page-footer { max-width: min(1400px, calc(100vw - 24px)); margin: 0 auto 50px; padding: 14px 6px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .page-footer a { color: var(--sheet-green-mid); font-weight: 500; }
+
+    @media (max-width: 700px) {
+      .sheet-menus { display: none; }
+      .header-note { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="header-brand" href="/sdcfo/">SDCFO<span>.Group</span> — Draft Pages</a>
+      <span class="header-note">Internal · Do not send</span>
+    </div>
+  </header>
+
+  <div class="sheet-chrome">
+
+    <div class="sheet-titlebar">
+      <div class="sheet-icon" aria-hidden="true"></div>
+      <div>
+        <div class="sheet-name">San Diego Prospect Pipeline</div>
+        <div class="sheet-menus"><span>File</span><span>Edit</span><span>View</span><span>Insert</span><span>Format</span><span>Data</span><span>Help</span></div>
+      </div>
+      <span class="sheet-updated">Last updated 2026-08-25 · 258 Go High Level Leads · Do not send</span>
+    </div>
+
+    <div class="formula-bar">
+      <span class="fx">fx</span>
+      <span class="formula-box">Go High Level Leads · Phone Contains 619 / 858 / 760</span>
+    </div>
+
+    <div class="grid-wrap">
+      <table>
+        <thead>
+          <tr class="col-letters">
+            <th class="row-num"></th>
+            <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th>
+          </tr>
+          <tr class="head-band">
+            <td class="row-num">1</td>
+            <th>Prospect</th>
+            <th>Company</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Tags</th>
+            <th>Last activity</th>
+            <th>Open GHL</th>
+            <th>History from stage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="stage-band">
+            <td class="row-num">2</td>
+            <td colspan="8">Go High Level Leads<span class="stage-count">— 258</span></td>
+          </tr>
+          <tr>
+            <td class="row-num">3</td>
+            <td class="name-cell">Kevin Mansour</td>
+            <td class="co-cell">ORAM</td>
+            <td class="date-cell">+16198613426</td>
+            <td class="bg-cell">kevin@oramhotels.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 30 2025 12:55 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">4</td>
+            <td class="name-cell">Christian Augusto</td>
+            <td class="co-cell">Pro City Facialities Services, Inc</td>
+            <td class="date-cell">+16035185869</td>
+            <td class="bg-cell">caugosto@procityfacilitiesservices.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [Prior proposal]</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">5</td>
+            <td class="name-cell">Britt T</td>
+            <td class="co-cell">Salsa Media LLC</td>
+            <td class="date-cell">+16199649964</td>
+            <td class="bg-cell">bctalbert@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:09 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [Prior proposal]</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">6</td>
+            <td class="name-cell">Amy Da silva</td>
+            <td class="co-cell">The Hotel Gurus</td>
+            <td class="date-cell">+16195011695</td>
+            <td class="bg-cell">info@thehotelgurus.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:20 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [Prior proposal]</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">7</td>
+            <td class="name-cell">David Shaieb</td>
+            <td class="co-cell">Sbis.com</td>
+            <td class="date-cell">+18587050565</td>
+            <td class="bg-cell">david@sbis.com</td>
+            <td class="cohort-cell">landing page appointment</td>
+            <td class="date-cell">Aug 25 2026 12:38 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">8</td>
+            <td class="name-cell">Art Hagopian</td>
+            <td class="co-cell">Renue San Diego / SES</td>
+            <td class="date-cell">+18582657233</td>
+            <td class="bg-cell">art@renuesystems.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Jun 03 2026 09:32 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">9</td>
+            <td class="name-cell">Craig Nandoo</td>
+            <td class="co-cell">JBK Wellness Labs</td>
+            <td class="date-cell">+18585251299</td>
+            <td class="bg-cell">craig@jbkwellnesslabs.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Mar 10 2026 03:41 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">10</td>
+            <td class="name-cell">Amena Boladuadua</td>
+            <td class="co-cell">Kinege</td>
+            <td class="date-cell">+18587792349</td>
+            <td class="bg-cell">aboladuadua@kinegge.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Mar 27 2026 11:08 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">11</td>
+            <td class="name-cell">Luis Gonzakez</td>
+            <td class="co-cell">Lupes Mexican Eatery</td>
+            <td class="date-cell">+16198076585</td>
+            <td class="bg-cell">luis@eatlupes.com</td>
+            <td class="cohort-cell">calendly, response</td>
+            <td class="date-cell">May 12 2025 11:00 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [Prior proposal]</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">12</td>
+            <td class="name-cell">David Keller</td>
+            <td class="co-cell">Spartan Roofing &amp; Siding</td>
+            <td class="date-cell">+12108760293</td>
+            <td class="bg-cell">david@spartan-roofing.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 12 2026 12:01 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">13</td>
+            <td class="name-cell">Josie Lin</td>
+            <td class="co-cell">United Max Real Estate Group</td>
+            <td class="date-cell">+18326185898</td>
+            <td class="bg-cell">josie@umreus.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 27 2025 11:00 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [Prior proposal]</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">14</td>
+            <td class="name-cell">Jeff Goldman goldman</td>
+            <td class="co-cell">Life Planning Advisors, LLC</td>
+            <td class="date-cell">+18583447677</td>
+            <td class="bg-cell">jeff@lifeplanningadvisors.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Oct 14 2025 05:38 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Proposal Sent</td>
+            <td class="bg-cell">Proposal in GHL</td>
+          </tr>
+          <tr>
+            <td class="row-num">15</td>
+            <td class="name-cell">Timothy Bundy</td>
+            <td class="co-cell">Rubicon Realy LLC</td>
+            <td class="date-cell">+16198906419</td>
+            <td class="bg-cell">timothybundy2@gmail.com</td>
+            <td class="cohort-cell">landing page appointment</td>
+            <td class="date-cell">Aug 07 2026 11:12 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">16</td>
+            <td class="name-cell">Gustavo Puffelis</td>
+            <td class="co-cell">Inbevco</td>
+            <td class="date-cell">+16198827263</td>
+            <td class="bg-cell">gustavo.puffelis@inbevco.com</td>
+            <td class="cohort-cell">landing page appointment</td>
+            <td class="date-cell">Aug 24 2026 09:09 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">17</td>
+            <td class="name-cell">Diego Cor</td>
+            <td class="co-cell">Mexicoach</td>
+            <td class="date-cell">+18586102889</td>
+            <td class="bg-cell">osocortina@gmail.com</td>
+            <td class="cohort-cell">landing page appointment</td>
+            <td class="date-cell">Aug 25 2026 03:53 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">18</td>
+            <td class="name-cell">Krishen Iyer</td>
+            <td class="co-cell">24 years in insurance, finance , consulting</td>
+            <td class="date-cell">+17608850200</td>
+            <td class="bg-cell">krishen@maisconsulting.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 30 2026 11:55 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅 ; Tracking Pipeline — Appointment Booked</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">19</td>
+            <td class="name-cell">Carlos Ituarte</td>
+            <td class="co-cell">ZignaGenix</td>
+            <td class="date-cell">+16199449035</td>
+            <td class="bg-cell">ituartecarlos@zignagenix.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 12 2026 02:28 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">20</td>
+            <td class="name-cell">Devon Alexander</td>
+            <td class="co-cell">Mamba Fund 1</td>
+            <td class="date-cell">+18582451450</td>
+            <td class="bg-cell">devon@teamvsg.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 15 2026 04:39 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">21</td>
+            <td class="name-cell">John (test) Mckusick</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+16193003459</td>
+            <td class="bg-cell">hello@duckdive.ai</td>
+            <td class="cohort-cell">current-client, current-client-webinar-outreach</td>
+            <td class="date-cell">May 26 2026 09:55 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅 ; Webinar — Contacted</td>
+            <td class="bg-cell">Appointment set</td>
+          </tr>
+          <tr>
+            <td class="row-num">22</td>
+            <td class="name-cell">Greg Writer</td>
+            <td class="co-cell">Launch Cart</td>
+            <td class="date-cell">+17604434160</td>
+            <td class="bg-cell">ceo@launchcart.com</td>
+            <td class="cohort-cell">webinar-booked, remind-for-webinar, webinar-reminder-19min, webinar-attended</td>
+            <td class="date-cell">Sep 16 2025 11:55 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Appointment Set  📅 ; Webinar — Showed up</td>
+            <td class="bg-cell">Appointment set; Webinar showed</td>
+          </tr>
+          <tr>
+            <td class="row-num">23</td>
+            <td class="name-cell">John Siegman</td>
+            <td class="co-cell">PropertyLens</td>
+            <td class="date-cell">+18582125396</td>
+            <td class="bg-cell">john@propertylens.com</td>
+            <td class="cohort-cell">webinar-booked, remind-for-webinar, webinar-reminder-19min, webinar-attended</td>
+            <td class="date-cell">Aug 11 2026 05:43 PM</td>
+            <td class="next-cell">Webinar — Showed up</td>
+            <td class="bg-cell">Webinar showed</td>
+          </tr>
+          <tr>
+            <td class="row-num">24</td>
+            <td class="name-cell">Derek Mason</td>
+            <td class="co-cell">DARMA MENS LTD</td>
+            <td class="date-cell">+18583425819</td>
+            <td class="bg-cell">mason.derekc@gmail.com</td>
+            <td class="cohort-cell">webinar-booked, webinar-reminder-19min, webinar-attended</td>
+            <td class="date-cell">Dec 13 2024 06:31 PM</td>
+            <td class="next-cell">Webinar — Showed up</td>
+            <td class="bg-cell">Webinar showed</td>
+          </tr>
+          <tr>
+            <td class="row-num">25</td>
+            <td class="name-cell">Karl Krummenacher</td>
+            <td class="co-cell">Modern Thyroid Clinic</td>
+            <td class="date-cell">+17606888224</td>
+            <td class="bg-cell">karl@modernthyroidclinic.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 21 2025 04:03 PM</td>
+            <td class="next-cell">Reactivation Pipeline — SMS sent [Prior call]</td>
+            <td class="bg-cell">Prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">26</td>
+            <td class="name-cell">Rob Zakir</td>
+            <td class="co-cell">Trattoria Ponte Vecchio - MOM&#x27;s Pizza and pasta - Olive Branch Catering</td>
+            <td class="date-cell">+16192082344</td>
+            <td class="bg-cell">rrlzakir@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 21 2025 11:09 AM</td>
+            <td class="next-cell">Reactivation Pipeline — SMS sent [Prior call]</td>
+            <td class="bg-cell">Prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">27</td>
+            <td class="name-cell">Jeremy Cisneros</td>
+            <td class="co-cell">AJX Homes</td>
+            <td class="date-cell">+16198806881</td>
+            <td class="bg-cell">jeremy@ajxcap.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 23 2025 12:02 PM</td>
+            <td class="next-cell">Reactivation Pipeline — SMS sent [Prior call]</td>
+            <td class="bg-cell">Prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">28</td>
+            <td class="name-cell">Sandra Martinez</td>
+            <td class="co-cell">TMRS</td>
+            <td class="date-cell">+18328068585</td>
+            <td class="bg-cell">smartinez@teamroadservice.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 14 2024 02:25 PM</td>
+            <td class="next-cell">Reactivation Pipeline — SMS sent [Prior call]</td>
+            <td class="bg-cell">Prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">29</td>
+            <td class="name-cell">John Mckusick</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+16193003495</td>
+            <td class="bg-cell">mckusick@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 22 2026 02:56 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — #2 New Leads - No Appointment</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — #2 New Leads - No Appointment</td>
+          </tr>
+          <tr>
+            <td class="row-num">30</td>
+            <td class="name-cell">Chad Nickolas</td>
+            <td class="co-cell">Forma Living</td>
+            <td class="date-cell">+16026976196</td>
+            <td class="bg-cell">cn@forma.living</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 23 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">31</td>
+            <td class="name-cell">S. nikki Nikki</td>
+            <td class="co-cell">Business Solutions in Bio Healthcare</td>
+            <td class="date-cell">+17707661928</td>
+            <td class="bg-cell">info@woundclosuremd.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 23 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">32</td>
+            <td class="name-cell">Chase Fisher</td>
+            <td class="co-cell">Affiliate Automated</td>
+            <td class="date-cell">+18582203484</td>
+            <td class="bg-cell">chase@affiliateautomated.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 23 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">33</td>
+            <td class="name-cell">Woz1971 Song</td>
+            <td class="co-cell">Woz</td>
+            <td class="date-cell">+17604159699</td>
+            <td class="bg-cell">wd@wozdistribution.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 23 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">34</td>
+            <td class="name-cell">Chester Dewhurst</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+18585834782</td>
+            <td class="bg-cell">pancho@gdcconstruction.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 27 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">35</td>
+            <td class="name-cell">Jared Criscuolo</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+16197583556</td>
+            <td class="bg-cell">jared@upcycleandcompany.com</td>
+            <td class="cohort-cell">current-client, current-client-webinar-outreach</td>
+            <td class="date-cell">Aug 02 2026 10:36 PM</td>
+            <td class="next-cell">Webinar — Contacted</td>
+            <td class="bg-cell">Open — Webinar — Contacted</td>
+          </tr>
+          <tr>
+            <td class="row-num">36</td>
+            <td class="name-cell">Martell James</td>
+            <td class="co-cell">MRC inc</td>
+            <td class="date-cell">+13036192236</td>
+            <td class="bg-cell">james@westernlandscapesupply.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">37</td>
+            <td class="name-cell">Claudia Markets</td>
+            <td class="co-cell">1249543 BC Ltd</td>
+            <td class="date-cell">+16046186195</td>
+            <td class="bg-cell">claudiamarkets@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Aug 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">38</td>
+            <td class="name-cell">Pallavi Ghy</td>
+            <td class="co-cell">Uuhu</td>
+            <td class="date-cell">+16318318589</td>
+            <td class="bg-cell">ghayalodp@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">39</td>
+            <td class="name-cell">Christina Czegledi</td>
+            <td class="co-cell">K9 Pawvengers Inc</td>
+            <td class="date-cell">+16475007609</td>
+            <td class="bg-cell">k9pawvengers@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">40</td>
+            <td class="name-cell">Araf Rahman</td>
+            <td class="co-cell">ClassicCare Practice Management</td>
+            <td class="date-cell">+15625619558</td>
+            <td class="bg-cell">arafrahman934@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 05 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">41</td>
+            <td class="name-cell">David Hodge</td>
+            <td class="co-cell">Zimtu Capital Corp.</td>
+            <td class="date-cell">+16047603669</td>
+            <td class="bg-cell">dhodge@zimtu.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 05 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">42</td>
+            <td class="name-cell">Khaleda Atta</td>
+            <td class="co-cell">San Diego Workforce Partnership</td>
+            <td class="date-cell">+11619666663</td>
+            <td class="bg-cell">khaledaatta@workforce.org</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 06 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">43</td>
+            <td class="name-cell">Aaron Look</td>
+            <td class="co-cell">Glass Doctor of syracuse, NY</td>
+            <td class="date-cell">+13156576198</td>
+            <td class="bg-cell">syracuse.owner@glassdoctor.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 06 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">44</td>
+            <td class="name-cell">G. sean Cassidy</td>
+            <td class="co-cell">Sunny &amp; 72, Inc</td>
+            <td class="date-cell">+18583371130</td>
+            <td class="bg-cell">gsean@sunnyand72inc.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 06 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">45</td>
+            <td class="name-cell">Rommel Cyrus</td>
+            <td class="co-cell">Yardmen property maintenance services</td>
+            <td class="date-cell">+18683776008</td>
+            <td class="bg-cell">hello@yardmenservices.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Aug 06 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">46</td>
+            <td class="name-cell">Sigmund Valentine</td>
+            <td class="co-cell">AVCA Construction</td>
+            <td class="date-cell">+16192789073</td>
+            <td class="bg-cell">webuild@socal-adupros.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Aug 07 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">47</td>
+            <td class="name-cell">Spencer Howe</td>
+            <td class="co-cell">MRIaudio</td>
+            <td class="date-cell">+18584499853</td>
+            <td class="bg-cell">spencer@mriaudio.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Aug 11 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">48</td>
+            <td class="name-cell">Scott Aguirre</td>
+            <td class="co-cell">OK</td>
+            <td class="date-cell">+16196902093</td>
+            <td class="bg-cell">tonyprodriguez@armyspy.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 12 2025 11:04 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">49</td>
+            <td class="name-cell">Joseph Monteforte</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+18583447463</td>
+            <td class="bg-cell">jmonteforte@gmail.com</td>
+            <td class="cohort-cell">cfo recruitment</td>
+            <td class="date-cell">Aug 13 2025 01:43 PM</td>
+            <td class="next-cell">CFO Recruitment Pipeline — Not a Fit</td>
+            <td class="bg-cell">Not a fit</td>
+          </tr>
+          <tr>
+            <td class="row-num">50</td>
+            <td class="name-cell">Shiva Elihu</td>
+            <td class="co-cell">reverse active wear</td>
+            <td class="date-cell">+16197082906</td>
+            <td class="bg-cell">smoradfar@yahoo.com</td>
+            <td class="cohort-cell">called</td>
+            <td class="date-cell">Aug 13 2025 11:28 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">51</td>
+            <td class="name-cell">Mike Nicoletti</td>
+            <td class="co-cell">Top Mark Capital</td>
+            <td class="date-cell">+18582577787</td>
+            <td class="bg-cell">mnicoletti@topmarkcapital.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 13 2026 02:30 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; CFO Consulting - Facebook Leads — New Leads - No Appointment⏳</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">52</td>
+            <td class="name-cell">Gayle Grant</td>
+            <td class="co-cell">County of San Diego</td>
+            <td class="date-cell">+16196067812</td>
+            <td class="bg-cell">gayla-g@att.netg</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:26 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">53</td>
+            <td class="name-cell">Nino Zangari</td>
+            <td class="co-cell">Bud the Bayville Dinosaur</td>
+            <td class="date-cell">+17322785866</td>
+            <td class="bg-cell">ninozang@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:29 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">54</td>
+            <td class="name-cell">Carmen Carrion</td>
+            <td class="co-cell">Self-Employed</td>
+            <td class="date-cell">+13373261962</td>
+            <td class="bg-cell">cm8211970@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">55</td>
+            <td class="name-cell">Stephen Hay</td>
+            <td class="co-cell">Juju’s Kitchen</td>
+            <td class="date-cell">+16194715342</td>
+            <td class="bg-cell">stephen@jujuskitchen.shop</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">56</td>
+            <td class="name-cell">Sean Adams</td>
+            <td class="co-cell">U.S. Navy</td>
+            <td class="date-cell">+16199621870</td>
+            <td class="bg-cell">seanadamspharma@gmail.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">57</td>
+            <td class="name-cell">Pete Acosta</td>
+            <td class="co-cell">Tax Mix</td>
+            <td class="date-cell">+16193463256</td>
+            <td class="bg-cell">pete@taxmix.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">58</td>
+            <td class="name-cell">Tracy Williams</td>
+            <td class="co-cell">tee</td>
+            <td class="date-cell">+18156858126</td>
+            <td class="bg-cell">tracywilliams@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">59</td>
+            <td class="name-cell">Latasha Telford</td>
+            <td class="co-cell">Tieraney’s Trinkets and Baskets</td>
+            <td class="date-cell">+19019025858</td>
+            <td class="bg-cell">ltelford717@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">60</td>
+            <td class="name-cell">Sonya Perry</td>
+            <td class="co-cell">SPerry and Associates</td>
+            <td class="date-cell">+16785850398</td>
+            <td class="bg-cell">ander565@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:31 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">61</td>
+            <td class="name-cell">Gabby Gabriel</td>
+            <td class="co-cell">GabChina</td>
+            <td class="date-cell">+16469619702</td>
+            <td class="bg-cell">gab@gab-china.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">62</td>
+            <td class="name-cell">Regina Woods</td>
+            <td class="co-cell">Di not know</td>
+            <td class="date-cell">+17409619057</td>
+            <td class="bg-cell">reginawds65@gmail.comz</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">63</td>
+            <td class="name-cell">Amy Graham</td>
+            <td class="co-cell">the jilted siren</td>
+            <td class="date-cell">+16197570112</td>
+            <td class="bg-cell">saltysiren2020@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">64</td>
+            <td class="name-cell">Daniel Morales</td>
+            <td class="co-cell">service heroes cooling and plumbing</td>
+            <td class="date-cell">+18589254413</td>
+            <td class="bg-cell">callgogreenguys@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">65</td>
+            <td class="name-cell">Royale Lamontagne</td>
+            <td class="co-cell">Athenica Environmental Services Inc.</td>
+            <td class="date-cell">+18578588735</td>
+            <td class="bg-cell">vladimirnikolaevth6908@rambler.ru</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">66</td>
+            <td class="name-cell">Deb Jean</td>
+            <td class="co-cell">Self-Employed</td>
+            <td class="date-cell">+14258588852</td>
+            <td class="bg-cell">corpoffice@rocketmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">67</td>
+            <td class="name-cell">Mario Rodriguez</td>
+            <td class="co-cell">Sign Factory</td>
+            <td class="date-cell">+17604557589</td>
+            <td class="bg-cell">mrgerardo@signfactory.org</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:32 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">68</td>
+            <td class="name-cell">Eddie Echevarria</td>
+            <td class="co-cell">Florida generator</td>
+            <td class="date-cell">+15619515275</td>
+            <td class="bg-cell">sales@myfloridagenerator.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 14 2025 11:38 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">69</td>
+            <td class="name-cell">Nathan Vanloo</td>
+            <td class="co-cell">VanLoo electric</td>
+            <td class="date-cell">+15736192313</td>
+            <td class="bg-cell">nvl459@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:08 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">70</td>
+            <td class="name-cell">Richard Barron</td>
+            <td class="co-cell">Allen Barron, Inc.</td>
+            <td class="date-cell">+18583610760</td>
+            <td class="bg-cell">rbarron@allenbarron.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:08 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">71</td>
+            <td class="name-cell">Octavia Mcdougle</td>
+            <td class="co-cell">MTI</td>
+            <td class="date-cell">+19544619009</td>
+            <td class="bg-cell">info@mti.edu</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:09 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">72</td>
+            <td class="name-cell">David Cianci</td>
+            <td class="co-cell">Greetings From Your Home</td>
+            <td class="date-cell">+15039648858</td>
+            <td class="bg-cell">david.cianci@outlook.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:09 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">73</td>
+            <td class="name-cell">Julia b Arcadipane</td>
+            <td class="co-cell">Bellevue Hospital / NYU Langone Medical Center</td>
+            <td class="date-cell">+19172976022</td>
+            <td class="bg-cell">jarcadipane@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:09 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">74</td>
+            <td class="name-cell">Millie Jones</td>
+            <td class="co-cell">SuperFresh salon and Urban Store</td>
+            <td class="date-cell">+18127607662</td>
+            <td class="bg-cell">milliet60@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:10 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">75</td>
+            <td class="name-cell">Joanna Ugalde</td>
+            <td class="co-cell">Integrated Accounting</td>
+            <td class="date-cell">+16199901122</td>
+            <td class="bg-cell">integratedaccting@gmail.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 19 2025 04:11 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">76</td>
+            <td class="name-cell">Jack Goode</td>
+            <td class="co-cell">classic Ford Lincoln</td>
+            <td class="date-cell">+17048581097</td>
+            <td class="bg-cell">goodejohn32@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:11 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">77</td>
+            <td class="name-cell">Owen Buzaglo</td>
+            <td class="co-cell">Dream Team Roofing</td>
+            <td class="date-cell">+15619903772</td>
+            <td class="bg-cell">buzagloowen@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:12 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">78</td>
+            <td class="name-cell">Chad Starnes</td>
+            <td class="co-cell">Lgcy</td>
+            <td class="date-cell">+16192151907</td>
+            <td class="bg-cell">chadstarnes00@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:13 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">79</td>
+            <td class="name-cell">Steve Biddle</td>
+            <td class="co-cell">S &amp; S Propane</td>
+            <td class="date-cell">+16195592694</td>
+            <td class="bg-cell">sbiddle49@outlook.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:13 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">80</td>
+            <td class="name-cell">Bobby Bleisch</td>
+            <td class="co-cell">Blackstome Conrete Ventures</td>
+            <td class="date-cell">+16199953361</td>
+            <td class="bg-cell">robert.bleisch@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:13 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">81</td>
+            <td class="name-cell">Ray Médixi</td>
+            <td class="co-cell">CMO at MXI Group LLC</td>
+            <td class="date-cell">+19542976073</td>
+            <td class="bg-cell">mxiagency@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:13 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">82</td>
+            <td class="name-cell">David Curioca</td>
+            <td class="co-cell">DC Illuminations</td>
+            <td class="date-cell">+12487608220</td>
+            <td class="bg-cell">dave@dcilluminations.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:13 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">83</td>
+            <td class="name-cell">Marcel K</td>
+            <td class="co-cell">Goshen DDC</td>
+            <td class="date-cell">+17043619868</td>
+            <td class="bg-cell">marcel.kalonga@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:14 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">84</td>
+            <td class="name-cell">James Benedetti</td>
+            <td class="co-cell">Artie’s Camping &amp; more</td>
+            <td class="date-cell">+15182607601</td>
+            <td class="bg-cell">gfdevelopmentgroupllc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:14 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">85</td>
+            <td class="name-cell">Brooke barry Brooke</td>
+            <td class="co-cell">1</td>
+            <td class="date-cell">+16192502493</td>
+            <td class="bg-cell">faathyherviaa@hotmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:15 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">86</td>
+            <td class="name-cell">Rajesh Nair</td>
+            <td class="co-cell">Sapear Inc</td>
+            <td class="date-cell">+13038861989</td>
+            <td class="bg-cell">rj_nr@hotmail.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 19 2025 04:15 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">87</td>
+            <td class="name-cell">Edgar Vargas</td>
+            <td class="co-cell">V5</td>
+            <td class="date-cell">+16192081714</td>
+            <td class="bg-cell">edgar.usc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:16 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">88</td>
+            <td class="name-cell">Cándido Bautista</td>
+            <td class="co-cell">Rey Art landsacpe</td>
+            <td class="date-cell">+16199610255</td>
+            <td class="bg-cell">kirby.texano@hotmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:16 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">89</td>
+            <td class="name-cell">Tairu Lasisi</td>
+            <td class="co-cell">Dk850</td>
+            <td class="date-cell">+17085869811</td>
+            <td class="bg-cell">tairugm98@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:16 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">90</td>
+            <td class="name-cell">Daniel Giordano</td>
+            <td class="co-cell">561 Media</td>
+            <td class="date-cell">+15617037604</td>
+            <td class="bg-cell">dan@561media.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:16 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">91</td>
+            <td class="name-cell">Carolina Elias</td>
+            <td class="co-cell">Lovepray jewelry</td>
+            <td class="date-cell">+17605923877</td>
+            <td class="bg-cell">carolina@loveprayjewelry.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:16 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">92</td>
+            <td class="name-cell">Mike Muchow</td>
+            <td class="co-cell">Biotherm</td>
+            <td class="date-cell">+17072385858</td>
+            <td class="bg-cell">mmuchow@biothermsolutions.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:17 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">93</td>
+            <td class="name-cell">Eric Stamper</td>
+            <td class="co-cell">Va 1st</td>
+            <td class="date-cell">+18048760042</td>
+            <td class="bg-cell">scorpio2508@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:17 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">94</td>
+            <td class="name-cell">Vincent Vachon</td>
+            <td class="co-cell">Faitealos goodland</td>
+            <td class="date-cell">+14189561992</td>
+            <td class="bg-cell">gestionvachon@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:18 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">95</td>
+            <td class="name-cell">Laura Marquez</td>
+            <td class="co-cell">B</td>
+            <td class="date-cell">+16195202310</td>
+            <td class="bg-cell">lauramarquez@cox.net</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:18 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">96</td>
+            <td class="name-cell">Ben Oribello</td>
+            <td class="co-cell">Retired</td>
+            <td class="date-cell">+16197918067</td>
+            <td class="bg-cell">oribello@att.net</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:18 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">97</td>
+            <td class="name-cell">Kenneth Barlis</td>
+            <td class="co-cell">Kenneth Barlis</td>
+            <td class="date-cell">+16197719363</td>
+            <td class="bg-cell">officialkennethbarlis@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:18 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">98</td>
+            <td class="name-cell">Arthur Reed</td>
+            <td class="co-cell">A. Charles Enterprises</td>
+            <td class="date-cell">+17737191858</td>
+            <td class="bg-cell">arthur0114@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:18 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">99</td>
+            <td class="name-cell">Scott Van dyke</td>
+            <td class="co-cell">Van Dyke Trusts &amp; Estate Law</td>
+            <td class="date-cell">+16193440977</td>
+            <td class="bg-cell">rsvandyke@vdalaw.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:19 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">100</td>
+            <td class="name-cell">Nelly Alamo</td>
+            <td class="co-cell">California Dept. of Health Care Services</td>
+            <td class="date-cell">+16199444498</td>
+            <td class="bg-cell">npalamo@hotmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:19 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">101</td>
+            <td class="name-cell">Erick Pernia</td>
+            <td class="co-cell">Arempas</td>
+            <td class="date-cell">+18018198585</td>
+            <td class="bg-cell">erickpernia333@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:19 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">102</td>
+            <td class="name-cell">Janaya Patton</td>
+            <td class="co-cell">Far Sight Ventures</td>
+            <td class="date-cell">+17602370083</td>
+            <td class="bg-cell">jpattonbusiness@outlook.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 19 2025 04:19 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">103</td>
+            <td class="name-cell">Carlos Castillo</td>
+            <td class="co-cell">Carlos</td>
+            <td class="date-cell">+14023102760</td>
+            <td class="bg-cell">carloscatillo01221956@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:20 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">104</td>
+            <td class="name-cell">Terry Mashini</td>
+            <td class="co-cell">Option 1 consulting</td>
+            <td class="date-cell">+16198461541</td>
+            <td class="bg-cell">nicolemashini@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">105</td>
+            <td class="name-cell">Arthur Ramos</td>
+            <td class="co-cell">NCW staffing</td>
+            <td class="date-cell">+16193598874</td>
+            <td class="bg-cell">aramos@ncwstaffing.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">106</td>
+            <td class="name-cell">Brandon Dunn</td>
+            <td class="co-cell">Done Right Acquisitions</td>
+            <td class="date-cell">+19546961951</td>
+            <td class="bg-cell">bdunn@donerightacquisitions.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">107</td>
+            <td class="name-cell">Saeed Minhas</td>
+            <td class="co-cell">MKM HOMES LLC</td>
+            <td class="date-cell">+15128005858</td>
+            <td class="bg-cell">minhas@sambuilders.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">108</td>
+            <td class="name-cell">Emma Smith</td>
+            <td class="co-cell">Gyjhg</td>
+            <td class="date-cell">+19179940858</td>
+            <td class="bg-cell">smithemmayuhui@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">109</td>
+            <td class="name-cell">Yaro Y</td>
+            <td class="co-cell">MBS Capital</td>
+            <td class="date-cell">+12156885806</td>
+            <td class="bg-cell">edu@capitalmbs.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">110</td>
+            <td class="name-cell">Patrick Mead</td>
+            <td class="co-cell">Torrey Pines Collision</td>
+            <td class="date-cell">+18582094228</td>
+            <td class="bg-cell">patrick@tpcollision.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">111</td>
+            <td class="name-cell">Sun Adelina</td>
+            <td class="co-cell">Al&#x27;s Auto Parts</td>
+            <td class="date-cell">+855313777600</td>
+            <td class="bg-cell">ggukggg8@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:22 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">112</td>
+            <td class="name-cell">Warren Smith</td>
+            <td class="co-cell">U.S. Navy</td>
+            <td class="date-cell">+16198674015</td>
+            <td class="bg-cell">warren.peace2315@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:23 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">113</td>
+            <td class="name-cell">Scott Hirsch</td>
+            <td class="co-cell">Datasys Group Inc</td>
+            <td class="date-cell">+15617139858</td>
+            <td class="bg-cell">scottohirsch@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:23 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">114</td>
+            <td class="name-cell">Michael Chiodo</td>
+            <td class="co-cell">Private</td>
+            <td class="date-cell">+16193706519</td>
+            <td class="bg-cell">mchiodo@reliantcos.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:25 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">115</td>
+            <td class="name-cell">Bobbie Gorden</td>
+            <td class="co-cell">Self</td>
+            <td class="date-cell">+12146760603</td>
+            <td class="bg-cell">bobbiegorden1940@gmail.com</td>
+            <td class="cohort-cell">postive, response</td>
+            <td class="date-cell">Aug 19 2025 04:25 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">116</td>
+            <td class="name-cell">Chanchal Wadhwa</td>
+            <td class="co-cell">Your storyy</td>
+            <td class="date-cell">+19176000358</td>
+            <td class="bg-cell">chanchalwadhwa3@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:25 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">117</td>
+            <td class="name-cell">Rick Ruppert</td>
+            <td class="co-cell">Global Relocation LLC</td>
+            <td class="date-cell">+16193563065</td>
+            <td class="bg-cell">globalrelocationllc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">118</td>
+            <td class="name-cell">Mary Louis</td>
+            <td class="co-cell">Happy Smiles Dental Center</td>
+            <td class="date-cell">+18582942546</td>
+            <td class="bg-cell">marynlouis@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">119</td>
+            <td class="name-cell">Emily S</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+639457858759</td>
+            <td class="bg-cell">emily@deanwynn.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">120</td>
+            <td class="name-cell">Zaida Jeanes</td>
+            <td class="co-cell">Tech Support Empire</td>
+            <td class="date-cell">+15157702760</td>
+            <td class="bg-cell">zaidajesnes@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">121</td>
+            <td class="name-cell">Fernando Acosta</td>
+            <td class="co-cell">Dulces tia juana corp</td>
+            <td class="date-cell">+15627608831</td>
+            <td class="bg-cell">fernando_v_99@hotmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">122</td>
+            <td class="name-cell">Joy Day</td>
+            <td class="co-cell">INPower LLC</td>
+            <td class="date-cell">+13176037387</td>
+            <td class="bg-cell">joy@inpowerme.co</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:26 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">123</td>
+            <td class="name-cell">Adam Hanna</td>
+            <td class="co-cell">Tactical Elite Protective Services</td>
+            <td class="date-cell">+13078715619</td>
+            <td class="bg-cell">adam@tacticaleliteusa.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:27 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">124</td>
+            <td class="name-cell">Allen Forrest</td>
+            <td class="co-cell">The Forrest Group</td>
+            <td class="date-cell">+16198089798</td>
+            <td class="bg-cell">ceo@tfgla.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:28 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">125</td>
+            <td class="name-cell">Wuan Daniel</td>
+            <td class="co-cell">ALLIANCE CORPORATIONS</td>
+            <td class="date-cell">+17164619701</td>
+            <td class="bg-cell">wuandaniel@unitedprotectionagency.org</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:29 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">126</td>
+            <td class="name-cell">Its johnny D</td>
+            <td class="co-cell">Domo Development</td>
+            <td class="date-cell">+19176031500</td>
+            <td class="bg-cell">john.domonator@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:29 PM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">127</td>
+            <td class="name-cell">Jonathano Scott</td>
+            <td class="co-cell">Eden Lawn Service</td>
+            <td class="date-cell">+16127619665</td>
+            <td class="bg-cell">ronaldhlinden@dayrep.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 20 2025 05:37 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">128</td>
+            <td class="name-cell">Zeyad Lawando</td>
+            <td class="co-cell">aria</td>
+            <td class="date-cell">+17738585280</td>
+            <td class="bg-cell">ldean@aol.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 20 2025 11:06 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">129</td>
+            <td class="name-cell">Shawn Patrick</td>
+            <td class="co-cell">b</td>
+            <td class="date-cell">+13378842760</td>
+            <td class="bg-cell">lacombeshawn89@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 21 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">130</td>
+            <td class="name-cell">Caroline Fornshell</td>
+            <td class="co-cell">LWell (Nutrition)</td>
+            <td class="date-cell">+17575858887</td>
+            <td class="bg-cell">ccforny@yahoo.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Aug 25 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">131</td>
+            <td class="name-cell">Jose aarao de Andrade</td>
+            <td class="co-cell">Self-Employed</td>
+            <td class="date-cell">+19787608092</td>
+            <td class="bg-cell">exponentialcorp@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 27 2025 11:27 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">132</td>
+            <td class="name-cell">Donica Dohrenwend phd, ceo</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+18588770314</td>
+            <td class="bg-cell">donica.phd@psyc360.com</td>
+            <td class="cohort-cell">current-client, current-client-webinar-outreach</td>
+            <td class="date-cell">Dec 05 2024 01:19 PM</td>
+            <td class="next-cell">Webinar — Contacted</td>
+            <td class="bg-cell">Open — Webinar — Contacted</td>
+          </tr>
+          <tr>
+            <td class="row-num">133</td>
+            <td class="name-cell">Xaavier Sanchez</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+17609926016</td>
+            <td class="bg-cell">xavier@finestra-ld.com</td>
+            <td class="cohort-cell">current-client, current-client-webinar-outreach</td>
+            <td class="date-cell">Dec 05 2024 01:19 PM</td>
+            <td class="next-cell">Webinar — Contacted</td>
+            <td class="bg-cell">Open — Webinar — Contacted</td>
+          </tr>
+          <tr>
+            <td class="row-num">134</td>
+            <td class="name-cell">Andy Brooks</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+18162897760</td>
+            <td class="bg-cell">brooks.andrewg@gmail.com</td>
+            <td class="cohort-cell">current-client, current-client-webinar-outreach</td>
+            <td class="date-cell">Dec 05 2024 01:19 PM</td>
+            <td class="next-cell">Webinar — Contacted</td>
+            <td class="bg-cell">Open — Webinar — Contacted</td>
+          </tr>
+          <tr>
+            <td class="row-num">135</td>
+            <td class="name-cell">Edmundas Balcikonis</td>
+            <td class="co-cell">Such Much AI</td>
+            <td class="date-cell">+16193435056</td>
+            <td class="bg-cell">eddy@suchmuchai.com</td>
+            <td class="cohort-cell">webinar-booked, remind-for-webinar, webinar-reminder-19min</td>
+            <td class="date-cell">Dec 06 2024 01:50 PM</td>
+            <td class="next-cell">Webinar — No Show</td>
+            <td class="bg-cell">Webinar no-show</td>
+          </tr>
+          <tr>
+            <td class="row-num">136</td>
+            <td class="name-cell">Jared Coleman</td>
+            <td class="co-cell">Coleman &amp; Associates</td>
+            <td class="date-cell">+16193506070</td>
+            <td class="bg-cell">jc@colemanlawcenter.com</td>
+            <td class="cohort-cell">webinar-booked</td>
+            <td class="date-cell">Dec 06 2024 08:42 PM</td>
+            <td class="next-cell">Webinar — Registered</td>
+            <td class="bg-cell">Open — Webinar — Registered</td>
+          </tr>
+          <tr>
+            <td class="row-num">137</td>
+            <td class="name-cell">Bruce Mueller</td>
+            <td class="co-cell">Aaron G. Miller</td>
+            <td class="date-cell">+18587072526</td>
+            <td class="bg-cell">deboti6317@amirei.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Feb 13 2026 10:45 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">138</td>
+            <td class="name-cell">Katherine Rivette</td>
+            <td class="co-cell">Manpower Ops</td>
+            <td class="date-cell">+18582293938</td>
+            <td class="bg-cell">katep1380@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Feb 22 2025 03:29 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">139</td>
+            <td class="name-cell">Ray Howard</td>
+            <td class="co-cell">rh consulting company llc</td>
+            <td class="date-cell">+14785085810</td>
+            <td class="bg-cell">rhconsulting22@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 06 2025 04:54 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">140</td>
+            <td class="name-cell">Danyelle r. mcnally Danyelle r. mcnally</td>
+            <td class="co-cell">Susie&#x27;s Casuals</td>
+            <td class="date-cell">+17608710165</td>
+            <td class="bg-cell">dalekyancey@rhyta.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 10 2025 05:09 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">141</td>
+            <td class="name-cell">William Funkhouser</td>
+            <td class="co-cell">Fradkin Brothers Furniture</td>
+            <td class="date-cell">+19196476006</td>
+            <td class="bg-cell">williamcfunkhouser@teleworm.us</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 11 2025 04:34 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">142</td>
+            <td class="name-cell">Mavea Ghigen</td>
+            <td class="co-cell">Cuts &amp; Slices NYC</td>
+            <td class="date-cell">+15168878580</td>
+            <td class="bg-cell">maveaghigen+54@yandex.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 21 2025 02:02 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">143</td>
+            <td class="name-cell">Bobby Dietz</td>
+            <td class="co-cell">ATTN Agency</td>
+            <td class="date-cell">+18588666724</td>
+            <td class="bg-cell">bobby@attnagency.com</td>
+            <td class="cohort-cell">webinar-booked, remind-for-webinar, webinar-reminder-19min</td>
+            <td class="date-cell">Jul 24 2026 06:16 PM</td>
+            <td class="next-cell">Webinar — No Show</td>
+            <td class="bg-cell">Webinar no-show</td>
+          </tr>
+          <tr>
+            <td class="row-num">144</td>
+            <td class="name-cell">Alia Carter</td>
+            <td class="co-cell">Investors in Action</td>
+            <td class="date-cell">+18587742542</td>
+            <td class="bg-cell">774alia@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 30 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">145</td>
+            <td class="name-cell">Bhawna Gupta</td>
+            <td class="co-cell">svdc</td>
+            <td class="date-cell">+18586830281</td>
+            <td class="bg-cell">ceo.svdc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 31 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">146</td>
+            <td class="name-cell">Janathan Allen</td>
+            <td class="co-cell">Allen Barron, Inc.</td>
+            <td class="date-cell">+17604454914</td>
+            <td class="bg-cell">jallen@allenbarron.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 31 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">147</td>
+            <td class="name-cell">Saidosman Abiyow</td>
+            <td class="co-cell">Somali Bantu Association of america</td>
+            <td class="date-cell">+18588771856</td>
+            <td class="bg-cell">info@sbaoa.org</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 01 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">148</td>
+            <td class="name-cell">Gg Allen</td>
+            <td class="co-cell">Na</td>
+            <td class="date-cell">+19176015186</td>
+            <td class="bg-cell">guyallengoldman@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 02 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">149</td>
+            <td class="name-cell">Casey d’moryae Mcfadden</td>
+            <td class="co-cell">N/A</td>
+            <td class="date-cell">+17605547798</td>
+            <td class="bg-cell">cmcfadden15@icloud.org</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 02 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">150</td>
+            <td class="name-cell">Tej Shah</td>
+            <td class="co-cell">Amazon work at home</td>
+            <td class="date-cell">+12292546199</td>
+            <td class="bg-cell">tejshah49@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 03 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">151</td>
+            <td class="name-cell">Dung Nguyen</td>
+            <td class="co-cell">Tree</td>
+            <td class="date-cell">+16198414871</td>
+            <td class="bg-cell">jaiaja@gamil.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 03 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">152</td>
+            <td class="name-cell">Rodney Ineich</td>
+            <td class="co-cell">Not now</td>
+            <td class="date-cell">+16034161997</td>
+            <td class="bg-cell">rodmustang69@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 03 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">153</td>
+            <td class="name-cell">Dave Daley</td>
+            <td class="co-cell">Self-Employed</td>
+            <td class="date-cell">+17605009646</td>
+            <td class="bg-cell">dave@brightsidedrycleaners.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 03 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">154</td>
+            <td class="name-cell">Nick Patel</td>
+            <td class="co-cell">SK liquidators</td>
+            <td class="date-cell">+13617276077</td>
+            <td class="bg-cell">guru5226@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 03 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">155</td>
+            <td class="name-cell">(no name +18583956391)</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+18583956391</td>
+            <td class="bg-cell"></td>
+            <td class="cohort-cell">called</td>
+            <td class="date-cell">Jun 04 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">156</td>
+            <td class="name-cell">Erin Ahsue</td>
+            <td class="co-cell">Malama Restoration</td>
+            <td class="date-cell">+18085898297</td>
+            <td class="bg-cell">office@malamarestoration.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 08 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">157</td>
+            <td class="name-cell">Julien Bournival</td>
+            <td class="co-cell">G-Home</td>
+            <td class="date-cell">+13156193815</td>
+            <td class="bg-cell">julien@g-homeusa.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Mar 03 2026 12:26 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">158</td>
+            <td class="name-cell">Melissa Scordel scordel</td>
+            <td class="co-cell">Divine Designs</td>
+            <td class="date-cell">+17609173006</td>
+            <td class="bg-cell">melissa@divinedesigns.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Mar 24 2026 09:00 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">159</td>
+            <td class="name-cell">Lindsey Head</td>
+            <td class="co-cell">Curls Poppin’</td>
+            <td class="date-cell">+16193007754</td>
+            <td class="bg-cell">lindsey@pulsebusinessgroup.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 05 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">160</td>
+            <td class="name-cell">Salt cinema i real estate Media</td>
+            <td class="co-cell">Director of Photography</td>
+            <td class="date-cell">+17606707866</td>
+            <td class="bg-cell">sidney@saltcinema.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 05 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">161</td>
+            <td class="name-cell">Jeff Herman</td>
+            <td class="co-cell">WatchRepair.net</td>
+            <td class="date-cell">+15619550459</td>
+            <td class="bg-cell">affiliaterevenue@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 11 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">162</td>
+            <td class="name-cell">Jarmaca Byrd</td>
+            <td class="co-cell">Credit correct</td>
+            <td class="date-cell">+16193163209</td>
+            <td class="bg-cell">jmbcreditcorrect@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 11 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">163</td>
+            <td class="name-cell">Ambose Martin</td>
+            <td class="co-cell">Gentilly Family Dental</td>
+            <td class="date-cell">+19175685806</td>
+            <td class="bg-cell">ambrosemmartin3@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 11 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">164</td>
+            <td class="name-cell">Brittany Banos</td>
+            <td class="co-cell">stop and shop</td>
+            <td class="date-cell">+16469750858</td>
+            <td class="bg-cell">banosbrittany@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 12 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">165</td>
+            <td class="name-cell">Steve Alabi</td>
+            <td class="co-cell">Accounting Concepts and Solutions LLC</td>
+            <td class="date-cell">+15102876013</td>
+            <td class="bg-cell">alabisteve789@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 12 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">166</td>
+            <td class="name-cell">Roger Davis</td>
+            <td class="co-cell">Cybertruck</td>
+            <td class="date-cell">+17604451235</td>
+            <td class="bg-cell">roger@cybertruckco.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 12 2026 11:08 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; CFO Consulting - Facebook Leads — New Leads - No Appointment⏳</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">167</td>
+            <td class="name-cell">Luis Mokay</td>
+            <td class="co-cell">Advance America</td>
+            <td class="date-cell">+17608406259</td>
+            <td class="bg-cell">luistmokay@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 14 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">168</td>
+            <td class="name-cell">Rizwan Mohammad</td>
+            <td class="co-cell">Petabyte Technologies LLC</td>
+            <td class="date-cell">+12017376055</td>
+            <td class="bg-cell">rizwan@petabytetechnologies.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 15 2025 11:00 AM</td>
+            <td class="next-cell">Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">169</td>
+            <td class="name-cell">Pablo Almazan</td>
+            <td class="co-cell">Shaggy&#x27;s Burgers and Tacos</td>
+            <td class="date-cell">+14386195691</td>
+            <td class="bg-cell">pablo.almazan95@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 20 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">170</td>
+            <td class="name-cell">Jason Smith</td>
+            <td class="co-cell">City of Hot Springs, Arkansas Government</td>
+            <td class="date-cell">+15015858370</td>
+            <td class="bg-cell">jasonsmithbh3@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 20 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">171</td>
+            <td class="name-cell">Haydenf Sheffield</td>
+            <td class="co-cell">fgfg</td>
+            <td class="date-cell">+14386195633</td>
+            <td class="bg-cell">bdndxhvgsteheh65@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 25 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">172</td>
+            <td class="name-cell">Mario Herrera</td>
+            <td class="co-cell">3H Landscaping LLC</td>
+            <td class="date-cell">+15619062514</td>
+            <td class="bg-cell">3hlandscapingllc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 25 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">173</td>
+            <td class="name-cell">Lesley Shiri</td>
+            <td class="co-cell">Actionnaire pvt ltd</td>
+            <td class="date-cell">+13155661994</td>
+            <td class="bg-cell">lesleylonelyshiri88@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 25 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">174</td>
+            <td class="name-cell">Michael Bobbitt</td>
+            <td class="co-cell">Meineke Car Care</td>
+            <td class="date-cell">+15858312910</td>
+            <td class="bg-cell">mike4bobbitt@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 25 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">175</td>
+            <td class="name-cell">Irum Tahir</td>
+            <td class="co-cell">Dr. Irum Tahir</td>
+            <td class="date-cell">+13154061915</td>
+            <td class="bg-cell">irumtahirdc@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">May 28 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">176</td>
+            <td class="name-cell">Will Taylor</td>
+            <td class="co-cell">Island Marine Solutions</td>
+            <td class="date-cell">+12075055858</td>
+            <td class="bg-cell">will@islandmarinesolutions.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 28 2026 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">177</td>
+            <td class="name-cell">Bob Eskew</td>
+            <td class="co-cell">True Automotive</td>
+            <td class="date-cell">+16784858457</td>
+            <td class="bg-cell">bob@trueautomotive.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 01 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">178</td>
+            <td class="name-cell">Trennie Rogers</td>
+            <td class="co-cell">Rogers mechanical inc</td>
+            <td class="date-cell">+13173619105</td>
+            <td class="bg-cell">trogers8209@comcast.net</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Oct 02 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">179</td>
+            <td class="name-cell">Lemuel White</td>
+            <td class="co-cell">Lwwj Holdings</td>
+            <td class="date-cell">+16197877398</td>
+            <td class="bg-cell">lemuel.white@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Oct 06 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">180</td>
+            <td class="name-cell">Robin Paradis</td>
+            <td class="co-cell">dxgftrdtrd</td>
+            <td class="date-cell">+12076073218</td>
+            <td class="bg-cell">battle2@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 07 2025 01:03 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">181</td>
+            <td class="name-cell">Kevin Krueger</td>
+            <td class="co-cell">n/a</td>
+            <td class="date-cell">+18137601952</td>
+            <td class="bg-cell">kevinkrueger588@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 09 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">182</td>
+            <td class="name-cell">Kristine Iverson</td>
+            <td class="co-cell">Crow Practice</td>
+            <td class="date-cell">+14076192075</td>
+            <td class="bg-cell">iverson.fbc@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 19 2025 01:17 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">183</td>
+            <td class="name-cell">Lakresha Mitchell</td>
+            <td class="co-cell">London Kae Salon</td>
+            <td class="date-cell">+12405985838</td>
+            <td class="bg-cell">lakreshamitchell@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 23 2025 03:53 PM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">184</td>
+            <td class="name-cell">Felipe Irigoyen</td>
+            <td class="co-cell">Ametza llc</td>
+            <td class="date-cell">+17603565425</td>
+            <td class="bg-cell">felipei@amfhay.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 25 2025 12:37 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">185</td>
+            <td class="name-cell">Justingdfhzdfhzdfhzfgjujghrsy Anzalone</td>
+            <td class="co-cell">SIG Sauer</td>
+            <td class="date-cell">+15858425485</td>
+            <td class="bg-cell">dseewq22@gmail.comsdgsdgsdgzfhdytdzzjm</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Oct 28 2025 02:45 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">186</td>
+            <td class="name-cell">Chris Jackson</td>
+            <td class="co-cell">Lope</td>
+            <td class="date-cell">+447753585808</td>
+            <td class="bg-cell">jahbbbs@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 02 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">187</td>
+            <td class="name-cell">Toni Soles</td>
+            <td class="co-cell">1st Data Services</td>
+            <td class="date-cell">+13233376041</td>
+            <td class="bg-cell">1stdataserv@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 02 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">188</td>
+            <td class="name-cell">Stephen j Williams</td>
+            <td class="co-cell">ok</td>
+            <td class="date-cell">+15619275566</td>
+            <td class="bg-cell">brandonlhite@jourrapide.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 03 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">189</td>
+            <td class="name-cell">Angels Sandridge</td>
+            <td class="co-cell">none</td>
+            <td class="date-cell">+18584072084</td>
+            <td class="bg-cell">none@go.comj</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 03 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">190</td>
+            <td class="name-cell">Christina Alvino</td>
+            <td class="co-cell">StorSuite</td>
+            <td class="date-cell">+17244136195</td>
+            <td class="bg-cell">cmalvino@storsuite.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">191</td>
+            <td class="name-cell">Tt Brooks</td>
+            <td class="co-cell">Gcghvcjhh</td>
+            <td class="date-cell">+17185819159</td>
+            <td class="bg-cell">theanabrooks55@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">192</td>
+            <td class="name-cell">Wade Brancheau</td>
+            <td class="co-cell">AT&amp;T</td>
+            <td class="date-cell">+12487604466</td>
+            <td class="bg-cell">waddles8@att.net</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 04 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">193</td>
+            <td class="name-cell">Adib Ab</td>
+            <td class="co-cell">N2S</td>
+            <td class="date-cell">+12064008580</td>
+            <td class="bg-cell">adibbaba2014@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 08 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">194</td>
+            <td class="name-cell">Fed n Happy</td>
+            <td class="co-cell">FednHappy</td>
+            <td class="date-cell">+17858212676</td>
+            <td class="bg-cell">drasure@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 09 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">195</td>
+            <td class="name-cell">Roger Pina</td>
+            <td class="co-cell">Trans-O-Mex</td>
+            <td class="date-cell">+17085825717</td>
+            <td class="bg-cell">rogerpina1976@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 10 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">196</td>
+            <td class="name-cell">Dennis Rieder</td>
+            <td class="co-cell">Lamd developments</td>
+            <td class="date-cell">+18582322929</td>
+            <td class="bg-cell">dennis@riederhomes.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 15 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">197</td>
+            <td class="name-cell">Henny Yegezu</td>
+            <td class="co-cell">EQT</td>
+            <td class="date-cell">+17033576014</td>
+            <td class="bg-cell">henny@eqt.co</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 15 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">198</td>
+            <td class="name-cell">Luis m yanez Jr.</td>
+            <td class="co-cell">The Brow Bar Beauty Co.</td>
+            <td class="date-cell">+17606266969</td>
+            <td class="bg-cell">lyanez1819@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 15 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">199</td>
+            <td class="name-cell">Bryce Goldman</td>
+            <td class="co-cell">Arekae</td>
+            <td class="date-cell">+16196541233</td>
+            <td class="bg-cell">bryce@arekae.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 16 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">200</td>
+            <td class="name-cell">Vince Meyer</td>
+            <td class="co-cell">Stacey James Institute</td>
+            <td class="date-cell">+13858669754</td>
+            <td class="bg-cell">vincejmeyer@gmail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 16 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">201</td>
+            <td class="name-cell">Khalid Zia</td>
+            <td class="co-cell">SpeedyHaul Solutions</td>
+            <td class="date-cell">+17736446195</td>
+            <td class="bg-cell">speedyhaulsolutions@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 17 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">202</td>
+            <td class="name-cell">Ray Baker</td>
+            <td class="co-cell">Everline Roofing Group</td>
+            <td class="date-cell">+12123619616</td>
+            <td class="bg-cell">support@everlineroofinggroup.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 17 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">203</td>
+            <td class="name-cell">Valerie Marsh</td>
+            <td class="co-cell">Music Media</td>
+            <td class="date-cell">+16195092448</td>
+            <td class="bg-cell">valerielaine10@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 22 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">204</td>
+            <td class="name-cell">Jorge Navarrete</td>
+            <td class="co-cell">Indian Wells Valley Plumbing</td>
+            <td class="date-cell">+17607932444</td>
+            <td class="bg-cell">navarretejorge10@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 22 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">205</td>
+            <td class="name-cell">Maria elena Velásquez</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+17604475085</td>
+            <td class="bg-cell">carlosgtaxgutierrez32@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 22 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">206</td>
+            <td class="name-cell">Chris Dallavilla</td>
+            <td class="co-cell">Fractional Cheif Growth Officer</td>
+            <td class="date-cell">+16194831966</td>
+            <td class="bg-cell">dallavilla@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 23 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">207</td>
+            <td class="name-cell">Kate Shurtleff</td>
+            <td class="co-cell">Celeris Inc</td>
+            <td class="date-cell">+12067185890</td>
+            <td class="bg-cell">kate@irregulardesigngroup.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 23 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">208</td>
+            <td class="name-cell">Thomas Carter</td>
+            <td class="co-cell">True I/O</td>
+            <td class="date-cell">+17602124283</td>
+            <td class="bg-cell">thomas@dlbx.io</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 23 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">209</td>
+            <td class="name-cell">Howells Dooley</td>
+            <td class="co-cell">The Jolly Farmer</td>
+            <td class="date-cell">+16059407606</td>
+            <td class="bg-cell">adamfield@jourrapide.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 24 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">210</td>
+            <td class="name-cell">Angelsb Sandridgecom</td>
+            <td class="co-cell">No em</td>
+            <td class="date-cell">+16194966378</td>
+            <td class="bg-cell">asandridge@ucsd.edu</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 25 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">211</td>
+            <td class="name-cell">Denise Genuit</td>
+            <td class="co-cell">Longeviti Neuro Solutions</td>
+            <td class="date-cell">+14438582257</td>
+            <td class="bg-cell">dgenuit@longeviti.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 25 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">212</td>
+            <td class="name-cell">Ralph Ciarlanti</td>
+            <td class="co-cell">Industria Power</td>
+            <td class="date-cell">+17608452765</td>
+            <td class="bg-cell">ralph@industriapower.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 25 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent ; Reactivation Pipeline — Need to reactivate [No prior call]</td>
+            <td class="bg-cell">No prior call</td>
+          </tr>
+          <tr>
+            <td class="row-num">213</td>
+            <td class="name-cell">Amy Shaken</td>
+            <td class="co-cell">Nomads</td>
+            <td class="date-cell">+19172007609</td>
+            <td class="bg-cell">nur_ai@mail.ru</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 29 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">214</td>
+            <td class="name-cell">Kimberlee Roane</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+14103257606</td>
+            <td class="bg-cell">workinggirl1368@gnail.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Sep 30 2025 11:00 AM</td>
+            <td class="next-cell">CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+            <td class="bg-cell">Open — CFO Consulting - Facebook Leads — Reactivation SMS sent</td>
+          </tr>
+          <tr>
+            <td class="row-num">215</td>
+            <td class="name-cell">Andrew Peternell</td>
+            <td class="co-cell">AOT roofing and construction</td>
+            <td class="date-cell">+19858172819</td>
+            <td class="bg-cell">aotroofing@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell"></td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">216</td>
+            <td class="name-cell">Andy Rodenhiser</td>
+            <td class="co-cell">Rodenhiser Home Services</td>
+            <td class="date-cell">+17817609908</td>
+            <td class="bg-cell">andy@rodenhiser.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell"></td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">217</td>
+            <td class="name-cell">Bryan Hertz</td>
+            <td class="co-cell">Ingredient X</td>
+            <td class="date-cell">+18583363383</td>
+            <td class="bg-cell">bryanhertz@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Apr 23 2025 12:48 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">218</td>
+            <td class="name-cell">Jerry Conti</td>
+            <td class="co-cell">Legacy Capital Pros</td>
+            <td class="date-cell">+17605353428</td>
+            <td class="bg-cell">jerry@legacycapitalpros.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Apr 30 2026 11:00 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">219</td>
+            <td class="name-cell">Najia Ransome</td>
+            <td class="co-cell">SMI</td>
+            <td class="date-cell">+12676034386</td>
+            <td class="bg-cell">nzr@consultant.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 07 2023 10:55 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">220</td>
+            <td class="name-cell">Ryan Charles</td>
+            <td class="co-cell">Omni Common</td>
+            <td class="date-cell">+16197087078</td>
+            <td class="bg-cell">ryan@omnicommon.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:24 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">221</td>
+            <td class="name-cell">(no name +19493385888)</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+19493385888</td>
+            <td class="bg-cell"></td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Aug 19 2025 04:24 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">222</td>
+            <td class="name-cell">Guillermo vargas Vargas jr</td>
+            <td class="co-cell">Business Acquisition</td>
+            <td class="date-cell">+15619755013</td>
+            <td class="bg-cell">guillermosalespro@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 19 2025 04:31 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">223</td>
+            <td class="name-cell">Rajeev Jain</td>
+            <td class="co-cell">Medical office..</td>
+            <td class="date-cell">+14084760624</td>
+            <td class="bg-cell">rjain@aa-clinic.com</td>
+            <td class="cohort-cell">calendly, response</td>
+            <td class="date-cell">Aug 22 2024 05:19 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">224</td>
+            <td class="name-cell">Michael j Root</td>
+            <td class="co-cell">Bell Markets</td>
+            <td class="date-cell">+17606854860</td>
+            <td class="bg-cell">billycphillips@armyspy.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Aug 27 2025 11:32 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">225</td>
+            <td class="name-cell">Ken Thompson</td>
+            <td class="co-cell">KTTS</td>
+            <td class="date-cell">+17605879099</td>
+            <td class="bg-cell">ken@ktts.us</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Jan 08 2025 03:04 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">226</td>
+            <td class="name-cell">Mark Cohen</td>
+            <td class="co-cell">Super GAY Investments</td>
+            <td class="date-cell">+19174068584</td>
+            <td class="bg-cell">mccfinancial@gmail.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Jul 01 2024 01:24 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">227</td>
+            <td class="name-cell">Ross Neihaus</td>
+            <td class="co-cell">Waggles Pet Resort</td>
+            <td class="date-cell">+17736008585</td>
+            <td class="bg-cell">ross@wagglespetresort.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Jul 01 2026 01:40 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">228</td>
+            <td class="name-cell">Sd motor Group</td>
+            <td class="co-cell">SD MOTOR GROUP</td>
+            <td class="date-cell">+16198209501</td>
+            <td class="bg-cell">cornthecarguy@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 03 2023 10:20 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">229</td>
+            <td class="name-cell">Kent Riches</td>
+            <td class="co-cell">Air-Tech Streamlining</td>
+            <td class="date-cell">+17605983366</td>
+            <td class="bg-cell">office@motobody.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 05 2023 11:16 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">230</td>
+            <td class="name-cell">Cezar javier Lopez</td>
+            <td class="co-cell">Love Kush LLC</td>
+            <td class="date-cell">+16194039013</td>
+            <td class="bg-cell">scow_pancake.0s@icloud.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 06 2023 11:10 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">231</td>
+            <td class="name-cell">Larry vic Braden</td>
+            <td class="co-cell">Charter Business</td>
+            <td class="date-cell">+18137606806</td>
+            <td class="bg-cell">larry@charterbb.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 12 2023 09:40 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">232</td>
+            <td class="name-cell">Stewart Icardo</td>
+            <td class="co-cell">YES</td>
+            <td class="date-cell">+17602748991</td>
+            <td class="bg-cell">patrickbgray@jourrapide.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 13 2025 08:26 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">233</td>
+            <td class="name-cell">Marion Zietan</td>
+            <td class="co-cell">High Road</td>
+            <td class="date-cell">+16199726645</td>
+            <td class="bg-cell">marion@highroadpcs.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 19 2023 10:26 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">234</td>
+            <td class="name-cell">Ko Lom</td>
+            <td class="co-cell">Na</td>
+            <td class="date-cell">+17609795550</td>
+            <td class="bg-cell">shasha75@bussines.com</td>
+            <td class="cohort-cell">calendly</td>
+            <td class="date-cell">Jul 23 2025 11:30 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">235</td>
+            <td class="name-cell">(no name +16192596050)</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+16192596050</td>
+            <td class="bg-cell"></td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Jul 24 2023 06:52 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">236</td>
+            <td class="name-cell">Roberto Verdugo</td>
+            <td class="co-cell">CASA Insurance Services</td>
+            <td class="date-cell">+16192531821</td>
+            <td class="bg-cell">mgmt@casains.net</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">Jul 24 2023 09:59 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">237</td>
+            <td class="name-cell">Andrew Sternthal</td>
+            <td class="co-cell">svg</td>
+            <td class="date-cell">+14088776074</td>
+            <td class="bg-cell">andrew_ologie@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jul 26 2023 10:19 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">238</td>
+            <td class="name-cell">Taryn Tilton</td>
+            <td class="co-cell">Remi Meds</td>
+            <td class="date-cell">+18589224289</td>
+            <td class="bg-cell">taryn@mdhayvn.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 04 2026 01:21 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">239</td>
+            <td class="name-cell">Mark Iskandar</td>
+            <td class="co-cell">UBIC</td>
+            <td class="date-cell">+96176878583</td>
+            <td class="bg-cell">iskandarmark@hotmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 12 2023 09:48 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">240</td>
+            <td class="name-cell">Harold Daniels</td>
+            <td class="co-cell">Travelodge Memphis Airport</td>
+            <td class="date-cell">+19015858551</td>
+            <td class="bg-cell">haroldone@aol.com</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">Jun 13 2023 10:02 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">241</td>
+            <td class="name-cell">Arturo Escobar</td>
+            <td class="co-cell">OG</td>
+            <td class="date-cell">+16194818975</td>
+            <td class="bg-cell">oney619@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 13 2023 10:06 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">242</td>
+            <td class="name-cell">John Tom</td>
+            <td class="co-cell">Nurse next door scottsdale</td>
+            <td class="date-cell">+14807588858</td>
+            <td class="bg-cell">john.thms@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 13 2023 10:27 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">243</td>
+            <td class="name-cell">Michael Young</td>
+            <td class="co-cell">Reseller</td>
+            <td class="date-cell">+16193597555</td>
+            <td class="bg-cell">myjtisd@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 13 2023 11:14 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">244</td>
+            <td class="name-cell">Jorge Gutierrez</td>
+            <td class="co-cell">Gee-ar-Gee construction co inc.</td>
+            <td class="date-cell">+17605782922</td>
+            <td class="bg-cell">geeargee24@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 14 2023 10:43 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">245</td>
+            <td class="name-cell">Bridgette Young</td>
+            <td class="co-cell">Carrington Real Estate Services</td>
+            <td class="date-cell">+17604435300</td>
+            <td class="bg-cell">bridgetteyoung@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 15 2023 10:01 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">246</td>
+            <td class="name-cell">Demian Dorrance</td>
+            <td class="co-cell">The Good Door Inc.</td>
+            <td class="date-cell">+18584619491</td>
+            <td class="bg-cell">demian@dorrancesolutions.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 22 2023 11:54 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">247</td>
+            <td class="name-cell">James Stoxen fssemm fwssem</td>
+            <td class="co-cell">Team Doctors</td>
+            <td class="date-cell">+13128580800</td>
+            <td class="bg-cell">drstoxen@teamdoctors.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Jun 22 2026 11:13 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">248</td>
+            <td class="name-cell">Don Garst</td>
+            <td class="co-cell">Eagle Capital</td>
+            <td class="date-cell">+17855546198</td>
+            <td class="bg-cell">garstindustries@gmail.com</td>
+            <td class="cohort-cell">reach out</td>
+            <td class="date-cell">May 10 2023 03:10 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">249</td>
+            <td class="name-cell">Alejandro Vicuña</td>
+            <td class="co-cell">Ambar Builders Inc.</td>
+            <td class="date-cell">+17602019964</td>
+            <td class="bg-cell">ambarelectric@yahoo.com</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">May 16 2023 10:36 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">250</td>
+            <td class="name-cell">Thuy chi Nguyen</td>
+            <td class="co-cell">Supreme gutter guard llc</td>
+            <td class="date-cell">+17276000751</td>
+            <td class="bg-cell">supreme5912@yahoo.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">May 21 2023 02:37 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">251</td>
+            <td class="name-cell">Dave Obiso</td>
+            <td class="co-cell">Obiso Financial Solutions Corp</td>
+            <td class="date-cell">+15877185800</td>
+            <td class="bg-cell">daveobiso@gmail.com</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">May 22 2023 10:55 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">252</td>
+            <td class="name-cell">Terry Simon</td>
+            <td class="co-cell">Simon &amp; Simon Investments LLC</td>
+            <td class="date-cell">+19016192608</td>
+            <td class="bg-cell">terrysimon09@gmail.com</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">Nov 02 2023 01:56 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">253</td>
+            <td class="name-cell">Olimpia Gire</td>
+            <td class="co-cell">NobleRealEstateServices</td>
+            <td class="date-cell">+16199971567</td>
+            <td class="bg-cell">olimpia@nobleproperties.info</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">Nov 02 2023 01:56 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">254</td>
+            <td class="name-cell">Elias Mohamed</td>
+            <td class="co-cell">Loadstar Trucking LLC</td>
+            <td class="date-cell">+17346447760</td>
+            <td class="bg-cell">eliasmo1989@gmail.com</td>
+            <td class="cohort-cell">appointment set</td>
+            <td class="date-cell">Nov 02 2023 01:56 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">255</td>
+            <td class="name-cell">Ryan Goldie</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+12607600530</td>
+            <td class="bg-cell">ryangoldacker@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Nov 02 2023 02:00 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">256</td>
+            <td class="name-cell">(no name +17602546251)</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+17602546251</td>
+            <td class="bg-cell"></td>
+            <td class="cohort-cell">called</td>
+            <td class="date-cell">Oct 02 2025 11:00 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">257</td>
+            <td class="name-cell">Michael Mushlin</td>
+            <td class="co-cell">IncreaseCoaching.com</td>
+            <td class="date-cell">+18589529950</td>
+            <td class="bg-cell">michaelmushlin@gmail.com</td>
+            <td class="cohort-cell">response</td>
+            <td class="date-cell">Oct 06 2023 11:42 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">258</td>
+            <td class="name-cell">(no name +17609972576)</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+17609972576</td>
+            <td class="bg-cell"></td>
+            <td class="cohort-cell">response, called</td>
+            <td class="date-cell">Oct 07 2025 11:00 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">259</td>
+            <td class="name-cell">Myra Abotsi</td>
+            <td class="co-cell"></td>
+            <td class="date-cell">+17606124877</td>
+            <td class="bg-cell">mydzab@yahoo.co.uk</td>
+            <td class="cohort-cell">myriah text</td>
+            <td class="date-cell">Sep 06 2023 02:00 PM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+          <tr>
+            <td class="row-num">260</td>
+            <td class="name-cell">Mike Greenwood</td>
+            <td class="co-cell">EGg</td>
+            <td class="date-cell">+17607130897</td>
+            <td class="bg-cell">flatbottommike@gmail.com</td>
+            <td class="cohort-cell"></td>
+            <td class="date-cell">Sep 06 2023 11:03 AM</td>
+            <td class="next-cell"></td>
+            <td class="bg-cell">No open opportunity</td>
+          </tr>
+</tbody>
+      </table>
+    </div>
+
+    <div class="sheet-tabs">
+      <span class="sheet-tab active">Pipeline</span>
+      <span class="sheet-tab">Info_Src</span>
+      <span class="sheet-tab">Outreach_Log</span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Stages: Cold Outreach → Engaged → Meeting Scheduled / Keep Warm / Further. Invites sent from John's LinkedIn with personal notes; daily inbox scan runs 8:00 AM PT. No nudges — if someone doesn't reply, we let it be.</span>
+    <a href="/sdcfo/">← All SDCFO draft pages</a>
+  </div>
+
+</body>
+</html>
