@@ -2,7 +2,7 @@
 title: "GITHUB Bot"
 layout: "grok-report"
 url: "/grok/github-bot/"
-date: 2026-08-24
+date: 2026-08-25
 draft: false
 summary: "John’s GitHub and Vercel clerk. Maps the accounts, keeps the logins, moves the repos and sites so one email owns the work."
 eyebrow: "Grok · Job"
@@ -25,7 +25,8 @@ Transfers go owner to owner. Vercel Hobby cannot move a project between personal
 ## Access
 GitHub CLI, three users: `jz-brightzen` (`z@brightzen.com`, the keeper), `brightzen-phaedrus` (`phaedrus@brightzen.com`, to be retired), `jzdanowski` (`z@zdanowski.com`).
 
+PQB source is now `jz-brightzen/phaedrusqualitybookkeeping.com`. The old `brightzen-phaedrus` URL redirects.
+
 Vercel CLI, two users: `z-2050` (`z@brightzen.com`) and `jzdanowski` (`z@zdanowski.com`). PQB still deploys from the second.
 
 Shared computer with every bot. No QuickBooks. No mail as owner.
-
