@@ -146,6 +146,55 @@ The mistake this workspace invites: treat every database as work. Four kinds of 
 
 ---
 
+
+## Writers and readers
+
+I asked the connector who writes and who reads. It can prove writers on two databases. It cannot rank readers.
+
+### Last-edit (FACT)
+
+`Last edited by` exists on BrightZen Capital Document Hub and Quotes from Zen & Lila only. Everywhere else, that column is missing. Fireflies, SOPs, Daily Dispatch, Phaedrus, Document Hub, People, and both roadmaps have no last-edit who.
+
+On the two databases that have it:
+
+1. John Zdanowski — 232 last-edits (54 in 2026)
+2. Jarvis (bot) — 2
+3. Zapier (bot) — 1
+
+Quotes is all John (178) and none of those edits are from 2026. Capital Hub last-updates are all 2026 and almost all John. There are not ten human last-editors. There is one.
+
+Fireflies is the generated dump (659 rows, 453 created in 2026). It has no writer column. Do not treat Fireflies as people writing.
+
+### Closest team list: SOP owners (ASK)
+
+The wiki has Owner, not last-edit who. Owner is assignment. 69 SOP pages moved in 2026. Top ten assigned owners of those pages:
+
+1. Kendra Edelman Smith — 12
+2. Brett — 11
+3. Kay Navarro — 7
+4. Drew — 7
+5. Muhammad Aleem Ansari — 6
+6. Brix Mabala — 4
+7. Alvaro Gonzalez — 3
+8. Liezel Omlang — 2
+9. Crizel Marpa — 2
+10. Sophia Zdanowski — 2
+
+That is who the page is assigned to, not proof they typed the edit. Two more owners (34 pages between them) did not resolve to a name tonight.
+
+Approver is blank on 166 of 174 SOPs. Kendra has 6. Sophia has 2.
+
+`get-users` lists six current members: John, Jeffrey Abrams, Kendra, Ana Rose, Brett, and a Data Team seat. Many SOP Owner chips are Weekly Accounting people who are not on that member list. Leftover chips, or access the connector will not admit. ASK.
+
+### Readers
+
+Cannot rank. The connector does not give workspace view counts, time-on-page, or anyone’s recents except John’s.
+
+People who can read, per `get-users`: John, Jeff, Kendra, Ana, Brett, Data Team.
+
+John’s recents are about 96 items and stop. That is what John has been opening. It is not who else reads.
+
+---
 ## What I did not do tonight
 
 I did not page Fireflies or SOPs to the last row.
@@ -158,7 +207,7 @@ I did not open trashed teamspaces.
 
 I did not get a clean schema fetch of Fireflies (the database page is too large). I counted it from the collection URL on a child page.
 
-I did not measure SOP load by owner.
+I did measure SOP load by assigned Owner. I still cannot say who typed the last edit on an SOP.
 
 I did not audit guests, permissions, or Notion AI skills.
 
@@ -195,6 +244,9 @@ Do this after John and the COO have marked the ranking true or false. Do not cle
 - Should a bookkeeper ever open Phaedrus or the writing gardens?
 - If we hide the template teamspace this week, who has to say yes?
 - Is People supposed to stay a ten-row private list, or did last night’s adds mean you want a Notion CRM after all?
+- Who besides John is a Notion writer for the company? SOP Owner is assignment, not last-edit.
+- Who actually views Fireflies and the SOP wiki? The connector cannot say.
+- Are Weekly Accounting people still supposed to have Notion access, or leftover chips on Owner?
 
 ---
 
