@@ -10,6 +10,27 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
 <div class="page-rows">
 
 
+  <a class="page-row" href="/phaedrus/grok-section/">
+    <div class="row-icon">🔍</div>
+    <div class="row-main">
+      <div class="row-title">Grok Section</div>
+      <p class="row-desc">Crew job pages for every tool and platform in the stack — ClickUp, Notion, ShipCalm IFM, iCloud Contact Bot, and 15+ more. The crew manifest for the ship.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Fill in remaining crew job pages</li>
+          <li>Cross-link from /phaedrus/skills/ where tools match skills</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/24</span> Section launched: 14 commits, hub cards 17–20, ClickUp + Notion + ShipCalm IFM pages</li>
+      </ul>
+    </div>
+  </a>
+
     <a class="page-row" href="/sdcfo/plan/">
     <div class="row-icon">📜</div>
     <div class="row-main">
@@ -287,7 +308,7 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-icon">📜</div>
     <div class="row-main">
       <div class="row-title">System Log</div>
-      <p class="row-desc">76 entries across 6 months — every significant build, fix, integration, and milestone, grouped by category. Plus a top-10 improvement backlog.</p>
+      <p class="row-desc">81 entries across 6 months — every significant build, fix, integration, and milestone, grouped by category. Plus a top-10 improvement backlog.</p>
       <div class="row-improve">
         <div class="improve-label">Improve next</div>
         <ul>
@@ -299,9 +320,9 @@ heroLede: "The ghost in the machine, documented. Internal reference pages for ho
     <div class="row-activity">
       <div class="activity-label">Recent</div>
       <ul>
+        <li><span class="act-date">08/24</span> Grok section row + card added; wiki dot idle; 81 entries</li>
         <li><span class="act-date">08/22</span> 6 entries: drive cleanups, Mythos Images, skills sync, folder-org skill</li>
         <li><span class="act-date">08/21</span> Obsidian workspace page, LCM retirement, tracker skill — one afternoon</li>
-        <li><span class="act-date">08/16</span> SDCFO candidate pipeline tracker shipped</li>
       </ul>
     </div>
   </a>
