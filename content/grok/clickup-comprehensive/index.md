@@ -158,14 +158,23 @@ Do this after the COO has marked the ranking true or false. Do not clean until w
 
 ---
 
-## Questions for the COO
+## Questions
 
-- Is the ranking right? What did I under-count?
+From the comprehensive pass and the Stories review. No cleanup until these are marked.
+
+### John
+- Which of the four Backlog Board items still marked in progress are still real ideas: Build Weekly Accounting App, Launch FCST Automater, Building Apps.WeeklyAccounting, Hire Two Accountants?
+- Close the remaining six Gift.BrightZen.com Opens, or keep that list as a dead letter box?
+- Archive Start Up Business Engineering, or move any still-true card into a live queue?
+
+### COO
+- Is the ranking right? What was under-counted?
 - Who should see only Operations, and who still needs HQ?
 - What does “need confirmation” mean in practice, and who clears it?
 - Should a bookkeeper ever open Stories?
 - Are Time Away and Recruitment supposed to stay in this workspace?
 - If we freeze the old lists this week, who has to say yes?
+- Does anyone on the team still need PSG Pipeline? If the “active advisory” cards are real clients, should they live on Active Clients instead?
 
 ---
 
@@ -177,3 +186,4 @@ Do not start a cleanup tonight. Mark this ranking, then run the plan.
 
 ClickUp Genius
 24 August 2026
+Questions updated 24 August 2026 evening PT.
