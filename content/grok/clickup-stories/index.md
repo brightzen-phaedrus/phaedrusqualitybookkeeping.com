@@ -10,147 +10,109 @@ heroTitle: "ClickUp Stories"
 heroMeta: "**Note.** What is writing, and what is leftover."
 ---
 
-Detailed pass. 24 August 2026, evening PT. For John and the COO.
+Detailed pass. Counts updated 24 August 2026, evening PT. For John and the COO.
 
-FACT is what I paged in the Stories space tonight. ASK is what I still need. No form contents, no emails, no people roster.
+FACT is what I paged in the Stories space. Questions live on the plan page (ClickUp comprehensive). No form contents, no emails, no people roster.
 
-Stories is not one thing. It is a writing garden, a Weekly Accounting product backlog, and a Phoenix Strategy Group CRM stacked in one space. SHK and Digital Brands Group folders are empty.
+Stories is not one thing. It is a writing garden, a Weekly Accounting product backlog, a Phoenix Strategy Group CRM, and an Appendix of old docs. SHK and Digital Brands Group lists are empty.
 
 ---
 
 ## The map
 
-Space: Stories.
-
-- Garden (folder): Gift.BrightZen.com, John’s Activities, BrightZen Backlog Board
-- Phoenix Strategy Group (folder): PSG Operation, PSG Portfolio Pipeline, PSG Community CRM, PSG UAE List
-- SHK Financial (folder): SHK Backlog, SHK Portfolio Pipeline
-- Digital Brands Group (folder): one list
-- Start Up Business Engineering (list, no folder)
-- 9. Appendix (folder): no lists
-
-One ClickUp doc lives here: “Stories in Clickup.”
+- Garden: Gift.BrightZen.com, John’s Activities, BrightZen Backlog Board
+- Phoenix Strategy Group: PSG Operation, PSG Portfolio Pipeline, PSG Community CRM, PSG UAE List
+- SHK Financial: two empty lists
+- Digital Brands Group: one empty list
+- Start Up Business Engineering (no folder)
+- 9. Appendix: no lists. Docs live here.
 
 ---
 
-## Garden. Real writing, then leftover
+## Garden
 
 ### BrightZen Backlog Board
-26 still open. This is the place-to-write John described.
+263 cards. 26 open, 237 complete.
 
-Open mix:
-- Product leftovers still marked in progress: Build Weekly Accounting App, Launch FCST Automater, Building Apps.WeeklyAccounting, Hire Two Accountants
-- Process leftovers in backlog: Monday Morning Metrics, ClickUp status reporting, IFM headcount, month-end close, onboarding docs, bank downloads
-- Notes that were never work: personal and garden thoughts mixed in
+Open: 4 in progress (Build Weekly Accounting App, Launch FCST Automater, Building Apps.WeeklyAccounting, Hire Two Accountants), 1 this week, 1 on deck, 20 backlog. Last sampled open update 11 November 2022 PT.
 
-Last motion on the open set is old. The board was designed as a capture inbox (Siri to Backlog, “this is a demonstration”). It worked. It was not closed.
-
-FACT: leftover writing and 2022 product, not today’s ops.
-ASK: which of the four “in progress” items is still a real idea. I will not guess.
+FACT: leftover writing and 2022 product. Capture inbox that was never closed.
 
 ### Gift.BrightZen.com
-About 14 cards. Six still Open, dated May 2022 through September 2025. The rest are complete. Names are form-submission timestamps, not stories.
+14 cards. 6 Open, 8 complete. Newest Open is 4 September 2025. One 2022 form closed 23 August 2026 (hygiene).
 
-John closed one of the 2022 forms this week. That was hygiene, not a working inbox.
-
-FACT: leftover inbound. Do not publish form contents.
-ASK: close the remaining six, or keep the list as a dead letter box.
+FACT: leftover inbound. Titles are timestamps.
 
 ### John’s Activities
-One card. “Outline of Outlines.” Status backlog. Assigned to John and Sam Hayes.
+1 card. Outline of Outlines. Backlog. Last update 26 February 2023 PT.
 
-FACT: a single writing stub. Not a used list.
+FACT: a writing stub.
 
 ---
 
 ## Start Up Business Engineering
 
-A thin 2022 Weekly Accounting build list. Open leftovers include Generate Appointments, Build a team, Finalize App, Create Demo Accounts, plus two metric/forecast cards in backlog. One card named test2. Marketing site is complete.
-
-One later complete card (Inventory, 2026) landed here. That is noise, not a revival of the list.
+28 cards if you count subtasks (10 parents). 16 still open-type, 12 complete. 2022 Weekly Accounting build. Last motion 20 January 2026: an Inventory card completed here as noise, plus a test2 card.
 
 FACT: leftover product board.
-ASK: archive, or move any still-true card into a live queue.
 
 ---
 
-## Phoenix Strategy Group. The bulk
-
-This folder is a second company CRM. Mostly Ethan. Not BrightZen Operations.
+## Phoenix Strategy Group
 
 ### PSG Portfolio Pipeline
-The big list. First page is 100 cards and there are more. Statuses are a pipeline: closed [lost], we pass, past clients, unsubscribed, no show, intro call done, proposal sent, onboarding, capital & partnership, active advisory client, active project client, task complete.
+912 cards. The bulk of Stories.
 
-Most of the first hundred are dead pipeline (lost / we pass / past). A small set still says active advisory or active project. A few cards were marked task complete in January 2026. So someone touched this list this year. It is not the weekly factory.
+Status tally: closed [lost] 486, we pass 213, capital & partnership 80, no show 40, past clients 36, unsubscribed 25, active advisory 12, on hold 4, intro call done 4, proposal sent 3, task complete 3, onboarding 2, active project 2, ready for proposal 1, lead 1.
 
-FACT: leftover advisory CRM with a handful of still-active labels.
-ASK: are those “active advisory” cards still true, and should they live on Active Clients instead.
+65 still an open-type status if you include past clients. 29 look live. 847 are done-shaped. Last motion 28 January 2026 PT: three cards marked task complete.
 
-I am not listing company names here.
+FACT: leftover advisory CRM. Not the weekly factory. I am not listing companies.
 
 ### PSG Community CRM
-People cards. Statuses: invitation granted, attended event. 14 still sit on invitation granted. The attended-event cards are already closed (late 2022).
+25 people cards. 14 invitation granted, 11 attended event (closed late 2022). Last update December 2022.
 
 FACT: leftover event roster.
-ASK: none for the public page. Do not treat this as a contact source of truth.
 
 ### PSG Operation
-Internal PSG work. Most cards complete (site, email, newsletter, landing pages), last completes around 2023. Four still open-type: a weekly LinkedIn/Instantly sync (status fp&a), AngelList dealflow (backlog), 2024 content calendar (marketing), monthly newsletter (marketing). Dues sit in early 2024.
+29 cards. 4 still open-type (2024 content calendar, monthly newsletter, AngelList, weekly LinkedIn sync). 25 complete. Newest card 14 December 2023 PT.
 
-FACT: leftover ops for a firm that is not the current factory.
+FACT: leftover PSG ops.
 
 ### PSG UAE List
-Zero tasks.
+Zero.
 
 ---
 
-## Empty company folders
+## Empty lists
 
-SHK Backlog: zero.
-SHK Portfolio Pipeline: zero.
-Digital Brands Group list: zero.
-
-The folders are labels with no work.
+SHK Backlog, SHK Portfolio Pipeline, Digital Brands Group: zero cards. Folders with no work.
 
 ---
 
-## Appendix
+## Appendix and docs
 
-Folder 9. Appendix has no lists at the depth I can see. Empty.
+Appendix has no lists. It has old writing docs: book notes, founder-story pages, process notes. Garden also holds Zen and the Art of Weekly Accounting, Project Level Up, and a test export doc. PSG has a website doc. The Backlog Board has backlog documentation.
 
----
+The explainer doc “Stories in Clickup” is still one unfinished page from 20 July 2022: a Princess Bride line, a screen recording, and an empty “Where we have been.”
 
-## The doc
-
-“Stories in Clickup.” One page. Created and last edited 20–21 July 2022 by John.
-
-The text is a Princess Bride line, a “where we are now” screen recording from 20 July 2022, and a heading “Where we have been” with nothing under it.
-
-FACT: a 2022 explainer that was never finished. Not a current plan. I still have not found a posted PQB / STCFO / ClickUp plan in this space.
+No posted PQB / STCFO / ClickUp plan in this space.
 
 ---
 
-## What looks like writing vs leftover
+## Writing vs leftover
 
-Writing (capture, thought, product sketch): Backlog Board, John’s Activities, the 2022 Stories doc, parts of Start Up Business Engineering.
+Writing: Backlog Board, John’s Activities, Garden and Appendix docs, the 2022 explainer.
 
-Leftover CRM: PSG Portfolio Pipeline, PSG Community CRM.
+Leftover CRM: PSG Pipeline (912), Community CRM (25).
 
-Leftover inbound: Gift forms.
+Leftover inbound: Gift (14).
 
-Empty: SHK, DBG, UAE, Appendix.
+Empty lists: SHK, DBG, UAE.
 
-None of this is the Operations factory.
+None of this is Operations.
 
----
-
-## ASK
-
-John: which Backlog “in progress” items are still ideas. Which Gift Opens to close.
-
-COO: does anyone on the team still need PSG Pipeline. If the active-advisory cards are real clients, say so and we treat them as roster, not Stories.
-
-Then freeze the space. Do not clean until those two answers.
+Questions stay on the plan page. Do not clean until those are marked.
 
 ClickUp Genius
 24 August 2026
