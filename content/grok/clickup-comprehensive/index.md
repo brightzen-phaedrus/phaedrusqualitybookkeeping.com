@@ -126,9 +126,7 @@ The mistake this workspace invites: treat every open card as work. Three kinds o
 
 ## What I did not do tonight
 
-I did not page every queue to the last card. Bookkeeping and Data are too big for a first pass.
-
-I did not measure load by assignee.
+I did not page every queue to the last card. Bookkeeping and Data are too big for a first pass. Assignee counts below used the first 600 open cards in each of those two lists.
 
 I did not inventory recurring templates, automations, or custom fields.
 
@@ -153,7 +151,7 @@ Do this after the COO has marked the ranking true or false. Do not clean until w
 5. **Freeze the museum.** Stories, Investor CRM, Gift, Backlog Board: read-only or archived. Export anything still a real product idea (a short list) before freeze. I will not guess which two or three those are.
 6. **HR lists.** One onboarding template, not a new list per hire. Recruitment stays only if someone still hires from it.
 7. **Empty folders.** Delete or fill. A folder with no lists is noise.
-8. **Second pass numbers.** Assignee load, recurrence rules, custom-field use on Active Clients, who has guest access. That is a half-day with the connector, not a redesign.
+8. **Second pass numbers.** Recurrence rules, custom-field use on Active Clients, who has guest access. Assignee load on the live factory is below (first pass).
 9. **Write the plan we could not find.** One page: “ClickUp is the ops OS. Active Clients is the roster. Writing and investors do not live here.” Post it next to this note.
 
 ---
@@ -184,6 +182,51 @@ Treat ClickUp as the ops OS. Two live surfaces: the Operations queues, and Activ
 
 Do not start a cleanup tonight. Mark this ranking, then run the plan.
 
+---
+
+## Top 30 users
+
+Ranked by open assignments on the live factory (Data, Bookkeeping, A/P, Onboarding, Client Management, Operations, Internal). A card with two assignees counts for both people. Active Clients and Stories are out. Names only, no emails.
+
+91 people are in the workspace. 51 have at least one open factory card. The rest are seats, not this week’s work.
+
+Data and Bookkeeping counts are lower bounds (first 600 open cards in each). The names in this thirty are stable. Absolute counts will rise if we finish those lists.
+
+1. Bon Sam Art Go — 153 — Data
+2. Neptali Realoza — 99 — Bookkeeping
+3. Gabriel Sol Cruz — 83 — Data
+4. Jolena — 66 — Bookkeeping
+5. Julfer John Reyes — 64 — Bookkeeping, Data
+6. Jodelle Broqueza — 57 — Bookkeeping, Data
+7. Caryl Tolentino — 53 — Bookkeeping
+8. Kay Navarro — 51 — Client Mgmt, Onboarding, Operations
+9. Brixzel John Mabala — 46 — Data
+10. Christine Casuga — 44 — Bookkeeping
+11. Marcelene Dayao — 40 — Client Mgmt, Data, Operations
+12. Mae Villaluna — 40 — Bookkeeping
+13. Jamie Cristy Paras — 38 — Data
+14. Athena Jugan — 38 — Client Mgmt, Data, Operations
+15. Josh — 35 — Bookkeeping, Client Mgmt, Data, Onboarding, Operations
+16. Carolyn Mae Ocaba — 34 — Bookkeeping
+17. Viny Kaur — 33 — Client Mgmt, Data, Onboarding, Operations
+18. Nate Plating — 31 — Bookkeeping, Client Mgmt, Data, Onboarding, Operations
+19. Crizel Marpa — 30 — A/P, Bookkeeping
+20. Madelyn Antonio — 29 — Bookkeeping, Client Mgmt
+21. Cheysser — 29 — Bookkeeping
+22. Nasser Jan Quero — 28 — Data
+23. Kendra Edelman Smith — 28 — Client Mgmt, Data, Internal, Operations
+24. Anzelle Reyes — 27 — Bookkeeping, Data
+25. Liza Barsanalina — 26 — Bookkeeping, Client Mgmt
+26. Emily Simon-King — 24 — Client Mgmt, Data, Operations
+27. Joseph Cruz — 23 — Data, Operations
+28. Brett Fairchild — 22 — Data, Operations
+29. Phil Zdanowski — 20 — Bookkeeping, Data, Internal, Onboarding, Operations
+30. Sam Kaplan — 20 — Bookkeeping, Client Mgmt, Data, Onboarding, Operations
+
+Albert Canoy is also at 20, just off the cut. 71 open factory cards have no assignee (59 of those in Data).
+
+A high number here is not a hero score. On Data and Bookkeeping it mostly means someone sits on the generated weekly jobs.
+
 ClickUp Genius
 24 August 2026
-Questions updated 24 August 2026 evening PT.
+Top 30 added 24 August 2026 evening PT.
