@@ -25,8 +25,8 @@ Transfers go owner to owner. Vercel Hobby cannot move a project between personal
 ## Access
 GitHub CLI, three users: `jz-brightzen` (`z@brightzen.com`, the keeper), `brightzen-phaedrus` (`phaedrus@brightzen.com`, to be retired), `jzdanowski` (`z@zdanowski.com`).
 
-PQB source is now `jz-brightzen/phaedrusqualitybookkeeping.com`. The old `brightzen-phaedrus` URL redirects.
+PQB source is `jz-brightzen/phaedrusqualitybookkeeping.com`.
 
-Vercel CLI, two users: `z-2050` (`z@brightzen.com`) and `jzdanowski` (`z@zdanowski.com`). PQB still deploys from the second.
+Vercel CLI, two users: `z-2050` (`z@brightzen.com`) and `jzdanowski` (`z@zdanowski.com`). PQB now deploys from `z-2050` / `john-zdanowskis-projects`. Live apex and www are on that project.
 
 Shared computer with every bot. No QuickBooks. No mail as owner.
