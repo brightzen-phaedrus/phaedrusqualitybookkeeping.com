@@ -38,6 +38,7 @@ buildExpired = false
   hidemeta = false
   hideSummary = false
   showtoc = true
+  mainSections = ["posts"]
 
   [params.homeInfoParams]
     Title = "Quality, not speed."
@@ -117,3 +118,11 @@ Named for the philosopher who lost his mind chasing Quality. Built by the people
 
 [frontmatter]
   lastmod = ["lastmod", ":fileModTime"]
+
+# Internal /phaedrus/ pages stay off the public home and RSS.
+[[cascade]]
+  [cascade._build]
+    list = "local"
+    render = "always"
+  [cascade.target]
+    path = "/phaedrus/**"
