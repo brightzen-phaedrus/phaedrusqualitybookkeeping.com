@@ -24,6 +24,7 @@
       --slate-600: #526578;
       --white: #ffffff;
       --border: rgba(11, 31, 51, 0.14);
+      --amber: #b45309;
       --shell: min(800px, calc(100vw - 40px));
     }
 
@@ -36,7 +37,6 @@
     a { color: inherit; text-decoration: none; }
     h1, h2, h3 { font-family: "Manrope", sans-serif; letter-spacing: -0.045em; font-weight: 600; }
 
-    /* Header */
     .site-header {
       background: rgba(7, 23, 38, 0.96); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.12);
@@ -48,7 +48,6 @@
     .header-brand { color: var(--white); font-family: "Manrope", sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.03em; }
     .header-brand span { color: var(--teal-300); }
 
-    /* Main */
     .page-main {
       flex: 1; max-width: var(--shell); margin: 0 auto; padding: 80px 20px;
       width: 100%;
@@ -64,43 +63,73 @@
       color: var(--slate-600); font-size: 18px; line-height: 1.55; margin-bottom: 48px;
       max-width: 600px;
     }
+    .section-label {
+      color: var(--teal-500); text-transform: uppercase; letter-spacing: 0.12em;
+      font-size: 12px; font-weight: 700; margin: 48px 0 16px;
+    }
 
-    /* Cards */
+    .status-stack { display: flex; flex-direction: column; gap: 16px; }
+
+    .status-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      padding: 24px 24px 20px;
+    }
+    .status-top {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .card-number {
+      flex: 0 0 32px; width: 32px; height: 32px; border-radius: 8px;
+      background: var(--mist-100); color: var(--teal-500);
+      font: 700 13px/32px "Manrope", sans-serif; text-align: center;
+    }
+    .status-meta { flex: 1; min-width: 0; }
+    .card-title {
+      font: 600 20px/1.2 "Manrope", sans-serif; letter-spacing: -0.03em;
+      margin-bottom: 4px; color: var(--navy-900);
+    }
+    .card-desc {
+      color: var(--slate-600); font-size: 14px; line-height: 1.5; margin-bottom: 10px;
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--teal-500); font-weight: 700; font-size: 13px;
+    }
+    .card-link:hover { color: var(--blue-700); }
+    .card-link::after { content: "→"; }
+
+    .status-tasks { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .tasks-label {
+      color: var(--slate-600); text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 11px; font-weight: 700; margin-bottom: 8px;
+    }
+    .status-tasks ol { list-style: none; }
+    .status-tasks li {
+      display: flex; gap: 10px; align-items: baseline;
+      font-size: 14px; line-height: 1.45; color: var(--navy-900);
+      padding: 4px 0;
+    }
+    .act-date {
+      flex: 0 0 auto; color: var(--teal-500); font: 700 11px/1.4 "Manrope", sans-serif;
+      letter-spacing: 0.04em;
+    }
+    .tasks-empty { color: var(--slate-600); font-size: 13px; font-style: italic; }
+
     .page-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
     }
     @media (max-width: 600px) { .page-grid { grid-template-columns: 1fr; } }
-
     .page-card {
       background: var(--white); border: 1px solid var(--border); border-radius: 12px;
-      padding: 36px 32px; transition: transform 0.2s, box-shadow 0.2s;
+      padding: 24px 22px; transition: transform 0.2s, box-shadow 0.2s;
     }
     .page-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 16px 48px rgba(7, 23, 38, 0.1);
     }
-    .card-number {
-      display: inline-block; width: 32px; height: 32px; border-radius: 8px;
-      background: var(--mist-100); color: var(--teal-500);
-      font: 700 13px/32px "Manrope", sans-serif; text-align: center;
-      margin-bottom: 16px;
-    }
-    .card-title {
-      font: 600 22px/1.2 "Manrope", sans-serif; letter-spacing: -0.03em;
-      margin-bottom: 8px; color: var(--navy-900);
-    }
-    .card-desc {
-      color: var(--slate-600); font-size: 14px; line-height: 1.55; margin-bottom: 20px;
-    }
-    .card-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      color: var(--teal-500); font-weight: 700; font-size: 14px;
-      transition: color 0.2s;
-    }
-    .card-link:hover { color: var(--teal-300); }
-    .card-link::after { content: "→"; }
+    .page-card .card-number { margin-bottom: 12px; display: inline-block; }
+    .page-card .card-title { font-size: 18px; }
+    .page-card .card-desc { margin-bottom: 12px; }
 
-    /* Footer */
     .site-footer {
       padding: 32px 0; text-align: center;
       background: var(--navy-950); color: rgba(255,255,255,0.45); font-size: 12px;
@@ -118,163 +147,372 @@
   <main class="page-main">
     <p class="eyebrow">Grok</p>
     <h1>The crew</h1>
-    <p class="page-lede">Job, how they work, what they can reach.</p>
+    <p class="page-lede">Status. What each bot does, and the last three jobs.</p>
 
+    <div class="status-stack">
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">01</div>
+          <div class="status-meta">
+            <div class="card-title">SuperDoer Bot</div>
+            <p class="card-desc">Chief of staff. Next real job, files on the desk.</p>
+            <a class="card-link" href="/grok/superdoer/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Saved John&#x27;s &quot;It&#x27;s fun to look&quot; quote to the desk.</li>
+          <li><span class="act-date">08/25</span> Coordinated /grok job pages and stood up Notion Analyst, Weekly Accounting IFM, and GoHighLevel Bot.</li>
+          <li><span class="act-date">08/25</span> Seated the IFM crew and wrote five shared house moves.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">02</div>
+          <div class="status-meta">
+            <div class="card-title">SDCFO Planner</div>
+            <p class="card-desc">Plans SDCFO with John. Does not execute.</p>
+            <a class="card-link" href="/grok/sdcfo-planner/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/23</span> Opened Oct 25 Strategy, Digital COO, and the Drive site review.</li>
+          <li><span class="act-date">08/23</span> Wrote the living SDCFO plan and DID.</li>
+          <li><span class="act-date">08/23</span> Mapped relationship sources without inventing contacts.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">03</div>
+          <div class="status-meta">
+            <div class="card-title">Business in a Box</div>
+            <p class="card-desc">Nate shop motions. Draft only.</p>
+            <a class="card-link" href="/grok/business-in-a-box/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/23</span> Boxed SDCFO shop shape and gap list. Draft only.</li>
+          <li><span class="act-date">08/23</span> Drafted the Bookkeeper Checkup one-pager and How We Work landing.</li>
+          <li><span class="act-date">08/23</span> Wrote funnel, opener, and packet drafts. Nothing shipped.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">04</div>
+          <div class="status-meta">
+            <div class="card-title">Content Writer</div>
+            <p class="card-desc">John’s voice. SDCFO blog drafts.</p>
+            <a class="card-link" href="/grok/content-writer/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Submitted a Tally form as SDCFOGroup.com and did not pay.</li>
+          <li><span class="act-date">08/24</span> Drafted first sentences of see-the-business. Not published.</li>
+          <li><span class="act-date">08/24</span> Had the invented first post taken down so John would write first.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">05</div>
+          <div class="status-meta">
+            <div class="card-title">Phaedrus</div>
+            <p class="card-desc">Main companion. OpenClaw, now here.</p>
+            <a class="card-link" href="/grok/phaedrus/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Wrote its public /grok job page.</li>
+          <li><span class="act-date">08/24</span> Inventoried the OpenClaw drop on this desk.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">06</div>
+          <div class="status-meta">
+            <div class="card-title">Phaedrus Web Manager</div>
+            <p class="card-desc">Runs the PQB site.</p>
+            <a class="card-link" href="/grok/phaedrus-web-manager/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Shipped /sdcfo/prospects/ for 258 HighLevel leads.</li>
+          <li><span class="act-date">08/25</span> Shipped the noindex /grok/people/ book.</li>
+          <li><span class="act-date">08/25</span> Shipped /grok/ job pages and the ClickUp and Notion notes.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">07</div>
+          <div class="status-meta">
+            <div class="card-title">Email Bot</div>
+            <p class="card-desc">Mailboxes. Drafts, not send unless yes.</p>
+            <a class="card-link" href="/grok/email-bot/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Ranked John&#x27;s most-emailed people and made a Pareto chart.</li>
+          <li><span class="act-date">08/25</span> Swept the three inboxes and sent John-approved replies.</li>
+          <li><span class="act-date">08/25</span> Started canceling a paid Substack at John&#x27;s request.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">08</div>
+          <div class="status-meta">
+            <div class="card-title">CRM Manager</div>
+            <p class="card-desc">Who someone is. What was last said.</p>
+            <a class="card-link" href="/grok/crm-manager/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Stood up a 17-person people book grouped by source.</li>
+          <li><span class="act-date">08/25</span> Handed /grok/people/ to Web Manager with no emails, phones, or profile URLs.</li>
+          <li><span class="act-date">08/25</span> Kept HighLevel leads in staging, off the people book.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">09</div>
+          <div class="status-meta">
+            <div class="card-title">Linkedin Bot</div>
+            <p class="card-desc">LinkedIn profile and inbox.</p>
+            <a class="card-link" href="/grok/linkedin-bot/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Triaged LinkedIn invitations. Keepers in, vendors ignored.</li>
+          <li><span class="act-date">08/25</span> Sent a LinkedIn note John asked for after a meeting.</li>
+          <li><span class="act-date">08/25</span> Looked up LinkedIn profile URLs for John&#x27;s most-emailed people.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">10</div>
+          <div class="status-meta">
+            <div class="card-title">iCloud Contact Bot</div>
+            <p class="card-desc">iCloud contacts in the browser.</p>
+            <a class="card-link" href="/grok/icloud-contact-bot/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Removed 257 duplicate iCloud contact cards.</li>
+          <li><span class="act-date">08/25</span> Added LinkedIn URLs to the top-50 emailed people.</li>
+          <li><span class="act-date">08/25</span> Created missing cards John named and filled empty fields from signatures.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">11</div>
+          <div class="status-meta">
+            <div class="card-title">ClickUp Genius</div>
+            <p class="card-desc">ClickUp tasks and lists.</p>
+            <a class="card-link" href="/grok/clickup-genius/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Posted a ClickUp usage map to /grok/clickup-comprehensive/.</li>
+          <li><span class="act-date">08/25</span> Mapped the Stories space and added a top-users ranking.</li>
+          <li><span class="act-date">08/24</span> Updated client cards and walked oldest open work.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">12</div>
+          <div class="status-meta">
+            <div class="card-title">zCompound Bookkeeper</div>
+            <p class="card-desc">zCompound books. Not SuperDoer.</p>
+            <a class="card-link" href="/grok/zcompound-bookkeeper/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Explored a home-network path for QuickBooks. Decision still pending.</li>
+          <li><span class="act-date">08/23</span> Located the zCompound Drive folder and 2025 workbook.</li>
+          <li><span class="act-date">08/23</span> Confirmed QuickBooks Online is blocked from this machine.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">13</div>
+          <div class="status-meta">
+            <div class="card-title">ShipCalm IFM</div>
+            <p class="card-desc">ShipCalm IFM and MMM.</p>
+            <a class="card-link" href="/grok/shipcalm-ifm/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Matched HubSpot roll-forward names to QuickBooks names.</li>
+          <li><span class="act-date">08/25</span> Snapshotted IFM, MMM, and Rev Roll Forward and reported the 8am diffs.</li>
+          <li><span class="act-date">08/23</span> Fixed the Indiana MMM A1 error. Missing source key. Error Checker to 0.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">14</div>
+          <div class="status-meta">
+            <div class="card-title">Imgix IFM</div>
+            <p class="card-desc">Imgix IFM and MMM.</p>
+            <a class="card-link" href="/grok/imgix-ifm/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Put the SaaS Capital balloon on the Total Payment row. Error Checker stayed 0.</li>
+          <li><span class="act-date">08/25</span> Wrote an eval of the Rolling MFR deck versus the live IFM.</li>
+          <li><span class="act-date">08/23</span> Locked the live workbook and trashed an old Notion IFM review page.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">15</div>
+          <div class="status-meta">
+            <div class="card-title">GITHUB Bot</div>
+            <p class="card-desc">GitHub and Vercel clerk. One email owns the work.</p>
+            <a class="card-link" href="/grok/github-bot/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Signed into Vercel and stacked three GitHub logins.</li>
+          <li><span class="act-date">08/25</span> Transferred the PQB repo and moved the live domain.</li>
+          <li><span class="act-date">08/25</span> Confirmed apex and www return 200 on the keeper project.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">16</div>
+          <div class="status-meta">
+            <div class="card-title">Migrate from Openclaw</div>
+            <p class="card-desc">OpenClaw drop onto this desk.</p>
+            <a class="card-link" href="/grok/migrate-from-openclaw/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/24</span> Created the Phaedrus teammate from the OpenClaw persona.</li>
+          <li><span class="act-date">08/24</span> Dropped identity files, wiki, and skills onto this desk.</li>
+          <li><span class="act-date">08/24</span> Ported the PQB site skill to Web Manager.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">17</div>
+          <div class="status-meta">
+            <div class="card-title">Notion Analyst</div>
+            <p class="card-desc">Notion workspace map. Live, used, dust.</p>
+            <a class="card-link" href="/grok/notion-analyst/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Wrote a Notion usage map for /grok/notion-comprehensive/.</li>
+          <li><span class="act-date">08/25</span> Compared billed seats to visible people.</li>
+          <li><span class="act-date">08/25</span> Removed one unused Notion member and started two more removals.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">18</div>
+          <div class="status-meta">
+            <div class="card-title">Weekly Accounting IFM</div>
+            <p class="card-desc">Weekly Accounting IFM and MMM.</p>
+            <a class="card-link" href="/grok/weekly-accounting-ifm/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Added IFM Analyst house moves from that review.</li>
+          <li><span class="act-date">08/24</span> Classified the workbook as active. Error Checker 0. No sheet edits.</li>
+          <li><span class="act-date">08/24</span> Wrote a deeper first-pass review. Flagged QA and forecast issues.</li>
+          </ol>
+        </div>
+      </article>
+      <article class="status-card">
+        <div class="status-top">
+          <div class="card-number">19</div>
+          <div class="status-meta">
+            <div class="card-title">GoHighLevel Bot</div>
+            <p class="card-desc">Broker Generator HighLevel. Pipeline and opportunities.</p>
+            <a class="card-link" href="/grok/gohighlevel-bot/">Job description</a>
+          </div>
+        </div>
+        <div class="status-tasks">
+          <div class="tasks-label">Latest</div>
+          <ol>
+          <li><span class="act-date">08/25</span> Wrote a read-only opportunities map. Nine pipelines.</li>
+          <li><span class="act-date">08/25</span> Built sd-prospect-pipeline.csv, 258 rows, all in Go High Level Leads.</li>
+          <li><span class="act-date">08/25</span> Asked Web Manager to publish /sdcfo/prospects/. No emails sent.</li>
+          </ol>
+        </div>
+      </article>
+    </div>
+
+    <p class="section-label">Notes</p>
     <div class="page-grid">
-      <a class="page-card" href="/grok/superdoer/">
-        <div class="card-number">01</div>
-        <div class="card-title">SuperDoer Bot</div>
-        <p class="card-desc">Chief of staff. Next real job, files on the desk.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/sdcfo-planner/">
-        <div class="card-number">02</div>
-        <div class="card-title">SDCFO Planner</div>
-        <p class="card-desc">Plans SDCFO with John. Does not execute.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/business-in-a-box/">
-        <div class="card-number">03</div>
-        <div class="card-title">Business in a Box</div>
-        <p class="card-desc">Nate shop motions. Draft only.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/content-writer/">
-        <div class="card-number">04</div>
-        <div class="card-title">Content Writer</div>
-        <p class="card-desc">John’s voice. SDCFO blog drafts.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/phaedrus/">
-        <div class="card-number">05</div>
-        <div class="card-title">Phaedrus</div>
-        <p class="card-desc">Main companion. OpenClaw, now here.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/phaedrus-web-manager/">
-        <div class="card-number">06</div>
-        <div class="card-title">Phaedrus Web Manager</div>
-        <p class="card-desc">Runs the PQB site.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/email-bot/">
-        <div class="card-number">07</div>
-        <div class="card-title">Email Bot</div>
-        <p class="card-desc">Mailboxes. Drafts, not send unless yes.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/crm-manager/">
-        <div class="card-number">08</div>
-        <div class="card-title">CRM Manager</div>
-        <p class="card-desc">Who someone is. What was last said.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/linkedin-bot/">
-        <div class="card-number">09</div>
-        <div class="card-title">Linkedin Bot</div>
-        <p class="card-desc">LinkedIn profile and inbox.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/icloud-contact-bot/">
-        <div class="card-number">10</div>
-        <div class="card-title">iCloud Contact Bot</div>
-        <p class="card-desc">iCloud contacts in the browser.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/clickup-genius/">
-        <div class="card-number">11</div>
-        <div class="card-title">ClickUp Genius</div>
-        <p class="card-desc">ClickUp tasks and lists.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/zcompound-bookkeeper/">
-        <div class="card-number">12</div>
-        <div class="card-title">zCompound Bookkeeper</div>
-        <p class="card-desc">zCompound books. Not SuperDoer.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/shipcalm-ifm/">
-        <div class="card-number">13</div>
-        <div class="card-title">ShipCalm IFM</div>
-        <p class="card-desc">ShipCalm IFM and MMM.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/imgix-ifm/">
-        <div class="card-number">14</div>
-        <div class="card-title">Imgix IFM</div>
-        <p class="card-desc">Imgix IFM and MMM.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/github-bot/">
-        <div class="card-number">15</div>
-        <div class="card-title">GITHUB Bot</div>
-        <p class="card-desc">GitHub and Vercel clerk. One email owns the work.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/migrate-from-openclaw/">
-        <div class="card-number">16</div>
-        <div class="card-title">Migrate from Openclaw</div>
-        <p class="card-desc">OpenClaw drop onto this desk.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/notion-analyst/">
-        <div class="card-number">17</div>
-        <div class="card-title">Notion Analyst</div>
-        <p class="card-desc">Notion workspace map. Live, used, dust.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/weekly-accounting-ifm/">
-        <div class="card-number">18</div>
-        <div class="card-title">Weekly Accounting IFM</div>
-        <p class="card-desc">Weekly Accounting IFM and MMM.</p>
-        <span class="card-link">View page</span>
-      </a>
-
-      <a class="page-card" href="/grok/gohighlevel-bot/">
-        <div class="card-number">19</div>
-        <div class="card-title">GoHighLevel Bot</div>
-        <p class="card-desc">Broker Generator HighLevel. Pipeline and opportunities.</p>
-        <span class="card-link">View page</span>
-      </a>
-
       <a class="page-card" href="/grok/clickup-comprehensive/">
         <div class="card-number">20</div>
         <div class="card-title">ClickUp comprehensive</div>
         <p class="card-desc">Usage ranking and a plan to evaluate the rest.</p>
         <span class="card-link">View page</span>
       </a>
-
       <a class="page-card" href="/grok/clickup-stories/">
         <div class="card-number">21</div>
         <div class="card-title">ClickUp Stories</div>
         <p class="card-desc">What is writing, and what is leftover.</p>
         <span class="card-link">View page</span>
       </a>
-
       <a class="page-card" href="/grok/notion-comprehensive/">
         <div class="card-number">22</div>
         <div class="card-title">Notion comprehensive</div>
         <p class="card-desc">Usage ranking and a plan to evaluate the rest.</p>
         <span class="card-link">View page</span>
       </a>
-
       <a class="page-card" href="/grok/people/">
         <div class="card-number">23</div>
         <div class="card-title">People book</div>
