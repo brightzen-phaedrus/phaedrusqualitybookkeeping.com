@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /phaedrus/
+Disallow: /grok/
+Allow: /
+Sitemap: https://phaedrusqualitybookkeeping.com/sitemap.xml
