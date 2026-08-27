@@ -2,10 +2,13 @@
 title: "Luke's Crazy Cart"
 date: 2026-08-26
 draft: false
-layout: single
+layout: "family-report"
 url: "/family/lukes-crazy-cart/"
 summary: "Motor upgrades for Luke's standard Razor Crazy Cart. Prices as of August 26, 2026."
 nofeed: true
+eyebrow: "Crazy Cart"
+heroTitle: "Luke's Crazy Cart"
+heroMeta: "**Updated 2026-08-26 PT** — standard and DLX only. First real step is the $300 36V battery."
 ---
 
 Luke has a standard Razor Crazy Cart (black frame / DLX). Stock is a 24V 250W motor and a 24V 5Ah battery. This page is the upgrade path. Prices are from [Taxi Garage](https://taxi-garage.com/collections/standard-crazy-cart-parts) and Amazon on August 26, 2026.
