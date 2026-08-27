@@ -13,9 +13,9 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-08-26 PT · 45 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-08-26 PT · 46 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 35
+### Email — 36
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -35,6 +35,7 @@ Last built 2026-08-26 PT · 45 people · Grouped by source · Maintained by CRM 
 | Adam Beatty | Design Lab / Logical Brands | Advisor | Warm | Called for an in-person advisory board: 2026 financials, year-end budget, functional-area presentations. John said he can make it. Mark Denneen and Dave Bolen on the thread. John forwarded to Sam Kaplan. | 2026-08-20 | Get the date on the calendar. |
 | Adam Czach | 409.ai | Vendor | Warm | Final reminder: draft will auto-finalize in 2 days. Kunal on cc. imgix mailbox. Waiting if John or Kunal want to comment. | 2026-08-26 | Comment in the next 2 days or let it finalize. |
 | Afroze Qayyum | Mash Strategy | Partner | Warm | Booked Jeff for Mon Aug 31 12:30 ET. Waiting on Jeff, not John. | 2026-08-26 | Wait on Jeff Aug 31. |
+| Afrozy Ara | LuminaData | Prospect | Warm | John emailed her (LuminaData). Founder and CEO. Not Afroze Qayyum at Mash Strategy. Email Bot has no last-said body yet. | 2026-08-26 | Hold until Email Bot has last-said. |
 | Brandy Mustain | Foundation RP | Home | Warm | Homeowners quote for Via Cuatro Caminos / RSF plus rented ADUs. She asked for a call. Waiting on John. | 2026-08-18 | Call Brandy about the homeowners quote. |
 | Brian Kelly | Sidecountry Sports | Client | Warm | Sent Lightspeed order CSVs. Missing customer names = lazy checkout. Shopify orders under his name. Offered Lightspeed support via Quinth. ClickUp card is healthy. | 2026-08-18 | Keep the data/IFM thread moving with Quinth and Phil. |
 | Christina Makowsky | Bloom and Bone | Client | Warm | Wants a finance meeting before pre-launch. John said he's out 10 days; Jad can add him after Labor Day. Waiting on Jad, not John. | 2026-08-26 | Wait on Jad after Labor Day. |
@@ -52,7 +53,7 @@ Last built 2026-08-26 PT · 45 people · Grouped by source · Maintained by CRM 
 | Kevin Luchetta | Pioneer Financial / Northwestern Mutual | Advisor | Cool | Caught up Mon Aug 24. Kevin followed up Tue: NM advisor moved on, wants in. Deirdre offered Sep Zoom. John replied-all ~8:48 AM PT from declined Zoom, no follow-up. Closed. | 2026-08-25 | Closed. Do not follow up. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed. | 2026-08-25 | Closed. |
 | Taylor Nemiroff | Paychex | Partner | Cool | Wanted a partnership conversation after Paychex onboarding. John: talk only to him, team already knows they can refer. Taylor acknowledged and mentioned Jan 1 transitions. | 2026-08-20 | Hold unless John reopens it. |
-| Troy Nguyen | Bernstein | Advisor | Cool | Bernstein web registration. web registration Last touch Aug 7. Waiting if John still needs the account. | 2026-08-07 | Decide if the Bernstein account is still needed. |
+| Troy Nguyen | Bernstein | Advisor | Cool | Bernstein web registration. Web ID 1118668. Last touch Aug 7. Waiting if John still needs the account. | 2026-08-07 | Decide if the Bernstein account is still needed. |
 | Jared Lewin | Exit Group | Partner | Stale | Chasing Sorren value / next steps since June 5. John said he'd revert second half of June. Jared followed up June 26 and July 9. Jeff at Weekly Accounting is on the thread. | 2026-07-09 | Decide: reply, park, or close. |
 
 ### Calendar — 9
