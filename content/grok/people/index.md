@@ -13,9 +13,9 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-08-27 PT · 54 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-08-27 PT · 55 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 37
+### Email — 38
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ Last built 2026-08-27 PT · 54 people · Grouped by source · Maintained by CRM 
 | Brandon | ShipCalm | Client | Cool | Same Elle thread. Said he'll take care of Elle. Not waiting on John | 2026-08-26 | Closed on John's side. Brandon has Elle. |
 | Brandy Mustain | Foundation RP | Home | Warm | Homeowners quote for Via Cuatro Caminos / RSF plus rented ADUs. She asked for a call. Waiting on John | 2026-08-18 | Call Brandy about the homeowners quote. |
 | Brian Kelly | Sidecountry Sports | Client | Warm | Sent Lightspeed order CSVs. Missing customer names = lazy checkout. Shopify orders under his name. Offered Lightspeed support via Quinth. ClickUp card is healthy | 2026-08-18 | Keep the data/IFM thread moving with Quinth and Phil. |
-| Christina Makowsky | Bloom and Bone | Client | Warm | Wants insurance and fulfillment recs plus a pre-launch talk. Asked Jad to schedule after Labor Day. John already said he's out 10 days. Waiting on Jad | 2026-08-26 | Wait on Jad after Labor Day. |
+| Christina Makowsky | Bloom and Bone | Client | Hot | John intro’d her to Jared Wood (HUB) for dog-supplement insurance. She asked for a call. Ball is with Jared and Christina. Fulfillment / pre-launch talk still waiting on Jad after Labor Day | 2026-08-27 | Wait on Jared for a call time. Jad after Labor Day for the rest. |
 | Deirdre Dunne-Sciolto | Pioneer Financial / Northwestern Mutual | Advisor | Cool | EA to Kevin Luchetta. Offered Sep Zoom slots. John replied-all ~8:48 AM PT: declined, no follow-up. Closed | 2026-08-25 | Closed. Do not follow up. |
 | Dennis VanBaale | EOS Worldwide | Partner | Hot | John pitched a WA / SD CFO partnership. Dennis offered Wed 9–5 or Thu 11–5 PT. Waiting on John to pick a time | 2026-08-27 | Pick today Thu 11–5 PT if that slot still works. Not on the calendar yet. |
 | Elle | GWFG | Prospect | Warm | John intro'd Brandon at ShipCalm for a 3PL price check. Elle wants to meet ASAP before placing a PO. Waiting on Brandon/Elle. John already intro'd | 2026-08-26 | Wait on Brandon and Elle. |
@@ -40,7 +40,7 @@ Last built 2026-08-27 PT · 54 people · Grouped by source · Maintained by CRM 
 | Jane McMurry | Nassau Street Partners | Investor | Cool | John replied No thanks to the upfront work fee. Closed | 2026-08-26 | Closed. |
 | Jane Quirimit | ShipCalm | Client | Hot | Sent Stephanie loan statement (Nova on cc) to . Waiting on John to send or use it | 2026-08-26 | Send or use the Stephanie loan statement. |
 | Jared Lewin | Exit Group | Partner | Stale | Chasing Sorren value / next steps since June 5. John said he'd revert second half of June. Jared followed up June 26 and July 9. Jeff at Weekly Accounting is on the thread | 2026-07-09 | Decide: reply, park, or close. |
-| Jared Wood | HUB International | Advisor | Warm | Axon/CFO insurance apps. Two apps sitting for John to fill: Axon Pro Accountants and APL Interim CFO. Waiting on John | 2026-08-17 | Fill the two HUB insurance apps. |
+| Jared Wood | HUB International | Advisor | Hot | John intro’d Jared to Christina (Bloom and Bone) on dog-supplement insurance this morning. Jared said happy to help and asked for a time. Christina asked for a call. Ball is with Jared and Christina. Separate: two HUB apps (Axon Pro Accountants, APL Interim CFO) still sitting for John | 2026-08-27 | Wait on Jared and Christina for a time. Two HUB apps still sitting. |
 | Jay Ramos | Nassau Street Partners | Investor | Cool | Same Nassau Street thread. John replied No thanks. Closed | 2026-08-26 | Closed. |
 | Josh Gupta | Haurlan, Inc. | Client | Hot | John emailed from reminding him to connect bank accounts and credit cards in QuickBooks. Waiting on Josh | 2026-08-25 | Wait for Josh to connect QBO banks/cards. |
 | Julian Nash | First Citizens / SVB | Partner | Hot | Imgix bank-manager thread. John asked him to send a calendar link. Kunal on cc. Hailey Manning is the named AM. Waiting on Julian | 2026-08-25 | Wait for Julian's calendar link. |
@@ -48,6 +48,7 @@ Last built 2026-08-27 PT · 54 people · Grouped by source · Maintained by CRM 
 | Kendra Edelman-Smith | Weekly Accounting | Team | Hot | Still locked out of Slack. Also on calendar today Thu 10:30 PT John <> Kendra | 2026-08-26 | Unstick Slack, then the 10:30. |
 | Kevin Luchetta | Pioneer Financial / Northwestern Mutual | Advisor | Cool | Caught up Mon Aug 24. Kevin followed up Tue: NM advisor moved on, wants in. Deirdre offered Sep Zoom. John replied-all ~8:48 AM PT from : declined Zoom, no follow-up. Closed | 2026-08-25 | Closed. Do not follow up. |
 | Kunal Shah | Imgix | Client | Warm | Cc on the Imgix bank-manager handoff to Julian Nash. Waiting with Julian | 2026-08-25 | Wait with Julian on the calendar link. |
+| Liping Wu | Baker Tilly | Vendor | Hot | Imgix 2025 taxes. John sent Stephen Karasek MA dates (start 2025-06-09, end 2026-07-20). Still working the NYC sales allocation question | 2026-08-27 | John still owes the NYC sales allocation. |
 | Matt Ritchey | Elevated Executive | Friend | Hot | Asked about Saturday details. Saturday is the 10th seat, arrive 9am, ceremony before 10am. Waiting on John if he is going | 2026-08-26 | Tell Matt if you are going Saturday. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed | 2026-08-25 | Closed. |
 | Phil Gorman | Snack Iconic | Prospect | Hot | Wholesale bagels, pivoted from La Jolla shop. Uses QBO not Shopify. John offered CPG underwriting experience from Assembled Brands. Emily at Weekly Accounting cc'd | 2026-08-20 | Follow the QBO / Cin7 thread and book the next step. |
