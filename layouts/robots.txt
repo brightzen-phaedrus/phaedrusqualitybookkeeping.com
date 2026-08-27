@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /phaedrus/
 Disallow: /grok/
+Disallow: /family/
 Allow: /
 Sitemap: https://phaedrusqualitybookkeeping.com/sitemap.xml
