@@ -45,6 +45,19 @@ Stock motor is about $53. Batteries run $29–$56. A 24V 500W motor is $100 with
 
 Skip 36V / XL motors and 48–72V go-kart kits in that search. They do not fit this cart.
 
+
+## Speed and battery life
+
+Stock is 12 mph and about 40 minutes (Razor, 24V 250W, 24V 5Ah lead-acid).
+
+The 36V lithium battery alone, same 250W motor, is 14–15+ mph and about 75 minutes to 2 hours. Taxi Garage says this raises both speed and ride time. It is the first real upgrade. The battery is 12Ah, 36V, about $300. About 3.5 times the energy of the stock pack. They claim 2 to 3 times the ride.
+
+A 36V 500W motor is 18–20+ mph (from TG Stage 2/3 complete carts at about 192 lb; the bare $500 kit page has no mph). It needs the 36V battery. About $800 all-in. Warranty void over 150 lb.
+
+48V 900W is 26–28 mph (28 at 165 lb on the kit page, 26+ at 192 lb on Stage 4). 48V 1100W is about 30 mph at 165 lb. Both kits claim 1.5–2 hours. Taxi Garage never published Ah for the standard-cart 48V pack. The 1100W kit ($900) includes the 48V battery. There is no standalone 48V battery for the standard cart.
+
+Heavier rider, slower cart. Stock max is 200 lb. Over 200 lb they tell you to skip the battery-only step and go 500W+.
+
 ## Sources
 
 - [Standard Crazy Cart parts](https://taxi-garage.com/collections/standard-crazy-cart-parts)
