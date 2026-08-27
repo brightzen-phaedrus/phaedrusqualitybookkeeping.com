@@ -1,8 +1,7 @@
 ---
 title: "Family"
+layout: "family-index"
 url: "/family/"
-summary: "Family pages."
+summary: "Pages for the house, not the firm."
 nofeed: true
 ---
-
-Pages for the house, not the firm.
