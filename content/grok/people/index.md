@@ -13,9 +13,9 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-08-27 PT · 55 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-08-27 PT · 57 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 38
+### Email — 40
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Last built 2026-08-27 PT · 55 people · Grouped by source · Maintained by CRM 
 | Dennis VanBaale | EOS Worldwide | Partner | Hot | John pitched a WA / SD CFO partnership. Dennis offered Wed 9–5 or Thu 11–5 PT. Waiting on John to pick a time | 2026-08-27 | Pick today Thu 11–5 PT if that slot still works. Not on the calendar yet. |
 | Elle | GWFG | Prospect | Warm | John intro'd Brandon at ShipCalm for a 3PL price check. Elle wants to meet ASAP before placing a PO. Waiting on Brandon/Elle. John already intro'd | 2026-08-26 | Wait on Brandon and Elle. |
 | Eric Otterson | First Citizens / SVB | Partner | Cool | Introduced Julian Nash on the Imgix thread. Also . Closed on Eric's side | 2026-08-25 | Closed. Julian has the next step. |
-| Greg Moser | ShipCalm | Client | Hot | Jane Quirimit sent the Stephanie loan statement (Nova on cc). Greg had asked John and Nova to send Stephanie a statement of Sidney-placed debt and interest. Waiting on John to send or use it | 2026-08-26 | Send Stephanie the statement Jane sent. |
+| Greg Moser | ShipCalm | Client | Hot | Asked Mike for Monday 11am instead of Tue 9/1 8:30 (Greg traveling). Waiting on John and Mike. Separate: Jane already sent the Stephanie loan statement; still sitting | 2026-08-27 | Confirm Monday 11am with Mike, or pick another time. Stephanie statement still sitting. |
 | Hailey Manning | First Citizens / SVB | Partner | Cool | Named AM on the Imgix / Julian Nash thread. Relationship Advisor, SVB, SF | 2026-08-25 | Julian has the next step. No separate ask. |
 | Jane McMurry | Nassau Street Partners | Investor | Cool | John replied No thanks to the upfront work fee. Closed | 2026-08-26 | Closed. |
 | Jane Quirimit | ShipCalm | Client | Hot | Sent Stephanie loan statement (Nova on cc) to . Waiting on John to send or use it | 2026-08-26 | Send or use the Stephanie loan statement. |
@@ -50,9 +50,11 @@ Last built 2026-08-27 PT · 55 people · Grouped by source · Maintained by CRM 
 | Kunal Shah | Imgix | Client | Warm | Cc on the Imgix bank-manager handoff to Julian Nash. Waiting with Julian | 2026-08-25 | Wait with Julian on the calendar link. |
 | Liping Wu | Baker Tilly | Vendor | Hot | Imgix 2025 taxes. John sent Stephen Karasek MA dates (start 2025-06-09, end 2026-07-20). Still working the NYC sales allocation question | 2026-08-27 | John still owes the NYC sales allocation. |
 | Matt Ritchey | Elevated Executive | Friend | Hot | Asked about Saturday details. Saturday is the 10th seat, arrive 9am, ceremony before 10am. Waiting on John if he is going | 2026-08-26 | Tell Matt if you are going Saturday. |
+| Matt Voigt | Saambaa | Client | Cool | Sent Authoria test data from the Weekly Accounting test. John replied This is great. Closed on John’s side | 2026-08-27 | Closed. No next move. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed | 2026-08-25 | Closed. |
 | Phil Gorman | Snack Iconic | Prospect | Hot | Wholesale bagels, pivoted from La Jolla shop. Uses QBO not Shopify. John offered CPG underwriting experience from Assembled Brands. Emily at Weekly Accounting cc'd | 2026-08-20 | Follow the QBO / Cin7 thread and book the next step. |
 | Skylar Kelsven | Enamory | Friend | Warm | In-person Fri Aug 28 9:00am, High Bluff. Charlotte on the invite. Daniel Liebeskind Zoom is 9:30 the same morning | 2026-08-26 | Show up Fri 9am. Daniel at 9:30 conflicts. |
+| Suhas Subramanya |  | Recruit | Hot | Please schedule Suhas with Jeff (2nd interview). John told him Emily will offer times, and to come ready to screen-share spreadsheet tools | 2026-08-27 | Wait on Emily to offer times, then Suhas to pick. |
 | Taylor Nemiroff | Paychex | Partner | Cool | Wanted a partnership conversation after Paychex onboarding. John: talk only to him, team already knows they can refer. Taylor acknowledged and mentioned Jan 1 transitions | 2026-08-20 | Hold unless John reopens it. |
 | Ted Theocheung | My Mentor 126 | Prospect | Warm | Reached out about AI onboarding for CFOs. Matt forwarded. John: looks interesting, asked Ted to find a time next week (calendar link sent this morning) | 2026-08-25 | Wait for Ted to book, or nudge if he doesn't. |
 | Troy Nguyen | Bernstein | Advisor | Cool | Bernstein web registration. Web ID 1118668. Last touch Aug 7. Waiting if John still needs the account | 2026-08-07 | Decide if the Bernstein account is still needed. |
@@ -73,7 +75,7 @@ Last built 2026-08-27 PT · 55 people · Grouped by source · Maintained by CRM 
 | Jeff Hammermeister | ShipCalm | Investor | Warm | Accepted the 1.7m Capital Raise Working Session this morning (Thu 7:30 PT) with Greg and Ted Fogliani | 2026-08-27 | Follow the raise working-session notes. |
 | Jessica Atelier | Atelier Curioso | Client | Warm | Jessica & John Weekly. On calendar today Thu 9:00–9:30 PT. Accepted | 2026-08-27 | Show up today 9:00 PT. |
 | Lakshya Daga | TruLeague | Prospect | Warm | Was on calendar Wed Aug 26 11:00–11:30 PT. TruLeague Zoom. First conversation. Not on calendar today | 2026-08-26 | Log what was said, or follow up if you missed it. |
-| Mike Rose | Montage Capital | Investor | Cool | John(ShipCalm)/Mike(Montage) catch-up. Calendar auto-declined 9/1 8:30. John said he's available. Mike confirmed Great. Closed / meeting held on calendar | 2026-08-26 | Closed. Meeting held. |
+| Mike Rose | Montage Capital | Investor | Hot | John(ShipCalm)/Mike(Montage) catch-up. Greg asked for Monday 11am instead of Tue 9/1 8:30 because Greg is traveling. Waiting on John and Mike | 2026-08-27 | Confirm Monday 11am, or pick another time. |
 | Pete Assembled | Assembled Systems | Client | Warm | Assembled Systems Weekly today Thu 8:30 PT with Jeff and Phil. Accepted | 2026-08-27 | Show up today 8:30 PT. |
 | Sam Hayes | Inside Round | Friend | Hot | Asked about lunch Sunday Aug 23 downtown. John said he'd check English family plans and figure out a time | 2026-08-18 | Confirm whether you actually saw him, or reschedule. |
 | Ted Fogliani | ShipCalm | Investor | Warm | On the 1.7m Capital Raise Working Session with Greg this morning (Thu 7:30 PT). Transcript attached on the invite | 2026-08-27 | Follow the raise working-session notes. |
