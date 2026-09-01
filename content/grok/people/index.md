@@ -13,9 +13,9 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-09-01 PT · 73 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-09-01 PT · 74 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 52
+### Email — 53
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ Last built 2026-09-01 PT · 73 people · Grouped by source · Maintained by CRM 
 | Jared Wood | HUB International | Advisor | Warm | John sent the two HUB apps last night (Axon Pro Accountants, APL Interim CFO). Separate: Bloom and Bone intro with Christina is waiting on them to pick a call time | 2026-08-27 | Wait on Jared/Christina for a call. Apps are in. |
 | Jay Ramos | Nassau Street Partners | Investor | Cool | Same Nassau Street thread. John replied No thanks. Closed | 2026-08-26 | Closed. |
 | John Plewes | Plewes Group | Investor | Hot | Mon Aug 31 John sent the ShipCalm data room Drive folder (Series A deck, 1H review/Q3 goals, financial model with historicals, Series A final term sheet) and the link; said text while traveling. Waiting on Plewes for questions and call times Greg asked for | 2026-08-31 | Wait on Plewes. Ball is his for questions / call times. |
-| Jon Espinosa | Influence Apps | Client | Warm | FY26 tax: John Mon said books ready and asked if Paul has QBO. Paul asked for login. This morning Jon added Paul as in-house accountant on QBO (invite to ). Separate: Hunter Deskin chasing overdue RevCentric/Deskin invoice (Steve confirmed pay Fri) | 2026-09-01 | Closed on tax access for now (Jon/Paul). Optional: check RevCentric invoice payment with Jon/Stephen. |
+| Jon Espinosa | Influence Apps | Client | Warm | FY26 tax: John Mon said books ready and asked if Paul has QBO. Paul asked for login. This morning Jon added Paul as in-house accountant on QBO (invite.) Separate: Hunter Deskin chasing overdue RevCentric/Deskin invoice (Steve confirmed pay Fri) | 2026-09-01 | Closed on tax access for now (Jon/Paul). Optional: check RevCentric invoice payment with Jon/Stephen. |
 | Josh Gupta | Haurlan, Inc. | Client | Hot | John emailed from reminding him to connect bank accounts and credit cards in QuickBooks. Waiting on Josh | 2026-08-25 | Wait for Josh to connect QBO banks/cards. |
 | Julian Nash | First Citizens / SVB | Partner | Hot | Imgix bank-manager thread. John asked him to send a calendar link. Kunal on cc. Hailey Manning is the named AM. Waiting on Julian | 2026-08-25 | Wait for Julian's calendar link. |
 | Kareem Abdullah | Terra Team | Partner | Hot | Little Learners finals. Needs John to clarify CA government-pay vs insurance/self-pay so they can issue finals and the management rep letter. Stephen Espinosa on the thread. Waiting on John | 2026-08-26 | Reply: government-pay vs insurance/self-pay. |
@@ -59,6 +59,7 @@ Last built 2026-09-01 PT · 73 people · Grouped by source · Maintained by CRM 
 | Matt Ritchey | Elevated Executive | Friend | Warm | Sat Aug 30 9am–4pm Elevated Executive block was on calendar. Need last-said from John | 2026-08-30 | Log what happened Saturday, or park. |
 | Matt Voigt | Saambaa | Client | Cool | Sent Authoria test data from the Weekly Accounting test. John replied This is great. Closed on John’s side | 2026-08-27 | Closed. No next move. |
 | Mesepa | Midtown | Client | Warm | John wrote last night: works with Viny Kaur and Matt Stamer, reviewed the BAA, confirmed with the team. Midtown BAA & Weekly Accounting | 2026-08-27 | Wait on Midtown if they still need anything on the BAA. |
+| Paul H. Payne III | PHP3 CPA | Vendor | Warm | Influence Apps FY26 tax. Jon added him as in-house accountant on QBO this morning after John said books were ready. Closed on access for now | 2026-09-01 | Closed on tax access for now. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed | 2026-08-25 | Closed. |
 | Phil Gorman | Snack Iconic | Prospect | Hot | Wholesale bagels, pivoted from La Jolla shop. Uses QBO not Shopify. John offered CPG underwriting experience from Assembled Brands. Emily at Weekly Accounting cc'd | 2026-08-20 | Follow the QBO / Cin7 thread and book the next step. |
 | Simon Donato | Stoked Oats | Client | Warm | John Fri Aug 28 asked if he met David and for next-week availability. No reply yet | 2026-08-28 | Wait on Simon. Do not chase. |
@@ -83,7 +84,7 @@ Last built 2026-09-01 PT · 73 people · Grouped by source · Maintained by CRM 
 | Daniel Liebeskind | Topia | Prospect | Cool | Fri Aug 28 2:30 PT Topia Zoom was on calendar. Need last-said from John if you took it | 2026-08-28 | Log what was said, or park. |
 | Derek Robinson | Mash Strategy | Partner | Warm | Afroze booked Jeff for Mon Aug 31 12:30 ET (Weekly Accounting/MASH Proposal Review). John declined (out of office). Jeff accepted | 2026-08-28 | Wait on Jeff Monday. You are out. |
 | Emily Owczarek | Brave Health | Client | Warm | On the Brave cumulative revenue pack John sent Friday, with Claire | 2026-08-28 | Wait if they reply on the revenue pack. |
-| JR Perfect Keto | Perfect Keto / Toku Health | Client | Warm | Perfect Keto / Weekly Accounting today Tue Sep 1 12:30 PT. Josh declined (OOO). John still accepted. Emily hosts; Josh asked her to move it | 2026-09-01 | Confirm Emily covers or moves it. You are out. |
+| Justin Eaton | Perfect Keto / Toku Health | Client | Warm | Perfect Keto / Weekly Accounting today Tue Sep 1 12:30 PT. Josh declined (OOO). John still accepted. Emily hosts; Josh asked her to move it | 2026-09-01 | Confirm Emily covers or moves it. You are out. |
 | Jacob Blum |  | Prospect | Warm | Jacob/John Startup Connect was Tue Aug 25 10:00 PT. Need last-said from John if they met | 2026-08-25 | Log what was said if you met him. |
 | James Conole | Root Financial Partners | Prospect | Hot | Booked Meet John/Weekly Accounting today Tue Sep 1 12:00–12:30 PT. Phone . Morgan Mischloney and Phil accepted. Sits inside John Out | 2026-09-01 | Join, move, or have Phil cover. You are marked out. |
 | James Hammermeister | ShipCalm | Investor | Warm | Intro’d Plewes; John Z sent the data room Mon Aug 31. Waiting on Plewes | 2026-08-31 | Wait on Plewes. |
