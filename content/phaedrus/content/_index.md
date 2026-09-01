@@ -35,6 +35,29 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
   </a>
 
 
+  <a class="page-row" href="/sdcfo/content/bookkeeper-checkup-series/">
+    <div class="row-icon">📚</div>
+    <div class="row-main">
+      <div class="row-title">The Bookkeeper Checkup Series of Value Propositions</div>
+      <p class="row-desc">We manage the books for over 400 companies. Checkup is the quality layer in front of a customer.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Draft the Bookkeeper Checkup landing page</li>
+          <li>Pick the next two doors to test</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/31</span> Posted backstory and landing-page outline</li>
+      </ul>
+    </div>
+  </a>
+
+
+
   <a class="page-row" href="/phaedrus/content/mythosimages/">
     <div class="row-icon">🖼️</div>
     <div class="row-main">
