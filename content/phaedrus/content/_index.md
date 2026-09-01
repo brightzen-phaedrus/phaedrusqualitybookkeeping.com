@@ -57,6 +57,29 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
   </a>
 
 
+  <a class="page-row" href="/sdcfo/content/landing-pages/bookkeeper-checkup/">
+    <div class="row-icon">🧪</div>
+    <div class="row-main">
+      <div class="row-title">Bookkeeper Checkup landing</div>
+      <p class="row-desc">Value-prop testinator. Three message variants, one fixed layout. Working draft.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Replace pending testimonials with approved quotes</li>
+          <li>Wire form submit to a real Checkup start</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">08/31</span> Posted A/B/C landing from the testinator spec</li>
+      </ul>
+    </div>
+  </a>
+
+
+
 
   <a class="page-row" href="/phaedrus/content/mythosimages/">
     <div class="row-icon">🖼️</div>
