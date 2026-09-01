@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Params.summary | default .Description }}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #EFEDE7; -webkit-font-smoothing: antialiased; }
+    a { color: #14342B; text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: #2C6B57; }
+    summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+    .variant-bar button[data-active="true"] { background: rgba(244,242,236,.15); }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+<div style="min-height:100vh;background:#EFEDE7;display:flex;justify-content:center;font-family:'Libre Franklin',system-ui,sans-serif;color:#14342B">
+<div style="width:100%;max-width:430px;background:#FBFAF7;min-height:100vh;position:relative">
+
+<div class="variant-bar" style="position:sticky;top:0;z-index:20;display:flex;gap:6px;align-items:center;padding:8px 10px;background:#14342B;color:#F4F2EC;font-size:11px;letter-spacing:.04em">
+  <span style="opacity:.6;text-transform:uppercase;font-weight:600">Variant</span>
+  <button type="button" data-v="A" style="border:1px solid rgba(244,242,236,.35);background:transparent;color:#F4F2EC;font:inherit;font-weight:600;padding:4px 9px;border-radius:2px;cursor:pointer">A</button>
+  <button type="button" data-v="B" style="border:1px solid rgba(244,242,236,.35);background:transparent;color:#F4F2EC;font:inherit;font-weight:600;padding:4px 9px;border-radius:2px;cursor:pointer">B</button>
+  <button type="button" data-v="C" style="border:1px solid rgba(244,242,236,.35);background:transparent;color:#F4F2EC;font:inherit;font-weight:600;padding:4px 9px;border-radius:2px;cursor:pointer">C</button>
+  <span id="variantName" style="margin-left:auto;opacity:.55;font-size:10px"></span>
+</div>
+
+<section style="padding:26px 22px 30px">
+  <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A8B82;margin-bottom:22px">SDCFO.Group · Weekly Accounting</div>
+  <h1 id="headline" style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:38px;line-height:1.08;letter-spacing:-.015em;margin:0 0 14px;text-wrap:pretty"></h1>
+  <p id="subheadline" style="font-size:16px;line-height:1.5;margin:0 0 22px;color:#3B4B44;text-wrap:pretty"></p>
+  <form class="lead-form" style="display:flex;flex-direction:column;gap:8px;margin:0 0 16px">
+    <input type="email" required placeholder="you@company.com" style="width:100%;height:50px;padding:0 14px;border:1px solid #C9CFC9;border-radius:3px;background:#fff;font:inherit;font-size:16px;color:#14342B">
+    <button type="submit" class="cta" style="width:100%;height:52px;border:none;border-radius:3px;background:#14342B;color:#FBFAF7;font:inherit;font-size:17px;font-weight:600;letter-spacing:.01em;cursor:pointer"></button>
+  </form>
+  <div class="sent hidden" style="font-size:13px;line-height:1.45;color:#2C6B57;margin:-8px 0 16px;font-weight:600">Sent. We will email your Checkup link.</div>
+  <div id="proofMetric" class="hidden" style="display:flex;align-items:baseline;gap:10px">
+    <div id="proofMetricVal" style="font-family:'Newsreader',Georgia,serif;font-size:34px;line-height:1"></div>
+    <div id="proofMetricLabel" style="font-size:12.5px;line-height:1.35;color:#5B6B63"></div>
+  </div>
+  <div id="proofLogos" class="hidden">
+    <div id="proofLogoLabel" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7A8B82;margin-bottom:8px"></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+      <div style="height:30px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F;letter-spacing:.06em">LOGO</div>
+      <div style="height:30px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F;letter-spacing:.06em">LOGO</div>
+      <div style="height:30px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F;letter-spacing:.06em">LOGO</div>
+      <div style="height:30px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F;letter-spacing:.06em">LOGO</div>
+    </div>
+  </div>
+  <blockquote id="proofQuote" class="hidden" style="margin:0;padding:12px 14px;background:#F1EFE8;border-left:2px solid #14342B;font-family:'Newsreader',Georgia,serif;font-size:15px;line-height:1.4;color:#2A3B34">
+    <span id="proofQuoteText"></span>
+    <div id="proofQuoteAttr" style="font-family:'Libre Franklin',sans-serif;font-size:11px;color:#7A8B82;margin-top:8px;letter-spacing:.03em"></div>
+  </blockquote>
+</section>
+
+<section style="padding:0 22px 30px">
+  <div style="aspect-ratio:4/3;border:1px dashed #C9CFC9;border-radius:3px;background:#F1EFE8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px">
+    <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9AA79F">Hero visual slot</div>
+    <div id="visualCaption" style="font-size:12.5px;line-height:1.4;color:#5B6B63;max-width:240px"></div>
+  </div>
+</section>
+
+<section style="padding:0 22px 34px">
+  <p id="problem" style="font-size:17px;line-height:1.5;margin:0;color:#14342B;text-wrap:pretty"></p>
+</section>
+
+<section style="padding:28px 22px;background:#F1EFE8">
+  <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A8B82;margin-bottom:18px">How it works</div>
+  <div id="steps" style="display:flex;flex-direction:column;gap:18px"></div>
+</section>
+
+<section style="padding:30px 22px">
+  <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A8B82;margin-bottom:16px">What operators say</div>
+  <div id="testimonials" style="display:flex;flex-direction:column;gap:14px"></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:20px;padding-top:20px;border-top:1px solid #E2DFD6">
+    <div style="height:28px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F">LOGO</div>
+    <div style="height:28px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F">LOGO</div>
+    <div style="height:28px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F">LOGO</div>
+    <div style="height:28px;border:1px dashed #C9CFC9;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9AA79F">LOGO</div>
+  </div>
+</section>
+
+<section style="padding:8px 22px 34px">
+  <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A8B82;margin-bottom:8px">Questions</div>
+  <div id="faqs"></div>
+</section>
+
+<section style="padding:32px 22px 26px;background:#14342B;color:#F4F2EC">
+  <div id="headline2" style="font-family:'Newsreader',Georgia,serif;font-size:26px;line-height:1.15;margin-bottom:18px;text-wrap:pretty"></div>
+  <form class="lead-form" style="display:flex;flex-direction:column;gap:8px">
+    <input type="email" required placeholder="you@company.com" style="width:100%;height:50px;padding:0 14px;border:1px solid rgba(244,242,236,.3);border-radius:3px;background:rgba(255,255,255,.06);font:inherit;font-size:16px;color:#F4F2EC">
+    <button type="submit" class="cta" style="width:100%;height:52px;border:none;border-radius:3px;background:#F4F2EC;color:#14342B;font:inherit;font-size:17px;font-weight:600;cursor:pointer"></button>
+  </form>
+  <div style="font-size:12px;color:rgba(244,242,236,.65);margin-top:12px;text-align:center">First Checkup free · Read-only access · No credit card</div>
+</section>
+
+<footer style="padding:18px 22px 40px;display:flex;gap:16px;justify-content:center;font-size:11px;color:#7A8B82;background:#14342B">
+  <a href="/privacy/" style="color:rgba(244,242,236,.6)">Privacy</a>
+  <a href="/terms/" style="color:rgba(244,242,236,.6)">Terms</a>
+</footer>
+
+</div>
+</div>
+<script>
+const TESTIMONIALS = {
+  t1: { quote: "[Quote pending client approval — books-quality angle]", attr: "Owner · services business · name pending" },
+  t2: { quote: "[Quote pending client approval — caught-an-error angle]", attr: "Controller · ecommerce · name pending" },
+  t3: { quote: "[Quote pending client approval — confidence angle]", attr: "Founder · agency · name pending" }
+};
+const VARIANTS = {
+  A: {
+    name: "Bookkeeper quality",
+    headline: "Is your bookkeeper doing a good job?",
+    subheadline: "Connect your accounting file and get a report on bank-to-books match, reconciliation, vendors, and uncategorized transactions.",
+    cta: "Get my free Checkup",
+    proof: { type: "metric", metric: "400+", label: "companies whose books we manage. We built this to see across the portfolio." },
+    visualCaption: "Bookkeeping Quality Report — checks summary, first screen",
+    problem: "You get a file at month-end and you take it on faith. Nobody outside your bookkeeper has ever checked the work. When something is wrong you find out late, usually from a number that will not tie.",
+    steps: [
+      { label: "Connect your accounting file", line: "Read-only access to QuickBooks. Two minutes." },
+      { label: "We run the checks", line: "The same checks we run week by week across our own portfolio." },
+      { label: "Read the report", line: "What passed, what failed, and what to fix first." }
+    ],
+    testimonials: ["t1", "t3"],
+    faqs: [
+      { q: "What do you actually check?", a: "Bank vs books, whether you are reconciled through last month-end, expenses missing a vendor, uncategorized transactions, AR you can see, and balance-sheet accounts that are stale or only growing." },
+      { q: "Do you need write access?", a: "No. Read-only. We do not change anything in your file." },
+      { q: "Will my bookkeeper know?", a: "Only if you tell them. The report goes to you." },
+      { q: "What happens after the free Checkup?", a: "You can keep the report updated weekly. If you want us to keep the books too, that is a separate conversation." }
+    ]
+  },
+  B: {
+    name: "Errors in the books",
+    headline: "Find the errors in your books",
+    subheadline: "The failed checks in plain English: bank vs books, stale balance-sheet accounts, expenses with no vendor, transactions nobody categorized.",
+    cta: "Show me the errors",
+    proof: { type: "quote", quote: "[Quote pending client approval — found errors nobody had caught]", attr: "Owner · distribution · name pending" },
+    visualCaption: "Bookkeeping Quality Report — failed checks, plain English",
+    problem: "Errors do not announce themselves. They sit in an uncategorized pile, an account that only grows, a reconciliation that stopped three months ago. By the time they surface, you have already made a decision on the number.",
+    steps: [
+      { label: "Connect your accounting file", line: "Read-only access to QuickBooks. Two minutes." },
+      { label: "We run the checks", line: "Every check that can fail, run against your file." },
+      { label: "See what failed", line: "Each error in plain English, ranked by what it distorts." }
+    ],
+    testimonials: ["t2", "t1"],
+    faqs: [
+      { q: "What counts as an error?", a: "A check that fails: bank does not match books, a period never reconciled, an expense with no vendor, a balance-sheet account that only ever grows." },
+      { q: "What if the report finds nothing?", a: "Then you have a clean file and a document that says so. That is a useful thing to own." },
+      { q: "Is this an audit?", a: "No. It is a quality check on the bookkeeping, run the same way every week." },
+      { q: "What does it cost?", a: "The first Checkup is free." }
+    ]
+  },
+  C: {
+    name: "Confidence in the numbers",
+    headline: "Know the numbers are right before you act on them",
+    subheadline: "A weekly quality check on your books, built to manage a team of bookkeepers across a portfolio. Connect your file and see where you stand.",
+    cta: "Check my books",
+    proof: { type: "logos", label: "Operated by SDCFO.Group and Weekly Accounting" },
+    visualCaption: "Bookkeeping Quality Report — weekly trend across checks",
+    problem: "You are pricing, hiring and forecasting off a monthly file you cannot verify. The question is not whether the books look tidy. It is whether the number in front of you is one you can act on.",
+    steps: [
+      { label: "Connect your accounting file", line: "Read-only access to QuickBooks. Two minutes." },
+      { label: "We run the checks", line: "The same quality checks, again and again, week by week." },
+      { label: "Act on the number", line: "A standing view of what is verified and what is not." }
+    ],
+    testimonials: ["t3", "t2"],
+    faqs: [
+      { q: "How often does it run?", a: "Weekly, once you keep the report updated. The first Checkup is a single point in time." },
+      { q: "What do you connect to?", a: "The accounting file. QuickBooks today." },
+      { q: "Can I ask the report questions?", a: "Yes. It is built to be talked to." },
+      { q: "Who is behind this?", a: "SDCFO.Group and Weekly Accounting. We built the system to manage our own bookkeeping team." }
+    ]
+  }
+};
+
+const utms = {};
+(function collectUtms() {
+  const p = new URLSearchParams(location.search);
+  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(k => { if (p.get(k)) utms[k] = p.get(k); });
+})();
+
+let current = "A";
+const fired = {};
+function track(event, extra) {
+  console.log("[analytics]", Object.assign({ event, variant_id: current }, utms, extra || {}));
+}
+function once(e) { if (!fired[e]) { fired[e] = true; track(e); } }
+
+function render(v) {
+  current = VARIANTS[v] ? v : "A";
+  const d = VARIANTS[current];
+  document.getElementById("variantName").textContent = d.name;
+  document.querySelectorAll(".variant-bar button").forEach(b => b.setAttribute("data-active", b.dataset.v === current ? "true" : "false"));
+  document.getElementById("headline").textContent = d.headline;
+  document.getElementById("headline2").textContent = d.headline;
+  document.getElementById("subheadline").textContent = d.subheadline;
+  document.querySelectorAll(".cta").forEach(b => b.textContent = d.cta);
+  document.getElementById("visualCaption").textContent = d.visualCaption;
+  document.getElementById("problem").textContent = d.problem;
+  document.querySelectorAll(".sent").forEach(el => el.classList.add("hidden"));
+
+  const pm = document.getElementById("proofMetric");
+  const pl = document.getElementById("proofLogos");
+  const pq = document.getElementById("proofQuote");
+  pm.classList.add("hidden"); pl.classList.add("hidden"); pq.classList.add("hidden");
+  if (d.proof.type === "metric") {
+    pm.classList.remove("hidden");
+    document.getElementById("proofMetricVal").textContent = d.proof.metric;
+    document.getElementById("proofMetricLabel").textContent = d.proof.label;
+  } else if (d.proof.type === "logos") {
+    pl.classList.remove("hidden");
+    document.getElementById("proofLogoLabel").textContent = d.proof.label;
+  } else {
+    pq.classList.remove("hidden");
+    document.getElementById("proofQuoteText").textContent = d.proof.quote;
+    document.getElementById("proofQuoteAttr").textContent = d.proof.attr;
+  }
+
+  document.getElementById("steps").innerHTML = d.steps.map((s, i) =>
+    `<div style="display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start">
+      <div style="width:32px;height:32px;border-radius:50%;border:1px solid #14342B;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',Georgia,serif;font-size:16px">${i+1}</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;line-height:1.3;margin-bottom:3px">${s.label}</div>
+        <div style="font-size:13.5px;line-height:1.45;color:#5B6B63">${s.line}</div>
+      </div>
+    </div>`
+  ).join("");
+
+  document.getElementById("testimonials").innerHTML = d.testimonials.map(id => TESTIMONIALS[id]).filter(Boolean).map(t =>
+    `<div style="display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start">
+      <div style="width:44px;height:44px;border-radius:50%;border:1px dashed #C9CFC9;background:#F1EFE8;display:flex;align-items:center;justify-content:center;font-size:8px;color:#9AA79F">PHOTO</div>
+      <div>
+        <div style="font-family:'Newsreader',Georgia,serif;font-size:15px;line-height:1.4;color:#2A3B34">${t.quote}</div>
+        <div style="font-size:11px;color:#7A8B82;margin-top:6px;letter-spacing:.03em">${t.attr}</div>
+      </div>
+    </div>`
+  ).join("");
+
+  document.getElementById("faqs").innerHTML = d.faqs.map(f =>
+    `<details style="border-bottom:1px solid #E2DFD6">
+      <summary style="list-style:none;cursor:pointer;padding:14px 0;display:flex;gap:12px;align-items:center;font-size:15px;font-weight:600;line-height:1.35">
+        <span style="flex:1">${f.q}</span>
+        <span class="chev" style="width:11px;height:11px;border-right:1.5px solid #7A8B82;border-bottom:1.5px solid #7A8B82;transform:rotate(-45deg);transition:transform .18s ease;flex:none;margin-bottom:3px"></span>
+      </summary>
+      <div style="font-size:14px;line-height:1.5;color:#5B6B63;padding:0 0 16px">${f.a}</div>
+    </details>`
+  ).join("");
+}
+
+function setVariant(v) {
+  const u = new URL(location.href); u.searchParams.set("v", v);
+  history.replaceState({}, "", u);
+  Object.keys(fired).forEach(k => delete fired[k]);
+  render(v);
+  track("page_view");
+}
+
+document.querySelectorAll(".variant-bar button").forEach(b => b.addEventListener("click", () => setVariant(b.dataset.v)));
+document.querySelectorAll(".lead-form").forEach(form => {
+  form.addEventListener("focusin", () => once("form_start"));
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = form.querySelector("input").value;
+    track("cta_click", { cta_copy: VARIANTS[current].cta });
+    track("form_submit", { has_email: !!email });
+    document.querySelectorAll(".sent").forEach(el => el.classList.remove("hidden"));
+  });
+});
+window.addEventListener("scroll", () => {
+  const d = document.documentElement;
+  const pct = (window.scrollY + window.innerHeight) / d.scrollHeight;
+  if (pct >= 0.5) once("scroll_50");
+  if (pct >= 0.99) once("scroll_100");
+}, { passive: true });
+
+const q = (new URLSearchParams(location.search).get("v") || "").toUpperCase();
+render(VARIANTS[q] ? q : "A");
+track("page_view");
+</script>
+</body>
+</html>
