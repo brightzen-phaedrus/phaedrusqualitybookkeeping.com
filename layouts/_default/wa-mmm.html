@@ -27,36 +27,47 @@
   table {
     border-collapse: collapse;
     font-size: 13px;
-    min-width: 520px;
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+  .post-content table, .entry-content table, article table {
+    width: max-content !important;
+    max-width: none !important;
   }
   th, td {
     border-bottom: 1px solid var(--line);
-    padding: 4px 10px;
+    padding: 3px 6px;
     height: 22px;
+    white-space: nowrap;
   }
   thead th {
     background: var(--head);
     font-weight: 700;
     text-align: center;
+    width: 1%;
+    padding: 3px 6px;
   }
   thead th.company {
     background: var(--black);
     color: #fff;
     text-align: left;
     font-weight: 700;
+    width: auto;
   }
   tbody th {
     text-align: left;
     font-weight: 400;
     white-space: nowrap;
-    padding-right: 16px;
+    padding: 3px 8px 3px 6px;
     border-right: 3px solid #111;
     background: #fff;
   }
   tbody td {
     text-align: right;
     font-variant-numeric: tabular-nums;
-    min-width: 72px;
+    width: 1%;
+    min-width: 0;
   }
   tr.section th {
     background: var(--head);
@@ -76,6 +87,18 @@
     font-size: 12px;
     color: #555;
   }
+  .q3 {
+    margin-top: 18px;
+    max-width: 36rem;
+    font-size: 13px;
+    line-height: 1.45;
+    color: #222;
+  }
+  .q3-label {
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .q3 p { margin: 0; }
 </style>
 </head>
 <body>
@@ -111,5 +134,9 @@
   </tbody>
 </table>
 <p class="note">Average weekly view. Dollars in thousands. Heatmap is within each row. 3Q26 is in progress.</p>
+<div class="q3">
+  <div class="q3-label">3Q26</div>
+  <p>Visitors doubled to 614 while new leads fell to 17 and CPL hit $142. Booking rate is 149% and show rate 89%, so appointments are coming from a backlog, not this quarter's leads. Lead-to-close is the best of the four quarters at 15.4%. Quarter is still open.</p>
+</div>
 </body>
 </html>
