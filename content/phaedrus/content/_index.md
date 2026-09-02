@@ -11,6 +11,28 @@ heroLede: "Longer-form work product — series plans, chapter drafts, and manusc
 
 <div class="page-rows">
 
+  <a class="page-row" href="/companies/wa/mmm/">
+    <div class="row-icon">📊</div>
+    <div class="row-main">
+      <div class="row-title">Weekly Accounting MMM</div>
+      <p class="row-desc">John’s company. Average weekly marketing mix, quarterly view. Dollars in thousands.</p>
+      <div class="row-improve">
+        <div class="improve-label">Improve next</div>
+        <ul>
+          <li>Keep the table in lockstep with the IFM sheet</li>
+          <li>Add the next WA view only when John publishes it</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row-activity">
+      <div class="activity-label">Recent</div>
+      <ul>
+        <li><span class="act-date">09/02</span> First publish at /companies/wa/mmm/</li>
+      </ul>
+    </div>
+  </a>
+
+
 
     <a class="page-row" href="/sdcfo/plan/">
     <div class="row-icon">📜</div>
