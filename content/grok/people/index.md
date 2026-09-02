@@ -13,9 +13,9 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-09-02 PT · 80 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-09-02 PT · 81 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 57
+### Email — 58
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ Last built 2026-09-02 PT · 80 people · Grouped by source · Maintained by CRM 
 | Adam Beatty | Design Lab / Logical Brands | Advisor | Warm | Advisory Board dinner invite Mon. John: looking forward to it; flight in for dinner, out Wed 6:35pm. Asked if hotels booked. Adam: yes, hotel rooms are being booked. Lori/Lendy on the thread | 2026-08-31 | Show up for the dinner. Hotels being booked. Closed on email. |
 | Afroze Qayyum | Mash Strategy | Partner | Warm | Booked Jeff for Mon Aug 31 12:30 ET. John declined (out of office). Jeff accepted. Derek optional accepted | 2026-08-28 | Wait on Jeff Monday. You are out. |
 | Afrozy Ara | LuminaData | Prospect | Warm | Tue evening Quinth followed up to Afrozy/Narayanan on ShipCalm data: bucket/region and access still open. John cc’d. No reply yet Wed | 2026-09-02 | Wait on LuminaData reply. Quinth owns the chase. |
-| Andrew Hills | Marsh MMA |  | Warm | ShipCalm 9/5 D&O/EPL/Fiduciary renewal. John confirmed most items. Waiting Greg Friday after Tony confirmed fiduciary assets well under the threshold | 2026-09-02 | Wait on Greg’s Friday approval. |
+| Andrew Hills | Marsh MMA | Vendor | Hot | ShipCalm insurance. Inbound this afternoon: bind by Friday. John confirmed most items earlier. Waiting on John or Greg | 2026-09-02 | Bind by Friday. John or Greg. |
 | Andy Crewell | LevelUp | Prospect | Cool | Meet John/Weekly Accounting NDA. John replied signed. Closed | 2026-08-27 | Closed. NDA signed. |
 | April Grant | Clarkson | Friend | Cool | Proposed coffee or lunch Aug 26 or 27 in San Diego. Window closed. No time landed | 2026-08-18 | Park. Window slipped. |
 | Ben Pace | Client Matchmaking | Prospect | Hot | John replied ~3:44 PM PT from (BrightZen) to 'Scaling her firm and adding more accountants': same note as Aaron (200+ clients vs small book, WA ~m, John only CFO title there, LinkedIn, platform productivity). Waiting on Ben | 2026-08-25 | Wait for Ben to reply. |
@@ -66,6 +66,7 @@ Last built 2026-09-02 PT · 80 people · Grouped by source · Maintained by CRM 
 | Ryan Kuder | Founders & Co | Vendor | Cool | Sent a Founders and Co Slack invite. John said he is already in under another email. Not waiting. Founder, Founders and Co | 2026-09-02 | Closed. Already in Slack. |
 | Simon Donato | Stoked Oats | Client | Warm | John Fri Aug 28 asked if he met David and for next-week availability. No reply yet | 2026-08-28 | Wait on Simon. Do not chase. |
 | Skylar Kelsven | Enamory | Friend | Cool | Fri Aug 28 9:00am High Bluff in-person with Charlotte. Need last-said from John | 2026-08-28 | Log what was said if useful. |
+| Steven Plappert | Forecastr | Vendor | Hot | John asked that Carta shares go to his zdanowski address. Waiting on Steven. Co-Founder and CEO, Forecastr | 2026-09-02 | Wait on Steven to send Carta shares to the zdanowski address. |
 | Suhas Subramanya |  | Recruit | Warm | Emily sent 2nd-interview invite Fri Aug 28 (Jeff). Waiting on Suhas confirmation / interview outcome | 2026-08-28 | Wait on Jeff/Emily for interview outcome. |
 | Taylor Nemiroff | Paychex | Partner | Cool | Wanted a partnership conversation after Paychex onboarding. John: talk only to him, team already knows they can refer. Taylor acknowledged and mentioned Jan 1 transitions | 2026-08-20 | Hold unless John reopens it. |
 | Ted Theocheung | My Mentor 126 | Prospect | Warm | Reached out about AI onboarding for CFOs. Matt forwarded. John: looks interesting, asked Ted to find a time next week (calendar link sent this morning) | 2026-08-25 | Wait for Ted to book, or nudge if he doesn't. |
