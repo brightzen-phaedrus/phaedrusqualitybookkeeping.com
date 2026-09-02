@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Title }}</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --ink: #111;
+    --line: #d0d0d0;
+    --head: #f3f3f3;
+    --black: #111111;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    background: #fff;
+  }
+  h1 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 520px;
+  }
+  th, td {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 10px;
+    height: 22px;
+  }
+  thead th {
+    background: var(--head);
+    font-weight: 700;
+    text-align: center;
+  }
+  thead th.company {
+    background: var(--black);
+    color: #fff;
+    text-align: left;
+    font-weight: 700;
+  }
+  tbody th {
+    text-align: left;
+    font-weight: 400;
+    white-space: nowrap;
+    padding-right: 16px;
+    border-right: 3px solid #111;
+    background: #fff;
+  }
+  tbody td {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    min-width: 72px;
+  }
+  tr.section th {
+    background: var(--head);
+    font-weight: 700;
+    border-right: none;
+    text-align: left;
+  }
+  tr.spacer th, tr.spacer td {
+    height: 14px;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .italic { font-style: italic; }
+  .bold { font-weight: 700; }
+  .note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<table>
+  <thead>
+    <tr>
+      <th class="company">Weekly Accounting Inc.</th>
+      <th>4Q25</th><th>1Q26</th><th>2Q26</th><th>3Q26</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="section"><th colspan="5">Demand Generation</th></tr>
+<tr><th>Website Visitors</th><td style="background:rgb(235,160,160)">312</td><td style="background:rgb(236,163,163)">317</td><td style="background:rgb(234,153,153)">302</td><td style="background:rgb(182,215,168)">614</td></tr>
+<tr><th>Ad Spend</th><td style="background:rgb(182,215,168)">$1.9</td><td style="background:rgb(255,255,255)">$2.2</td><td style="background:rgb(241,187,187)">$2.4</td><td style="background:rgb(234,153,153)">$2.5</td></tr>
+<tr><th>New Leads</th><td style="background:rgb(182,215,168)">48</td><td style="background:rgb(250,232,232)">29</td><td style="background:rgb(241,186,186)">22</td><td style="background:rgb(234,153,153)">17</td></tr>
+<tr><th class="italic">CPL</th><td style="background:rgb(182,215,168)">$40</td><td style="background:rgb(234,243,229)">$76</td><td style="background:rgb(248,219,219)">$109</td><td style="background:rgb(234,153,153)">$142</td></tr>
+<tr class="section"><th colspan="5">Sales Funnel</th></tr>
+<tr><th>Appointments Scheduled</th><td style="background:rgb(234,153,153)">13.0</td><td style="background:rgb(182,215,168)">21.8</td><td style="background:rgb(248,251,247)">17.8</td><td style="background:rgb(252,241,241)">16.8</td></tr>
+<tr><th>Appointments Held</th><td style="background:rgb(234,153,153)">8.2</td><td style="background:rgb(221,236,215)">13.1</td><td style="background:rgb(250,232,232)">10.8</td><td style="background:rgb(182,215,168)">14.9</td></tr>
+<tr><th>Proposals Sent</th><td style="background:rgb(234,153,153)">5.1</td><td style="background:rgb(193,221,181)">7.6</td><td style="background:rgb(209,230,200)">7.3</td><td style="background:rgb(182,215,168)">7.8</td></tr>
+<tr><th>Proposals Paid</th><td style="background:rgb(234,153,153)">2.0</td><td style="background:rgb(252,238,238)">2.5</td><td style="background:rgb(182,215,168)">3.2</td><td style="background:rgb(243,248,240)">2.7</td></tr>
+<tr><th>Actively Moving</th><td style="background:rgb(236,165,165)">27</td><td style="background:rgb(182,215,168)">43</td><td style="background:rgb(216,234,209)">39</td><td style="background:rgb(234,153,153)">26</td></tr>
+<tr><th>Proposals Paid $</th><td style="background:rgb(234,153,153)">$3.1</td><td style="background:rgb(206,228,197)">$4.6</td><td style="background:rgb(182,215,168)">$4.9</td><td style="background:rgb(231,242,226)">$4.3</td></tr>
+<tr class="spacer"><th></th><td></td><td></td><td></td><td></td></tr>
+<tr><th class="italic">Appt Booking Rate</th><td style="background:rgb(234,153,153)">45%</td><td style="background:rgb(249,224,224)">81%</td><td style="background:rgb(251,235,235)">87%</td><td style="background:rgb(182,215,168)">149%</td></tr>
+<tr><th class="italic">Show Rate %</th><td style="background:rgb(238,174,174)">63%</td><td style="background:rgb(234,153,153)">60%</td><td style="background:rgb(235,160,160)">61%</td><td style="background:rgb(182,215,168)">89%</td></tr>
+<tr><th class="italic">Proposals Sent Rate [Client Joy]</th><td style="background:rgb(249,227,227)">39%</td><td style="background:rgb(234,153,153)">35%</td><td style="background:rgb(248,251,247)">41%</td><td style="background:rgb(182,215,168)">46%</td></tr>
+<tr><th class="italic">Proposal Acceptance Rate % [Client Joy]</th><td style="background:rgb(243,248,240)">39%</td><td style="background:rgb(234,153,153)">32%</td><td style="background:rgb(182,215,168)">44%</td><td style="background:rgb(241,187,187)">34%</td></tr>
+<tr><th>Average Revenue per Proposal Paid</th><td style="background:rgb(234,153,153)">$1.7</td><td style="background:rgb(182,215,168)">$2.0</td><td style="background:rgb(231,242,226)">$1.9</td><td style="background:rgb(248,221,221)">$1.8</td></tr>
+<tr><th class="italic">Lead to close rate</th><td style="background:rgb(234,153,153)">4.2%</td><td style="background:rgb(250,230,230)">8.4%</td><td style="background:rgb(192,221,180)">14.6%</td><td style="background:rgb(182,215,168)">15.4%</td></tr>
+<tr><th class="italic">Appointments Held to Close Rate</th><td style="background:rgb(248,251,247)">24%</td><td style="background:rgb(238,172,172)">19%</td><td style="background:rgb(182,215,168)">29%</td><td style="background:rgb(234,153,153)">18%</td></tr>
+<tr><th class="bold">Ad Spend CAC</th><td style="background:rgb(234,153,153)">$1.0</td><td style="background:rgb(248,221,221)">$0.9</td><td style="background:rgb(182,215,168)">$0.7</td><td style="background:rgb(248,221,221)">$0.9</td></tr>
+  </tbody>
+</table>
+<p class="note">Average weekly view. Dollars in thousands. Heatmap is within each row. 3Q26 is in progress.</p>
+</body>
+</html>
