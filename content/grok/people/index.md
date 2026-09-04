@@ -2,7 +2,7 @@
 title: "People book"
 layout: "grok-people"
 url: "/grok/people/"
-date: 2026-09-03
+date: 2026-09-04
 draft: false
 noindex: true
 summary: "CRM Manager people book. Who they are, last said, next move. Grouped by source."
@@ -13,18 +13,18 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-09-03 PT · 485 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-09-04 PT · 486 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 66
+### Email — 67
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
 | Aaron Shepherd | GrowthFlare | Prospect | Hot | John replied ~3:44 PM PT from (BrightZen) to 'John, thoughts?': thanked him, asked if any of Aaron's fractional CFOs have 200+ clients vs a small book, said WA and John is the only person there who has ever had the title CFO, said he can make Aaron's clients more productive with the platform. Waiting on Aaron | 2026-08-25 | Wait for Aaron to reply. |
-| Adam Beatty | Design Lab / Logical Brands | Advisor | Warm | Advisory Board dinner invite Mon. John: looking forward to it; flight in for dinner, out Wed 6:35pm. Asked if hotels booked. Adam: yes, hotel rooms are being booked. Lori/Lendy on the thread | 2026-08-31 | Show up for the dinner. Hotels being booked. Closed on email. |
+| Adam Beatty | Design Lab / Logical Brands | Advisor | Warm | Sep 3: Lori Marlar asked to move Mon Sep 7 dLAB/Logical Brands finance meeting to Wed Sep 9 (1–1:30, 1:30–2, or after 3). Unread. Hotel for Nashville Sep 15–16 (Marriott Vanderbilt) is booked | 2026-09-03 | Reply (or have Sam reply) with a Wed Sep 9 slot. |
 | Afroze Qayyum | Mash Strategy | Partner | Warm | Booked Jeff for Mon Aug 31 12:30 ET. John declined (out of office). Jeff accepted. Derek optional accepted | 2026-08-31 | Wait on Jeff Monday. You are out. |
 | Afrozy Ara | LuminaData | Vendor | Warm | No separate reply since Sep 2. Narayanan is carrying the ShipCalm data thread and promised bucket details by today | 2026-09-03 | Wait. Quinth chases Narayanan, not Afrozy. |
-| Alyssa Perkins | TAG | Broker | Warm | Sep 2 6:09 PM PT the Project Venture NDA completed fully signed. The accounting seller shows Q1 revenue EBITDA 2025 revenue , 95% recurring, about 1,000 active clients | 2026-09-03 | NDA is signed, so diligence can start. Decide if Project Venture is worth John's time. |
-| Andrew Hills | Marsh MMA | Broker | Hot | Sep 2 1:17 PM PT, Andrew moved last: all subjectivities are satisfied and Marsh now needs only the official order to bind coverage, by Friday, for the ShipCalm D&O/EPL/Fiduciary renewal effective 9/5. Nothing indicates it has bound | 2026-09-03 | BIND ORDER. Say 'bind it' to Andrew, or get Greg to. Renewal is effective 9/5 and John is at a wedding, Greg is skiing in Chile. |
+| Alyssa Perkins | TAG | Broker | Warm | Sep 2 6:09 PM PT the Project Venture NDA completed fully signed. The accounting seller shows Q1 revenue EBITDA 2025 revenue , recurring, about 1,000 active clients | 2026-09-03 | NDA is signed, so diligence can start. Decide if Project Venture is worth John's time. |
+| Andrew Hills | Marsh MMA | Broker | Hot | Sep 3 ~6:49 PM PT John moved last: clear to bind. Ordered D&O/EPL/Fiduciary & Crime policies effective 9/5/2026–9/5/2027 as proposed. No confirmation back from Andrew yet | 2026-09-04 | Watch for Andrew's bind confirmation. Nudge only if silent into the weekend; coverage effective tomorrow 9/5. |
 | Andy Crewell | LevelUp | Prospect | Cool | Meet John/Weekly Accounting NDA. John replied signed. Closed | 2026-08-27 | Closed. NDA signed. |
 | April Grant | Clarkson | Friend | Cool | Proposed coffee or lunch Aug 26 or 27 in San Diego. Window closed. No time landed | 2026-08-18 | Park. Window slipped. |
 | Ben Pace | Client Matchmaking | Prospect | Hot | John replied ~3:44 PM PT from (BrightZen) to 'Scaling her firm and adding more accountants': same note as Aaron (200+ clients vs small book, WA ~m, John only CFO title there, LinkedIn, platform productivity). Waiting on Ben | 2026-08-25 | Wait for Ben to reply. |
@@ -32,25 +32,26 @@ Last built 2026-09-03 PT · 485 people · Grouped by source · Maintained by CRM
 | Brandon Hammermeister | ShipCalm | Client | Warm | Same Elle thread. Said he'll take care of Elle. Not waiting on John | 2026-09-02 | Closed on John's side. Brandon has Elle. |
 | Brandy Mustain | Foundation RP | Home | Warm | Homeowners quote for Via Cuatro Caminos / RSF plus rented ADUs. She asked for a call. Waiting on John | 2026-08-18 | Call Brandy about the homeowners quote. |
 | Brian Kelly | Sidecountry Sports | Client | Warm | Sep 2: Brian hit an invalid_scope authorization error; Quinth fixed it and confirmed inventory movements are pulling again | 2026-09-03 | Closed. Quinth handled it. |
-| Caroline Kruse | Marq Logistics | Landlord | Hot | No new mail since Aug 28. Eviction deadline of Tue Sep 1 came and went with no reply to John's Camby memo and no filing notice. Greg's Aug 28 check was the last movement on the thread | 2026-09-03 | Three days past the deadline and silent. Decide: chase the landlord, or treat no-news as the plan holding. |
-| Christina Makowsky | Bloom and Bone | Client | Hot | Asked for a Zoom on books and launch strategy. John said he is out 10 days and pointed her at Emily. Emily offered Mon Sep 7 12:30–1:00 ET or Wed Sep 9 3:00–3:30 ET. Separate HUB insurance intro still waiting on Jared and Christina | 2026-08-27 | Wait on Christina to pick Sep 7 or 9. |
+| Caroline Kruse | Marq Logistics | Landlord | Hot | Still no reply past Tue Sep 1 eviction clock. Last movement Greg's Aug 28 check. No filing notice in inbox | 2026-09-04 | Three+ days past deadline and silent. Decide: chase landlord, or treat no-news as holding. |
+| Christina Makowsky | Bloom and Bone | Client | Warm | Bloom and Bone / Launch Strategy & Financial Review is on the calendar Mon Sep 7 9:30–10:00 PT (12:30 ET) with Jad. Christina accepted; John still needsAction | 2026-09-04 | Show up Mon Sep 7 (or accept the invite). Jad is on it. |
 | Connor Abene | Royal Hill Holdings | Prospect | Warm | John wrote last night after LinkedIn: can help you make more money in less time, asked for a calendar link | 2026-08-27 | Wait. Do not follow up if he does not reply. |
 | Deirdre Dunne-Sciolto | Pioneer Financial / Northwestern Mutual | Advisor | Cool | EA to Kevin Luchetta. Offered Sep Zoom slots. John replied-all ~8:48 AM PT: declined, no follow-up. Closed | 2026-08-25 | Closed. Do not follow up. |
 | Dennis VanBaale | EOS Worldwide | Partner | Warm | John pitched a WA / SD CFO partnership. Dennis offered Wed 9–5 or Thu 11–5 PT. Both windows passed. No time landed | 2026-08-27 | Park unless you reopen it. |
-| Dom Aksalan | Maple Owner | Investor | Warm | No new mail since Sep 2. Josh's ignore-or-reply question is still unanswered | 2026-09-03 | One-line answer to Josh: ignore, or name who replies. Cheap to clear. |
+| Dom Aksalan | Maple Owner | Investor | Warm | Still no answer to Josh's ignore-or-reply on Dom Aksalan family-office interest | 2026-09-04 | One-line to Josh: ignore, or name who replies. |
 | Elle | GWFG | Prospect | Warm | John intro'd Brandon at ShipCalm for a 3PL price check. Elle wants to meet ASAP before placing a PO. Waiting on Brandon/Elle. John already intro'd | 2026-08-26 | Wait on Brandon and Elle. |
+| Emily Okapi | Okapi VC | Vendor | Cool | Okapi controller. Attached OV3 FEIN on the Influence Apps Schedule G thread Sep 3. Paul thanked | 2026-09-03 | Closed on FEIN. No move from John. |
 | Eric Otterson | First Citizens / SVB | Partner | Cool | Introduced Julian Nash on the Imgix thread. Also Closed on Eric's side | 2026-08-25 | Closed. Julian has the next step. |
 | Ethan Gersh | Assembled Brands | Client | Warm | Sep 2: Ethan counted 28 IFMs but invoice GVMJOZBT-0014 billed 31 at each for John replied that Alvaro will check it out | 2026-09-03 | Alvaro owns the invoice reconcile. Confirm he actually did it. |
 | Eyal Dror | BrandUp Network | Prospect | Cool | Mon Aug 31: intro John<>Gelo. Pitch: transaction advisory / help sell. Asked if that is part of WA | 2026-08-31 | Reply or park. Low urgency while out. |
-| Greg Moser | ShipCalm | Client | Hot | Sep 3 4:18 AM PT Greg mailed Trevor Outman from Chile: rode Portillo, heading to Arpa, confirmed Thu Sep 10 at noon. Calendar has him on the mountain Wed-Sat. He has NOT given the ShipCalm Marsh renewal approval he promised by Friday, and has said nothing about Caroline or Plewes | 2026-09-03 | He is unreachable-ish in Chile. Do not wait on him for the Marsh bind. Own it or text him. |
+| Greg Moser | ShipCalm | Client | Warm | Still on mountain (Portillo→Arpa) through Sat. John issued the Marsh bind order without waiting on him. Last Greg mail was Sep 3 4:18 AM PT confirming Thu Sep 10 noon with Trevor | 2026-09-04 | No Marsh chase. Soft: Caroline landlord silence still open on ShipCalm side. |
 | Hailey Manning | First Citizens / SVB | Partner | Cool | Named AM on the Imgix / Julian Nash thread. Relationship Advisor, SVB, SF | 2026-08-25 | Julian has the next step. No separate ask. |
 | Jane McMurry | Nassau Street Partners | Investor | Cool | John replied No thanks to the upfront work fee. Closed | 2026-08-26 | Closed. |
 | Jane Quirimit | ShipCalm | Client | Cool | John sent Stephanie the loan account summary yesterday and told Jane to use going forward. Jane acknowledged | 2026-08-27 | Closed on the statement. No next move. |
 | Jared Lewin | Exit Group | Partner | Stale | Chasing Sorren value / next steps since June 5. John said he'd revert second half of June. Jared followed up June 26 and July 9. Jeff at Weekly Accounting is on the thread | 2026-07-09 | Decide: reply, park, or close. |
-| Jared Wood | HUB International | Broker | Warm | Sep 2 John moved last: he answered the final confirmations. Homegrown funding, human review, no claims or risk change; Papabear self-funding and no known claims. Quoted plus fees for Papabear and all-in for Homegrown. No binder confirmation has come back | 2026-09-03 | Ball is Jared's. Nudge only if no binder by early next week. |
+| Jared Wood | HUB International | Broker | Warm | No binder yet after John's Sep 2 confirmations. Homegrown/Papabear still with Jared at HUB | 2026-09-04 | Ball is Jared's. Nudge early next week if no binder. |
 | Jay Ramos | Nassau Street Partners | Investor | Cool | Same Nassau Street thread. John replied No thanks. Closed | 2026-08-26 | Closed. |
 | Jeffrey Kim | New Law Business Model | Client | Hot | Sep 2: Jeffrey said his requests and the BigQuery dataflow problems had gone unanswered since Aug 19. John invited Ethan's PSG address into Slack and said Ethan must accept and answer the request | 2026-09-03 | Two weeks of being ignored is the real issue. Verify Ethan actually accepted and answered. |
-| John Plewes | Plewes Group | Prospect | Warm | Silent since the Aug 31 data room send. No questions, no call times, nothing | 2026-09-03 | Four days quiet. Soft nudge next week if Greg still wants the call. |
+| John Plewes | Plewes Group | Prospect | Warm | Still silent since Aug 31 data room. No questions, no call times | 2026-09-04 | Soft nudge next week if Greg still wants the call. |
 | Jon Espinosa | Influence Apps | Partner | Warm | Sep 2: Jon asked for the last Homegrown D&O/E&O and Papabear D&O confirmations; John answered at 2:41 PM PT. Cleared from John's side | 2026-09-03 | Closed. Waiting on HUB binders. |
 | Josh Gupta | Haurlan, Inc. | Client | Hot | John emailed from reminding him to connect bank accounts and credit cards in QuickBooks. Waiting on Josh | 2026-08-25 | Wait for Josh to connect QBO banks/cards. |
 | Julian Nash | First Citizens / SVB | Partner | Hot | Imgix bank-manager thread. John asked him to send a calendar link. Kunal on cc. Hailey Manning is the named AM. Waiting on Julian | 2026-08-25 | Wait for Julian's calendar link. |
@@ -59,26 +60,26 @@ Last built 2026-09-03 PT · 485 people · Grouped by source · Maintained by CRM
 | Kevin Luchetta | Pioneer Financial / Northwestern Mutual | Advisor | Warm | Caught up Mon Aug 24. Kevin followed up Tue: NM advisor moved on, wants in. Deirdre offered Sep Zoom. John replied-all ~8:48 AM PT from : declined Zoom, no follow-up. Closed | 2026-08-25 | Closed. Do not follow up. |
 | Kunal Shah | Imgix | Client | Warm | Imgix 2026 409A: Kunal replied Mon Aug 31 “Looks good to me. Approved!” Board side cleared on his end | 2026-08-31 | Closed on Kunal approval. Confirm any remaining board process if needed. |
 | Liping Wu | Baker Tilly | Accountant | Cool | Nothing new since July 8 on her thread; no sign Imgix owes more 2025 tax material. Treat the NYC allocation as closed | 2026-09-03 | Closed unless Baker Tilly reopens. |
-| Marc Averitt | Okapi VC | Investor | Warm | Still has not answered Paul Payne's Sep 1 7:16 PM PT request for the OV3 LP FEIN for Schedule G | 2026-09-03 | Marc is now the blocker on Paul's Schedule G. Ping him if Paul stalls. |
-| Matt Ritchey | Elevated Executive | Friend | Hot | Re: CFO. Bringing a bookkeeper. Wyoming LLC going to QBO next week. Still wants an ops session. Waiting on John when ready | 2026-09-03 | When ready: ops session, and note the bookkeeper / Wyoming LLC to QBO. |
+| Marc Averitt | Okapi VC | Investor | Cool | Sep 3: John pinged for OV3 FEIN; Marc said prior years unchanged and looped controller Emily; Emily attached FEIN; Paul Payne thanked all | 2026-09-03 | Closed on FEIN. No move from John. |
+| Matt Ritchey | Elevated Executive | Friend | Warm | Sep 3: bringing a bookkeeper; Wyoming LLC to QBO next week; still wants ops session when John is ready | 2026-09-03 | When ready: ops session. Note bookkeeper / Wyoming LLC to QBO. |
 | Matt Voigt | Saambaa | Client | Warm | Sent Authoria test data from the Weekly Accounting test. John replied This is great. Closed on John’s side | 2026-08-27 | Closed. No next move. |
 | Mesepa Petelo | Midtown | Client | Warm | Midtown BAA thread reopened. Zach needs BAA on file because WA has EMR access (HIPAA). Ops/Viny owns | 2026-09-03 | Wait on BAA confirm with Zach / Viny. |
 | Narayanan Sundaram | LuminaData | Vendor | Warm | Sep 2 11:47 AM PT Narayanan told Quinth he would work with his team and share the ShipCalm bucket and location 'by tomorrow', meaning today. No bucket, region, or access has arrived | 2026-09-03 | His self-set deadline is today. Quinth owns the chase. |
-| Paul H. Payne III | PHP3 CPA | Vendor | Warm | Tue night Paul emailed Marc Averitt directly for OV3 LP FEIN (Schedule G). John already said he does not need to be on the FEIN copy | 2026-09-02 | Soft-wait on Marc→Paul. No move needed from John unless Marc stalls. |
+| Paul H. Payne III | PHP3 CPA | Vendor | Cool | Sep 3 afternoon: got OV3 FEIN from Emily (Okapi controller) via Marc. Paul thanked the thread | 2026-09-03 | Closed on FEIN. Soft-wait if Schedule G needs more. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed | 2026-08-25 | Closed. |
 | Phil Gorman | Snack Iconic | Prospect | Hot | Wholesale bagels, pivoted from La Jolla shop. Uses QBO not Shopify. John offered CPG underwriting experience from Assembled Brands. Emily at Weekly Accounting cc'd | 2026-08-20 | Follow the QBO / Cin7 thread and book the next step. |
 | Quinth Razuman | Weekly Accounting | Team | Warm | Sep 2: fixed Brian Kelly's invalid_scope error at Sidecountry and confirmed inventory movements pulling. Also carrying the LuminaData ShipCalm data chase with Narayanan | 2026-09-03 | He owns the LuminaData bucket chase. |
 | Ryan Kuder | Founders & Co | Vendor | Cool | Sent a Founders and Co Slack invite. John said he is already in under another email. Not waiting. Founder, Founders and Co | 2026-09-02 | Closed. Already in Slack. |
 | Simon Donato | Stoked Oats | Client | Warm | John Fri Aug 28 asked if he met David and for next-week availability. No reply yet | 2026-08-28 | Wait on Simon. Do not chase. |
 | Skylar Kelsven | Enamory | Personal | Hot | Fri Sep 4 9:00-10:00 PT in-person session at 12625 High Bluff Dr, San Diego, with Charlotte. John is marked accepted as organizer. He will be in Albany for the wedding | 2026-09-03 | Physical conflict, cannot be attended remotely. Cancel or reschedule today. |
-| Steve Nelson | Global Payments | Vendor | Warm | Sep 2 2:22 PM PT Steve moved last: debit may be 40-50% of volume, token migration may avoid recollecting card numbers, and he asked which ERP and POS John uses | 2026-09-03 | Waiting on John. One-line answer names the ERP/POS. |
+| Steve Nelson | Global Payments | Vendor | Warm | Sep 2 2:22 PM PT Steve moved last: debit may be 40- of volume, token migration may avoid recollecting card numbers, and he asked which ERP and POS John uses | 2026-09-03 | Waiting on John. One-line answer names the ERP/POS. |
 | Steven Plappert | Forecastr | Founder | Warm | Sep 2 John moved last. Carta issued the Forecastr shares to BrightZen Systems LLC at ; John asked Steven to have Carta reissue to Not corrected yet | 2026-09-03 | Wait on Steven and Carta. |
 | Suhas Subramanya |  | Recruit | Warm | Emily sent 2nd-interview invite Fri Aug 28 (Jeff). Waiting on Suhas confirmation / interview outcome | 2026-08-28 | Wait on Jeff/Emily for interview outcome. |
 | Taylor Nemiroff | Paychex | Partner | Cool | Wanted a partnership conversation after Paychex onboarding. John: talk only to him, team already knows they can refer. Taylor acknowledged and mentioned Jan 1 transitions | 2026-08-20 | Hold unless John reopens it. |
-| Ted Theocheung | My Mentor 126 | Prospect | Warm | Reached out about AI onboarding for CFOs. Matt forwarded. John: looks interesting, asked Ted to find a time next week (calendar link sent this morning) | 2026-08-25 | Wait for Ted to book, or nudge if he doesn't. |
+| Ted Theocheung | My Mentor 126 | Prospect | Warm | Meet John/Weekly Accounting booked Mon Sep 7 1:00–1:30 PT ( accepted) | 2026-09-04 | Show up Mon 1:00 PT. |
 | Teofan Garry | Consoro Global | Investor | Warm | John sent detailed preliminary Weekly Accounting financials last night under the NDA. Teofan confirmed receipt this morning | 2026-08-28 | Closed on their side. He has the packet. |
 | Teresa Starin | Morrison Foerster | Counsel | Warm | No new mail since Sep 2. Imgix 409A written consent still has not landed | 2026-09-03 | Wait on MoFo. |
-| Tony Davis | ShipCalm | Client | Warm | Tue: confirmed ShipCalm fiduciary/401k assets well under (current total assets ) for Marsh D&O/EPL/Fiduciary renewal effective 9/5. John said Greg will give final approval by Friday | 2026-09-02 | Closed on Tony’s confirm. Wait on Greg’s Fri approval. |
+| Tony Davis | ShipCalm | Client | Warm | Assets confirm done. Copied on John's Sep 3 bind order to Andrew | 2026-09-04 | Closed. Wait on Marsh binders. |
 | Travis Kreh |  | Prospect | Warm | John wrote last night after a missed LinkedIn note: would share how he built a m fractional CFO business, offered his calendar | 2026-08-27 | Wait. Do not follow up if he does not reply. |
 | Trevor Outman |  | Contact | Cool | Greg Moser mailed him from Chile on Sep 3 and confirmed Thu Sep 10 at noon | 2026-09-03 | None. Surfaced via Greg. |
 | Troy Nguyen | Bernstein | Advisor | Cool | Bernstein web registration. Web ID 1118668. Last touch Aug 7. Waiting if John still needs the account | 2026-08-07 | Decide if the Bernstein account is still needed. |
@@ -513,5 +514,5 @@ Last built 2026-09-03 PT · 485 people · Grouped by source · Maintained by CRM
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
-| Rameh Mehrjou |  | Recruit | Hot | Reached out after LinkedIn about SDCFO / Weekly Accounting. John asked for a text at 310-749-6709 and to review LinkedIn + the two sites | 2026-08-20 | Did they text? If not, nudge. |
+| Rameh Mehrjou |  | Recruit | Hot | Reached out after LinkedIn about SDCFO / Weekly Accounting. John asked for a text at and to review LinkedIn + the two sites | 2026-08-20 | Did they text? If not, nudge. |
 
