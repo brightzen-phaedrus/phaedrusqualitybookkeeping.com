@@ -67,7 +67,7 @@ Last built 2026-09-06 PT · 489 people · Grouped by source · Maintained by CRM
 | Matt Ritchey | Elevated Executive | Friend | Warm | Sep 3: bringing a bookkeeper; Wyoming LLC to QBO next week; still wants ops session when John is ready | 2026-09-03 | When ready: ops session. Note bookkeeper / Wyoming LLC to QBO. |
 | Matt Voigt | Saambaa | Client | Warm | Sent Authoria test data from the Weekly Accounting test. John replied This is great. Closed on John’s side | 2026-08-27 | Closed. No next move. |
 | Mesepa Petelo | Midtown | Client | Warm | Midtown BAA thread reopened. Zach needs BAA on file because WA has EMR access (HIPAA). Ops/Viny owns | 2026-09-03 | Wait on BAA confirm with Zach / Viny. |
-| Narayanan Sundaram | LuminaData | Vendor | Warm | ShipCalm external buckets delayed to Tuesday. Vendor owns the chase | 2026-09-06 | Wait. Vendor owns Tuesday delivery. |
+| Narayanan Sundaram | LuminaData | Vendor | Warm | ShipCalm external buckets delayed to Tuesday. Vendor owns the chase. CTO, LuminaData | 2026-09-06 | Wait. Vendor owns Tuesday delivery. |
 | Paul H. Payne III | PHP3 CPA | Vendor | Cool | Sep 3 afternoon: got OV3 FEIN from Emily (Okapi controller) via Marc. Paul thanked the thread | 2026-09-03 | Closed on FEIN. Soft-wait if Schedule G needs more. |
 | PerOla Knutsson | San Dieguito Union High School District | School | Cool | Luke's calc teacher. Sent syllabus and office hours 7:45. John thanked her. Closed | 2026-08-25 | Closed. |
 | Phil Gorman | Snack Iconic | Prospect | Hot | Wholesale bagels, pivoted from La Jolla shop. Uses QBO not Shopify. John offered CPG underwriting experience from Assembled Brands. Emily at Weekly Accounting cc'd | 2026-08-20 | Follow the QBO / Cin7 thread and book the next step. |
