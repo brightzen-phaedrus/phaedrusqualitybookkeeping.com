@@ -2,7 +2,7 @@
 title: "People book"
 layout: "grok-people"
 url: "/grok/people/"
-date: 2026-09-04
+date: 2026-09-06
 draft: false
 noindex: true
 summary: "CRM Manager people book. Who they are, last said, next move. Grouped by source."
@@ -13,14 +13,14 @@ heroMeta: "**Noindex.** Living view of CRM Manager’s SQLite store. Grouped by 
 
 John’s relationship memory. Book of record is SQLite CRM Manager owns. HighLevel, ClickUp, mail, and calendar are inputs. San Diego HighLevel leads stay in staging until John talks to them.
 
-Last built 2026-09-04 PT · 486 people · Grouped by source · Maintained by CRM Manager
+Last built 2026-09-06 PT · 487 people · Grouped by source · Maintained by CRM Manager
 
-### Email — 67
+### Email — 68
 
 | Name | Company | Circle | Warmth | Last said | Last touch | Next step |
 | --- | --- | --- | --- | --- | --- | --- |
 | Aaron Shepherd | GrowthFlare | Prospect | Hot | John replied ~3:44 PM PT from (BrightZen) to 'John, thoughts?': thanked him, asked if any of Aaron's fractional CFOs have 200+ clients vs a small book, said WA and John is the only person there who has ever had the title CFO, said he can make Aaron's clients more productive with the platform. Waiting on Aaron | 2026-08-25 | Wait for Aaron to reply. |
-| Adam Beatty | Design Lab / Logical Brands | Advisor | Warm | Sep 3: Lori Marlar asked to move Mon Sep 7 dLAB/Logical Brands finance meeting to Wed Sep 9 (1–1:30, 1:30–2, or after 3). Unread. Hotel for Nashville Sep 15–16 (Marriott Vanderbilt) is booked | 2026-09-03 | Reply (or have Sam reply) with a Wed Sep 9 slot. |
+| Adam Beatty | Design Lab / Logical Brands | Advisor | Hot | dLAB / Logical Brands meeting. Lori asked to move Mon Sep 7 to Wed Sep 9. John said Wed works; prefers 1:30–2p (1–1:30 ok); after 3 harder. Asked Lori to confirm the slot | 2026-09-06 | Wait on Lori to confirm Wed Sep 9 slot (prefer 1:30–2p). |
 | Afroze Qayyum | Mash Strategy | Partner | Warm | Booked Jeff for Mon Aug 31 12:30 ET. John declined (out of office). Jeff accepted. Derek optional accepted | 2026-08-31 | Wait on Jeff Monday. You are out. |
 | Afrozy Ara | LuminaData | Vendor | Warm | No separate reply since Sep 2. Narayanan is carrying the ShipCalm data thread and promised bucket details by today | 2026-09-03 | Wait. Quinth chases Narayanan, not Afrozy. |
 | Alyssa Perkins | TAG | Broker | Warm | Sep 2 6:09 PM PT the Project Venture NDA completed fully signed. The accounting seller shows Q1 revenue EBITDA 2025 revenue , recurring, about 1,000 active clients | 2026-09-03 | NDA is signed, so diligence can start. Decide if Project Venture is worth John's time. |
@@ -60,6 +60,7 @@ Last built 2026-09-04 PT · 486 people · Grouped by source · Maintained by CRM
 | Kevin Luchetta | Pioneer Financial / Northwestern Mutual | Advisor | Warm | Caught up Mon Aug 24. Kevin followed up Tue: NM advisor moved on, wants in. Deirdre offered Sep Zoom. John replied-all ~8:48 AM PT from : declined Zoom, no follow-up. Closed | 2026-08-25 | Closed. Do not follow up. |
 | Kunal Shah | Imgix | Client | Warm | Imgix 2026 409A: Kunal replied Mon Aug 31 “Looks good to me. Approved!” Board side cleared on his end | 2026-08-31 | Closed on Kunal approval. Confirm any remaining board process if needed. |
 | Liping Wu | Baker Tilly | Accountant | Cool | Nothing new since July 8 on her thread; no sign Imgix owes more 2025 tax material. Treat the NYC allocation as closed | 2026-09-03 | Closed unless Baker Tilly reopens. |
+| Lori Marlar | Design Lab / Logical Brands | Team | Hot | EA to Adam Beatty. Scheduling Wed Sep 9 dLAB finance meeting. John prefers 1:30–2p. Waiting on her to confirm the slot | 2026-09-06 | Confirm Wed Sep 9 slot with John (prefer 1:30–2p). |
 | Marc Averitt | Okapi VC | Investor | Cool | Sep 3: John pinged for OV3 FEIN; Marc said prior years unchanged and looped controller Emily; Emily attached FEIN; Paul Payne thanked all | 2026-09-03 | Closed on FEIN. No move from John. |
 | Matt Ritchey | Elevated Executive | Friend | Warm | Sep 3: bringing a bookkeeper; Wyoming LLC to QBO next week; still wants ops session when John is ready | 2026-09-03 | When ready: ops session. Note bookkeeper / Wyoming LLC to QBO. |
 | Matt Voigt | Saambaa | Client | Warm | Sent Authoria test data from the Weekly Accounting test. John replied This is great. Closed on John’s side | 2026-08-27 | Closed. No next move. |
@@ -413,7 +414,7 @@ Last built 2026-09-04 PT · 486 people · Grouped by source · Maintained by CRM
 | Qklein | Montage Capital | Investor | Warm | 2026-08-04: Montage & Shipcalm | 2026-08-04 | Historical calendar contact. No open move. |
 | Queenie Tenedero | ShipCalm | Client | Warm | 2026-08-20: Parcel Audit discussion; 2026-05-15: Rock Out Room - MMM | 2026-08-20 | Historical calendar contact. No open move. |
 | Raju Rishi | Rre | Investor | Warm | 2026-08-04: Imgix Board Meeting (Q2-2026); 2026-05-27: Imgix Board Call (Possible In-Person) (H1-2026); 2026-04-21: Imgix Board Meeting (Q1-2026) | 2026-08-04 | Historical calendar contact. No open move. |
-| Randy Christian | Design Lab / Logical Brands | Advisor | Warm | 2026-08-17: dLAB / Logical Brands Finance Meeting | 2026-08-17 | Historical calendar contact. No open move. |
+| Randy Christian | Design Lab / Logical Brands | Advisor | Warm | On the dLAB / Logical Brands Wed Sep 9 reschedule thread with Lori and Adam | 2026-09-06 | Historical calendar contact. No open move. |
 | Ray | Raycao | Prospect | Cool | 2026-04-02: Steve // Homegrown AI | 2026-04-02 | Historical calendar contact. No open move. |
 | Rbelcher | SaaS Capital | Investor | Cool | 2026-07-29: ImgIX - SaaS Cap Q2; 2026-04-23: Imagix - SaaS Capital Q1 call | 2026-07-29 | Historical calendar contact. No open move. |
 | Rick Mills | Headsets | Prospect | Cool | 2026-05-29: Rick (Headsets) & John Z | 2026-05-29 | Historical calendar contact. No open move. |
